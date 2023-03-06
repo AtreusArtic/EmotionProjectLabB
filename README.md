@@ -7,3 +7,4 @@
 # LINKS:
 1. DOWNLOAD POSTGREE : https://www.postgresql.org/download/
 2. DOWNLOAD INTELLIJ : https://www.jetbrains.com/idea/download/#section=windows
+3. DOWNLOAD MAVEN (Facoltativo) : https://maven.apache.org/download.cgi
