@@ -8,3 +8,9 @@
 1. DOWNLOAD POSTGREE : https://www.postgresql.org/download/
 2. DOWNLOAD INTELLIJ : https://www.jetbrains.com/idea/download/#section=windows
 3. DOWNLOAD MAVEN (Facoltativo) : https://maven.apache.org/download.cgi
+
+# HOW TO CHECK IF MAVEN IS CORRECTLY INSTALLED:
+1. Open the project in IntelliJ;
+2. Open the file 'appTest.java';
+3. Run the file 'appTest.java';
+4. If the execution return 0, maven is correctly installed.
