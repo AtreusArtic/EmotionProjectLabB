@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.Server;
 
 import java.io.Serializable;
+import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -13,6 +14,8 @@ import java.rmi.registry.Registry;
 public class ServerImpl implements ServerInterface, Serializable {
     private static final long serialVersionUID = 1L;
     private static final int SERVER_PORT = 1099;
+
+    private static final String server_address = "127.0.0.1";
 
     /**
      * Constructor of the class:

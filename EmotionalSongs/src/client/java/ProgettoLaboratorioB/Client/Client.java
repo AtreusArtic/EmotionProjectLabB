@@ -17,12 +17,14 @@ public class Client {
      */
     static ServerInterface server = null;
     static Registry registry = null;
+
+    private static final String server_address = "127.0.0.1";
     public static void GetConnection() throws RemoteException
     {
         //Get connection with the server:
         try
         {
-            registry = LocateRegistry.getRegistry(1099);
+            registry = LocateRegistry.getRegistry(server_address,1099);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());
@@ -40,7 +42,7 @@ public class Client {
             }
             else if(e instanceof ConnectException)
             {
-                System.out.println("Client Error: server not connected: ");
+                System.out.println("Client Error: server not connected");
             }
         }
 
