@@ -1,7 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
 import java.io.Serializable;
-import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -39,7 +38,11 @@ public class ServerImpl implements ServerInterface, Serializable {
             System.out.println("@Server Error to connect the server: " + e.getMessage());
         }
     }
-    //TODO: implement the methods defined in the interface:
+
+    @Override
+    public void SendMessageToServer(String message) throws RemoteException {
+        System.out.println("Client: " + message);
+    }
 
 }
 

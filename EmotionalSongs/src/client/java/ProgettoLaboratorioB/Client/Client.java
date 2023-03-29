@@ -33,6 +33,7 @@ public class Client {
         try
         {
             server = (ServerInterface) registry.lookup("Server");
+            server.SendMessageToServer("Hello server, im now connected with you!");
             System.out.println("Client: connected with the server");
         } catch (NotBoundException | ConnectException e)
         {

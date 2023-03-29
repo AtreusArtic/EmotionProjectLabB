@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.Server;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  * Server interface define the methods that the server must implement,
@@ -11,6 +12,8 @@ public interface ServerInterface extends Remote
     // TODO: define the methods that the server must implement in order to be used by the client
     /*
     * TODO list:
+    *  Client INFO:
+    *  -Impo: send message to server to check if the client is connected;
     *  Client actions:
     *  1. Create a method that allow the client to register a new user;
     *  2. Create a method that allow the client to login;
@@ -25,6 +28,8 @@ public interface ServerInterface extends Remote
     *  5. Create a method that allow the client to register a new Emotion about specific song;
     *  6. Create a method that allow the client to remove an Emotion about a song;
     */
+
+    public void SendMessageToServer(String message) throws RemoteException;
 }
 
 
