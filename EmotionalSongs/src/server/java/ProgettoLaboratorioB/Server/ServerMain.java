@@ -1,4 +1,8 @@
 package ProgettoLaboratorioB.Server;
+
+import java.rmi.RemoteException;
+import java.util.Scanner;
+
 /**
  * ServerMain class is the class used to start the server.
  * The server can use the methods defined in the interface using the remote object of the server.
@@ -9,7 +13,7 @@ public class ServerMain
     /**
      * Start the server.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
         /*
         * 1. CreateDatabase connection; */
         DatabaseConnection();
@@ -17,6 +21,10 @@ public class ServerMain
         * 2. Connect the server by initialise
         * */
         ServerInitialization();
+
+        //Only for test: wait for the user to press enter
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
     }
 
     /**
@@ -31,9 +39,13 @@ public class ServerMain
      * Initialize the server, starting the RMI registry and the server
      * in order to be used by the client.
      */
-    public static void ServerInitialization()
+    public static void ServerInitialization() throws RemoteException
     {
-        // initialize the server, starting the RMI registry and the server
-        // in order to be used by the client
+        new ServerImpl();
     }
+
+    /**
+     * Constructor of the class:
+     */
+
 }

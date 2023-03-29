@@ -2,7 +2,10 @@ package ProgettoLaboratorioB.Client;
 
 import ProgettoLaboratorioB.Server.ServerInterface;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class Client {
     /**
@@ -12,13 +15,34 @@ public class Client {
      * @param ServerInterface server is the remote object of the server.
      */
     static ServerInterface server = null;
+    static Registry registry = null;
+    public static void GetConnection() throws RemoteException
+    {
+        //Get connection with the server:
+        try
+        {
+            registry = LocateRegistry.getRegistry(1099);
+            System.out.println("Client is ready...");
+        }catch (RemoteException e)
+        {
+            System.out.println("Error: client non connected with the server: " + e.getMessage());
+        }
+        //Get the remote object by the server:
+        try
+        {
+            server = (ServerInterface) registry.lookup("Server");
+        } catch (NotBoundException e)
+        {
+            System.out.println("Error: try to get another remote object by the server: " + e.getMessage());
+        }
 
-    public static void main(String[] args) throws RemoteException {
-
-        // get connection with the server;
     }
 
-    public static void getConnection() {
-        // get connection with the server through the RMI registry;
+    /**
+     * Constructor of the class:
+     */
+    public Client() throws RemoteException
+    {
+        GetConnection();
     }
 }
