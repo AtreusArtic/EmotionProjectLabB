@@ -41,7 +41,7 @@ public class ServerImpl implements ServerInterface, Serializable {
 
     @Override
     public void SendMessageToServer(String message) throws RemoteException {
-        System.out.println("Client: " + message);
+        System.out.println("Server: Hello" + message + ", now you are connected with me.");
     }
 
 }
