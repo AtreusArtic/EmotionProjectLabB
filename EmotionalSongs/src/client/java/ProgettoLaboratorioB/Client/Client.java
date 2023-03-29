@@ -2,6 +2,7 @@ package ProgettoLaboratorioB.Client;
 
 import ProgettoLaboratorioB.Server.ServerInterface;
 
+import java.rmi.ConnectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -22,18 +23,25 @@ public class Client {
         try
         {
             registry = LocateRegistry.getRegistry(1099);
-            System.out.println("Client is ready...");
         }catch (RemoteException e)
         {
-            System.out.println("Error: client non connected with the server: " + e.getMessage());
+            System.out.println("Client Error: client not connected with the server: " + e.getMessage());
         }
         //Get the remote object by the server:
         try
         {
             server = (ServerInterface) registry.lookup("Server");
-        } catch (NotBoundException e)
+            System.out.println("Client: connected with the server");
+        } catch (NotBoundException | ConnectException e)
         {
-            System.out.println("Error: try to get another remote object by the server: " + e.getMessage());
+            if(e instanceof NotBoundException)
+            {
+                System.out.println("Client Error: server not bound: ");
+            }
+            else if(e instanceof ConnectException)
+            {
+                System.out.println("Client Error: server not connected: ");
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -9,7 +10,7 @@ import java.rmi.registry.Registry;
  * So the client can use the methods defined in the interface using the remote object of this class.
  * The remote object is created by the RMI registry.
  */
-public class ServerImpl implements ServerInterface {
+public class ServerImpl implements ServerInterface, Serializable {
     private static final long serialVersionUID = 1L;
     private static final int SERVER_PORT = 1099;
 
@@ -30,9 +31,9 @@ public class ServerImpl implements ServerInterface {
         try {
             Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
             registry.rebind("Server", server);
-            System.out.println("Server is ready...");
+            System.out.println("@Server is ready...");
         } catch (RemoteException e) {
-            System.out.println("Error to connect the server: " + e.getMessage());
+            System.out.println("@Server Error to connect the server: " + e.getMessage());
         }
     }
     //TODO: implement the methods defined in the interface:
