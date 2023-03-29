@@ -22,26 +22,27 @@ public class ServerImpl implements ServerInterface, Serializable {
     public ServerImpl() throws RemoteException
     {
         super();
-        InitiServerConnection(this);
+        InitServerConnection(this);
     }
 
     /**
      * Start the server, through the RMI registry.
      */
-    public static void InitiServerConnection(ServerImpl server)
+    public static void InitServerConnection(ServerImpl server)
     {
         try {
             Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
             registry.rebind("Server", server);
-            System.out.println("@Server is ready...");
+            System.out.println("@Server is online...");
         } catch (RemoteException e) {
             System.out.println("@Server Error to connect the server: " + e.getMessage());
         }
     }
 
     @Override
-    public void SendMessageToServer(String message) throws RemoteException {
-        System.out.println("Server: Hello" + message + ", now you are connected with me.");
+    public void SendMessageToServer(String message) throws RemoteException
+    {
+        System.out.println("Server: Hello " + message + ", now you are connected with me.");
     }
 
 }
