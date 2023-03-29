@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/EmotionalSongs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/EmotionalSongs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/client/java/ProgettoLaboratorioB/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/client/java/ProgettoLaboratorioB/Client/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -18,7 +18,7 @@ public class Client {
     static ServerInterface server = null;
     static Registry registry = null;
 
-    private static final String server_address = "127.0.0.1";
+    private static final String server_address = "192.168.1.109";
     public static void GetConnection() throws RemoteException
     {
         //Get connection with the server:
