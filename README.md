@@ -15,3 +15,9 @@
 2. Open the file 'appTest.java';
 3. Run the file 'appTest.java';
 4. If the execution return 0, maven is correctly installed.
+
+# START SERVER AND CLIENT:
+1. Start the server, and only after that, start the client.
+2. If the Client is in the same machine of the server, you can start the client without any problem, but pay attention to use the correct IP address. Read the JavaDoc of the class 'ClientMain.java' for more information.
+3. If the Client is in a different machine of the server, you have to change the IP address of the server in the class 'ClientMain.java' with the IP address declared in the class. Read the JavaDoc of the class 'ClientMain.java' for more information.
+
