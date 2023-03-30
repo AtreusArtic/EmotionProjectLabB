@@ -14,16 +14,41 @@ import java.rmi.registry.Registry;
  */
 public class ClientImpl {
 
+    /**
+     * @param server: the remote object of the server,
+     * used by the client to use the methods defined in the interface.
+     */
     static ServerInterface server = null;
+
+    /**
+     * @param registry: the RMI registry, used by the client to get the remote object of the server.
+     */
     static Registry registry = null;
+
+    /**
+     * @param server_address: the address of the remote server.
+     * NB: if the server is in the same machine of the client,
+     * set the server address to : "localhost" or null reference.
+     */
     static final String server_address = "192.168.1.109";
+
+    /**
+     * @param SERVER_PORT: the port of the remote server.
+     */
     static final int SERVER_PORT = 1099;
+
+    /**
+     * This method initialize the connection with the server, using the RMI registry.
+     * @throws RemoteException if the client is not connected with the server.
+     * @throws NotBoundException if the server is not bound.
+     * @throws ConnectException if the server is offline.
+     */
     public static void GetConnection() throws RemoteException
     {
-        //Get connection with the server:
+        //Get connection with the server.
         try
         {
-            registry = LocateRegistry.getRegistry(server_address,SERVER_PORT);
+            registry = LocateRegistry.getRegistry(server_address ,SERVER_PORT);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());
@@ -34,7 +59,7 @@ public class ClientImpl {
             server = (ServerInterface) registry.lookup("Server");
             server.SendMessageToServer("client_zero");
             System.out.println("Client: connected with the server");
-        } catch (NotBoundException | ConnectException e)
+        } catch (Exception e)
         {
             if(e instanceof NotBoundException)
             {
@@ -44,12 +69,17 @@ public class ClientImpl {
             {
                 System.out.println("Client Error: server offline");
             }
+            else
+            {
+                System.out.println("Client Critical Error: " + e.getMessage());
+            }
         }
 
     }
 
     /**
-     * Constructor of the class:
+     * Constructor of the class: when a new client is created,
+     * the client try to connect with the server.
      */
     public ClientImpl() throws RemoteException
     {

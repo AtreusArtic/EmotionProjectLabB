@@ -11,13 +11,21 @@ import java.rmi.registry.Registry;
  * The remote object is created by the RMI registry.
  */
 public class ServerImpl implements ServerInterface, Serializable {
-    private static final long serialVersionUID = 1L;
-    private static final int SERVER_PORT = 1099;
-
-    private static final String server_address = "127.0.0.1";
 
     /**
-     * Constructor of the class:
+     * @param serialVersionUID: the serial version UID of serializable class.
+     * it is used to verify that the sender and receiver of a serialized object have loaded classes
+     * for that object that are compatible with respect to serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @param SERVER_PORT: the port of the remote server.
+     */
+    private static final int SERVER_PORT = 1099;
+
+    /**
+     * Constructor of the class: so the server is online.
      */
     public ServerImpl() throws RemoteException
     {
@@ -26,7 +34,9 @@ public class ServerImpl implements ServerInterface, Serializable {
     }
 
     /**
-     * Start the server, through the RMI registry.
+     * This method initialize the connection with the server, using the RMI registry.
+     * @param server: the remote object of the server,
+     * @throws RemoteException if the SERVER_PORT is not available.
      */
     public static void InitServerConnection(ServerImpl server)
     {
@@ -39,6 +49,11 @@ public class ServerImpl implements ServerInterface, Serializable {
         }
     }
 
+    /**
+     * This TESTTING method is used by the client to notify it, that the connection is fine.
+     * @param message: the message sent by the client.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public void SendMessageToServer(String message) throws RemoteException
     {
