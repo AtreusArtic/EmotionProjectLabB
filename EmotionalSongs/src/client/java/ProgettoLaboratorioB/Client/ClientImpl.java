@@ -31,6 +31,7 @@ public class ClientImpl {
      * set the server address to : "localhost" or null reference.
      */
     static final String server_address = "192.168.1.109";
+    static final String server_address_mobile = "192.168.60.42";
 
     /**
      * @param SERVER_PORT: the port of the remote server.
@@ -48,7 +49,7 @@ public class ClientImpl {
         //Get connection with the server.
         try
         {
-            registry = LocateRegistry.getRegistry(server_address ,SERVER_PORT);
+            registry = LocateRegistry.getRegistry(server_address_mobile ,SERVER_PORT);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());

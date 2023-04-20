@@ -25,14 +25,16 @@ public class Database
     /**
      * Connect to the database.
      */
-    public void DatabaseConnection() {
+    public void DatabaseConnection()
+    {
         // connect to the database
     }
 
     /**
      * Create the database.
      */
-    public void CreateDatabase() {
+    public void CreateDatabase()
+    {
         // create the database
     }
 
