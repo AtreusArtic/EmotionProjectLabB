@@ -15,15 +15,14 @@ public class Database
     static String porta = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "marco2000";
+    static Connection con;
 
-    public static void conn () {
+    public static Connection conn () {
         try (Connection connection = DriverManager.getConnection(porta, username, pw)) {
-
+            con = connection;
             System.out.println("Java JDBC PostgreSQL Example");
 
             System.out.println("Connected to PostgreSQL database!");
-            Statement statement = connection.createStatement();
-
         } /*catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC driver not found.");
             e.printStackTrace();
@@ -31,6 +30,7 @@ public class Database
             System.out.println("Connection failure.");
             e.printStackTrace();
         }
+        return con;
     }
 
     public Database instance;
