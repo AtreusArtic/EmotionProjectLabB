@@ -5,9 +5,12 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import java.awt.*;
 import java.io.InputStream;
 import java.net.URL;
 import javafx.scene.Parent;
@@ -22,19 +25,9 @@ public class ManagerGUI extends Application{
     /**
      * Create the GUI of the manager.
      */
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-    public void ManagerGUI() {
-
-        // create the GUI of the manager
-    }
-
-
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader ();
+        /*FXMLLoader loader = new FXMLLoader ();
         URL xmlURL = getClass().getResource("/javaFX/ProgettoLaboratorioB.GUI/FirstMenu");
 
         loader.setLocation(xmlURL);
@@ -54,6 +47,31 @@ public class ManagerGUI extends Application{
         //Image image = new Image(icon);
         //stage.getIcons().add(image);
         stage.show();
-        //becomeClient();
+        //becomeClient();*/
+
+        Menu fileMenu = new Menu("file");
+        Menu nuovoMenu = new Menu("Nuovo utente");
+        Menu aperturaMenu = new Menu("Apri profilo");
+        Menu nonRegistrato = new Menu("Menu non registrato");
+        Menu chiusuraMenu = new Menu("Chiusura Menu");
+        fileMenu.getItems().addAll(nuovoMenu, aperturaMenu, nonRegistrato, chiusuraMenu);
+
+        Menu aiuto = new Menu("autori");
+        Menu infoAutori = new Menu("autori: ");
+        aiuto.getItems().addAll(infoAutori);
+
+        MenuBar menuBar = new MenuBar();
+        menuBar.getMenus().addAll(fileMenu, aiuto);
+
+        BorderPane layout = new BorderPane();
+        layout.setTop(menuBar);
+
+        Scene prova = new Scene(layout, 300, 500);
+        stage.setTitle("menù principale");
+        stage.setScene(prova);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 }

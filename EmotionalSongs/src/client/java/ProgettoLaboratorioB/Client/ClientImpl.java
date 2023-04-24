@@ -51,7 +51,7 @@ public class ClientImpl {
         //Get connection with the server.
         try
         {
-            registry = LocateRegistry.getRegistry(server_address_mobile ,SERVER_PORT);
+            registry = LocateRegistry.getRegistry(server_address_home2 ,SERVER_PORT);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());
