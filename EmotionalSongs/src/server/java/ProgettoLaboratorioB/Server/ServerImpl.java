@@ -50,7 +50,7 @@ public class ServerImpl implements ServerInterface, Serializable {
     }
 
     /**
-     * This TESTTING method is used by the client to notify it, that the connection is fine.
+     * This TESTING method is used by the client to notify it, that the connection is fine.
      * @param message: the message sent by the client.
      * @throws RemoteException if the client is not connected with the server.
      */

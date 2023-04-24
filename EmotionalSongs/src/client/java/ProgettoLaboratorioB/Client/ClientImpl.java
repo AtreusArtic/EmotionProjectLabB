@@ -30,7 +30,9 @@ public class ClientImpl {
      * NB: if the server is in the same machine of the client,
      * set the server address to : "localhost" or null reference.
      */
-    static final String server_address = "192.168.1.109";
+    static final String server_address_home = "192.168.1.109";
+
+    static final String server_address_home2 = "192.168.1.19";
     static final String server_address_mobile = "192.168.60.42";
 
     /**
