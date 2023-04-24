@@ -9,8 +9,5 @@
         <module name="EmotionalSongs" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EmotionalSongs" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
