@@ -8,6 +8,7 @@ package ProgettoLaboratorioB.Database;
  */
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,17 +18,38 @@ import java.sql.Statement;
  */
 public abstract class QueryModule
 {
-    Statement stmt = Database.con.createStatement();
-
-    protected QueryModule() throws SQLException {
-    }
-
     //Make a singleton pattern of this class:
     //TODO: insert all (?) the queries defined in the database;
+
     public void ricercaTitoloAutore() throws SQLException {
         PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
-
+        ResultSet rs = queryParPstmt.executeQuery();
+        while(rs.next()) {
+         System.out.println(rs.getString("titolo"));
+         System.out.println(rs.getString("autore"));
+         System.out.println(rs.getInt("anno"));
+        }
     }
+    public void ricercaTitoloAnno() throws SQLException {
+        PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
+        ResultSet rs = queryParPstmt.executeQuery();
+        while(rs.next()) {
+            System.out.println(rs.getString("titolo"));
+            System.out.println(rs.getString("autore"));
+            System.out.println(rs.getInt("anno"));
+        }
+    }
+    public boolean utenteLoggato() throws SQLException {
+        PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM utentiRegistrati WHERE userid = ? and password = ?");
+        ResultSet rs = queryParPstmt.executeQuery();
+        String userid = rs.getString("userid");
+        if(userid == null) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }
 
 
