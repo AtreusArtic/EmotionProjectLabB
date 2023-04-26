@@ -1,6 +1,8 @@
 package ProgettoLaboratorioB.Server;
 
 import java.io.Serializable;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -55,7 +57,7 @@ public class ServerImpl implements ServerInterface, Serializable {
      * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public void SendMessageToServer(String message) throws RemoteException
+    public void SendMessageToClient(String message) throws RemoteException
     {
         System.out.println("Server: Hello " + message + ", now you are connected with me.");
     }

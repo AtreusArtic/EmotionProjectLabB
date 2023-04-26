@@ -1,7 +1,10 @@
 package ProgettoLaboratorioB.Client;
 
+import ProgettoLaboratorioB.Server.ServerImpl;
 import ProgettoLaboratorioB.Server.ServerInterface;
 
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.rmi.ConnectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -30,10 +33,7 @@ public class ClientImpl {
      * NB: if the server is in the same machine of the client,
      * set the server address to : "localhost" or null reference.
      */
-    static final String server_address_home = "192.168.1.109";
-
-    static final String server_address_home2 = "192.168.1.19";
-    static final String server_address_mobile = "192.168.60.42";
+    static String server_address;
 
     /**
      * @param SERVER_PORT: the port of the remote server.
@@ -43,15 +43,18 @@ public class ClientImpl {
     /**
      * This method initialize the connection with the server, using the RMI registry.
      * @throws RemoteException if the client is not connected with the server.
-     * @throws NotBoundException if the server is not bound.
-     * @throws ConnectException if the server is offline.
+     * @throws NotBoundException if an attempt is made to lookup or unbind in the registry a name that has no associated binding.
+     * @throws ConnectException Server is offline; signals that an error occurred while attempting to connect a socket to a remote address and port.
      */
     public static void GetConnection() throws RemoteException
     {
+        //Get Server IP:
+        GetServerID();
+
         //Get connection with the server.
         try
         {
-            registry = LocateRegistry.getRegistry(server_address_home2 ,SERVER_PORT);
+            registry = LocateRegistry.getRegistry(server_address ,SERVER_PORT);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());
@@ -60,7 +63,7 @@ public class ClientImpl {
         try
         {
             server = (ServerInterface) registry.lookup("Server");
-            server.SendMessageToServer("client_zero");
+            server.SendMessageToClient("client_zero");
             System.out.println("Client: connected with the server");
         } catch (Exception e)
         {
@@ -78,6 +81,18 @@ public class ClientImpl {
             }
         }
 
+    }
+
+    private static void GetServerID()
+    {
+        try (final DatagramSocket datagramSocket = new DatagramSocket()) {
+            datagramSocket.connect(InetAddress.getByName("8.8.8.8"), SERVER_PORT);
+            System.out.println("SERVER IP IS: " + datagramSocket.getLocalAddress().getHostAddress());
+            server_address = datagramSocket.getLocalAddress().getHostAddress();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            server_address = "localhost";
+        }
     }
 
     /**
