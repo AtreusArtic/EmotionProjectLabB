@@ -1,6 +1,5 @@
 package ProgettoLaboratorioB.Client;
 
-import ProgettoLaboratorioB.Server.ServerImpl;
 import ProgettoLaboratorioB.Server.ServerInterface;
 
 import java.net.DatagramSocket;
@@ -33,7 +32,7 @@ public class ClientImpl {
      * NB: if the server is in the same machine of the client,
      * set the server address to : "localhost" or null reference.
      */
-    static String server_address;
+    public static String server_address;
 
     /**
      * @param SERVER_PORT: the port of the remote server.
@@ -83,6 +82,10 @@ public class ClientImpl {
 
     }
 
+    /**
+     * This method is used to get the server IP.
+     * @throws Exception if the Server_PORT is .
+     */
     private static void GetServerID()
     {
         try (final DatagramSocket datagramSocket = new DatagramSocket()) {

@@ -1,5 +1,5 @@
-import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Test {
    // public static void main(String[] args) {
@@ -11,4 +11,9 @@ public class Test {
          //   System.out.println(ex.getMessage());
         //}
    // }
+
+    public static void main(String[] args) throws UnknownHostException {
+        String server = InetAddress.getByName("Server").getHostAddress();
+        System.out.println(server);
+    }
 }
