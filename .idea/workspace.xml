@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/javaFX/ProgettoLaboratorioB/GUI/FirstMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/javaFX/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/client/java/ProgettoLaboratorioB/Client/ClientImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/client/java/ProgettoLaboratorioB/Client/ClientMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/database/java/ProgettoLaboratorioB/Database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/database/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/main/java/ProgettoLaboratorioB/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/database/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/database/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/main/java/ProgettoLaboratorioB/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/main/java/ProgettoLaboratorioB/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/EmotionalSongs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/EmotionalSongs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/client/java/ProgettoLaboratorioB/Client/ClientImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/client/java/ProgettoLaboratorioB/Client/ClientMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/database/java/ProgettoLaboratorioB/Database/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/database/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/main/java/ProgettoLaboratorioB/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/server/java/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/server/java/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/server/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/server/java/Test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +50,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6921d9d7-97e2-44a6-b8b9-be6c3bb79ecc" />
+        <option name="url" value="https://github.com/AtreusArtic/EmotionProjectLabB.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -40,29 +74,27 @@
     </option>
   </component>
   <component name="ProjectId" id="2Mp4xYPfyn7VV3DXKkv9k4N9gxr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
+    "last_opened_file_path": "/Users/marikascalise/Documents/GitHub/EmotionProjectLabB",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -70,13 +102,13 @@
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.App" />
+  <component name="RunManager" selected="Application.ManagerGUI">
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientMain" />
       <module name="EmotionalSongs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ProgettoLaboratorioB.*" />
+          <option name="PATTERN" value="ProgettoLaboratorioB.Client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,12 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientMain" />
+    <configuration name="ManagerGUI" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.GUI.ManagerGUI" />
       <module name="EmotionalSongs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ProgettoLaboratorioB.Client.*" />
+          <option name="PATTERN" value="ProgettoLaboratorioB.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,9 +144,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.ServerMain" />
         <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
       </list>
     </recent_temporary>
   </component>
@@ -174,6 +205,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added pw for access the DB" />
     <option name="LAST_COMMIT_MESSAGE" value="Added pw for access the DB" />
   </component>
