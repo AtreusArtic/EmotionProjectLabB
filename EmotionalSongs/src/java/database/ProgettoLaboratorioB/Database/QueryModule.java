@@ -1,4 +1,4 @@
-package ProgettoLaboratorioB.Database;
+package database.ProgettoLaboratorioB.Database;
 /**
  * Query module is an abstract where all the queries defined in the database are stored.
  * The queries are used by the server to interact with the database.

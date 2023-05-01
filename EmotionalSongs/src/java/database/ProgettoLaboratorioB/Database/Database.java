@@ -1,4 +1,4 @@
-package ProgettoLaboratorioB.Database;
+package database.ProgettoLaboratorioB.Database;
 import java.sql.*;
 
 /**

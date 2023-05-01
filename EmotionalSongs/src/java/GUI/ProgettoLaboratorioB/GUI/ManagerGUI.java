@@ -1,6 +1,6 @@
-package ProgettoLaboratorioB.GUI;
+package GUI.ProgettoLaboratorioB.GUI;
 
-import ProgettoLaboratorioB.Database.Database;
+
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
