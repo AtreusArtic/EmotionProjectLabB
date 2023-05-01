@@ -1,8 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
 import java.io.Serializable;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

@@ -1,8 +1,8 @@
-package server.ProgettoLaboratorioB.Server;
+package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Client.ClientImpl;
-import database.ProgettoLaboratorioB.Database.Database;
-import ProgettoLaboratorioB.Server.ServerImpl;
+import ProgettoLaboratorioB.Database.Database;
+
 
 import java.rmi.RemoteException;
 import java.util.Scanner;

@@ -5,29 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/ProgettoLaboratorioB/GUI/FirstMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/client/ProgettoLaboratorioB/Client/ClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/client/ProgettoLaboratorioB/Client/ClientMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/database/ProgettoLaboratorioB/Database/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/database/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/main/ProgettoLaboratorioB/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/server/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/javaFX/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/javaFX/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/client/java/ProgettoLaboratorioB/Client/ClientImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/client/java/ProgettoLaboratorioB/Client/ClientMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/database/java/ProgettoLaboratorioB/Database/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/database/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/main/java/ProgettoLaboratorioB/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/java/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/GUI/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/client/ProgettoLaboratorioB/Client/ClientImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/client/ProgettoLaboratorioB/Client/ClientMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/database/ProgettoLaboratorioB/Database/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/database/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/main/ProgettoLaboratorioB/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/server/Test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2Mp4xYPfyn7VV3DXKkv9k4N9gxr" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -101,7 +104,7 @@
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ManagerGUI">
+  <component name="RunManager">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientMain" />
       <module name="EmotionalSongs" />
