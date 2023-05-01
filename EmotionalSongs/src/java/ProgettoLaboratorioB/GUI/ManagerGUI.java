@@ -1,6 +1,7 @@
-package GUI.ProgettoLaboratorioB.GUI;
+package ProgettoLaboratorioB.GUI;
 
 
+import ProgettoLaboratorioB.Database.Database;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import java.io.InputStream;
 import java.net.URL;
 import javafx.scene.Parent;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * With this class define the methods to create the GUI of the manager.
@@ -26,8 +28,8 @@ public class ManagerGUI extends Application{
      * Create the GUI of the manager.
      */
     @Override
-    public void start(Stage stage) throws Exception {
-        /*FXMLLoader loader = new FXMLLoader ();
+    public void start(@NotNull Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader ();
         URL xmlURL = getClass().getResource("/javaFX/ProgettoLaboratorioB.GUI/FirstMenu");
 
         loader.setLocation(xmlURL);
