@@ -46,7 +46,8 @@ public class ServerMain
      */
     public static void DatabaseConnection()
     {
-          Database.instance.DatabaseConnection();
+          Database database = new Database();
+          database.DatabaseConnection();
     }
 
 }

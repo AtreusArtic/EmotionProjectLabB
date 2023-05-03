@@ -23,12 +23,13 @@ public class Database
      */
     public static Database instance;
 
-    public void SetInstance()
+    public Database SetInstance()
     {
         if (instance == null)
         {
             instance = this;
         }
+        return instance;
     }
 
     /**
