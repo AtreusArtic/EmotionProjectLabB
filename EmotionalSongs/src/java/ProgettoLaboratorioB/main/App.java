@@ -1,4 +1,4 @@
-package ProgettoLaboratorioB;
+package ProgettoLaboratorioB.main;
 
 /**
  * Hello world!
