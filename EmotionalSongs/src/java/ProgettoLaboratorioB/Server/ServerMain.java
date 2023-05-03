@@ -28,7 +28,6 @@ public class ServerMain
         * */
         ServerInitialization();
 
-        System.out.println(ClientImpl.server_address);
         //Only for test: wait for the user to press enter
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
@@ -45,8 +44,9 @@ public class ServerMain
     /**
      * Connect to the database.
      */
-    public static void DatabaseConnection(){
-          Database.conn();
+    public static void DatabaseConnection()
+    {
+          Database.instance.DatabaseConnection();
     }
 
 }

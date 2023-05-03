@@ -12,15 +12,36 @@ import java.sql.*;
 
 public class Database
 {
-
-    static String porta = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
+    static String port = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "marco2000";
     static Connection con;
 
-    public static Connection conn () {
-        try (Connection connection = DriverManager.getConnection(porta, username, pw)) {
-            con = connection;
+    /**
+     * Singleton pattern for the database.
+     * @param instance: the instance of the database.
+     */
+    public static Database instance;
+
+    public void SetInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    /**
+     * Connect to the database.
+     */
+    public Connection DatabaseConnection()
+    {
+        //Set database instance:
+        SetInstance();
+
+        //Connect the database:
+        try (Connection connection = DriverManager.getConnection(port, username, pw)) {
+            instance.con = connection;
             System.out.println("Java JDBC PostgreSQL Example");
 
             System.out.println("Connected to PostgreSQL database!");
@@ -34,39 +55,4 @@ public class Database
         return con;
     }
 
-    public Database instance;
-    public Database()
-    {
-        getInstance();
-    }
-
-    public Database getInstance()
-    {
-        if (instance == null) {
-            instance = new Database();
-        }
-        return instance;
-    }
-
-    private QueryModule _queryModule;
-
-    /**
-     * Connect to the database.
-     */
-    public void DatabaseConnection()
-    {
-        // connect to the database
-    }
-
-    /**
-     * Create the database.
-     */
-    public void CreateDatabase()
-    {
-        // create the database
-    }
-
-    /**
-     * Use the query module to interact with the database.
-     */
 }

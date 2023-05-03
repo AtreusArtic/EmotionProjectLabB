@@ -48,7 +48,7 @@ public class ClientImpl {
     public static void GetConnection() throws RemoteException
     {
         //Get Server IP:
-        GetServerID();
+        GetClientID();
 
         //Get connection with the server.
         try
@@ -86,7 +86,7 @@ public class ClientImpl {
      * This method is used to get the server IP.
      * @throws Exception if the Server_PORT is .
      */
-    private static void GetServerID()
+    private static void GetClientID()
     {
         try (final DatagramSocket datagramSocket = new DatagramSocket()) {
             datagramSocket.connect(InetAddress.getByName("8.8.8.8"), SERVER_PORT);
