@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_aarch64_19_0_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_aarch64_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_aarch64_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_aarch64_19_0_2_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +71,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Program Files/Java/javafx-sdk-20.0.1/lib",
-    "project.structure.last.edited": "Global Libraries",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pathVariables",
@@ -92,7 +88,7 @@
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServerMain">
+  <component name="RunManager" selected="Application.ManagerGUI">
     <configuration name="ClientMain" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientMain" />
       <module name="EmotionalSongs" />
@@ -180,6 +176,8 @@
       <workItem from="1678964536892" duration="428000" />
       <workItem from="1678969511213" duration="166000" />
       <workItem from="1678975961991" duration="5000" />
+      <workItem from="1683286987540" duration="473000" />
+      <workItem from="1683289217866" duration="1641000" />
     </task>
     <task id="LOCAL-00001" summary="Added pw for access the DB">
       <created>1678964252272</created>
