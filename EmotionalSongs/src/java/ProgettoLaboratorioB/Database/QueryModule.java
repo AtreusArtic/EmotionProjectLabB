@@ -40,7 +40,7 @@ public abstract class QueryModule
         }
     }
     public boolean utenteLoggato() throws SQLException {
-        PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM utentiRegistrati WHERE userid = ? and password = ?");
+        PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
         ResultSet rs = queryParPstmt.executeQuery();
         String userid = rs.getString("userid");
         if(userid == null) {
