@@ -38,6 +38,16 @@
       <artifactId>postgresql</artifactId>
       <version>42.5.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>19</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-graphics</artifactId>
+      <version>20</version>
+    </dependency>
   </dependencies>
 
 
