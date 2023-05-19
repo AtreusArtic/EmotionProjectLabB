@@ -10,7 +10,6 @@ package ProgettoLaboratorioB.Database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * I think that this class should be an abstract class, in order to make a singleton pattern.
@@ -49,7 +48,6 @@ public abstract class QueryModule
             return true;
         }
     }
-
 }
 
 
