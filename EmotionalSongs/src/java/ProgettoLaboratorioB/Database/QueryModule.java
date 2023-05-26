@@ -20,8 +20,10 @@ public abstract class QueryModule
     //Make a singleton pattern of this class:
     //TODO: insert all (?) the queries defined in the database;
 
-    public void RicercaTitoloAutore() throws SQLException {
+    public void RicercaTitoloAutore(String titolo, String autore) throws SQLException {
         PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
+        PreparedStatement.setString(1, titolo);
+        PreparedStatement.setString(2, autore);
         ResultSet rs = queryParPstmt.executeQuery();
         while(rs.next()) {
          System.out.println(rs.getString("titolo"));
