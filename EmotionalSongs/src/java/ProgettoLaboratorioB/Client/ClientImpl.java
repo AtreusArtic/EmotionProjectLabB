@@ -34,6 +34,8 @@ public class ClientImpl {
      */
     public static String server_address;
 
+    public static String default_server_address = "localhost";
+
     /**
      * @param SERVER_PORT: the port of the remote server.
      */
@@ -48,12 +50,12 @@ public class ClientImpl {
     public static void GetConnection() throws RemoteException
     {
         //Get Server IP:
-        GetClientID();
+        GetServerID();
 
         //Get connection with the server.
         try
         {
-            registry = LocateRegistry.getRegistry(server_address ,SERVER_PORT);
+            registry = LocateRegistry.getRegistry(default_server_address ,SERVER_PORT);
         }catch (RemoteException e)
         {
             System.out.println("Client Error: client not connected with the server: " + e.getMessage());
@@ -86,11 +88,11 @@ public class ClientImpl {
      * This method is used to get the server IP.
      * @throws Exception if the Server_PORT is .
      */
-    private static void GetClientID()
+    private static void GetServerID()
     {
-        try (final DatagramSocket datagramSocket = new DatagramSocket()) {
+        try (final DatagramSocket datagramSocket = new DatagramSocket())
+        {
             datagramSocket.connect(InetAddress.getByName("8.8.8.8"), SERVER_PORT);
-            System.out.println("SERVER IP IS: " + datagramSocket.getLocalAddress().getHostAddress());
             server_address = datagramSocket.getLocalAddress().getHostAddress();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -3,12 +3,9 @@ package ProgettoLaboratorioB.Database;
 import java.sql.*;
 
 /**
- * With this class define the methods to connect to the database provided by the server.
- * The database use PostgreSQL library: version 42.2.5.
+ * This class define the methods to connect to the database provided by the server.
+ * The database use PostgresSQL library: version 42.2.5.
  */
-
-
-
 
 public class Database
 {

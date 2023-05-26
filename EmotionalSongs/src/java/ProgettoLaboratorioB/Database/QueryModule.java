@@ -20,7 +20,7 @@ public abstract class QueryModule
     //Make a singleton pattern of this class:
     //TODO: insert all (?) the queries defined in the database;
 
-    public void ricercaTitoloAutore() throws SQLException {
+    public void RicercaTitoloAutore() throws SQLException {
         PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
         ResultSet rs = queryParPstmt.executeQuery();
         while(rs.next()) {
@@ -29,7 +29,7 @@ public abstract class QueryModule
          System.out.println(rs.getInt("anno"));
         }
     }
-    public void ricercaTitoloAnno() throws SQLException {
+    public void RicercaTitoloAnno() throws SQLException {
         PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
         ResultSet rs = queryParPstmt.executeQuery();
         while(rs.next()) {
@@ -38,7 +38,9 @@ public abstract class QueryModule
             System.out.println(rs.getInt("anno"));
         }
     }
-    public boolean utenteLoggato() throws SQLException {
+
+    //TODO: change name function to UserLogin
+    public boolean UtenteLoggato() throws SQLException {
         PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
         ResultSet rs = queryParPstmt.executeQuery();
         String userid = rs.getString("userid");

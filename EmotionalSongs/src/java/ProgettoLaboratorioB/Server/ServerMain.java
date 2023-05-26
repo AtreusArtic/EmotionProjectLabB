@@ -1,8 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
-import ProgettoLaboratorioB.Client.ClientImpl;
 import ProgettoLaboratorioB.Database.Database;
-
 
 import java.rmi.RemoteException;
 import java.util.Scanner;
@@ -22,7 +20,14 @@ public class ServerMain
     public static void main(String[] args) throws RemoteException {
         /*
         * 1. CreateDatabase connection; */
-        DatabaseConnection();
+        try
+        {
+            DatabaseConnection();
+        }catch (Exception e)
+        {
+            System.out.println("Database connection error: " + e);
+        }
+        //DatabaseConnection();
         /*
         * 2. Connect the server by initialise
         * */

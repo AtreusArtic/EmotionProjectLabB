@@ -13,7 +13,7 @@ public class User implements Serializable
     /**
      * Only for test.
      */
-    public User() {this.username = "test"; this.password = "passtest"; this.email = "default";}
+    public User() {this.username = "test"; this.password = "default"; this.email = "default";}
 
     public User(String username, String password, String email)
     {
