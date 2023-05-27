@@ -1,7 +1,10 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.Serializables.User;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Server interface define the methods that the server must implement,
@@ -16,7 +19,14 @@ public interface ServerInterface extends Remote
     *  -Impo: send message to server to check if the client is connected;
     *  Client actions:
     *  1. Create a method that allow the client to register a new user;
+    */
+    public void RegisterNewUser(User user) throws RemoteException;
+
+    /*
     *  2. Create a method that allow the client to login;
+    */
+    public boolean Login(String username, String password) throws RemoteException, SQLException;
+   /*
     *  3. Create a method that allow the client to logout;
     *  4. Create a method that allow the client to search a song by title and by artist and year;
     *  5. Create a method that allow the client to read an Emotion about a song;

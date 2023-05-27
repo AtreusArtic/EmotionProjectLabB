@@ -23,11 +23,9 @@ public class ServerMain
         try
         {
             DatabaseConnection();
-        }catch (Exception e)
-        {
+        }catch (Exception e) {
             System.out.println("Database connection error: " + e);
         }
-        //DatabaseConnection();
         /*
         * 2. Connect the server by initialise
         * */

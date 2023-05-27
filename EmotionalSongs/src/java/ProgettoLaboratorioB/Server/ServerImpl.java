@@ -1,9 +1,13 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.Database.QueryModule;
+import ProgettoLaboratorioB.Serializables.User;
+
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.sql.SQLException;
 
 /**
  * With this class server can implement the methods defined in the interface.
@@ -48,6 +52,17 @@ public class ServerImpl implements ServerInterface, Serializable {
             System.out.println("@Server Error to connect the server: " + e.getMessage());
         }
     }
+
+    @Override
+    public void RegisterNewUser(User user) throws RemoteException {
+
+    }
+
+    @Override
+    public boolean Login(String username, String password) throws RemoteException, SQLException {
+        return QueryModule.UtenteLoggato(username, password);
+    }
+
 
     /**
      * This TESTING method is used by the client to notify it, that the connection is fine.

@@ -18,42 +18,42 @@ public class Emotions implements java.io.Serializable
         this.User = User;
     }
 
-    public String getEmotionName()
+    public String GetEmotionName()
     {
         return this.emotion_name;
     }
 
-    public String getEmotionDescription()
+    public String GetEmotionDescription()
     {
         return this.emotion_description;
     }
 
-    public String getSong()
+    public String GetSong()
     {
         return this.Song;
     }
 
-    public String getUser()
+    public String GetUser()
     {
         return this.User;
     }
 
-    public void setEmotionName(String emotion_name)
+    public void GetEmotionName(String emotion_name)
     {
         this.emotion_name = emotion_name;
     }
 
-    public void setEmotionDescription(String emotion_description)
+    public void GetEmotionDescription(String emotion_description)
     {
         this.emotion_description = emotion_description;
     }
 
-    public void setSong(String Song)
+    public void GetSong(String Song)
     {
         this.Song = Song;
     }
 
-    public void setUser(String User)
+    public void GetUser(String User)
     {
         this.User = User;
     }

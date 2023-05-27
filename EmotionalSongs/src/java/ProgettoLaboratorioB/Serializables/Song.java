@@ -20,16 +20,13 @@ public class Song implements java.io.Serializable{
         this.ID = ID;
     }
 
-    public Song()
-    {
+    public Song() {}
 
-    }
-
-    public String getTitle(){
+    public String GetTitle(){
         return this.title;
     }
 
-    public String getArtist(){
+    public String GetArtist(){
         return this.artist;
     }
 
@@ -37,19 +34,19 @@ public class Song implements java.io.Serializable{
         return this.year;
     }
 
-    public String getID(){
+    public String GetID(){
         return this.ID;
     }
 
-    public void setTitle(String title){
+    public void SetTitle(String title){
         this.title = title;
     }
 
-    public void setArtist(String artist){
+    public void SetArtist(String artist){
         this.artist = artist;
     }
 
-    public void setYear(int year){
+    public void SetYear(int year){
         this.year = year;
     }
 }

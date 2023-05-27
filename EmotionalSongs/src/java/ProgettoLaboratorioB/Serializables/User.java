@@ -27,17 +27,17 @@ public class User implements Serializable
     /// This following GETTER functions are used to get the values of the attributes of the class,
     /// every time system needs to know the values of the attributes of the class; use this.
     /// </summary>
-    public String getUsername()
+    public String GetUsername()
     {
         return this.username;
     }
 
-    public String getPassword()
+    public String GetPassword()
     {
         return this.password;
     }
 
-    public String getEmail()
+    public String GetEmail()
     {
         return this.email;
     }
@@ -47,17 +47,17 @@ public class User implements Serializable
     /// This following SETTER functions are used to set the values of the attributes of the class,
     /// when the user subscribe for the first time in the application;
     /// </summary>
-    public void setUsername(String username)
+    public void GetUsername(String username)
     {
         this.username = username;
     }
 
-    public void setPassword(String password)
+    public void GetPassword(String password)
     {
         this.password = password;
     }
 
-    public void setEmail(String email)
+    public void SetEmail(String email)
     {
         this.email = email;
     }

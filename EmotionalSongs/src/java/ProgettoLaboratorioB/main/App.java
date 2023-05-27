@@ -1,17 +1,18 @@
 package ProgettoLaboratorioB.main;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import ProgettoLaboratorioB.Client.ClientMain;
+
+import java.rmi.RemoteException;
+
+
+public class App
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws RemoteException
     {
-
-        System.out.println( "Hello World!" );
-
+        if(App_System.crntDatabaseStatus == App_System.DATABASE_STATUS.ONLINE)
+                ClientMain.StartClientApplication();
     }
+
 }
 
 

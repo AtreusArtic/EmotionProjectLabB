@@ -1,6 +1,10 @@
 package ProgettoLaboratorioB.Database;
 
-import java.sql.*;
+import ProgettoLaboratorioB.main.App_System;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * This class define the methods to connect to the database provided by the server.
@@ -9,6 +13,8 @@ import java.sql.*;
 
 public class Database
 {
+
+
     static String port = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "marco2000";
@@ -27,7 +33,6 @@ public class Database
             instance = this;
         }
     }
-
     /**
      * Connect to the database.
      */
@@ -49,7 +54,12 @@ public class Database
             System.out.println("Connection failure.");
             e.printStackTrace();
         }
+
+        App_System.SetNewStatusDatabase();
+
         return con;
+
     }
+
 
 }

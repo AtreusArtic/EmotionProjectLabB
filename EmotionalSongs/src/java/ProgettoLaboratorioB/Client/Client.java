@@ -14,7 +14,7 @@ import java.rmi.registry.Registry;
  * The client can use the methods defined in the interface using the remote object of the server.
  * The remote object is created by the RMI registry.
  */
-public class ClientImpl {
+public class Client {
 
     /**
      * @param server: the remote object of the server,
@@ -104,7 +104,7 @@ public class ClientImpl {
      * Constructor of the class: when a new client is created,
      * the client try to connect with the server.
      */
-    public ClientImpl() throws RemoteException
+    public Client() throws RemoteException
     {
         GetConnection();
     }

@@ -15,32 +15,32 @@ public class Playlist implements java.io.Serializable
         this.songs = songs;
     }
 
-    public String getPlaylistName()
+    public String GetPlaylistName()
     {
         return this.playlist_name;
     }
 
-    public User getPlaylistOwner()
+    public User GetPlaylistOwner()
     {
         return this.playlist_owner;
     }
 
-    public Song[] getSongs()
+    public Song[] GetSongs()
     {
         return this.songs;
     }
 
-    public void setPlaylistName(String playlist_name)
+    public void GetPlaylistName(String playlist_name)
     {
         this.playlist_name = playlist_name;
     }
 
-    public void setPlaylistOwner(User playlist_owner)
+    public void SetPlaylistOwner(User playlist_owner)
     {
         this.playlist_owner = playlist_owner;
     }
 
-    public void setSongs(Song[] songs)
+    public void SetSongs(Song[] songs)
     {
         this.songs = songs;
     }
