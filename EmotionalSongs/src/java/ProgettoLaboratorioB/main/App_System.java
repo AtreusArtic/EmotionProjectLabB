@@ -4,24 +4,6 @@ import ProgettoLaboratorioB.Database.Database;
 
 public class App_System{
 
-
-    /**
-     * Enum states to manage the main menu of the system.
-     */
-
-
-    private static SYSTEM_STATE crntState;
-
-    public static void SetNewState(SYSTEM_STATE newState)
-    {
-        crntState = newState;
-    }
-
-    public static SYSTEM_STATE GetCrntState()
-    {
-        return crntState;
-    }
-
     Database database;
     public static enum DATABASE_STATUS {
         OFFLINE,
