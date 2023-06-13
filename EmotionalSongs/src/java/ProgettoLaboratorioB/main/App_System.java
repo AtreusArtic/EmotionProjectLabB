@@ -64,7 +64,7 @@ public class App_System{
 
     public static boolean IsDBOnline()
     {
-        if(Database.instance.DatabaseConnection() != null) {
+        if(Database.instance.con != null) {
 
             return true;
         }
@@ -84,7 +84,8 @@ public class App_System{
         }
         else {
             System.out.println("!!!SYSTEM ALERT!!!\n" +
-                    "The database is online :) .\n");
+                    "The database is online :) .\n" +
+                    "!!!ATTENTION!!!");
         }
     }
 

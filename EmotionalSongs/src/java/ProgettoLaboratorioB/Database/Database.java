@@ -42,12 +42,16 @@ public class Database
         SetInstance();
 
         //Connect the database:
+        if(instance.con != null)
+        {
+            return instance.con;
+        }
+
         try (Connection connection = DriverManager.getConnection(port, username, pw)) {
             instance.con = connection;
-            System.out.println("Connected to PostgreSQL database!");
+            System.out.println(instance.con);
         }
         catch (SQLException e) {
-            System.out.println("Connection failure.");
             e.printStackTrace();
         }
 
