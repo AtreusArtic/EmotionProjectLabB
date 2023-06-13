@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Database.Database;
+import ProgettoLaboratorioB.main.App_System;
 
 import java.rmi.RemoteException;
 import java.util.Scanner;
@@ -18,18 +19,24 @@ public class ServerMain
      * Start the server.
      */
     public static void main(String[] args) throws RemoteException {
-        /*
-        * 1. CreateDatabase connection; */
+        /**
+        * 1. CreateDatabase connection;
+         * */
         try
         {
             DatabaseConnection();
         }catch (Exception e) {
             System.out.println("Database connection error: " + e);
         }
-        /*
+        /**
         * 2. Connect the server by initialise
         * */
         ServerInitialization();
+
+        /**
+         * 3. When the server is initialized, and the database is connected, update app system.
+         */
+        new App_System();
 
         //Only for test: wait for the user to press enter
         Scanner sc = new Scanner(System.in);

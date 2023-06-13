@@ -13,11 +13,10 @@ public class App
 {
     static Scanner sc = new Scanner(System.in);
 
-    static App_System app_system = new App_System();
     public static void main( String[] args ) throws RemoteException
     {
-        if(App_System.crntDatabaseStatus == App_System.DATABASE_STATUS.ONLINE)
-                ClientService.StartClientApplication();
+
+        ClientService.StartClientApplication();
     }
 
     /**
@@ -33,15 +32,14 @@ public class App
 
     public static void InitUserModule() throws RemoteException
     {
-        if(App_System.crntDatabaseStatus == App_System.DATABASE_STATUS.ONLINE)
-            ClientService.StartClientApplication();
-            app_system.SetNewState(SYSTEM_STATE.MAIN_MENU);
+        ClientService.StartClientApplication();
+        App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
     }
 
     public static void StartMainModule() throws RemoteException, SQLException {
         int switchState = 0;
 
-        while(!app_system.GetCrntState().equals(SYSTEM_STATE.MAIN_MENU))
+        while(!App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.MAIN_MENU))
         {
             System.out.println("Choose the function to call:");
             System.out.println("1. Register");
@@ -52,18 +50,18 @@ public class App
             switch(switchState)
             {
                 case 1:
-                    app_system.SetNewState(SYSTEM_STATE.REGISTER_MENU);
+                    App_System.appSystem.SetNewState(SYSTEM_STATE.REGISTER_MENU);
                     User new_user = UserRegistrationUtility();
                     if(new_user != null)
                     {
 
                         ClientService.RegisterNewUser(new_user);
-                        app_system.SetNewState(SYSTEM_STATE.USER_MENU);
+                        App_System.appSystem.SetNewState(SYSTEM_STATE.USER_MENU);
                     }
                     else
                     {
                         System.out.println("Error: user reference is null");
-                        app_system.SetNewState(SYSTEM_STATE.MAIN_MENU);
+                        App_System.SetNewState(SYSTEM_STATE.MAIN_MENU);
                         return;
                     }
 
@@ -73,11 +71,11 @@ public class App
                     if(UserLoginUtility())
                     {
                         //Start the user home module.
-                        app_system.SetNewState(SYSTEM_STATE.USER_MENU);
+                        App_System.appSystem.SetNewState(SYSTEM_STATE.USER_MENU);
                     }
                     break;
                 case 3:
-                    app_system.SetNewState(SYSTEM_STATE.GUEST_MENU);
+                    App_System.appSystem.SetNewState(SYSTEM_STATE.GUEST_MENU);
                     break;
                 case 4:
                     System.out.println("Exit function called");
