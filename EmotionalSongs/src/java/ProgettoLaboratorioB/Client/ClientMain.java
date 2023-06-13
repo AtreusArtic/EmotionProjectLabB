@@ -19,7 +19,8 @@ public class ClientMain {
             System.out.println("Choose the function to call:");
             System.out.println("1. Register");
             System.out.println("2. Login");
-            System.out.println("3. Exit");
+            System.out.println("3. Anonymous Mode");
+            System.out.println("4. Exit");
             switchState = sc.nextInt(); //Remember to cast the input to int, cause an error if you don't;
             switch(switchState)
             {
@@ -43,6 +44,9 @@ public class ClientMain {
                     System.out.println("Login function called");
                     break;
                 case 3:
+                    System.out.println("Anonymous menu called");
+                    break;
+                case 4:
                     System.out.println("Exit function called");
                     break;
                 default:
@@ -53,6 +57,7 @@ public class ClientMain {
 
         // choose 1 to select the register function
         // choose 2 to select the login function
+        // choose 3 to select anonymous menu
 
     }
 }
