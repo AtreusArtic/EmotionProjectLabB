@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/70a8e6dc-4bce-4e3b-8889-45812d5b23dd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70a8e6dc-4bce-4e3b-8889-45812d5b23dd.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/EmotionalSongs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/SYSTEM_STATE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App_System.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App_System.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,8 +99,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.ManagerGUI">
-    <configuration name="ClientMain" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientMain" />
+    <configuration name="ClientService" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.Client.ClientService" />
       <module name="EmotionalSongs" />
       <extension name="coverage">
         <pattern>
@@ -154,8 +157,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ClientService" />
       <item itemvalue="Application.ManagerGUI" />
-      <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ServerMain" />
       <item itemvalue="JUnit.AppTest.testApp" />
     </list>
