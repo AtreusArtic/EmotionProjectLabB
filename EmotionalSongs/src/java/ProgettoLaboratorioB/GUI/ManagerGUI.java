@@ -25,7 +25,9 @@ public class ManagerGUI extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenu.fxml"));
+        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
         Parent root = fxmlLoader.load();
+        Parent root1 = fxmlLoader1.load();
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
