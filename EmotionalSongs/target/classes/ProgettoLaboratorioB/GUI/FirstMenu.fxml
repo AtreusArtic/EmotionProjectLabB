@@ -17,7 +17,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" mouseTransparent="true" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="313.0" fitWidth="378.0" layoutX="10.8" layoutY="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-2.0">
+                  <ImageView fitHeight="233.0" fitWidth="346.0" layoutX="21.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="21.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/Songs.png" />
                      </image>

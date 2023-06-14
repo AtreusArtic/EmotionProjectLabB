@@ -29,6 +29,14 @@ public class ClientService {
             return false;
         }
     }
+    public static void Anonymous(User user){
+        try{
+            Client.server.Anonymous(user);
+        } catch (RemoteException e){
+            e.printStackTrace();
+        }
+
+    }
 
 
     public static void Exit(){

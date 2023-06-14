@@ -63,6 +63,10 @@ public class ServerImpl implements ServerInterface, Serializable {
     public boolean Login(String username, String password) throws RemoteException, SQLException {
         return QueryModule.UtenteLoggato(username, password);
     }
+    public void Anonymous(User user) throws RemoteException{
+        //vedere querymodule
+
+    }
 
 
     /**

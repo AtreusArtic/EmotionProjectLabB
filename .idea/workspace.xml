@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/DatabaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Serializables/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Serializables/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Client/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/AnonymousMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/AnonymousMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/main/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +98,7 @@
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.ManagerGUI">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.main.App" />
       <module name="EmotionalSongs" />
@@ -280,5 +278,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added pw for access the DB" />
     <option name="LAST_COMMIT_MESSAGE" value="Added pw for access the DB" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
