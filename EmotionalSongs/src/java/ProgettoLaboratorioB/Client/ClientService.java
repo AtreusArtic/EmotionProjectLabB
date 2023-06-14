@@ -12,11 +12,12 @@ public class ClientService {
     {
         new Client();
     }
-    public static void RegisterNewUser(User user){
+    public static void RegisterNewUser(User user) throws SQLException{
         try {
             Client.server.RegisterNewUser(user);
+            System.out.println("request to server send");
         } catch (RemoteException e) {
-            e.printStackTrace();
+            System.out.println("Error: SERVER IS OFFLINE");
         }
     }
 
@@ -25,7 +26,7 @@ public class ClientService {
         {
             return Client.server.Login(username, password);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            System.out.println("Error: SERVER IS OFFLINE");
             return false;
         }
     }

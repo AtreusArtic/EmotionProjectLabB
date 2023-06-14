@@ -54,15 +54,13 @@ public class App
                     User new_user = UserRegistrationUtility();
                     if(new_user != null)
                     {
-
+                        System.out.println("Send registration request to server");
                         ClientService.RegisterNewUser(new_user);
-                        App_System.appSystem.SetNewState(SYSTEM_STATE.USER_MENU);
                     }
                     else
                     {
                         System.out.println("Error: user reference is null");
                         App_System.SetNewState(SYSTEM_STATE.MAIN_MENU);
-                        return;
                     }
 
                     break;
@@ -106,7 +104,6 @@ public class App
         System.out.println("Insert the password:");
         String password = sc.next();
 
-        System.out.println("Insert the email:");
         String email = "enrico_email@ciao.com";
 
         User user = new User(username, password, email);

@@ -6,6 +6,7 @@ import ProgettoLaboratorioB.main.App_System;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -26,14 +27,11 @@ public class ServerMain
          * */
         try
         {
-            DatabaseConnection();
+            ServerInitialization();
         }catch (Exception e) {
-            System.out.println("Database connection error: " + e);
+            System.out.println("Server initialization error: " + e);
         }
-        /**
-        * 2. Connect the server by initialise
-        * */
-        ServerInitialization();
+
 
         /**
          * 3. When the server is initialized, and the database is connected, update app system.
@@ -46,19 +44,20 @@ public class ServerMain
     }
 
     /**
-     * Initialize the server and create the remote object.
+     * Initialize the server and create the remote object, and pass the database connection to the remote object.
      */
     public static void ServerInitialization() throws RemoteException
     {
-        new ServerImpl();
+        try {
+            if(new Database().instance.DatabaseConnection().isValid(3000))
+                System.out.println("SERBERO: Connection is valid");
+            else
+                System.out.println("SERBERO: Connection is not valid");
+        }catch (SQLException e)
+        {
+            e.printStackTrace();}
+        new ServerImpl(new Database().DatabaseConnection());
     }
 
-    /**
-     * Connect to the database.
-     */
-    public static void DatabaseConnection()
-    {
-        Connection connection = new Database().DatabaseConnection();
-    }
 
 }

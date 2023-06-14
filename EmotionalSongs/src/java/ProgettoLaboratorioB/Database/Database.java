@@ -26,7 +26,7 @@ public class Database
      */
     public static Database instance;
 
-    public void SetInstance()
+    public Database()
     {
         if (instance == null)
         {
@@ -38,24 +38,16 @@ public class Database
      */
     public Connection DatabaseConnection()
     {
-        //Set database instance:
-        SetInstance();
-
-        //Connect the database:
-        if(instance.con != null)
-        {
-            return instance.con;
-        }
-
         try (Connection connection = DriverManager.getConnection(port, username, pw)) {
             instance.con = connection;
             DatabaseService.CreateUserTable(connection, "users");
+            //DatabaseService.RegistrationRequest(connection, "enrico", "enrico1234", "ciaone");
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return con;
+        return instance.con;
 
     }
 

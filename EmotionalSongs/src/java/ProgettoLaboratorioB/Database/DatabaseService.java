@@ -9,7 +9,6 @@ public class DatabaseService
     public static void CreateUserTable(Connection connection, String table_name)
     {
         Statement stmt;
-
         try
         {
             String query = "create table " + table_name + "(username varchar(200), password varchar(200), email varchar(200) , primary key(username));";
@@ -21,6 +20,7 @@ public class DatabaseService
             System.out.println("Table " + table_name + " already exists");
         }
     }
+
 
 
 }

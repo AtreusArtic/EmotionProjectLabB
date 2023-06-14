@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -14,7 +16,7 @@ import java.sql.SQLException;
  * So the client can use the methods defined in the interface using the remote object of this class.
  * The remote object is created by the RMI registry.
  */
-public class ServerImpl implements ServerInterface, Serializable {
+public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
 
     /**
      * @param serialVersionUID: the serial version UID of serializable class.
@@ -28,13 +30,16 @@ public class ServerImpl implements ServerInterface, Serializable {
      */
     private static final int SERVER_PORT = 1099;
 
+
+    static Connection connection = null;
+
     /**
      * Constructor of the class: so the server is online.
      */
-    public ServerImpl() throws RemoteException
+    public ServerImpl(Connection db_con) throws RemoteException
     {
         super();
-        InitServerConnection(this);
+        InitServerConnection(this, db_con);
     }
 
     /**
@@ -42,9 +47,18 @@ public class ServerImpl implements ServerInterface, Serializable {
      * @param server: the remote object of the server,
      * @throws RemoteException if the SERVER_PORT is not available.
      */
-    public static void InitServerConnection(ServerImpl server)
+    public static void InitServerConnection(ServerImpl server, Connection db_con)
     {
         try {
+            connection = db_con;
+            try {
+                if(connection.isValid(3000))
+                    System.out.println("INIT: Connection is valid");
+                else
+                    System.out.println("INIT: Connection is not valid");
+            }catch (SQLException e)
+            {
+                e.printStackTrace();}
             Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
             registry.rebind("Server", server);
             System.out.println("@Server is online...");
@@ -54,9 +68,17 @@ public class ServerImpl implements ServerInterface, Serializable {
     }
 
     @Override
-    public void RegisterNewUser(User user) throws RemoteException
-    {
-        QueryModule.RegisterNewUser(user.GetUsername(), user.GetPassword(), user.GetEmail());
+    public void RegisterNewUser(User user) throws RemoteException {
+        try {
+            if(connection.isValid(3000))
+                System.out.println("REGISTER: Connection is valid");
+            else
+                System.out.println("REGISTER: Connection is not valid");
+        }catch (SQLException e)
+        {
+            e.printStackTrace();}
+        System.out.println("Server: Registering new user...");
+        QueryModule.RegisterNewUser(connection,user.GetUsername(), user.GetPassword(), user.GetEmail());
     }
 
     @Override

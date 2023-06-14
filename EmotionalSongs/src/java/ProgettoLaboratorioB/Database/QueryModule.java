@@ -9,9 +9,8 @@ package ProgettoLaboratorioB.Database;
 
 import ProgettoLaboratorioB.Serializables.Song;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 
 /**
  * I think that this class should be an abstract class, in order to make a singleton pattern.
@@ -96,23 +95,30 @@ public abstract class QueryModule
         }
     }
 
-    public static void RegisterNewUser(String username, String password, String email)
-    {
-        if(Database.instance == null)
+    public static void RegisterNewUser(Connection conn, String username, String password, String email){
+        Connection connection = Database.instance.DatabaseConnection();
+        Statement stmt;
+        try {
+            if(connection.isValid(3000))
+                System.out.println("Connection is valid");
+            else
+                System.out.println("Connection is not valid");
+        }catch (SQLException e)
         {
-            new Database().DatabaseConnection();
-        }
+            e.printStackTrace();}
         try
         {
-            PreparedStatement queryParPstmt = Database.instance.con.prepareStatement("INSERT INTO users (username, password, email) VALUES (?,?,?)");
-            queryParPstmt.setString(1, username);
-            queryParPstmt.setString(2, password);
-            queryParPstmt.setString(3, email);
-            queryParPstmt.executeUpdate();
+
+            System.out.println("Connection is: " + conn);
+            String query = String.format("insert into users(username, password, email) values('%s, '%s', '%s');", username, password, email);
+            stmt = connection.createStatement(); // This line cause an error, Because connection will be closed after the try block.
+            stmt.executeUpdate(query);
+            System.out.println("User " + username + " created successfully");
         }
         catch (SQLException e)
         {
             e.printStackTrace();
+            System.out.println("CATCH: now conn is: " + connection);
         }
     }
 }
