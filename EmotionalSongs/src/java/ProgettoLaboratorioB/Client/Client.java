@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Client;
 
+import ProgettoLaboratorioB.Server.ServerImpl;
 import ProgettoLaboratorioB.Server.ServerInterface;
 
 import java.net.DatagramSocket;

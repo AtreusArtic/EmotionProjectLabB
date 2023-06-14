@@ -16,12 +16,25 @@ import java.sql.*;
  * I think that this class should be an abstract class, in order to make a singleton pattern.
  * So it could be not possible to create an instance of this class.
  */
-public abstract class QueryModule
+public class QueryModule
 {
-    //Make a singleton pattern of this class:
-    //TODO: insert all the queries defined in the database;
+    static Connection con;
+    public QueryModule(String url, String user, String password) throws SQLException
+    {
+        try
+        {
+            con = DriverManager.getConnection(url, user, password);
+            System.out.println("Database connection established");
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Database connection error: " + e);
+        }
+    }
 
-
+    public static QueryModule GetQueryObject(String url, String user, String password) throws SQLException {
+        return new QueryModule(url, user, password);
+    }
     /* !!!NOTA PER BUGLIO !!!:
     In questa query sto cercando una CANZONE,
     quindi mi aspetto che la funzione mi returni un oggetto CANZONE;
@@ -95,30 +108,20 @@ public abstract class QueryModule
         }
     }
 
-    public static void RegisterNewUser(Connection conn, String username, String password, String email){
-        Connection connection = Database.instance.DatabaseConnection();
-        Statement stmt;
-        try {
-            if(connection.isValid(3000))
-                System.out.println("Connection is valid");
-            else
-                System.out.println("Connection is not valid");
-        }catch (SQLException e)
-        {
-            e.printStackTrace();}
+    public static void RegisterNewUser(String username, String password, String email){
+         Statement stmt = null;
         try
         {
-
-            System.out.println("Connection is: " + conn);
-            String query = String.format("insert into users(username, password, email) values('%s, '%s', '%s');", username, password, email);
-            stmt = connection.createStatement(); // This line cause an error, Because connection will be closed after the try block.
+            System.out.println("Connection is: " + con);
+            String query = String.format("insert into users(username, password, email) values('%s', '%s', '%s');", username, password, email);
+            stmt = con.createStatement(); // This line cause an error, Because connection will be closed after the try block.
             stmt.executeUpdate(query);
             System.out.println("User " + username + " created successfully");
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-            System.out.println("CATCH: now conn is: " + connection);
+            System.out.println("CATCH: now conn is: " + con);
         }
     }
 }

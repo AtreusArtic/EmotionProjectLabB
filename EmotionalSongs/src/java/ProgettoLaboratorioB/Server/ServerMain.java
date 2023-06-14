@@ -5,6 +5,8 @@ import ProgettoLaboratorioB.Database.DatabaseService;
 import ProgettoLaboratorioB.main.App_System;
 
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -21,13 +23,18 @@ public class ServerMain
     /**
      * Start the server.
      */
+
+    /**
+     * @param SERVER_PORT: the port of the remote server.
+     */
+    private static final int SERVER_PORT = 1099;
     public static void main(String[] args) throws RemoteException {
         /**
         * 1. CreateDatabase connection;
          * */
         try
         {
-            ServerInitialization();
+            InitServerConnection();
         }catch (Exception e) {
             System.out.println("Server initialization error: " + e);
         }
@@ -36,7 +43,7 @@ public class ServerMain
         /**
          * 3. When the server is initialized, and the database is connected, update app system.
          */
-        new App_System();
+        //new App_System();
 
         //Only for test: wait for the user to press enter
         Scanner sc = new Scanner(System.in);
@@ -46,17 +53,18 @@ public class ServerMain
     /**
      * Initialize the server and create the remote object, and pass the database connection to the remote object.
      */
-    public static void ServerInitialization() throws RemoteException
-    {
-        try {
-            if(new Database().instance.DatabaseConnection().isValid(3000))
-                System.out.println("SERBERO: Connection is valid");
-            else
-                System.out.println("SERBERO: Connection is not valid");
-        }catch (SQLException e)
+
+    public static void InitServerConnection() throws SQLException {
+
+        try
         {
-            e.printStackTrace();}
-        new ServerImpl(new Database().DatabaseConnection());
+            ServerImpl server = new ServerImpl();
+            Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
+            registry.rebind("Server", server);
+            System.out.println("@Server is online...");
+        } catch (RemoteException e) {
+            System.out.println("@Server Error to connect the server: " + e.getMessage());
+        }
     }
 
 

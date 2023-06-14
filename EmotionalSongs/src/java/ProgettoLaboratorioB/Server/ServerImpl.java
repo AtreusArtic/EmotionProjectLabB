@@ -25,60 +25,28 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      */
     private static final long serialVersionUID = 1L;
 
+
     /**
-     * @param SERVER_PORT: the port of the remote server.
+     * @param connection: the connection to the database.
      */
-    private static final int SERVER_PORT = 1099;
-
-
-    static Connection connection = null;
+    static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
+    static String username = "postgres";
+    static String pw = "enrico1234";
+    public QueryModule qrModule;
 
     /**
      * Constructor of the class: so the server is online.
      */
-    public ServerImpl(Connection db_con) throws RemoteException
-    {
+    public ServerImpl() throws RemoteException, SQLException {
         super();
-        InitServerConnection(this, db_con);
-    }
-
-    /**
-     * This method initialize the connection with the server, using the RMI registry.
-     * @param server: the remote object of the server,
-     * @throws RemoteException if the SERVER_PORT is not available.
-     */
-    public static void InitServerConnection(ServerImpl server, Connection db_con)
-    {
-        try {
-            connection = db_con;
-            try {
-                if(connection.isValid(3000))
-                    System.out.println("INIT: Connection is valid");
-                else
-                    System.out.println("INIT: Connection is not valid");
-            }catch (SQLException e)
-            {
-                e.printStackTrace();}
-            Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
-            registry.rebind("Server", server);
-            System.out.println("@Server is online...");
-        } catch (RemoteException e) {
-            System.out.println("@Server Error to connect the server: " + e.getMessage());
-        }
+        qrModule = QueryModule.GetQueryObject(url, username, pw);
     }
 
     @Override
     public void RegisterNewUser(User user) throws RemoteException {
-        try {
-            if(connection.isValid(3000))
-                System.out.println("REGISTER: Connection is valid");
-            else
-                System.out.println("REGISTER: Connection is not valid");
-        }catch (SQLException e)
-        {
-            e.printStackTrace();}
+
         System.out.println("Server: Registering new user...");
-        QueryModule.RegisterNewUser(connection,user.GetUsername(), user.GetPassword(), user.GetEmail());
+        qrModule.RegisterNewUser(user.GetUsername(), user.GetPassword(), user.GetEmail());
     }
 
     @Override
