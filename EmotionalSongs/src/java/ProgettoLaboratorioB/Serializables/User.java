@@ -47,12 +47,12 @@ public class User implements Serializable
     /// This following SETTER functions are used to set the values of the attributes of the class,
     /// when the user subscribe for the first time in the application;
     /// </summary>
-    public void GetUsername(String username)
+    public void SetUsername(String username)
     {
         this.username = username;
     }
 
-    public void GetPassword(String password)
+    public void SetPassword(String password)
     {
         this.password = password;
     }

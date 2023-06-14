@@ -1,9 +1,11 @@
 package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Database.Database;
+import ProgettoLaboratorioB.Database.DatabaseService;
 import ProgettoLaboratorioB.main.App_System;
 
 import java.rmi.RemoteException;
+import java.sql.Connection;
 import java.util.Scanner;
 
 /**
@@ -56,7 +58,7 @@ public class ServerMain
      */
     public static void DatabaseConnection()
     {
-        new Database().DatabaseConnection();
+        Connection connection = new Database().DatabaseConnection();
     }
 
 }

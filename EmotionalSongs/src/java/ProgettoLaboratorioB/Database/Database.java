@@ -17,7 +17,7 @@ public class Database
 
     static String port = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
-    static String pw = "enrico1234";
+    static String pw = "enrico1234"; //Change this password with your postgres password.
     public static Connection con;
 
     /**
@@ -36,7 +36,7 @@ public class Database
     /**
      * Connect to the database.
      */
-    public  Connection DatabaseConnection()
+    public Connection DatabaseConnection()
     {
         //Set database instance:
         SetInstance();
@@ -49,7 +49,7 @@ public class Database
 
         try (Connection connection = DriverManager.getConnection(port, username, pw)) {
             instance.con = connection;
-            System.out.println(instance.con);
+            DatabaseService.CreateUserTable(connection, "users");
         }
         catch (SQLException e) {
             e.printStackTrace();

@@ -80,7 +80,7 @@ public abstract class QueryModule
     public static boolean UtenteLoggato(String userid, String password){
         try
         {
-            PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
+            PreparedStatement queryParPstmt = Database.instance.con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
             ResultSet rs = queryParPstmt.executeQuery();
             userid = rs.getString("userid");
             if(userid == null) {
@@ -93,6 +93,26 @@ public abstract class QueryModule
         {
             System.out.println("QUERY-MODULE error ! " + e);
             return false;
+        }
+    }
+
+    public static void RegisterNewUser(String username, String password, String email)
+    {
+        if(Database.instance == null)
+        {
+            new Database().DatabaseConnection();
+        }
+        try
+        {
+            PreparedStatement queryParPstmt = Database.instance.con.prepareStatement("INSERT INTO users (username, password, email) VALUES (?,?,?)");
+            queryParPstmt.setString(1, username);
+            queryParPstmt.setString(2, password);
+            queryParPstmt.setString(3, email);
+            queryParPstmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
         }
     }
 }

@@ -54,8 +54,9 @@ public class ServerImpl implements ServerInterface, Serializable {
     }
 
     @Override
-    public void RegisterNewUser(User user) throws RemoteException {
-
+    public void RegisterNewUser(User user) throws RemoteException
+    {
+        QueryModule.RegisterNewUser(user.GetUsername(), user.GetPassword(), user.GetEmail());
     }
 
     @Override

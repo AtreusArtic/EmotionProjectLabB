@@ -13,10 +13,9 @@ public class App
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main( String[] args ) throws RemoteException
-    {
+    public static void main( String[] args ) throws RemoteException, SQLException {
 
-        ClientService.StartClientApplication();
+        RunApplication();
     }
 
     /**
@@ -30,16 +29,17 @@ public class App
      *
      */
 
-    public static void InitUserModule() throws RemoteException
-    {
+    public static void RunApplication() throws RemoteException, SQLException {
         ClientService.StartClientApplication();
         App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+        StartMainModule();
+
     }
 
     public static void StartMainModule() throws RemoteException, SQLException {
         int switchState = 0;
 
-        while(!App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.MAIN_MENU))
+        while(App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.MAIN_MENU))
         {
             System.out.println("Choose the function to call:");
             System.out.println("1. Register");
@@ -104,11 +104,10 @@ public class App
         String username = sc.next();
 
         System.out.println("Insert the password:");
-
         String password = sc.next();
 
         System.out.println("Insert the email:");
-        String email = sc.next();
+        String email = "enrico_email@ciao.com";
 
         User user = new User(username, password, email);
 
