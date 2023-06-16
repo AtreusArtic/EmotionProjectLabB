@@ -1,8 +1,5 @@
 package ProgettoLaboratorioB.main;
 
-import ProgettoLaboratorioB.Client.ClientService;
-import ProgettoLaboratorioB.Database.Database;
-
 import java.rmi.RemoteException;
 
 public class App_System{
@@ -64,7 +61,7 @@ public class App_System{
 
     public static boolean IsDBOnline()
     {
-        if(Database.instance.con != null) {
+        if(appSystem != null) {
 
             return true;
         }

@@ -9,7 +9,6 @@ package ProgettoLaboratorioB.Database;
 
 import ProgettoLaboratorioB.Serializables.Song;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 /**
@@ -18,7 +17,7 @@ import java.sql.*;
  */
 public class QueryModule
 {
-    static Connection con;
+    public static Connection con;
     public QueryModule(String url, String user, String password) throws SQLException
     {
         try
@@ -45,7 +44,7 @@ public class QueryModule
         Song srcSong = null;
         try
         {
-            PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
+            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
             ResultSet rs = queryParPstmt.executeQuery();
             while(rs.next()) {
 
@@ -74,7 +73,7 @@ public class QueryModule
     public static void RicercaTitoloAutore(String titolo, String autore) throws SQLException {
         try
         {
-            PreparedStatement queryParPstmt = Database.con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
+            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
             ResultSet rs = queryParPstmt.executeQuery();
             while(rs.next()) {
                 System.out.println(rs.getString("titolo"));
@@ -92,7 +91,7 @@ public class QueryModule
     public static boolean UtenteLoggato(String userid, String password){
         try
         {
-            PreparedStatement queryParPstmt = Database.instance.con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
+            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
             ResultSet rs = queryParPstmt.executeQuery();
             userid = rs.getString("userid");
             if(userid == null) {

@@ -1,13 +1,8 @@
 package ProgettoLaboratorioB.Server;
 
-import ProgettoLaboratorioB.Database.Database;
-import ProgettoLaboratorioB.Database.DatabaseService;
-import ProgettoLaboratorioB.main.App_System;
-
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -43,7 +38,6 @@ public class ServerMain
         /**
          * 3. When the server is initialized, and the database is connected, update app system.
          */
-        //new App_System();
 
         //Only for test: wait for the user to press enter
         Scanner sc = new Scanner(System.in);

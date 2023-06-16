@@ -1,14 +1,11 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.Database.DatabaseService;
 import ProgettoLaboratorioB.Database.QueryModule;
 import ProgettoLaboratorioB.Serializables.User;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -31,7 +28,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      */
     static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
-    static String pw = "enrico1234";
+    static String pw = "enrico98";
     public QueryModule qrModule;
 
     /**
@@ -40,6 +37,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     public ServerImpl() throws RemoteException, SQLException {
         super();
         qrModule = QueryModule.GetQueryObject(url, username, pw);
+        DatabaseService.CreateUserTable(qrModule.con,"users");
     }
 
     @Override
