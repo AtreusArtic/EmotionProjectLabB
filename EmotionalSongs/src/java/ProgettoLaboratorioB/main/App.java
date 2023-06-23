@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.main;
 
 import ProgettoLaboratorioB.Client.ClientService;
+import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.RemoteException;
@@ -44,7 +45,8 @@ public class App
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Enter as guest");
-            System.out.println("4. Exit");
+            System.out.println("4. Search song by title and artist");
+            System.out.println("5. Exit");
             switchState = sc.nextInt(); //Remember to cast the input to int, cause an error if you don't;
             switch(switchState)
             {
@@ -75,7 +77,10 @@ public class App
                     App_System.appSystem.SetNewState(SYSTEM_STATE.GUEST_MENU);
                     break;
                 case 4:
-                    System.out.println("Exit function called");
+                    SongSearchUtility();
+                    break;
+                case 5:
+                    App_System.appSystem.SetNewState(SYSTEM_STATE.EXIT);
                     break;
                 default:
                     System.out.println("Invalid function");
@@ -130,6 +135,29 @@ public class App
             return false;
         }
 
+
+    }
+
+    public static void SongSearchUtility() throws SQLException {
+        System.out.println("Insert the song title:");
+        String song_title = "Adam Ant";
+
+        System.out.println("Insert the song artist:");
+        String song_artist = "Something Girls";
+
+        //implement the function into the remote object, to search the song;
+        Song song = ClientService.SearchSongByTitleArtist(song_title, song_artist);
+        if(song != null)
+        {
+            System.out.println("Song found");
+            System.out.println("Song title: " + song.GetTitle());
+            System.out.println("Song artist: " + song.GetArtist());
+            System.out.println("Song year: " + song.GetYear());
+        }
+        else
+        {
+            System.out.println("Song not found");
+        }
 
     }
 

@@ -9,7 +9,9 @@ package ProgettoLaboratorioB.Database;
 
 import ProgettoLaboratorioB.Serializables.Song;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.Scanner;
 
 /**
  * I think that this class should be an abstract class, in order to make a singleton pattern.
@@ -37,31 +39,66 @@ public class QueryExecutor
     public static QueryExecutor GetQueryObject(String url, String user, String password) throws SQLException {
         return new QueryExecutor(url, user, password);
     }
+    public void LoadSongData() throws SQLException, FileNotFoundException {
+        try (Scanner in = new Scanner(queryModule.songfile)){
+            while(in.hasNextLine()){
+                String objString = in.nextLine();
+                String [] songAtrs = objString.split("<SEP>");
+                if(songAtrs.length >= 3)
+                {
+                    try
+                    {
+                        Statement stm = con.createStatement();
+                        String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG),
+                                songAtrs[0], songAtrs[1], songAtrs[2], songAtrs[3].replace("'", "''"));
 
-    public static Song RicercaTitoloAnno(String titolo , int anno ) throws SQLException {
-        Song srcSong = null;
+                        stm.executeUpdate(query);
+                    }catch (SQLException e)
+                    {
+                        System.out.println("ERROR DURING LOAD DATA: " + e);
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("@ERROR: songFile.data not found! \n");
+            return;
+        }
+    }
+
+
+    public static Song GetSongByTitleAuthor(String title , String artist) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
         try
         {
-            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
-            ResultSet rs = queryParPstmt.executeQuery();
-            while(rs.next()) {
+            String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                            QueryModule.QUERY.SEARCH_SONG_BY_TITLEAUTHOR));
 
-                System.out.println(rs.getString("titolo"));
-                System.out.println(rs.getString("autore"));
-                System.out.println(rs.getInt("anno"));
-                //DA TESTARE:
-                srcSong = rs.getObject("canzone", Song.class);
-                return srcSong;
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, artist);
+            ps.setString(2, title);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                return new Song(rs.getInt(1),  //year
+                        rs.getString(2),       //id
+                        rs.getString(3),       //artist
+                        rs.getString(4));      //title
             }
         }
         catch (SQLException e)
         {
-            System.out.println("QUERY-MODULE error ! " + e);
+            System.out.println("QUERY-MODULE error: " + e);
             return null;
         }
         return null;
     }
-    public static void RicercaTitoloAutore(String titolo, String autore) throws SQLException {
+
+    //TODO: implementare la ricerca per titolo e autore...
+    public static void GetSongYearTitle(int year, String title) throws SQLException {
         try
         {
             PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");

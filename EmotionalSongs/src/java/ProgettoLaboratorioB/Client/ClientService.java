@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Client;
 
+import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.RemoteException;
@@ -39,6 +40,19 @@ public class ClientService {
 
     public static void Exit(){
         System.exit(0);
+    }
+
+
+    ///SONG MODULE FUNCTIONS:
+
+    public static Song SearchSongByTitleArtist(String title, String artist) throws SQLException {
+        try
+        {
+            return Client.server.SearchSongByTitleArtist(title, artist);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return null;
+        }
     }
 
 

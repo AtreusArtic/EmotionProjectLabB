@@ -13,7 +13,7 @@ public class Song implements java.io.Serializable{
     private String ID;
 
 
-    public Song(String title, String artist, int year, String ID){
+    public Song(int year, String id, String author, String title){
         this.title = title;
         this.artist = artist;
         this.year = year;
@@ -49,4 +49,6 @@ public class Song implements java.io.Serializable{
     public void SetYear(int year){
         this.year = year;
     }
+
+    public int GetYear() { return this.year; }
 }

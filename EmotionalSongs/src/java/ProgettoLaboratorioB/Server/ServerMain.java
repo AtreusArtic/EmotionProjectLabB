@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -55,9 +56,13 @@ public class ServerMain
             ServerImpl server = new ServerImpl();
             Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
             registry.rebind("Server", server);
-            System.out.println("@Server is online...");
-        } catch (RemoteException e) {
-            System.out.println("@Server Error to connect the server: " + e.getMessage());
+            System.out.println("@SERVER IS ONLINE...");
+        } catch (RemoteException e)
+        {
+            System.out.println("@SERVER ERROR to connect the server: " + e.getMessage());
+        } catch (FileNotFoundException e)
+        {
+            System.out.println("@SERVER ERROR: failed to load songs file into database");
         }
     }
 

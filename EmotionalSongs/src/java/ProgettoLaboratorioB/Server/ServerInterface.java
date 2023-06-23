@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.Remote;
@@ -29,6 +30,9 @@ public interface ServerInterface extends Remote
    /*
     *  3. Create a method that allow the client to logout;
     *  4. Create a method that allow the client to search a song by title and by artist and year;
+    */
+    public Song SearchSongByTitleArtist(String title, String artist) throws RemoteException, SQLException;
+    /*
     *  5. Create a method that allow the client to read an Emotion about a song;
     *  User actions:
     *  1. Create a method that allow the client to create a new playlist;

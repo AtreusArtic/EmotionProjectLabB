@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Database;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,10 @@ import java.util.Map;
 
 public class QueryModule
 {
+    /**
+     * ENUMS: This enums are used to map table_name(KEY) and the list of queries associated to it(VALUE).
+     * by using the Java Hashmap Class with <Table)><QueriesAssociated>
+     * */
     public enum QUERY
     {
         /**
@@ -23,8 +28,10 @@ public class QueryModule
         /**
         * Song table queries
         */
-        SEARCH_SONG,
-        DELETE_SONG,
+
+        ADD_SONG,
+        SEARCH_SONG_BY_YEARAUTHOR,
+        SEARCH_SONG_BY_TITLEAUTHOR,
 
         /**
         * Playlist table queries
@@ -37,13 +44,13 @@ public class QueryModule
         /**
          * Emotions table queries
          */
-
         ADD_EMOTION,
 
         DELETE_EMOTION,
 
         GET_EMOTION,
     }
+
 
     public enum TABLE
     {
@@ -52,6 +59,24 @@ public class QueryModule
         PLAYLISTS,
         EMOTIONS
     }
+
+
+
+
+    /**
+     * DATA:
+     *  File path to songs file (check in 'data' folder of the project)
+     *  Thanks to File Separator property we can set the path dynamically for every OS.
+     *  And the file path directory is set to the current working directory of the project,
+     *  thanks to the System.getProperty("user.dir") method.
+     * */
+
+    private static String filename = "data/Canzoni.Dati.txt";
+    private static String dir = System.getProperty("user.dir");
+
+    private static final String path = dir + File.separator + filename;
+
+    File songfile = new File(path);
     public static Map<TABLE, Map<QUERY, String>> tableMapping;
 
 
@@ -93,15 +118,21 @@ public class QueryModule
         Map<QUERY, String> songs_table_queries = new HashMap<>();
 
         songs_table_queries.put
-                (QUERY.SEARCH_SONG,
+                (QUERY.ADD_SONG,
+                        "insert into songs(year, id, artist, title) values('%s', '%s', '%s', '%s');");
+        songs_table_queries.put
+                (QUERY.SEARCH_SONG_BY_TITLEAUTHOR,
                         "SELECT * FROM songs WHERE title = ? AND artist = ?");
 
         songs_table_queries.put
-                (QUERY.DELETE_SONG,
-                        "DELETE FROM songs WHERE title = ? AND artist = ?");
+                (QUERY.SEARCH_SONG_BY_YEARAUTHOR,
+                        "SELECT * FROM songs WHERE year = ? AND artist = ?");
 
         tableMapping.put(TABLE.SONGS, songs_table_queries);
     }
+
+
+
 
     public void initPlaylistsTable()
     {
@@ -168,7 +199,4 @@ public class QueryModule
             return query_string;
         }
     }
-
-
-
 }

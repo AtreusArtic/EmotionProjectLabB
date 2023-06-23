@@ -2,8 +2,10 @@ package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Database.DatabaseService;
 import ProgettoLaboratorioB.Database.QueryExecutor;
+import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
@@ -29,29 +31,39 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "enrico98";
-    public QueryExecutor qrModule;
+    public QueryExecutor qrExecuter;
 
     /**
      * Constructor of the class: so the server is online.
      */
-    public ServerImpl() throws RemoteException, SQLException {
+    public ServerImpl() throws RemoteException, SQLException, FileNotFoundException {
         super();
-        qrModule = QueryExecutor.GetQueryObject(url, username, pw);
-        DatabaseService.CreateUserTable(qrModule.con,"users");
+        qrExecuter = QueryExecutor.GetQueryObject(url, username, pw);
+        DatabaseService.CreateUserTable(qrExecuter.con,"users");
+        DatabaseService.CreateSongsTable(qrExecuter.con,"songs");
+        //qrExecuter.LoadSongData();
+        // ATTENZIONE: se si vuole caricare le canzoni nel database, decommentare la riga soprastante;
+        // Se invece, il database contiente già le canzoni, lasciare commentata la riga soprastante.
     }
 
     @Override
-    public void RegisterNewUser(User new_user) throws RemoteException
+    public synchronized void RegisterNewUser(User new_user) throws RemoteException
     {
-        qrModule.RegisterNewUser(new_user.GetUsername(), new_user.GetPassword(), new_user.GetEmail());
+        qrExecuter.RegisterNewUser(new_user.GetUsername(), new_user.GetPassword(), new_user.GetEmail());
     }
 
     @Override
-    public boolean Login(String username, String password) throws RemoteException
+    public synchronized boolean Login(String username, String password) throws RemoteException
     {
-        return qrModule.UserLogin(username, password);
+        return qrExecuter.UserLogin(username, password);
     }
-    public void Anonymous(User user) throws RemoteException{
+
+    @Override
+    public Song SearchSongByTitleArtist(String title, String artist) throws RemoteException, SQLException {
+        return qrExecuter.GetSongByTitleAuthor(title, artist);
+    }
+
+    public synchronized void Anonymous(User user) throws RemoteException{
         //vedere querymodule
 
     }
@@ -63,7 +75,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public void SendMessageToClient(String message) throws RemoteException
+    public synchronized void SendMessageToClient(String message) throws RemoteException
     {
         System.out.println("Server: Hello " + message + ", now you are connected with me.");
     }
