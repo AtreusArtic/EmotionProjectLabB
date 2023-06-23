@@ -4,9 +4,9 @@ import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class ClientService {
+
 
     public static void StartClientApplication() throws RemoteException
     {
@@ -21,7 +21,7 @@ public class ClientService {
         }
     }
 
-    public static boolean Login(String username, String password) throws SQLException, RemoteException {
+    public static boolean Login(String username, String password) throws SQLException {
         try
         {
             return Client.server.Login(username, password);
@@ -30,12 +30,9 @@ public class ClientService {
             return false;
         }
     }
-    public static void Anonymous(User user){
-        try{
-            Client.server.Anonymous(user);
-        } catch (RemoteException e){
-            e.printStackTrace();
-        }
+    public static void Anonymous(User user)
+    {
+
 
     }
 

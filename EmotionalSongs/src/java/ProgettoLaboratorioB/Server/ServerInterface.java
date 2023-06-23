@@ -41,7 +41,6 @@ public interface ServerInterface extends Remote
 
     public void SendMessageToClient(String message) throws RemoteException;
 
-    public void Anonymous(User user) throws RemoteException;
 }
 
 

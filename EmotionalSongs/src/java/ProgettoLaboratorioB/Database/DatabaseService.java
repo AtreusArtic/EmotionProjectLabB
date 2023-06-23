@@ -11,7 +11,7 @@ public class DatabaseService
         Statement stmt;
         try
         {
-            String query = "create table " + table_name + "(username varchar(200), password varchar(200), email varchar(200) , primary key(username));";
+            String query = "create table " + table_name + "(username varchar(200), password varchar(200), email varchar(200),  primary key(username));";
             stmt = connection.createStatement();
             stmt.executeUpdate(query);
             System.out.println("Table " + table_name + " created successfully");

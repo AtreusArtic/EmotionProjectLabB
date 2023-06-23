@@ -1,6 +1,5 @@
 package ProgettoLaboratorioB.main;
 
-import ProgettoLaboratorioB.Client.Client;
 import ProgettoLaboratorioB.Client.ClientService;
 import ProgettoLaboratorioB.Serializables.User;
 
@@ -98,6 +97,7 @@ public class App
     {
         //TODO: add all the user reference fields
         //TODO: add a while loop to check if the user reference is null or not
+        //TODO: set new functions to create other id;
         System.out.println("Insert the username:");
         String username = sc.next();
 
@@ -112,13 +112,13 @@ public class App
     }
 
     public static boolean UserLoginUtility() throws SQLException, RemoteException {
-        System.out.println("Insert the username:");
-        String username = sc.next();
+        //System.out.println("Insert the username:");
+        //String username = sc.next();
+        String username = "Davo";
+        //System.out.println("Insert the password:");
 
-        System.out.println("Insert the password:");
-
-        String password = sc.next();
-
+        //String password = sc.next();
+        String password = "favolerosa";
         if(ClientService.Login(username, password))
         {
             System.out.println("Login successful");

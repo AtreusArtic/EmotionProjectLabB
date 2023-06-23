@@ -1,128 +1,174 @@
 package ProgettoLaboratorioB.Database;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Query module is an abstract where all the queries defined in the database are stored.
- * The queries are used by the server to interact with the database.
- * For example, the server can use the query to insert a new user in the database.
+ * This class is an abstract where all the table and relative queries
+ * are defined in the postgres database;
  *
- * Database class will declare a QueryModule object and use it to interact with the database.
  */
 
-import ProgettoLaboratorioB.Serializables.Song;
 
-import java.sql.*;
-
-/**
- * I think that this class should be an abstract class, in order to make a singleton pattern.
- * So it could be not possible to create an instance of this class.
- */
 public class QueryModule
 {
-    public static Connection con;
-    public QueryModule(String url, String user, String password) throws SQLException
+    public enum QUERY
     {
-        try
-        {
-            con = DriverManager.getConnection(url, user, password);
-            System.out.println("Database connection established");
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Database connection error: " + e);
-        }
+        /**
+        * Users table queries
+        * */
+        LOGIN,
+        REGISTER,
+
+        /**
+        * Song table queries
+        */
+        SEARCH_SONG,
+        DELETE_SONG,
+
+        /**
+        * Playlist table queries
+         */
+        CREATE_PLAYLIST,
+        ADD_SONG_TO_PLAYLIST,
+        DELETE_SONG_FROM_PLAYLIST,
+        DELETE_PLAYLIST,
+
+        /**
+         * Emotions table queries
+         */
+
+        ADD_EMOTION,
+
+        DELETE_EMOTION,
+
+        GET_EMOTION,
     }
 
-    public static QueryModule GetQueryObject(String url, String user, String password) throws SQLException {
-        return new QueryModule(url, user, password);
+    public enum TABLE
+    {
+        USERS,
+        SONGS,
+        PLAYLISTS,
+        EMOTIONS
     }
-    /* !!!NOTA PER BUGLIO !!!:
-    In questa query sto cercando una CANZONE,
-    quindi mi aspetto che la funzione mi returni un oggetto CANZONE;
-    Sotto ho provato tramite la funzione getObject()
-    a convertire il risultato della query in un oggetto CANZONE, ma è da testare. -Artic
-    */
-    public static Song RicercaTitoloAnno(String titolo , int anno ) throws SQLException {
-        Song srcSong = null;
-        try
-        {
-            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and anno = ?");
-            ResultSet rs = queryParPstmt.executeQuery();
-            while(rs.next()) {
+    public static Map<TABLE, Map<QUERY, String>> tableMapping;
 
-                System.out.println(rs.getString("titolo"));
-                System.out.println(rs.getString("autore"));
-                System.out.println(rs.getInt("anno"));
-                //DA TESTARE:
-                srcSong = rs.getObject("canzone", Song.class);
-                return srcSong;
-            }
-        }
-        catch (SQLException e)
+
+    public QueryModule()
+    {
+
+        tableMapping = new HashMap<>();
+
+        initUsersTable();
+
+        initSongsTable();
+
+        initPlaylistsTable();
+
+        initEmotionsTable();
+
+    }
+
+    public void initUsersTable()
+    {
+        Map<QUERY, String> users_table_queries = new HashMap<>();
+
+        users_table_queries.put
+                (QUERY.LOGIN,
+                        "SELECT * FROM users WHERE username = ? AND password = ?");
+
+        users_table_queries.put
+                (QUERY.REGISTER,
+                        "insert into users(username, password, email) values('%s', '%s', '%s');");
+
+        tableMapping.put(TABLE.USERS, users_table_queries);
+    }
+
+
+    /*TODO: Buglio queste queries sono ancora provvisorie (con parametri sbagliati)
+       ed eventualmente vanno modificate a seconda delle tue esigenze*/
+    public void initSongsTable()
+    {
+        Map<QUERY, String> songs_table_queries = new HashMap<>();
+
+        songs_table_queries.put
+                (QUERY.SEARCH_SONG,
+                        "SELECT * FROM songs WHERE title = ? AND artist = ?");
+
+        songs_table_queries.put
+                (QUERY.DELETE_SONG,
+                        "DELETE FROM songs WHERE title = ? AND artist = ?");
+
+        tableMapping.put(TABLE.SONGS, songs_table_queries);
+    }
+
+    public void initPlaylistsTable()
+    {
+        Map<QUERY, String> playlists_table_queries = new HashMap<>();
+
+        playlists_table_queries.put
+                (QUERY.CREATE_PLAYLIST,
+                        "INSERT INTO playlists (name, username) VALUES (?, ?)");
+
+        playlists_table_queries.put
+                (QUERY.ADD_SONG_TO_PLAYLIST,
+                        "INSERT INTO playlists (playlist_id, song_id) VALUES (?, ?)");
+
+        playlists_table_queries.put
+                (QUERY.DELETE_SONG_FROM_PLAYLIST,
+                        "DELETE FROM playlists WHERE playlist_id = ? AND song_id = ?");
+
+        playlists_table_queries.put
+                (QUERY.DELETE_PLAYLIST,
+                        "DELETE FROM playlists WHERE id = ?");
+
+        tableMapping.put(TABLE.PLAYLISTS, playlists_table_queries);
+    }
+
+    public void initEmotionsTable()
+    {
+        Map<QUERY, String> emotions_table_queries = new HashMap<>();
+
+        emotions_table_queries.put(QUERY.ADD_EMOTION,
+                "INSERT INTO emotions (song_id, username, emotion) VALUES (?, ?, ?)");
+
+        emotions_table_queries.put(QUERY.DELETE_EMOTION,
+                "DELETE FROM emotions WHERE song_id = ? AND username = ?");
+
+        emotions_table_queries.put(QUERY.GET_EMOTION,
+                "SELECT emotion FROM emotions WHERE song_id = ? AND username = ?");
+
+        tableMapping.put(TABLE.EMOTIONS, emotions_table_queries);
+    }
+
+    /**
+     * A Function that returns the query string
+     *  by using the table name and query enum value
+     *  passed as parameters
+     * */
+    public static String getQuery(TABLE table, QUERY query)
+    {
+        String query_string = null;
+        if(tableMapping == null)
         {
-            System.out.println("QUERY-MODULE error ! " + e);
+            System.out.println("Table mapping not initialized");
             return null;
         }
-        return null;
-    }
+        else
+            query_string = tableMapping.get(table).get(query);
 
-    /*!!!NOTA PER BUGLIO!!!:
-   Cerca di eseguire un try catch per le query,
-   invece che delegarla a Database.java con il throws,
-   altrimenti l'applicazione si blocca se la query non va a buon fine.
-   Qui sotto ti ho fatto un esempio di come potresti gestire un eventuale blocco di codice
-   che potrebbe causare un SQLException*/
-    public static void RicercaTitoloAutore(String titolo, String autore) throws SQLException {
-        try
+        if(query_string == null)
         {
-            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
-            ResultSet rs = queryParPstmt.executeQuery();
-            while(rs.next()) {
-                System.out.println(rs.getString("titolo"));
-                System.out.println(rs.getString("autore"));
-                System.out.println(rs.getInt("anno"));
-            }
+            System.out.println("Query not found");
+            return null;
         }
-        catch (SQLException e)
+        else
         {
-            System.out.println("QUERY-MODULE error ! " + e);
+            return query_string;
         }
     }
 
 
-    public static boolean UtenteLoggato(String userid, String password){
-        try
-        {
-            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM utentiregistrati WHERE userid = ? and password = ?");
-            ResultSet rs = queryParPstmt.executeQuery();
-            userid = rs.getString("userid");
-            if(userid == null) {
-                return false;
-            }else{
-                return true;
-            }
-        }
-        catch (SQLException e)
-        {
-            System.out.println("QUERY-MODULE error ! " + e);
-            return false;
-        }
-    }
 
-    public static void RegisterNewUser(String username, String password, String email){
-         Statement stmt = null;
-        try
-        {
-            System.out.println("Connection is: " + con);
-            String query = String.format("insert into users(username, password, email) values('%s', '%s', '%s');", username, password, email);
-            stmt = con.createStatement(); // This line cause an error, Because connection will be closed after the try block.
-            stmt.executeUpdate(query);
-            System.out.println("User " + username + " created successfully");
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-            System.out.println("CATCH: now conn is: " + con);
-        }
-    }
 }
-
-

@@ -1,6 +1,6 @@
 package ProgettoLaboratorioB.GUI;
 
-import ProgettoLaboratorioB.Database.Database;
+import ProgettoLaboratorioB.Database.QueryModule;
 import javafx.application.Application;
 
 import javafx.scene.Parent;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * With this class define the methods to create the GUI of the manager.
  * IMPO: queste keyword sotto riportate, sono solo d'esempio illustrativo per Marika e Sam
  * @link https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html
- * @see Database to see information about the database.
+ * @see QueryModule to see information about the database.
  */
 public class ManagerGUI extends Application{
     /**

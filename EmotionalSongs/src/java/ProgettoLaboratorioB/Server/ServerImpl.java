@@ -1,7 +1,7 @@
 package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Database.DatabaseService;
-import ProgettoLaboratorioB.Database.QueryModule;
+import ProgettoLaboratorioB.Database.QueryExecutor;
 import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.RemoteException;
@@ -29,27 +29,27 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "enrico98";
-    public QueryModule qrModule;
+    public QueryExecutor qrModule;
 
     /**
      * Constructor of the class: so the server is online.
      */
     public ServerImpl() throws RemoteException, SQLException {
         super();
-        qrModule = QueryModule.GetQueryObject(url, username, pw);
+        qrModule = QueryExecutor.GetQueryObject(url, username, pw);
         DatabaseService.CreateUserTable(qrModule.con,"users");
     }
 
     @Override
-    public void RegisterNewUser(User user) throws RemoteException {
-
-        System.out.println("Server: Registering new user...");
-        qrModule.RegisterNewUser(user.GetUsername(), user.GetPassword(), user.GetEmail());
+    public void RegisterNewUser(User new_user) throws RemoteException
+    {
+        qrModule.RegisterNewUser(new_user.GetUsername(), new_user.GetPassword(), new_user.GetEmail());
     }
 
     @Override
-    public boolean Login(String username, String password) throws RemoteException, SQLException {
-        return QueryModule.UtenteLoggato(username, password);
+    public boolean Login(String username, String password) throws RemoteException
+    {
+        return qrModule.UserLogin(username, password);
     }
     public void Anonymous(User user) throws RemoteException{
         //vedere querymodule
