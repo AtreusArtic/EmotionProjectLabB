@@ -11,7 +11,17 @@ import java.util.Scanner;
 
 public class App
 {
+    /**
+     * @param sc: scanner object used to read user input from the console.
+     */
     static Scanner sc = new Scanner(System.in);
+
+    /**
+     * @param userid: the id of the user, set to anonymous by default.
+     * if the user is logged in,
+     * the id is set to the primary key of user in the database.
+     */
+    static String userid = "anonymous";
 
     public static void main( String[] args ) throws RemoteException, SQLException {
 
@@ -26,7 +36,6 @@ public class App
      * 4. Song Module
      * 5. Playlist Module
      * 6. Emotion Module
-     *
      */
 
     public static void RunApplication() throws RemoteException, SQLException {
@@ -71,11 +80,17 @@ public class App
 
                     break;
                 case 2:
+                    userid = UserLoginUtility();
                     // Call the login module to login
-                    if(UserLoginUtility())
+                    if(userid != null && !userid.equals("anonymous"))
                     {
                         //Start the user home module.
                         App_System.appSystem.SetNewState(SYSTEM_STATE.USER_MENU);
+                    }
+                    else
+                    {
+                        userid = "anonymous";
+                        App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
                     }
                     break;
                 case 3:
@@ -121,23 +136,22 @@ public class App
         return user;
     }
 
-    public static boolean UserLoginUtility() throws SQLException, RemoteException {
-        //System.out.println("Insert the username:");
-        //String username = sc.next();
-        String username = "Davo";
-        //System.out.println("Insert the password:");
+    public static String UserLoginUtility() throws SQLException, RemoteException {
+        System.out.println("Insert the username:");
+        String username = sc.next();
 
-        //String password = sc.next();
-        String password = "favolerosa";
+        System.out.println("Insert the password:");
+        String password = sc.next();
+
         if(ClientService.Login(username, password))
         {
             System.out.println("Login successful");
-            return true;
+            return username;
         }
         else
         {
             System.out.println("Login failed");
-            return false;
+            return null;
         }
     }
     public static void SongSearchUtility() throws SQLException {

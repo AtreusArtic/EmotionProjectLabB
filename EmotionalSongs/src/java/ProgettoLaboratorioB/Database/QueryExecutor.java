@@ -28,11 +28,11 @@ public class QueryExecutor
         try
         {
             con = DriverManager.getConnection(url, user, password);
-            System.out.println("Database connection established");
+            System.out.println("QUERY-EXECUTOR: Database connection established");
         }
         catch (SQLException e)
         {
-            System.out.println("Database connection error: " + e);
+            System.out.println("QUERY-EXECUTOR: Database connection error: " + e);
         }
     }
 
@@ -49,19 +49,20 @@ public class QueryExecutor
                     try
                     {
                         Statement stm = con.createStatement();
-                        String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG),
+                        String query = String.format(queryModule.getQuery(
+                                QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG),
                                 songAtrs[0], songAtrs[1], songAtrs[2], songAtrs[3].replace("'", "''"));
 
                         stm.executeUpdate(query);
                     }catch (SQLException e)
                     {
-                        System.out.println("ERROR DURING LOAD DATA: " + e);
+                        System.out.println("QUERY-EXECUTOR: Error loading data: " + e);
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
-            System.err.println("@ERROR: songFile.data not found! \n");
-            return;
+        } catch (FileNotFoundException e)
+        {
+            System.err.println("QUERY-EXECUTOR Error: SongFile data not found! \n");
         }
     }
 
@@ -72,7 +73,8 @@ public class QueryExecutor
         try
         {
             String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
-                            QueryModule.QUERY.SEARCH_SONG_BY_TITLEAUTHOR));
+                            QueryModule.QUERY.SEARCH_SONG_BY_TITLEARTIST));
+
 
             ps = con.prepareStatement(query);
 
@@ -91,28 +93,42 @@ public class QueryExecutor
         }
         catch (SQLException e)
         {
-            System.out.println("QUERY-MODULE error: " + e);
+            System.out.println("QUERY-EXECUTOR error: " + e);
             return null;
         }
         return null;
     }
 
-    //TODO: implementare la ricerca per titolo e autore...
-    public static void GetSongYearTitle(int year, String title) throws SQLException {
+    public static Song GetSongYearTitle(int year, String title) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
         try
         {
-            PreparedStatement queryParPstmt = con.prepareStatement("SELECT * FROM canzone WHERE titolo = ? and autore = ?");
-            ResultSet rs = queryParPstmt.executeQuery();
-            while(rs.next()) {
-                System.out.println(rs.getString("titolo"));
-                System.out.println(rs.getString("autore"));
-                System.out.println(rs.getInt("anno"));
+            String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                    QueryModule.QUERY.SEARCH_SONG_BY_YEARARTIST));
+
+
+            ps = con.prepareStatement(query);
+
+            ps.setInt(1, year);
+            ps.setString(2, title);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                return new Song(rs.getInt(1),  //year
+                        rs.getString(2),       //id
+                        rs.getString(3),       //artist
+                        rs.getString(4));      //title
             }
         }
         catch (SQLException e)
         {
-            System.out.println("QUERY-MODULE error ! " + e);
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return null;
         }
+        return null;
     }
 
 
@@ -136,11 +152,11 @@ public class QueryExecutor
                 username = rs.getString(1);
                 if(username != null)
                 {
-                    System.out.println("User exist in the db...");
+                    System.out.println("QUERY-EXECUTOR: User exist in the db...");
                     return true;
                 }else
                 {
-                    System.out.println("Now user in the db, with NULL reference, please retry...");
+                    System.out.println("QUERY-EXECUTOR: None user in the db, with these credentials.");
                     return false;
                 }
             }
@@ -148,7 +164,7 @@ public class QueryExecutor
         }
         catch (SQLException e)
         {
-            System.out.println("QUERY-MODULE error:  " + e);
+            System.out.println("QUERY-EXECUTOR error:  " + e);
             return false;
         }
     }
@@ -158,7 +174,7 @@ public class QueryExecutor
         String query;
         try
         {
-            System.out.println("Connection is: " + con);
+            System.out.println("QUERY-EXECUTOR: Connection reference set: " + con);
             try
             {
                 query = String.format(queryModule.getQuery(QueryModule.TABLE.USERS,
@@ -171,12 +187,12 @@ public class QueryExecutor
             }
             stmt = con.createStatement();
             stmt.executeUpdate(query);
-            System.out.println("User " + username + " created successfully");
+            System.out.println("QUERY-EXECUTOR: User " + username + " created successfully");
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-            System.out.println("CATCH: now conn is: " + con);
+            System.out.println("QUERY-EXECUTOR error: now conn is: " + con);
         }
     }
 }

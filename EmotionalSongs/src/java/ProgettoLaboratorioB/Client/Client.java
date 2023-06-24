@@ -18,7 +18,7 @@ public class Client {
 
     /**
      * @param server: the remote object of the server,
-     * used by the client to use the methods defined in the interface.
+     * used by the client to use services offered by the server.
      */
     static ServerInterface server = null;
 

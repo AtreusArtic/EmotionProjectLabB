@@ -32,6 +32,8 @@ public interface ServerInterface extends Remote
     *  4. Create a method that allow the client to search a song by title and by artist and year;
     */
     public Song SearchSongByTitleArtist(String title, String artist) throws RemoteException, SQLException;
+
+    public Song SearchSongByTitleYear(int year, String title) throws RemoteException, SQLException;
     /*
     *  5. Create a method that allow the client to read an Emotion about a song;
     *  User actions:

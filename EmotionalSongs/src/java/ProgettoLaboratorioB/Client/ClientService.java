@@ -42,10 +42,11 @@ public class ClientService {
             return false;
         }
     }
-    public static void Anonymous(User user) {}
+    public static void Anonymous() {}
 
 
-    public static void Exit(){
+    public static void Exit()
+    {
         System.exit(0);
     }
 
@@ -56,6 +57,16 @@ public class ClientService {
         try
         {
             return Client.server.SearchSongByTitleArtist(title, artist);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return null;
+        }
+    }
+
+    public static Song SearchSongByYearTitle(int year, String title) throws SQLException {
+        try
+        {
+            return Client.server.SearchSongByTitleYear(year, title);
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline");
             return null;

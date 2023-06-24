@@ -30,8 +30,8 @@ public class QueryModule
         */
 
         ADD_SONG,
-        SEARCH_SONG_BY_YEARAUTHOR,
-        SEARCH_SONG_BY_TITLEAUTHOR,
+        SEARCH_SONG_BY_YEARARTIST,
+        SEARCH_SONG_BY_TITLEARTIST,
 
         /**
         * Playlist table queries
@@ -51,7 +51,9 @@ public class QueryModule
         GET_EMOTION,
     }
 
-
+    /**
+     * Enum TABLE is used to show every table in the database
+     * */
     public enum TABLE
     {
         USERS,
@@ -60,9 +62,7 @@ public class QueryModule
         EMOTIONS
     }
 
-
-
-
+    
     /**
      * DATA:
      *  File path to songs file (check in 'data' folder of the project)
@@ -73,16 +73,24 @@ public class QueryModule
 
     private static String filename = "data/Canzoni.Dati.txt";
     private static String dir = System.getProperty("user.dir");
-
     private static final String path = dir + File.separator + filename;
-
     File songfile = new File(path);
+
+    /**
+     * MAP:
+     *  @param tableMapping is a HashMap that contains all the tables and the queries associated to it.
+     *  The map is initialized in the constructor of the class.
+     *  The map is used by the QueryExecutor class to execute the queries.
+     * */
     public static Map<TABLE, Map<QUERY, String>> tableMapping;
 
-
+    /**
+     * CONSTRUCTOR:
+     *  The constructor initializes the tableMapping hashmap.
+     *  The map is initialized by calling the init<TableName>Table() methods.
+     * */
     public QueryModule()
     {
-
         tableMapping = new HashMap<>();
 
         initUsersTable();
@@ -92,9 +100,12 @@ public class QueryModule
         initPlaylistsTable();
 
         initEmotionsTable();
-
     }
 
+    /**
+     * This method set all the queries associated to the users table.
+     * The queries are mapped to the enum TABLE.USERS
+     **/
     public void initUsersTable()
     {
         Map<QUERY, String> users_table_queries = new HashMap<>();
@@ -111,8 +122,13 @@ public class QueryModule
     }
 
 
-    /*TODO: Buglio queste queries sono ancora provvisorie (con parametri sbagliati)
+    /*TODO: Buglio queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
        ed eventualmente vanno modificate a seconda delle tue esigenze*/
+
+    /**
+     * This method set all the queries associated to the songs table.
+     * The queries are mapped to the enum TABLE.SONGS
+     **/
     public void initSongsTable()
     {
         Map<QUERY, String> songs_table_queries = new HashMap<>();
@@ -121,19 +137,20 @@ public class QueryModule
                 (QUERY.ADD_SONG,
                         "insert into songs(year, id, artist, title) values('%s', '%s', '%s', '%s');");
         songs_table_queries.put
-                (QUERY.SEARCH_SONG_BY_TITLEAUTHOR,
+                (QUERY.SEARCH_SONG_BY_TITLEARTIST,
                         "SELECT * FROM songs WHERE title = ? AND artist = ?");
 
         songs_table_queries.put
-                (QUERY.SEARCH_SONG_BY_YEARAUTHOR,
+                (QUERY.SEARCH_SONG_BY_YEARARTIST,
                         "SELECT * FROM songs WHERE year = ? AND artist = ?");
 
         tableMapping.put(TABLE.SONGS, songs_table_queries);
     }
 
-
-
-
+    /**
+     * This method set all the queries associated to the playlists table.
+     * The queries are mapped to the enum TABLE.PLAYLISTS
+     **/
     public void initPlaylistsTable()
     {
         Map<QUERY, String> playlists_table_queries = new HashMap<>();
@@ -157,6 +174,10 @@ public class QueryModule
         tableMapping.put(TABLE.PLAYLISTS, playlists_table_queries);
     }
 
+    /**
+     * This method set all the queries associated to the emotions table.
+     * The queries are mapped to the enum TABLE.EMOTIONS
+     **/
     public void initEmotionsTable()
     {
         Map<QUERY, String> emotions_table_queries = new HashMap<>();
@@ -183,7 +204,7 @@ public class QueryModule
         String query_string = null;
         if(tableMapping == null)
         {
-            System.out.println("Table mapping not initialized");
+            System.out.println("QUERY-MODULE: Table not initialized");
             return null;
         }
         else
@@ -191,7 +212,7 @@ public class QueryModule
 
         if(query_string == null)
         {
-            System.out.println("Query not found");
+            System.out.println("QUERY-MODULE: Query not found");
             return null;
         }
         else
