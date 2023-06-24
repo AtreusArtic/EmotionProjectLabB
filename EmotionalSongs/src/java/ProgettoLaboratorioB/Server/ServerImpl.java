@@ -68,16 +68,16 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
 
     }
 
-
     /**
      * This TESTING method is used by the client to notify it, that the connection is fine.
      * @param message: the message sent by the client.
      * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public synchronized void SendMessageToClient(String message) throws RemoteException
+    public synchronized boolean SendMessageToClient(String message) throws RemoteException
     {
         System.out.println("Server: Hello " + message + ", now you are connected with me.");
+        return true;
     }
 
 }

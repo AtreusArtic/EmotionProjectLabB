@@ -30,10 +30,15 @@ public class App
      */
 
     public static void RunApplication() throws RemoteException, SQLException {
-        ClientService.StartClientApplication();
-        App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
-        StartMainModule();
-
+        if(!ClientService.StartClientApplication())
+        {
+            App_System.appSystem.SetNewState(SYSTEM_STATE.EXIT);
+        }
+        else
+        {
+            App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+            StartMainModule();
+        }
     }
 
     public static void StartMainModule() throws RemoteException, SQLException {
@@ -134,10 +139,7 @@ public class App
             System.out.println("Login failed");
             return false;
         }
-
-
     }
-
     public static void SongSearchUtility() throws SQLException {
         System.out.println("Insert the song title:");
         String song_title = "Adam Ant";
@@ -149,19 +151,15 @@ public class App
         Song song = ClientService.SearchSongByTitleArtist(song_title, song_artist);
         if(song != null)
         {
-            System.out.println("Song found");
-            System.out.println("Song title: " + song.GetTitle());
-            System.out.println("Song artist: " + song.GetArtist());
-            System.out.println("Song year: " + song.GetYear());
+           System.out.println("Song found! \n");
+           System.out.println(song);
+           System.out.println("\n");
         }
         else
         {
             System.out.println("Song not found");
         }
-
     }
-
-
 }
 
 

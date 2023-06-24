@@ -8,17 +8,28 @@ import java.sql.SQLException;
 
 public class ClientService {
 
-
-    public static void StartClientApplication() throws RemoteException
+    public static boolean StartClientApplication() throws RemoteException
     {
         new Client();
+        return CheckConnection();
+    }
+
+    public static boolean CheckConnection() throws RemoteException
+    {
+        try
+        {
+            return Client.server.SendMessageToClient("CLIENT-SERVICE: Connection with server established");
+        } catch (RemoteException | NullPointerException e) {
+
+            return false;
+        }
     }
     public static void RegisterNewUser(User user) throws SQLException{
         try {
             Client.server.RegisterNewUser(user);
-            System.out.println("request to server send");
+            System.out.println("CLIENT-SERVICE request to server sent.");
         } catch (RemoteException e) {
-            System.out.println("Error: SERVER IS OFFLINE");
+            System.out.println("CLIENT-SERVICE Error: Server is offline.");
         }
     }
 
@@ -27,15 +38,11 @@ public class ClientService {
         {
             return Client.server.Login(username, password);
         } catch (RemoteException e) {
-            System.out.println("Error: SERVER IS OFFLINE");
+            System.out.println("CLIENT-SERVICE Error: Server is offline.");
             return false;
         }
     }
-    public static void Anonymous(User user)
-    {
-
-
-    }
+    public static void Anonymous(User user) {}
 
 
     public static void Exit(){

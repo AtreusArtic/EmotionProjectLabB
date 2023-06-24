@@ -1,23 +1,21 @@
 package ProgettoLaboratorioB.Serializables;
 
-public class Song implements java.io.Serializable{
+import java.io.Serializable;
+
+public class Song implements Serializable {
 
     static final long serialVersionUID = 1L;
-
     private String title;
-
     private String artist;
-
     private int year;
-
     private String ID;
 
 
-    public Song(int year, String id, String author, String title){
+    public Song(int year, String id, String artist, String title){
         this.title = title;
         this.artist = artist;
         this.year = year;
-        this.ID = ID;
+        this.ID = id;
     }
 
     public Song() {}
@@ -30,7 +28,7 @@ public class Song implements java.io.Serializable{
         return this.artist;
     }
 
-    public int getYear(){
+    public int GetYear(){
         return this.year;
     }
 
@@ -50,5 +48,14 @@ public class Song implements java.io.Serializable{
         this.year = year;
     }
 
-    public int GetYear() { return this.year; }
+
+    @Override
+    public String toString() {
+        return "Song{" +
+                "title='" + GetTitle() + '\'' +
+                ", artist='" + GetArtist() + '\'' +
+                ", year=" + GetYear() +
+                ", ID='" + GetID() + '\'' +
+                '}';
+    }
 }

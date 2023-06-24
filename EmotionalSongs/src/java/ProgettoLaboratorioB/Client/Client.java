@@ -1,6 +1,5 @@
 package ProgettoLaboratorioB.Client;
 
-import ProgettoLaboratorioB.Server.ServerImpl;
 import ProgettoLaboratorioB.Server.ServerInterface;
 
 import java.net.DatagramSocket;
@@ -42,6 +41,7 @@ public class Client {
      */
     static final int SERVER_PORT = 1099;
 
+
     /**
      * This method initialize the connection with the server, using the RMI registry.
      * @throws RemoteException if the client is not connected with the server.
@@ -50,6 +50,7 @@ public class Client {
      */
     public static void GetConnection() throws RemoteException
     {
+
         //Get Server IP:
         GetServerID();
 
@@ -59,30 +60,28 @@ public class Client {
             registry = LocateRegistry.getRegistry(default_server_address ,SERVER_PORT);
         }catch (RemoteException e)
         {
-            System.out.println("Client Error: client not connected with the server: " + e.getMessage());
+            System.out.println("CLIENT Error: client not connected with the server: " + e.getMessage());
         }
         //Get the remote object by the server:
         try
         {
             server = (ServerInterface) registry.lookup("Server");
-            server.SendMessageToClient("client_zero");
-            System.out.println("Client: connected with the server");
+            System.out.println("CLIENT: connected with the server");
         } catch (Exception e)
         {
             if(e instanceof NotBoundException)
             {
-                System.out.println("Client Error: server not bound");
+                System.out.println("CLIENT Error: server not bound");
             }
             else if(e instanceof ConnectException)
             {
-                System.out.println("Client Error: server offline");
+                System.out.println("CLIENT: server offline");
             }
             else
             {
-                System.out.println("Client Critical Error: " + e.getMessage());
+                System.out.println("CLIENT Critical Error: " + e.getMessage());
             }
         }
-
     }
 
     /**

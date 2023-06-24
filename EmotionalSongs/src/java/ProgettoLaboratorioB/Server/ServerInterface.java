@@ -43,7 +43,7 @@ public interface ServerInterface extends Remote
     *  6. Create a method that allow the client to remove an Emotion about a song;
     */
 
-    public void SendMessageToClient(String message) throws RemoteException;
+    public boolean SendMessageToClient(String message) throws RemoteException;
 
 }
 
