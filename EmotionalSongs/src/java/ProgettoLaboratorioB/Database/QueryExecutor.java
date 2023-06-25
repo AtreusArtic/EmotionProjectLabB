@@ -8,9 +8,12 @@ package ProgettoLaboratorioB.Database;
  */
 
 import ProgettoLaboratorioB.Serializables.Song;
+import ProgettoLaboratorioB.Serializables.User;
 
 import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -67,41 +70,41 @@ public class QueryExecutor
     }
 
 
-    public static Song GetSongByTitleAuthor(String title , String artist) throws SQLException {
+    public static List<Song> GetSongByTitle(String title) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
+        List<Song> songs = new ArrayList<>();
         try
         {
             String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
-                            QueryModule.QUERY.SEARCH_SONG_BY_TITLEARTIST));
-
+                            QueryModule.QUERY.SEARCH_SONG_BY_TITLE));
 
             ps = con.prepareStatement(query);
 
-            ps.setString(1, artist);
-            ps.setString(2, title);
+            ps.setString(1, "%" + title + "%");
 
             rs = ps.executeQuery();
 
             while(rs.next())
             {
-                return new Song(rs.getInt(1),  //year
+                songs.add(new Song(rs.getInt(1),  //year
                         rs.getString(2),       //id
                         rs.getString(3),       //artist
-                        rs.getString(4));      //title
+                        rs.getString(4)));     //title
             }
+            return songs;
         }
         catch (SQLException e)
         {
             System.out.println("QUERY-EXECUTOR error: " + e);
             return null;
         }
-        return null;
     }
 
-    public static Song GetSongYearTitle(int year, String title) throws SQLException {
+    public static List<Song> GetSongYearTitle(String year, String artist) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
+        List<Song> songs = new ArrayList<>();
         try
         {
             String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
@@ -110,29 +113,29 @@ public class QueryExecutor
 
             ps = con.prepareStatement(query);
 
-            ps.setInt(1, year);
-            ps.setString(2, title);
+            ps.setString(1, year);
+            ps.setString(2, artist);
 
             rs = ps.executeQuery();
 
             while(rs.next())
             {
-                return new Song(rs.getInt(1),  //year
+                songs.add(new Song(rs.getInt(1),  //year
                         rs.getString(2),       //id
                         rs.getString(3),       //artist
-                        rs.getString(4));      //title
+                        rs.getString(4)));     //title
             }
+            return songs;
         }
         catch (SQLException e)
         {
             System.out.println("QUERY-EXECUTOR error: " + e);
             return null;
         }
-        return null;
     }
 
 
-    public static boolean UserLogin(String username, String password){
+    public static User UserLogin(String username, String password){
         PreparedStatement ps;
         ResultSet rs;
 
@@ -150,22 +153,23 @@ public class QueryExecutor
             while(rs.next())
             {
                 username = rs.getString(1);
-                if(username != null)
+                password = rs.getString(2);
+                if(username != null && password != null)
                 {
                     System.out.println("QUERY-EXECUTOR: User exist in the db...");
-                    return true;
+                    return new User(username, password, rs.getString(3));
                 }else
                 {
                     System.out.println("QUERY-EXECUTOR: None user in the db, with these credentials.");
-                    return false;
+                    return null;
                 }
             }
-            return false;
+            return null;
         }
         catch (SQLException e)
         {
             System.out.println("QUERY-EXECUTOR error:  " + e);
-            return false;
+            return null;
         }
     }
 

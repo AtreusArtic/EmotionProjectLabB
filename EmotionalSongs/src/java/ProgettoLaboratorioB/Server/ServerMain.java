@@ -32,7 +32,7 @@ public class ServerMain
         {
             InitServerConnection();
         }catch (Exception e) {
-            System.out.println("Server initialization error: " + e);
+            System.out.println("SERVER-MAIN: initialization error: " + e);
         }
 
 
@@ -56,13 +56,13 @@ public class ServerMain
             ServerImpl server = new ServerImpl();
             Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
             registry.rebind("Server", server);
-            System.out.println("@SERVER IS ONLINE...");
+            System.out.println("SERVER-MAIN: IM ONLINE");
         } catch (RemoteException e)
         {
-            System.out.println("@SERVER ERROR to connect the server: " + e.getMessage());
+            System.out.println("SERVER-MAIN: Error to connect the server: " + e.getMessage());
         } catch (FileNotFoundException e)
         {
-            System.out.println("@SERVER ERROR: failed to load songs file into database");
+            System.out.println("SERVER-MAIN Error: failed to load songs file into database");
         }
     }
 

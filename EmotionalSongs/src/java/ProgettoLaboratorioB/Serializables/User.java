@@ -62,7 +62,14 @@ public class User implements Serializable
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "User:" +
+                "username='" + GetUsername() + '\'' +
+                ", password='" + GetPassword() + '\'' +
+                ", email='" + GetEmail() + '\'' +
+                '.';
+    }
 
 
 }

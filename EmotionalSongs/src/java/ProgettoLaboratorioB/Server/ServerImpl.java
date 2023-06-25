@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * With this class server can implement the methods defined in the interface.
@@ -33,6 +34,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
     static String username = "postgres";
     static String pw = "enrico98";
+
     public QueryExecutor qrExecute;
 
     /**
@@ -47,8 +49,8 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         DatabaseService.CreateUserTable(qrExecute.con,"users");
         DatabaseService.CreateSongsTable(qrExecute.con,"songs");
         //qrExecuter.LoadSongData();
-        // ATTENZIONE: se si vuole caricare le canzoni nel database, decommentare la riga soprastante;
-        // Se invece, il database contiente già le canzoni, lasciare commentata la riga soprastante.
+        // ATTENZIONE: se si vuole caricare le canzoni nel database, decommentare la riga sovraintesa;
+        // Se invece, il database contiente già le canzoni, lasciare commentata la riga sovraintesa.
     }
 
 
@@ -67,7 +69,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     @Override
-    public synchronized boolean Login(String username, String password) throws RemoteException
+    public synchronized User Login(String username, String password) throws RemoteException
     {
         return qrExecute.UserLogin(username, password);
     }
@@ -81,13 +83,13 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
        ••• SONG SERVICE METHODS IMPLEMENTATION •••
      */
     @Override
-    public synchronized Song SearchSongByTitleArtist(String title, String artist) throws RemoteException, SQLException {
-        return qrExecute.GetSongByTitleAuthor(title, artist);
+    public synchronized List<Song> SearchSongByTitle(String title) throws RemoteException, SQLException {
+        return qrExecute.GetSongByTitle(title);
     }
 
     @Override
-    public synchronized Song SearchSongByTitleYear(int year, String title) throws RemoteException, SQLException {
-        return qrExecute.GetSongYearTitle(year, title);
+    public synchronized List<Song> SearchSongByYearArtist(String year, String artist) throws RemoteException, SQLException {
+        return qrExecute.GetSongYearTitle(year, artist);
     }
 
 

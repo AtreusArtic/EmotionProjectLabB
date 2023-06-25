@@ -31,7 +31,7 @@ public class QueryModule
 
         ADD_SONG,
         SEARCH_SONG_BY_YEARARTIST,
-        SEARCH_SONG_BY_TITLEARTIST,
+        SEARCH_SONG_BY_TITLE,
 
         /**
         * Playlist table queries
@@ -137,8 +137,8 @@ public class QueryModule
                 (QUERY.ADD_SONG,
                         "insert into songs(year, id, artist, title) values('%s', '%s', '%s', '%s');");
         songs_table_queries.put
-                (QUERY.SEARCH_SONG_BY_TITLEARTIST,
-                        "SELECT * FROM songs WHERE title = ? AND artist = ?");
+                (QUERY.SEARCH_SONG_BY_TITLE,
+                        "SELECT * FROM songs WHERE title LIKE ?");
 
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_YEARARTIST,

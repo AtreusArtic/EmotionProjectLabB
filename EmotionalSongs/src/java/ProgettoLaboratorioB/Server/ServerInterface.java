@@ -6,6 +6,7 @@ import ProgettoLaboratorioB.Serializables.User;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Server interface define the methods that the server must implement,
@@ -26,14 +27,17 @@ public interface ServerInterface extends Remote
     /*
     *  2. Create a method that allow the client to login;
     */
-    public boolean Login(String username, String password) throws RemoteException, SQLException;
+    public User Login(String username, String password) throws RemoteException, SQLException;
    /*
     *  3. Create a method that allow the client to logout;
     *  4. Create a method that allow the client to search a song by title and by artist and year;
     */
-    public Song SearchSongByTitleArtist(String title, String artist) throws RemoteException, SQLException;
 
-    public Song SearchSongByTitleYear(int year, String title) throws RemoteException, SQLException;
+    //TODO: i metodi di ricerca delle canzoni devono restituire una lista di Song...
+    public List<Song> SearchSongByTitle(String title) throws RemoteException, SQLException;
+
+
+    public List<Song> SearchSongByYearArtist(String year, String artist) throws RemoteException, SQLException;
     /*
     *  5. Create a method that allow the client to read an Emotion about a song;
     *  User actions:

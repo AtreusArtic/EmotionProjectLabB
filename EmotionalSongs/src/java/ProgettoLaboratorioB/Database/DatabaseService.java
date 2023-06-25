@@ -21,6 +21,7 @@ public class DatabaseService
         }
     }
 
+    //TODO: change year column to NUMERIC or DECIMAL type.
     public static void CreateSongsTable(Connection connection, String table_name){
         Statement stmt;
         try

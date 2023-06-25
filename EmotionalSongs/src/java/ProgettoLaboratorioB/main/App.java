@@ -6,6 +6,7 @@ import ProgettoLaboratorioB.Serializables.User;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -16,15 +17,8 @@ public class App
      */
     static Scanner sc = new Scanner(System.in);
 
-    /**
-     * @param userid: the id of the user, set to anonymous by default.
-     * if the user is logged in,
-     * the id is set to the primary key of user in the database.
-     */
-    static String userid = "anonymous";
-
-    public static void main( String[] args ) throws RemoteException, SQLException {
-
+    public static void main( String[] args ) throws RemoteException, SQLException
+    {
         RunApplication();
     }
 
@@ -51,7 +45,7 @@ public class App
     }
 
     public static void StartMainModule() throws RemoteException, SQLException {
-        int switchState = 0;
+        int switchState;
 
         while(App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.MAIN_MENU))
         {
@@ -59,9 +53,10 @@ public class App
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Enter as guest");
-            System.out.println("4. Search song by title and artist");
-            System.out.println("5. Exit");
-            switchState = sc.nextInt(); //Remember to cast the input to int, cause an error if you don't;
+            System.out.println("4. Search song by title");
+            System.out.println("5. Search song by year and title");
+            System.out.println("6. Exit");
+            switchState = Integer.parseInt(sc.nextLine());
             switch(switchState)
             {
                 case 1:
@@ -80,26 +75,22 @@ public class App
 
                     break;
                 case 2:
-                    userid = UserLoginUtility();
-                    // Call the login module to login
-                    if(userid != null && !userid.equals("anonymous"))
+                    if(UserLoginUtility())
                     {
-                        //Start the user home module.
+                        //Start the user home menu module.
                         App_System.appSystem.SetNewState(SYSTEM_STATE.USER_MENU);
-                    }
-                    else
-                    {
-                        userid = "anonymous";
-                        App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+                        UserModuleMenu();
                     }
                     break;
                 case 3:
                     App_System.appSystem.SetNewState(SYSTEM_STATE.GUEST_MENU);
                     break;
                 case 4:
-                    SongSearchUtility();
+                    SongSearchUtility(true);
                     break;
                 case 5:
+                    SongSearchUtility(false);
+                case 6:
                     App_System.appSystem.SetNewState(SYSTEM_STATE.EXIT);
                     break;
                 default:
@@ -107,6 +98,34 @@ public class App
                     break;
             }
         }
+    }
+
+    public static void UserModuleMenu()
+    {
+        int switchcase;
+
+        while (App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.USER_MENU))
+        {
+            System.out.println("Choose the function to call:");
+            System.out.println("1. To show your credentials");
+            System.out.println("5. Logout");
+
+            switchcase = Integer.parseInt(sc.nextLine());
+            switch(switchcase)
+            {
+                case 1:
+                    ClientService.ShowUserProfile();
+                    break;
+                case 5:
+                    ClientService.Logout();
+                    App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+                    break;
+                default:
+                    System.out.println("Invalid function");
+                    break;
+            }
+        }
+
     }
 
     /**
@@ -136,7 +155,7 @@ public class App
         return user;
     }
 
-    public static String UserLoginUtility() throws SQLException, RemoteException {
+    public static boolean UserLoginUtility() throws SQLException, RemoteException {
         System.out.println("Insert the username:");
         String username = sc.next();
 
@@ -146,28 +165,47 @@ public class App
         if(ClientService.Login(username, password))
         {
             System.out.println("Login successful");
-            return username;
+            return true;
         }
         else
         {
             System.out.println("Login failed");
-            return null;
+            return false;
         }
     }
-    public static void SongSearchUtility() throws SQLException {
-        System.out.println("Insert the song title:");
-        String song_title = "Adam Ant";
+    public static void SongSearchUtility(boolean isByTitle) throws SQLException {
+        List<Song> song;
+        if(isByTitle)
+        {
+            System.out.println("Insert the song title:");
+            String song_title = sc.nextLine();
 
-        System.out.println("Insert the song artist:");
-        String song_artist = "Something Girls";
+            if(song_title == null)
+            {
+                System.out.println("Error: song title is null");
+                return;
+            }
+            song = ClientService.SearchSongByTitle(song_title);
+        }
+        else
+        {
+            System.out.println("Insert the song year:");
+            String song_year = sc.nextLine();
 
-        //implement the function into the remote object, to search the song;
-        Song song = ClientService.SearchSongByTitleArtist(song_title, song_artist);
+            System.out.println("Insert the song title:");
+            String song_title = sc.nextLine();
+
+            song = ClientService.SearchSongByYearTitle(song_year, song_title);
+        }
+
         if(song != null)
         {
            System.out.println("Song found! \n");
-           System.out.println(song);
-           System.out.println("\n");
+           for(Song s : song)
+           {
+               System.out.println(s);
+               System.out.println("\n");
+           }
         }
         else
         {
