@@ -33,9 +33,7 @@ public interface ServerInterface extends Remote
     *  4. Create a method that allow the client to search a song by title and by artist and year;
     */
 
-    //TODO: i metodi di ricerca delle canzoni devono restituire una lista di Song...
     public List<Song> SearchSongByTitle(String title) throws RemoteException, SQLException;
-
 
     public List<Song> SearchSongByYearArtist(String year, String artist) throws RemoteException, SQLException;
     /*
