@@ -24,7 +24,7 @@ public class QueryExecutor
 {
     public static Connection con;
     public static QueryModule queryModule;
-    public QueryExecutor(String url, String user, String password) throws SQLException
+    public QueryExecutor(String url, String user, String password)
     {
         queryModule = new QueryModule();
 
@@ -39,7 +39,7 @@ public class QueryExecutor
         }
     }
 
-    public static QueryExecutor GetQueryObject(String url, String user, String password) throws SQLException {
+    public static QueryExecutor GetQueryObject(String url, String user, String password){
         return new QueryExecutor(url, user, password);
     }
     public void LoadSongData() throws SQLException, FileNotFoundException {
@@ -70,7 +70,7 @@ public class QueryExecutor
     }
 
 
-    public static List<Song> GetSongByTitle(String title) throws SQLException {
+    public static List<Song> GetSongByTitle(String title){
         PreparedStatement ps;
         ResultSet rs;
         List<Song> songs = new ArrayList<>();
@@ -88,9 +88,9 @@ public class QueryExecutor
             while(rs.next())
             {
                 songs.add(new Song(rs.getInt(1),  //year
-                        rs.getString(2),       //id
-                        rs.getString(3),       //artist
-                        rs.getString(4)));     //title
+                        rs.getString(2),          //id
+                        rs.getString(3),          //artist
+                        rs.getString(4)));        //title
             }
             return songs;
         }
@@ -101,7 +101,7 @@ public class QueryExecutor
         }
     }
 
-    public static List<Song> GetSongYearTitle(String year, String artist) throws SQLException {
+    public static List<Song> GetSongYearTitle(String year, String artist){
         PreparedStatement ps;
         ResultSet rs;
         List<Song> songs = new ArrayList<>();
@@ -121,9 +121,9 @@ public class QueryExecutor
             while(rs.next())
             {
                 songs.add(new Song(rs.getInt(1),  //year
-                        rs.getString(2),       //id
-                        rs.getString(3),       //artist
-                        rs.getString(4)));     //title
+                        rs.getString(2),          //id
+                        rs.getString(3),          //artist
+                        rs.getString(4)));        //title
             }
             return songs;
         }
@@ -157,7 +157,8 @@ public class QueryExecutor
                 if(username != null && password != null)
                 {
                     System.out.println("QUERY-EXECUTOR: User exist in the db...");
-                    return new User(username, password, rs.getString(3));
+                    return new User(username, password, rs.getString(3),
+                            rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                 }else
                 {
                     System.out.println("QUERY-EXECUTOR: None user in the db, with these credentials.");
@@ -173,7 +174,7 @@ public class QueryExecutor
         }
     }
 
-    public static void RegisterNewUser(String username, String password, String email){
+    public static boolean RegisterNewUser(String username, String password, String email,String name, String surname, String address, String CF){
         Statement stmt = null;
         String query;
         try
@@ -182,21 +183,23 @@ public class QueryExecutor
             try
             {
                 query = String.format(queryModule.getQuery(QueryModule.TABLE.USERS,
-                        QueryModule.QUERY.REGISTER), username, password, email);
+                        QueryModule.QUERY.REGISTER), username, password, email, name, surname, address, CF);
             }
             catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
-                return;
+                return false;
             }
             stmt = con.createStatement();
             stmt.executeUpdate(query);
             System.out.println("QUERY-EXECUTOR: User " + username + " created successfully");
+            return true;
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-            System.out.println("QUERY-EXECUTOR error: now conn is: " + con);
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
         }
     }
 }

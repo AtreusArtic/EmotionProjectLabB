@@ -62,7 +62,6 @@ public class QueryModule
         EMOTIONS
     }
 
-    
     /**
      * DATA:
      *  File path to songs file (check in 'data' folder of the project)
@@ -116,14 +115,19 @@ public class QueryModule
 
         users_table_queries.put
                 (QUERY.REGISTER,
-                        "insert into users(username, password, email) values('%s', '%s', '%s');");
+                        "insert into users" +
+                                "(username, password, email, name, surname, address, CF ) " +
+                                "values('%s', '%s', '%s','%s', '%s', '%s','%s');");
 
         tableMapping.put(TABLE.USERS, users_table_queries);
     }
 
 
-    /*TODO: Buglio queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
-       ed eventualmente vanno modificate a seconda delle tue esigenze*/
+    /*TODO Per BUGLIO:
+       1.Queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
+       ed eventualmente vanno modificate a seconda delle tue esigenze
+       2.Inoltre verificare che le tabelle definite nella classe DatabaseService,
+       siano congrue a quelle definite nei tuoi schemi ER.*/
 
     /**
      * This method set all the queries associated to the songs table.
@@ -195,16 +199,16 @@ public class QueryModule
     }
 
     /**
-     * A Function that returns the query string
-     *  by using the table name and query enum value
-     *  passed as parameters
+     * Function that returns a String corresponding to the query,
+     * specifying the table name and one of its related queries
+     * defined in the enum QUERY
      * */
     public static String getQuery(TABLE table, QUERY query)
     {
-        String query_string = null;
+        String query_string;
         if(tableMapping == null)
         {
-            System.out.println("QUERY-MODULE: Table not initialized");
+            System.out.println("QUERY-MODULE: Table map not initialized");
             return null;
         }
         else

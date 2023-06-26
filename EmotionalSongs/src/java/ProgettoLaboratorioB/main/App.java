@@ -65,7 +65,16 @@ public class App
                     if(new_user != null)
                     {
                         System.out.println("Send registration request to server");
-                        ClientService.RegisterNewUser(new_user);
+                        if(ClientService.RegisterNewUser(new_user))
+                        {
+                            System.out.println("Registration request completed successfully ");
+                            App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+                        }
+                        else
+                        {
+                            System.out.println("Error: registration request failed, please use a different username");
+                            App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+                        }
                     }
                     else
                     {
@@ -139,28 +148,40 @@ public class App
 
     public static User UserRegistrationUtility()
     {
-        //TODO: add all the user reference fields
         //TODO: add a while loop to check if the user reference is null or not
-        //TODO: set new functions to create other id;
+        //TODO: implement a function that check if CF, indiriizzo, email are valid format or not;
         System.out.println("Insert the username:");
-        String username = sc.next();
+        String username = sc.nextLine();
 
         System.out.println("Insert the password:");
-        String password = sc.next();
+        String password = sc.nextLine();
 
-        String email = "enrico_email@ciao.com";
+        System.out.println("Insert the email:");
+        String email = sc.nextLine();
 
-        User user = new User(username, password, email);
+        System.out.println("Insert your name:");
+        String name = sc.nextLine();
+
+        System.out.println("Insert your surname:");
+        String surname = sc.nextLine();
+
+        System.out.println("Insert your address:");
+        String indirizzo = sc.nextLine();
+
+        System.out.println("Insert your CF");
+        String CF = sc.nextLine();
+
+        User user = new User(username, password, email, name, surname, indirizzo, CF);
 
         return user;
     }
 
     public static boolean UserLoginUtility() throws SQLException, RemoteException {
         System.out.println("Insert the username:");
-        String username = sc.next();
+        String username = sc.nextLine();
 
         System.out.println("Insert the password:");
-        String password = sc.next();
+        String password = sc.nextLine();
 
         if(ClientService.Login(username, password))
         {

@@ -27,12 +27,14 @@ public class ClientService {
             return false;
         }
     }
-    public static void RegisterNewUser(User user){
+    public static boolean RegisterNewUser(User user){
         try {
-            Client.server.RegisterNewUser(user);
             System.out.println("CLIENT-SERVICE request to server sent.");
+            return Client.server.RegisterNewUser(user);
+
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline.");
+            return false;
         }
     }
 

@@ -63,9 +63,11 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public synchronized void RegisterNewUser(User new_user) throws RemoteException
+    public synchronized boolean RegisterNewUser(User new_user) throws RemoteException
     {
-        qrExecute.RegisterNewUser(new_user.GetUsername(), new_user.GetPassword(), new_user.GetEmail());
+        return qrExecute.RegisterNewUser(new_user.GetUsername(), new_user.GetPassword(),
+                new_user.GetEmail(), new_user.GetName(), new_user.GetSurname(),
+                new_user.GetIndirizzo(), new_user.GetCF());
     }
 
     @Override

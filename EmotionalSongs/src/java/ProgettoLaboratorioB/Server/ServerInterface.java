@@ -22,7 +22,7 @@ public interface ServerInterface extends Remote
     *  Client actions:
     *  1. Create a method that allow the client to register a new user;
     */
-    public void RegisterNewUser(User user) throws RemoteException;
+    public boolean RegisterNewUser(User user) throws RemoteException;
 
     /*
     *  2. Create a method that allow the client to login;
