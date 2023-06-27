@@ -1,18 +1,19 @@
 package ProgettoLaboratorioB.Serializables;
 
+import java.util.List;
+
 public class Playlist implements java.io.Serializable
 {
     private String playlist_name;
 
-    private User playlist_owner;
+    private String userID;
 
-    private Song[] songs;
+    private List<Song> songs;
 
-    public Playlist(String playlist_name, User playlist_owner, Song[] songs)
+    public Playlist(String playlist_name, String playlist_owner)
     {
         this.playlist_name = playlist_name;
-        this.playlist_owner = playlist_owner;
-        this.songs = songs;
+        this.userID = playlist_owner;
     }
 
     public String GetPlaylistName()
@@ -20,12 +21,12 @@ public class Playlist implements java.io.Serializable
         return this.playlist_name;
     }
 
-    public User GetPlaylistOwner()
+    public String GetPlaylistOwner()
     {
-        return this.playlist_owner;
+        return this.userID;
     }
 
-    public Song[] GetSongs()
+    public List<Song> GetSongs()
     {
         return this.songs;
     }
@@ -35,15 +36,30 @@ public class Playlist implements java.io.Serializable
         this.playlist_name = playlist_name;
     }
 
-    public void SetPlaylistOwner(User playlist_owner)
+    public void SetPlaylistOwner(String playlist_owner)
     {
-        this.playlist_owner = playlist_owner;
+        this.userID = playlist_owner;
     }
 
-    public void SetSongs(Song[] songs)
+    public void SetSongs(List<Song> songs)
     {
         this.songs = songs;
     }
 
+    @Override
+    public String toString() {
+        return "Playlist{" +
+                "playlist_name='" + playlist_name + '\'' +
+                ", userID='" + userID + '\'' +
+                ", song list size='" + songs.size() + '\'';
+    }
 
+    public static void PrintAllSongs(List<Song> songs)
+    {
+        for (Song song : songs)
+        {
+            System.out.println("SONG SAVED:");
+            System.out.println(song.GetTitle());
+        }
+    }
 }

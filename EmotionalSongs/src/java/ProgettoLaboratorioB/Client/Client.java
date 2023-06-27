@@ -33,7 +33,6 @@ public class Client {
      * set the server address to : "localhost" or null reference.
      */
     public static String server_address;
-
     public static String default_server_address = "localhost";
 
     /**
@@ -41,6 +40,14 @@ public class Client {
      */
     static final int SERVER_PORT = 1099;
 
+    /**
+     * Constructor of the class: when a new client is created,
+     * the client try to connect with the server.
+     */
+    public Client() throws RemoteException
+    {
+        GetConnection();
+    }
 
     /**
      * This method initialize the connection with the server, using the RMI registry.
@@ -52,7 +59,7 @@ public class Client {
     {
 
         //Get Server IP:
-        GetServerID();
+        GetServerIP();
 
         //Get connection with the server.
         try
@@ -88,7 +95,7 @@ public class Client {
      * This method is used to get the server IP.
      * @throws Exception if the Server_PORT is .
      */
-    private static void GetServerID()
+    private static void GetServerIP()
     {
         try (final DatagramSocket datagramSocket = new DatagramSocket())
         {
@@ -100,12 +107,5 @@ public class Client {
         }
     }
 
-    /**
-     * Constructor of the class: when a new client is created,
-     * the client try to connect with the server.
-     */
-    public Client() throws RemoteException
-    {
-        GetConnection();
-    }
+
 }

@@ -28,7 +28,6 @@ public class QueryModule
         /**
         * Song table queries
         */
-
         ADD_SONG,
         SEARCH_SONG_BY_YEARARTIST,
         SEARCH_SONG_BY_TITLE,
@@ -37,6 +36,8 @@ public class QueryModule
         * Playlist table queries
          */
         CREATE_PLAYLIST,
+        GET_USER_PLAYLISTS,
+        GET_ALL_SONGS_FROM_PLAYLIST,
         ADD_SONG_TO_PLAYLIST,
         DELETE_SONG_FROM_PLAYLIST,
         DELETE_PLAYLIST,
@@ -45,9 +46,7 @@ public class QueryModule
          * Emotions table queries
          */
         ADD_EMOTION,
-
         DELETE_EMOTION,
-
         GET_EMOTION,
     }
 
@@ -161,19 +160,27 @@ public class QueryModule
 
         playlists_table_queries.put
                 (QUERY.CREATE_PLAYLIST,
-                        "INSERT INTO playlists (name, username) VALUES (?, ?)");
+                        "INSERT INTO playlists (name, username, ID) VALUES (?, ?, ?)");
+
+        playlists_table_queries.put(
+                QUERY.GET_USER_PLAYLISTS,
+                "SELECT * FROM playlists WHERE username = ? AND ID = ?");
+
+        playlists_table_queries.put(
+                QUERY.GET_ALL_SONGS_FROM_PLAYLIST,
+                "SELECT * FROM playlist WHERE playlistID = ?");
 
         playlists_table_queries.put
                 (QUERY.ADD_SONG_TO_PLAYLIST,
-                        "INSERT INTO playlists (playlist_id, song_id) VALUES (?, ?)");
+                        "INSERT INTO playlist (playlistID, songID) VALUES (?, ?)");
 
         playlists_table_queries.put
                 (QUERY.DELETE_SONG_FROM_PLAYLIST,
-                        "DELETE FROM playlists WHERE playlist_id = ? AND song_id = ?");
+                        "DELETE FROM playlist WHERE playlistID = ? AND songID = ?");
 
         playlists_table_queries.put
                 (QUERY.DELETE_PLAYLIST,
-                        "DELETE FROM playlists WHERE id = ?");
+                        "DELETE FROM playlists WHERE ID = ?");
 
         tableMapping.put(TABLE.PLAYLISTS, playlists_table_queries);
     }

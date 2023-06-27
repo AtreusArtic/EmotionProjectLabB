@@ -35,4 +35,38 @@ public class DatabaseService
             System.out.println("DB_SERVICE: Table " + table_name + " already exists");
         }
     }
+
+    public static void CreatePlaylistTable(Connection connection, String table_name)
+    {
+        Statement stmt;
+        try
+        {
+            String query = "create table " + table_name + "(name varchar(200), username varchar(200), ID varchar(200)," +
+                    " primary key(ID), foreign key(username) references users(username));";
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
+        } catch (SQLException e)
+        {
+            System.out.println("DB_SERVICE Error: " + e);
+            //System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+        }
+    }
+
+    public static void CreatePlaylistSavedTable(Connection connection, String table_name)
+    {
+        Statement stmt;
+
+        try
+        {
+            String query = "create table " + table_name + "(username varchar(200), playlistID varchar(200), songID varchar(200), primary key(playlistID, songID)," +
+                    " foreign key(playlistID) references playlists(ID),foreign key(username) references , foreign key(songID) references songs(id));";
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
+        } catch (SQLException e)
+        {
+            System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+        }
+    }
 }

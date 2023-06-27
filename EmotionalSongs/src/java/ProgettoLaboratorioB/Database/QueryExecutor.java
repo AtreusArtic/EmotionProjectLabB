@@ -7,6 +7,7 @@ package ProgettoLaboratorioB.Database;
  * Database class will declare a QueryModule object and use it to interact with the database.
  */
 
+import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
@@ -42,6 +43,11 @@ public class QueryExecutor
     public static QueryExecutor GetQueryObject(String url, String user, String password){
         return new QueryExecutor(url, user, password);
     }
+
+
+    /**
+     * SONG QUERIES METHODS:
+     */
     public void LoadSongData() throws SQLException, FileNotFoundException {
         try (Scanner in = new Scanner(queryModule.songfile)){
             while(in.hasNextLine()){
@@ -69,14 +75,13 @@ public class QueryExecutor
         }
     }
 
-
     public static List<Song> GetSongByTitle(String title){
         PreparedStatement ps;
         ResultSet rs;
         List<Song> songs = new ArrayList<>();
         try
         {
-            String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
+            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
                             QueryModule.QUERY.SEARCH_SONG_BY_TITLE));
 
             ps = con.prepareStatement(query);
@@ -107,7 +112,7 @@ public class QueryExecutor
         List<Song> songs = new ArrayList<>();
         try
         {
-            String query = String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
+            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
                     QueryModule.QUERY.SEARCH_SONG_BY_YEARARTIST));
 
 
@@ -134,11 +139,12 @@ public class QueryExecutor
         }
     }
 
-
+    /**
+     * USER QUERIES METHODS:
+     */
     public static User UserLogin(String username, String password){
         PreparedStatement ps;
         ResultSet rs;
-
         try
         {
             String query = queryModule.getQuery
@@ -154,7 +160,7 @@ public class QueryExecutor
             {
                 username = rs.getString(1);
                 password = rs.getString(2);
-                if(username != null && password != null)
+                if(username != null && password != null) //Nota: questo controllo è ridondante.
                 {
                     System.out.println("QUERY-EXECUTOR: User exist in the db...");
                     return new User(username, password, rs.getString(3),
@@ -175,14 +181,14 @@ public class QueryExecutor
     }
 
     public static boolean RegisterNewUser(String username, String password, String email,String name, String surname, String address, String CF){
-        Statement stmt = null;
+        Statement stmt;
         String query;
         try
         {
             System.out.println("QUERY-EXECUTOR: Connection reference set: " + con);
             try
             {
-                query = String.format(queryModule.getQuery(QueryModule.TABLE.USERS,
+                query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.USERS,
                         QueryModule.QUERY.REGISTER), username, password, email, name, surname, address, CF);
             }
             catch (NullPointerException e)
@@ -202,6 +208,176 @@ public class QueryExecutor
             return false;
         }
     }
+
+
+    /**
+     * PLAYLISTS QUERIES METHODS:
+     */
+    public static boolean CreatePlaylist(String plt_name, String username, String ID){
+        Statement stmt;
+        String query;
+        try {
+            try
+            {
+                query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.CREATE_PLAYLIST), plt_name, username, ID);
+            } catch (NullPointerException e)
+            {
+                System.out.println("QUERY-EXECUTOR error: query string is null ");
+                return false;
+            }
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("QUERY-EXECUTOR: Playlist " + plt_name + " created successfully");
+            return true;
+
+        } catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
+        }
+    }
+
+    public static List<Playlist> GetUserPlaylists(String username, String ID)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Playlist> playlists = new ArrayList<>();
+        try
+        {
+            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                    QueryModule.QUERY.GET_USER_PLAYLISTS));
+
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, username);
+            ps.setString(2, ID);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                playlists.add(new Playlist(
+                        rs.getString(1),  //plt_name
+                        rs.getString(2)   //username
+                        ));
+            }
+            return playlists;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return null;
+        }
+    }
+
+    public static List<Song> GetSongsFromPlaylist(String playlist_id)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Song> songs = new ArrayList<>();
+        try
+        {
+            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                    QueryModule.QUERY.GET_ALL_SONGS_FROM_PLAYLIST));
+
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, playlist_id);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                songs.add(new Song(rs.getInt(1),  //year
+                        rs.getString(2),          //id
+                        rs.getString(3),          //artist
+                        rs.getString(4)));        //title
+            }
+            return songs;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return null;
+        }
+    }
+    public static boolean AddSongToPlaylist(String playlist_id, String song_id){
+        Statement stmt;
+        String query;
+        try {
+            try
+            {
+                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.ADD_SONG_TO_PLAYLIST),playlist_id, song_id);
+            } catch (NullPointerException e)
+            {
+                System.out.println("QUERY-EXECUTOR error: query string is null ");
+                return false;
+            }
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("QUERY-EXECUTOR: Song " + song_id + " added successfully to playlist selected.");
+            return true;
+
+        } catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
+        }
+    }
+
+    public static boolean RemoveSongFromPlaylist(String playlist_id, String song_id){
+        Statement stmt;
+        String query;
+        try {
+            try
+            {
+                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.DELETE_SONG_FROM_PLAYLIST),playlist_id, song_id);
+            } catch (NullPointerException e)
+            {
+                System.out.println("QUERY-EXECUTOR error: query string is null ");
+                return false;
+            }
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("QUERY-EXECUTOR: Song " + song_id + " removed successfully from playlist selected.");
+            return true;
+
+        } catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
+        }
+    }
+
+    public static boolean DeletePlaylist(String playlist_id){
+        Statement stmt;
+        String query;
+        try {
+            try
+            {
+                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.DELETE_PLAYLIST),playlist_id);
+            } catch (NullPointerException e)
+            {
+                System.out.println("QUERY-EXECUTOR error: query string is null ");
+                return false;
+            }
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("QUERY-EXECUTOR: Playlist " + playlist_id + " deleted successfully.");
+            return true;
+
+        } catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
+        }
+    }
 }
+
+
 
 
