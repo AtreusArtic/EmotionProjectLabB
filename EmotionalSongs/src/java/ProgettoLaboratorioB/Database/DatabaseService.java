@@ -17,7 +17,7 @@ public class DatabaseService
             System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
         } catch (SQLException e)
         {
-            System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+            System.out.println("DB_SERVICE: " + e);
         }
     }
 
@@ -32,7 +32,7 @@ public class DatabaseService
             System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
         } catch (SQLException e)
         {
-            System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+            System.out.println("DB_SERVICE: " + e);
         }
     }
 
@@ -48,15 +48,13 @@ public class DatabaseService
             System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
         } catch (SQLException e)
         {
-            System.out.println("DB_SERVICE Error: " + e);
-            //System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+            System.out.println("DB_SERVICE: " + e);
         }
     }
 
     public static void CreatePlaylistSavedTable(Connection connection, String table_name)
     {
         Statement stmt;
-
         try
         {
             String query = "create table " + table_name + "(username varchar(200), playlistID varchar(200), songID varchar(200), primary key(playlistID, songID)," +
@@ -66,7 +64,7 @@ public class DatabaseService
             System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
         } catch (SQLException e)
         {
-            System.out.println("DB_SERVICE: Table " + table_name + " already exists");
+            System.out.println("DB_SERVICE: " + e);
         }
     }
 }

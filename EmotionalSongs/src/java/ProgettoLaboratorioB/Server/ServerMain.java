@@ -16,9 +16,7 @@ import java.util.Scanner;
  */
 public class ServerMain
 {
-    /**
-     * Start the server.
-     */
+
 
     /**
      * @param SERVER_PORT: the port of the remote server.

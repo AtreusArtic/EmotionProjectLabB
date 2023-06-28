@@ -44,7 +44,6 @@ public class QueryExecutor
         return new QueryExecutor(url, user, password);
     }
 
-
     /**
      * SONG QUERIES METHODS:
      */

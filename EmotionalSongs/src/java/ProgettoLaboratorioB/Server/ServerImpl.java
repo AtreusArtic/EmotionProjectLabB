@@ -6,11 +6,14 @@ import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * With this class server can implement the methods defined in the interface.
@@ -24,10 +27,60 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      * @param username: the username of the database.
      * @param pw: the password of the database.
      */
-    static String url = "jdbc:postgresql://localhost:5432/Emotionals_songs_lab_b";
-    static String username = "postgres";
-    static String pw = "enrico98";
+    static String url;
+    static String username;
+    static String pw;
     public QueryExecutor qrExecute;
+
+    private static String filename = "EnricoDBConfigOSX.properties";
+    public static void LoadDBConfig()
+    {
+        File configfile;
+        String filepath = SetDBconfigPath(filename);
+        if(filepath != null)
+        {
+            configfile = new File(filepath);
+        }
+        else
+        {
+            System.out.println("SERVER-MAIN: Config file is null");
+            return;
+        }
+        try(FileInputStream fileInputStream = new FileInputStream(configfile)){
+            Properties properties = new Properties();
+            properties.load(fileInputStream);
+            url = properties.getProperty("db.url");
+            username = properties.getProperty("db.username");
+            pw = properties.getProperty("db.password");
+        }
+        catch (Exception e)
+        {
+            System.out.println("SERVER-MAIN: Error to load the database configuration.");
+        }
+    }
+
+    public static String SetDBconfigPath(String filename)
+    {
+        if(System.getProperty("os.name").equals("Mac OS X"))
+        {
+            System.out.println("SERVER-MAIN: Mac OS X detected.");
+            filename = "DatabaseConfig/" + filename;
+        }
+        else if(System.getProperty("os.name").equals("Windows 10"))
+        {
+            System.out.println("SERVER-MAIN:Windows 10 detected.");
+            filename = "EmotionalSongs/DatabaseConfig/" + filename;
+        }
+        else
+        {
+            System.out.println("SERVER-MAIN: OS not supported.");
+            return null;
+        }
+
+        String dir = System.getProperty("user.dir");
+        String path = dir + File.separator + filename;
+        return path;
+    }
 
     /**
      * Constructor of the remote object, call every time a client connect to the server.
@@ -36,6 +89,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      */
     public ServerImpl() throws RemoteException, FileNotFoundException {
         super();
+        LoadDBConfig();
         qrExecute = QueryExecutor.GetQueryObject(url, username, pw);
         DatabaseService.CreateUserTable(qrExecute.con,"users");
         DatabaseService.CreateSongsTable(qrExecute.con,"songs");
@@ -45,6 +99,9 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         // ATTENZIONE: se si vuole caricare le canzoni nel database, decommentare la riga sovraintesa;
         // Se invece, il database contiente già le canzoni, lasciare commentata la riga sovraintesa.
     }
+
+
+
 
 
     /**
