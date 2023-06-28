@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Server interface define the methods that the server must implement,
- * in order to be used by the client through the RMI architecture.
+ * in order to be used by the client from another virtual machine, by extending remote interface.
  */
 public interface ServerInterface extends Remote
 {

@@ -22,36 +22,54 @@ import java.util.Properties;
  */
 public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
 
-  /**
-     * @param url: the url of the database.
-     * @param username: the username of the database.
-     * @param pw: the password of the database.
+    /**
+     * @param qrExecute is the class used to execute the queries.
      */
+    public QueryExecutor qrExecute;
+
+    /**
+    * Database Connection parameters:
+    * @param url: the url of the database.
+    * @param username: the username of the database.
+    * @param pw: the password of the database.
+    */
     static String url;
     static String username;
     static String pw;
-    public QueryExecutor qrExecute;
 
-    private static String filename = "EnricoDBConfigOSX.properties";
+    /**
+     * @param filename the name of the file that contains the database configuration.
+     *  please check in the folder DatabaseConfig and change it,
+     *  to your database configuration file.
+     */
+    private static String filename = "EnricoDBConfigWin.properties";
+
+    /**
+     * This method load the database configuration from the filename.
+     */
     public static void LoadDBConfig()
     {
         File configfile;
-        String filepath = SetDBconfigPath(filename);
+        String filepath = SetDBConfigPath(filename);
+
         if(filepath != null)
         {
             configfile = new File(filepath);
         }
         else
         {
-            System.out.println("SERVER-MAIN: Config file is null");
             return;
         }
+
         try(FileInputStream fileInputStream = new FileInputStream(configfile)){
             Properties properties = new Properties();
             properties.load(fileInputStream);
+            
             url = properties.getProperty("db.url");
             username = properties.getProperty("db.username");
             pw = properties.getProperty("db.password");
+
+            System.out.println("SERVER-MAIN: Database configuration loaded.");
         }
         catch (Exception e)
         {
@@ -59,7 +77,12 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         }
     }
 
-    public static String SetDBconfigPath(String filename)
+    /**
+     * This function set the path of the database configuration file.
+     * @param filename the name of the file that contains the database configuration.
+     * @return the path of the database configuration file.
+     */
+    public static String SetDBConfigPath(String filename)
     {
         if(System.getProperty("os.name").equals("Mac OS X"))
         {
@@ -100,17 +123,16 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         // Se invece, il database contiente già le canzoni, lasciare commentata la riga sovraintesa.
     }
 
-
-
-
-
     /**
      ••• USER SERVICE METHODS IMPLEMENTATION •••
      */
+
+
     /**
-     * This method is used by the client to register a new user.
+     * This function is used by the client to register a new user.
      * @param new_user: the new user to register.
      * @throws RemoteException if the client is not connected with the server.
+     * @return true if the user is registered, false otherwise.
      */
     @Override
     public synchronized boolean RegisterNewUser(User new_user) throws RemoteException
@@ -120,6 +142,13 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
                 new_user.GetIndirizzo(), new_user.GetCF());
     }
 
+    /**
+     * This function is used by the client to login.
+     * @param username: the username of the user.
+     * @param password: the password of the user.
+     * @throws RemoteException if the client is not connected with the server.
+     * @return the user if the login is successful, null otherwise.
+     */
     @Override
     public synchronized User Login(String username, String password) throws RemoteException
     {
@@ -133,11 +162,27 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     /**
        ••• SONG SERVICE METHODS IMPLEMENTATION •••
      */
+
+    /**
+     * This function is used by the client to search a song by title.
+     * @param title the title of the song.
+     * @return the list of the songs that contains the title.
+     * @throws RemoteException if the client is not connected with the server.
+     * @throws SQLException if there is an error in the query.
+     */
     @Override
     public synchronized List<Song> SearchSongByTitle(String title) throws RemoteException, SQLException {
         return qrExecute.GetSongByTitle(title);
     }
 
+    /**
+     * This function is used by the client to search a song by year and artist.
+     * @param year the year of the song.
+     * @param artist the artist of the song.
+     * @return the list of the songs those match the year and the artist.
+     * @throws RemoteException if the client is not connected with the server.
+     * @throws SQLException if there is an error in the query.
+     */
     @Override
     public synchronized List<Song> SearchSongByYearArtist(String year, String artist) throws RemoteException, SQLException {
         return qrExecute.GetSongYearTitle(year, artist);
@@ -147,31 +192,73 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     /**
      ••• PLAYLIST SERVICE METHODS IMPLEMENTATION •••
      */
+
+    /**
+     * This function is used by the client to create a new playlist.
+     * @param playlist_name the name of the playlist.
+     * @param username the username of the user that create the playlist.
+     * @param playlistID the id of the playlist.
+     * @return true if the playlist is created, false otherwise.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized boolean CreateNewPlaylist(String playlist_name, String username, String playlistID) throws RemoteException {
         return qrExecute.CreatePlaylist(playlist_name, username, playlistID);
     }
 
+    /**
+     * This function is used by the client to get the playlist of a user.
+     * @param username the username of the user.
+     * @param playlistID the id of the playlist.
+     * @return the list of the playlist of the user.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized List<Playlist> GetPlaylist(String username, String playlistID) throws RemoteException {
         return qrExecute.GetUserPlaylists(username, playlistID);
     }
 
+    /**
+     * This function is used by the client to get all songs of a playlist.
+     * @param playlistID the id of the playlist.
+     * @return the list of the songs of the playlist.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized List<Song> GetSongsFromPlaylist(String playlistID) throws RemoteException {
         return qrExecute.GetSongsFromPlaylist(playlistID);
     }
 
+    /**
+     * This function is used by the client to add a song to a playlist.
+     * @param playlistID the id of the playlist.
+     * @param songID the id of the song to add.
+     * @return true if the song is added to the playlist, false otherwise.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized boolean AddSongToPlaylist(String playlistID, String songID) throws RemoteException {
         return qrExecute.AddSongToPlaylist(playlistID, songID);
     }
 
+    /**
+     * This function is used by the client to remove a song from a playlist.
+     * @param playlistID the id of the playlist.
+     * @param songID the id of the song to remove.
+     * @return true if the song is removed from the playlist, false otherwise.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized boolean RemoveSongFromPlaylist(String playlistID, String songID) throws RemoteException {
         return qrExecute.RemoveSongFromPlaylist(playlistID, songID);
     }
 
+    /**
+     * This function is used by the client to delete a playlist.
+     * @param playlistID the id of the playlist to delete.
+     * @return true if the playlist is deleted, false otherwise.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
     public synchronized boolean DeletePlaylist(String playlistID) throws RemoteException {
         return qrExecute.DeletePlaylist(playlistID);
@@ -188,6 +275,5 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         System.out.println("Server: Hello " + message + ", now you are connected with me.");
         return true;
     }
-
 }
 

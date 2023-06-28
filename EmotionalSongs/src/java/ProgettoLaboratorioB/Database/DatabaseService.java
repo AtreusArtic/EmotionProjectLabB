@@ -58,7 +58,7 @@ public class DatabaseService
         try
         {
             String query = "create table " + table_name + "(username varchar(200), playlistID varchar(200), songID varchar(200), primary key(playlistID, songID)," +
-                    " foreign key(playlistID) references playlists(ID),foreign key(username) references , foreign key(songID) references songs(id));";
+                    " foreign key(playlistID) references playlists(ID),foreign key(username) references users(username), foreign key(songID) references songs(id));";
             stmt = connection.createStatement();
             stmt.executeUpdate(query);
             System.out.println("DB_SERVICE: Table " + table_name + " created successfully");

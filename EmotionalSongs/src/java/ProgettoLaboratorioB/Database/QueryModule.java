@@ -5,11 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class is an abstract where all the table and relative queries
- * are defined in the postgres database;
- *
+ * This class implement a mapping system betweem tables and relative queries
+ * those are defined in the postgres database;
  */
-
 
 public class QueryModule
 {
