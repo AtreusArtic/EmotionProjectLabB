@@ -2,7 +2,7 @@ package ProgettoLaboratorioB.Serializables;
 
 import java.io.Serializable;
 
-public class Song implements Serializable {
+public class Song implements Serializable, Comparable<Song>{
 
     static final long serialVersionUID = 1L;
     private String title;
@@ -57,5 +57,10 @@ public class Song implements Serializable {
                 ", year=" + GetYear() +
                 ", ID='" + GetID() + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Song song) {
+        return 0;
     }
 }

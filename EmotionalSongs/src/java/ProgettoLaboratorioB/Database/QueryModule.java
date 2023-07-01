@@ -29,6 +29,7 @@ public class QueryModule
         ADD_SONG,
         SEARCH_SONG_BY_YEARARTIST,
         SEARCH_SONG_BY_TITLE,
+        GET_SONGS_BY_ID,
 
         /**
         * Playlist table queries
@@ -145,6 +146,10 @@ public class QueryModule
                 (QUERY.SEARCH_SONG_BY_YEARARTIST,
                         "SELECT * FROM songs WHERE year = ? AND artist = ?");
 
+        songs_table_queries.put
+                (QUERY.GET_SONGS_BY_ID,
+                        "SELECT * FROM songs WHERE id = ?");
+
         tableMapping.put(TABLE.SONGS, songs_table_queries);
     }
 
@@ -158,23 +163,23 @@ public class QueryModule
 
         playlists_table_queries.put
                 (QUERY.CREATE_PLAYLIST,
-                        "INSERT INTO playlists (name, username, ID) VALUES (?, ?, ?)");
+                        "INSERT INTO playlists (name, username, ID) VALUES ('%s', '%s', '%s');");
 
         playlists_table_queries.put(
                 QUERY.GET_USER_PLAYLISTS,
-                "SELECT * FROM playlists WHERE username = ? AND ID = ?");
+                "SELECT * FROM playlists WHERE username = ?");
 
         playlists_table_queries.put(
                 QUERY.GET_ALL_SONGS_FROM_PLAYLIST,
-                "SELECT * FROM playlist WHERE playlistID = ?");
+                "SELECT * FROM playlist_saved WHERE playlistID = ?");
 
         playlists_table_queries.put
                 (QUERY.ADD_SONG_TO_PLAYLIST,
-                        "INSERT INTO playlist (playlistID, songID) VALUES (?, ?)");
+                        "INSERT INTO playlist_saved (playlistID, songID) VALUES ('%s', '%s');");
 
         playlists_table_queries.put
                 (QUERY.DELETE_SONG_FROM_PLAYLIST,
-                        "DELETE FROM playlist WHERE playlistID = ? AND songID = ?");
+                        "DELETE FROM playlist_saved WHERE playlistID = ? AND songID = ?");
 
         playlists_table_queries.put
                 (QUERY.DELETE_PLAYLIST,

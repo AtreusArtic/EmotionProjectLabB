@@ -42,7 +42,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      *  please check in the folder DatabaseConfig and change it,
      *  to your database configuration file.
      */
-    private static String filename = "EnricoDBConfigWin.properties";
+    private static String filename = "EnricoDBConfigOSX.properties";
 
     /**
      * This method load the database configuration from the filename.
@@ -209,13 +209,12 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     /**
      * This function is used by the client to get the playlist of a user.
      * @param username the username of the user.
-     * @param playlistID the id of the playlist.
      * @return the list of the playlist of the user.
      * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public synchronized List<Playlist> GetPlaylist(String username, String playlistID) throws RemoteException {
-        return qrExecute.GetUserPlaylists(username, playlistID);
+    public synchronized List<Playlist> GetPlaylist(String username) throws RemoteException {
+        return qrExecute.GetUserPlaylists(username);
     }
 
     /**

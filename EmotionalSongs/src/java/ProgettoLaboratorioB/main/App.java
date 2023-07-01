@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.main;
 
 import ProgettoLaboratorioB.Client.ClientService;
+import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
@@ -109,14 +110,16 @@ public class App
         }
     }
 
-    public static void UserModuleMenu()
-    {
+    public static void UserModuleMenu() throws SQLException {
         int switchcase;
 
         while (App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.USER_MENU))
         {
             System.out.println("Choose the function to call:");
             System.out.println("1. To show your credentials");
+            System.out.println("2. Create new playlist");
+            System.out.println("3. Add song to playlist");
+            System.out.println("4. Show all your playlist");
             System.out.println("5. Logout");
 
             switchcase = Integer.parseInt(sc.nextLine());
@@ -124,6 +127,15 @@ public class App
             {
                 case 1:
                     ClientService.ShowUserProfile();
+                    break;
+                case 2:
+                    CreatePlaylistModule();
+                    break;
+                case 3:
+                    AddSongToPlaylistModule();
+                    break;
+                case 4:
+                    GetAllUserPlaylist();
                     break;
                 case 5:
                     ClientService.Logout();
@@ -136,6 +148,8 @@ public class App
         }
 
     }
+
+
 
     /**
      * UTILITIES MODULE FUNCTIONS:
@@ -194,8 +208,8 @@ public class App
             return false;
         }
     }
-    public static void SongSearchUtility(boolean isByTitle) throws SQLException {
-        List<Song> song;
+    public static List<Song> SongSearchUtility(boolean isByTitle) throws SQLException {
+        List<Song> songs;
         if(isByTitle)
         {
             System.out.println("Insert the song title:");
@@ -204,9 +218,9 @@ public class App
             if(song_title == null)
             {
                 System.out.println("Error: song title is null");
-                return;
+                return null;
             }
-            song = ClientService.SearchSongByTitle(song_title);
+            songs = ClientService.SearchSongByTitle(song_title);
         }
         else
         {
@@ -216,21 +230,100 @@ public class App
             System.out.println("Insert the song title:");
             String song_title = sc.nextLine();
 
-            song = ClientService.SearchSongByYearTitle(song_year, song_title);
+            songs = ClientService.SearchSongByYearTitle(song_year, song_title);
         }
 
-        if(song != null)
+        if(songs != null)
         {
            System.out.println("Song found! \n");
-           for(Song s : song)
+           for(Song s : songs)
            {
                System.out.println(s);
                System.out.println("\n");
            }
+           return songs;
         }
         else
         {
             System.out.println("Song not found");
+            return null;
+        }
+    }
+
+    public static void CreatePlaylistModule(){
+        System.out.println("Insert the playlist name:");
+        String playlist_name = sc.nextLine();
+
+        System.out.println("Insert the playlist id:");
+        String playlist_id = sc.nextLine();
+
+        if(ClientService.CreateNewPlaylist(playlist_name,playlist_id))
+        {
+            System.out.println("Playlist created successfully");
+        }
+        else
+        {
+            System.out.println("Error: playlist creation failed");
+        }
+    }
+
+    private static void AddSongToPlaylistModule() throws SQLException {
+        List<Song> songs = SongSearchUtility(true);
+
+        //TODO: implement a function that get a song from the list of songs.
+
+        Song desired_song = new Song(1978, "TRAAAQO12903CD8E1C", "Chaka Khan_ Rufus", "King Of Scurf (2007 Digital Remaster)");
+
+        Song found = App_System.binarySearch(desired_song, songs);
+
+        if (found != null) {
+            if(ClientService.AddSongToPlaylist("0001", found.GetID()))
+            {
+                System.out.println("Song:" + found.GetTitle() + "added successfully");
+            }
+            else
+            {
+                System.out.println("Error: song:" + found.GetTitle() + " not added");
+            }
+        } else {
+            System.out.println("Song:" + found.GetTitle() + "not found");
+
+        }
+
+    }
+
+    public static void GetAllUserPlaylist()
+    {
+        List<Playlist> playlists = ClientService.GetUserPlaylists();
+        if (playlists != null) {
+            for (Playlist p : playlists) {
+                System.out.println(p);
+                System.out.println("\n");
+            }
+        } else {
+            System.out.println("Error: no playlist found");
+        }
+
+        System.out.println("Do you want to see the songs of a playlist? (y/n)");
+        String answer = sc.nextLine();
+        if(answer.equals("y"))
+        {
+            System.out.println("Insert the playlist id:");
+            String playlist_id = sc.nextLine();
+            GetAllSongsFromPlaylist(playlist_id);
+        }
+    }
+
+    public static void GetAllSongsFromPlaylist(String playlist_id)
+    {
+        List<Song> songs = ClientService.GetPlaylistSongs(playlist_id);
+        if (songs != null) {
+            for (Song s : songs) {
+                System.out.println(s);
+                System.out.println("\n");
+            }
+        } else {
+            System.out.println("Error: no songs found in the playlist: " + playlist_id);
         }
     }
 }

@@ -1,21 +1,23 @@
 package ProgettoLaboratorioB.Serializables;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Playlist implements java.io.Serializable
+public class Playlist implements Serializable, Comparable<Playlist>
 {
     private String playlist_name;
 
     private String userID;
 
+    private String playlist_id;
     private List<Song> songs;
 
-    public Playlist(String playlist_name, String playlist_owner)
+    public Playlist(String playlist_name, String playlist_owner,String playlist_id)
     {
         this.playlist_name = playlist_name;
         this.userID = playlist_owner;
+        this.playlist_id = playlist_id;
     }
-
     public String GetPlaylistName()
     {
         return this.playlist_name;
@@ -25,6 +27,8 @@ public class Playlist implements java.io.Serializable
     {
         return this.userID;
     }
+
+    public String GetPlaylistID() {return this.playlist_id;}
 
     public List<Song> GetSongs()
     {
@@ -41,6 +45,8 @@ public class Playlist implements java.io.Serializable
         this.userID = playlist_owner;
     }
 
+    public void SetPlaylistID(String playlist_id) {this.playlist_id = playlist_id;}
+
     public void SetSongs(List<Song> songs)
     {
         this.songs = songs;
@@ -51,7 +57,7 @@ public class Playlist implements java.io.Serializable
         return "Playlist{" +
                 "playlist_name='" + playlist_name + '\'' +
                 ", userID='" + userID + '\'' +
-                ", song list size='" + songs.size() + '\'';
+                ", song list size= NOT IMPLEMENTED";
     }
 
     public static void PrintAllSongs(List<Song> songs)
@@ -61,5 +67,10 @@ public class Playlist implements java.io.Serializable
             System.out.println("SONG SAVED:");
             System.out.println(song.GetTitle());
         }
+    }
+
+    @Override
+    public int compareTo(Playlist playlist) {
+        return 0;
     }
 }

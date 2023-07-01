@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Client;
 
+import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
 
@@ -10,6 +11,8 @@ import java.util.List;
 public class ClientService {
 
     static User user_connected = null;
+
+    //  ------- SYSTEM MODULE FUNCTIONS --------:
     public static boolean StartClientApplication() throws RemoteException
     {
         new Client();
@@ -27,6 +30,8 @@ public class ClientService {
             return false;
         }
     }
+
+    //  ------- USER MODULE FUNCTIONS --------:
     public static boolean RegisterNewUser(User user){
         try {
             System.out.println("CLIENT-SERVICE request to server sent.");
@@ -70,17 +75,8 @@ public class ClientService {
             System.out.println("CLIENT-SERVICE Error: user not logged in.");
         }
     }
-    public static void Anonymous() {}
 
-
-    public static void Exit()
-    {
-        System.exit(0);
-    }
-
-
-    ///SONG MODULE FUNCTIONS:
-
+    //  ------- SONG MODULE FUNCTIONS --------:
     public static List<Song> SearchSongByTitle(String title) throws SQLException {
         try
         {
@@ -98,6 +94,77 @@ public class ClientService {
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline");
             return null;
+        }
+    }
+
+    //  ------- PLAYLIST MODULE FUNCTIONS --------:
+    public static boolean CreateNewPlaylist(String ply_name, String plt_id){
+        try
+        {
+            return Client.server.CreateNewPlaylist(
+                    ply_name,
+                    user_connected.GetUsername(),
+                    plt_id);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return false;
+        }
+    }
+
+    public static List<Playlist> GetUserPlaylists(){
+        try
+        {
+            try
+            {
+                return Client.server.GetPlaylist(user_connected.GetUsername());
+            }catch (NullPointerException e)
+            {
+                System.out.println("CLIENT-SERVICE !!Critical - Error !!: user reference is null...");
+                return null;
+            }
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return null;
+        }
+    }
+
+    public static List<Song> GetPlaylistSongs(String playlist_id){
+        try
+        {
+            return Client.server.GetSongsFromPlaylist(playlist_id);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return null;
+        }
+    }
+
+    public static boolean AddSongToPlaylist(String playlist_id, String song_id){
+        try
+        {
+            return Client.server.AddSongToPlaylist(playlist_id, song_id);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return false;
+        }
+    }
+
+    public static boolean RemoveSongFromPlaylist(String playlist_id, String song_id){
+        try
+        {
+            return Client.server.RemoveSongFromPlaylist(playlist_id, song_id);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return false;
+        }
+    }
+
+    public static boolean DeletePlaylist(String playlist_id){
+        try
+        {
+            return Client.server.DeletePlaylist(playlist_id);
+        } catch (RemoteException e) {
+            System.out.println("CLIENT-SERVICE Error: Server is offline");
+            return false;
         }
     }
 

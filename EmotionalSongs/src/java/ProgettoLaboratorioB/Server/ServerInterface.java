@@ -43,7 +43,7 @@ public interface ServerInterface extends Remote
     *  6. Create a method that allow the client to delete a playlist;
     */
     public boolean CreateNewPlaylist(String playlist_name, String username, String playlistID) throws RemoteException;
-    public List<Playlist> GetPlaylist(String username, String playlistID) throws RemoteException;
+    public List<Playlist> GetPlaylist(String username) throws RemoteException;
     public List<Song> GetSongsFromPlaylist(String playlistID) throws RemoteException;
     public boolean AddSongToPlaylist(String playlistID, String songID) throws RemoteException;
     public boolean RemoveSongFromPlaylist(String playlistID, String songID) throws RemoteException;

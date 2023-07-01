@@ -138,6 +138,38 @@ public class QueryExecutor
         }
     }
 
+    public static Song GetSongsByID(String id)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        Song song = null;
+        try
+        {
+            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                    QueryModule.QUERY.GET_SONGS_BY_ID));
+
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, id);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                song = new Song(rs.getInt(1),     //year
+                        rs.getString(2),          //id
+                        rs.getString(3),          //artist
+                        rs.getString(4));         //title
+            }
+            return song;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return null;
+        }
+    }
+
     /**
      * USER QUERIES METHODS:
      */
@@ -237,7 +269,7 @@ public class QueryExecutor
         }
     }
 
-    public static List<Playlist> GetUserPlaylists(String username, String ID)
+    public static List<Playlist> GetUserPlaylists(String username)
     {
         PreparedStatement ps;
         ResultSet rs;
@@ -250,7 +282,6 @@ public class QueryExecutor
             ps = con.prepareStatement(query);
 
             ps.setString(1, username);
-            ps.setString(2, ID);
 
             rs = ps.executeQuery();
 
@@ -258,7 +289,8 @@ public class QueryExecutor
             {
                 playlists.add(new Playlist(
                         rs.getString(1),  //plt_name
-                        rs.getString(2)   //username
+                        rs.getString(2),  //username
+                        rs.getString(3)   //Playlist ID
                         ));
             }
             return playlists;
@@ -288,10 +320,8 @@ public class QueryExecutor
 
             while(rs.next())
             {
-                songs.add(new Song(rs.getInt(1),  //year
-                        rs.getString(2),          //id
-                        rs.getString(3),          //artist
-                        rs.getString(4)));        //title
+                System.out.println("QUERY-EXECUTOR: Song " + rs.getString(2) + " founded in playlist: " + rs.getString(1));
+                songs.add(GetSongsByID(rs.getString(2)));
             }
             return songs;
         }
