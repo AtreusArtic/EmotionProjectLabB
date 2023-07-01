@@ -33,7 +33,6 @@ public interface ServerInterface extends Remote
     public List<Song> SearchSongByYearArtist(String year, String artist) throws RemoteException, SQLException;
 
     /*
-    *
     *  Playlist actions:
     *  1. Create a method that allow the client to create a new playlist;
     *  2. Create a method that allow the client to get all playlist of a user;

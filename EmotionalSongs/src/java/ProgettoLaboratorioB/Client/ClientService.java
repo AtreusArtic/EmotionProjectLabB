@@ -10,15 +10,27 @@ import java.util.List;
 
 public class ClientService {
 
+    //TODO: ClientService must garatee multiple clients connection. and take care about all the clients connected.
+
     static User user_connected = null;
 
     //  ------- SYSTEM MODULE FUNCTIONS --------:
+
+    /**
+     * This function allow the client to start the client-application.
+     * @return true if the application is started, false otherwise.
+     * @throws RemoteException if the connection with the server fails.
+     */
     public static boolean StartClientApplication() throws RemoteException
     {
         new Client();
         return CheckConnection();
     }
 
+    /**
+     * This function allow the client if the server is online.
+     * @return true if the server is online, false otherwise.
+     */
     public static boolean CheckConnection()
     {
         try
@@ -32,6 +44,13 @@ public class ClientService {
     }
 
     //  ------- USER MODULE FUNCTIONS --------:
+
+    /**
+     * This function allow the user to register in the application.
+     * and go online on the server as user registered in the application database.
+     * @param user the new user that want to register in the application.
+     * @return true if the registration is successful, false otherwise.
+     */
     public static boolean RegisterNewUser(User user){
         try {
             System.out.println("CLIENT-SERVICE request to server sent.");
@@ -43,6 +62,14 @@ public class ClientService {
         }
     }
 
+    /**
+     * This function allow the user to login in the application.
+     * and go online on the server as user registered in the application database.
+     * @param username the username of the user that want to log in.
+     * @param password the password of the user that want to log in.
+     * @return true if the login is successful, false otherwise.
+     * @throws SQLException if the query to the database fails.
+     */
     public static boolean Login(String username, String password) throws SQLException {
         try
         {
@@ -55,6 +82,10 @@ public class ClientService {
         }
     }
 
+    /**
+     * This function allow the user to logout from the application.
+     * and go offline from the server as user.
+     */
     public static void Logout(){
         try
         {
@@ -65,6 +96,10 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method return the user that is logged in the application
+     * @return the user that is logged in the application
+     */
     public static void ShowUserProfile()
     {
         try
@@ -77,6 +112,13 @@ public class ClientService {
     }
 
     //  ------- SONG MODULE FUNCTIONS --------:
+
+    /**
+     * This method request to the server to search a song by title
+     * @param title a string that the user type in the search bar.
+     * @return a list of songs where the title compare with the string passed as parameter.
+     * @throws SQLException if the query to the database fails.
+     */
     public static List<Song> SearchSongByTitle(String title) throws SQLException {
         try
         {
@@ -87,6 +129,14 @@ public class ClientService {
         }
     }
 
+
+    /**
+     * This method request to the server to search a song by year and title
+     * @param year when the song was released
+     * @param title the title of the song
+     * @return a list of songs that match the search
+     * @throws SQLException
+     */
     public static List<Song> SearchSongByYearTitle(String year, String title) throws SQLException {
         try
         {
@@ -98,6 +148,13 @@ public class ClientService {
     }
 
     //  ------- PLAYLIST MODULE FUNCTIONS --------:
+
+    /**
+     * This method request to the server to create a new playlist
+     * @param ply_name the name of the playlist to create
+     * @param plt_id the id of the playlist
+     * @return true if the playlist is created, false otherwise
+     */
     public static boolean CreateNewPlaylist(String ply_name, String plt_id){
         try
         {
@@ -111,6 +168,10 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method request to the server to get all the playlists of the user
+     * @return a list of playlists by the username of the user connected.
+     */
     public static List<Playlist> GetUserPlaylists(){
         try
         {
@@ -128,6 +189,11 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method request to the server to get all the songs from a playlist
+     * @param playlist_id the id of the playlist
+     * @return a list of songs
+     */
     public static List<Song> GetPlaylistSongs(String playlist_id){
         try
         {
@@ -138,6 +204,12 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method request to the server to add a song to a playlist
+     * @param playlist_id the id of the playlist where the song will be added
+     * @param song_id the id of the song to add
+     * @return true if the song has been added, false otherwise
+     */
     public static boolean AddSongToPlaylist(String playlist_id, String song_id){
         try
         {
@@ -148,6 +220,12 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method request to the server to remove a song from a playlist
+     * @param playlist_id the id of the playlist where the song is
+     * @param song_id the id of the song to remove
+     * @return true if the song has been removed, false otherwise
+     */
     public static boolean RemoveSongFromPlaylist(String playlist_id, String song_id){
         try
         {
@@ -158,6 +236,11 @@ public class ClientService {
         }
     }
 
+    /**
+     * This method request to the server to delete a playlist
+     * @param playlist_id the id of the playlist to delete
+     * @return true if the playlist has been deleted, false otherwise
+     */
     public static boolean DeletePlaylist(String playlist_id){
         try
         {

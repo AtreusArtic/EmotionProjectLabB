@@ -2,7 +2,7 @@ package ProgettoLaboratorioB.Serializables;
 
 import java.io.Serializable;
 
-public class User implements Serializable
+public class User implements Serializable, Comparable<User>
 {
 
     private final static long serialVersionUID = 1L;
@@ -100,4 +100,7 @@ public class User implements Serializable
                 ", CF='" + GetCF() + '\'' +
                 '.';
     }
+
+    @Override
+    public int compareTo(User user) {return 0;}
 }

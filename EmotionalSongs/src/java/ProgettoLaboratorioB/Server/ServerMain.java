@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 /**
  * ServerMain class is the class used to start the server.
- * The server can use the methods defined in the interface using the remote object of the server.
+ * In this class the remote object is initialized and the server is started.
  * The remote object is created by the RMI registry.
- * Also, the server can connect to the database, using the database class.
- * The database class is used by the server to interact with the database.
+ * Also, the remote obj can connect to the database,
+ * and implement the methods to interact with it through the QueryExecutor class.
  */
 public class ServerMain
 {

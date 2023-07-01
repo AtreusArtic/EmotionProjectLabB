@@ -1,6 +1,8 @@
 package ProgettoLaboratorioB.Serializables;
 
-public class Emotions implements java.io.Serializable
+import java.io.Serializable;
+
+public class Emotions implements Serializable, Comparable<Emotions>
 {
     private String emotion_name;
 
@@ -60,4 +62,6 @@ public class Emotions implements java.io.Serializable
 
 
 
+    @Override
+    public int compareTo(Emotions emotions) {return 0;}
 }

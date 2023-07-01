@@ -60,7 +60,5 @@ public class Song implements Serializable, Comparable<Song>{
     }
 
     @Override
-    public int compareTo(Song song) {
-        return 0;
-    }
+    public int compareTo(Song song) { return 0;}
 }
