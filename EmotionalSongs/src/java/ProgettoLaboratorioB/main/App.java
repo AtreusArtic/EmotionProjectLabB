@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.main;
 
 import ProgettoLaboratorioB.Client.ClientService;
+import ProgettoLaboratorioB.GUI.ManagerGUI;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
@@ -21,6 +22,8 @@ public class App
     public static void main( String[] args ) throws RemoteException, SQLException
     {
         RunApplication();
+        LaunchGUIModules(args);
+
     }
 
     /**
@@ -41,8 +44,13 @@ public class App
         else
         {
             App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
+
             StartMainModule();
         }
+    }
+
+    public static void LaunchGUIModules(String[] args) throws RemoteException, SQLException {
+        ManagerGUI.main(args);
     }
 
     public static void StartMainModule() throws RemoteException, SQLException {

@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.Database;
 /**
+ * TODO: REFACTOR THE DOCUMENTATION OF THIS CLASS!
  * Query module is an abstract where all the queries defined in the database are stored.
  * The queries are used by the server to interact with the database.
  * For example, the server can use the query to insert a new user in the database.
@@ -51,15 +52,15 @@ public class QueryExecutor
         try (Scanner in = new Scanner(queryModule.songfile)){
             while(in.hasNextLine()){
                 String objString = in.nextLine();
-                String [] songAtrs = objString.split("<SEP>");
-                if(songAtrs.length >= 3)
+                String [] songAttrs = objString.split("<SEP>");
+                if(songAttrs.length >= 3)
                 {
                     try
                     {
                         Statement stm = con.createStatement();
                         String query = String.format(queryModule.getQuery(
                                 QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG),
-                                songAtrs[0], songAtrs[1], songAtrs[2], songAtrs[3].replace("'", "''"));
+                                songAttrs[0], songAttrs[1], songAttrs[2], songAttrs[3].replace("'", "''"));
 
                         stm.executeUpdate(query);
                     }catch (SQLException e)
