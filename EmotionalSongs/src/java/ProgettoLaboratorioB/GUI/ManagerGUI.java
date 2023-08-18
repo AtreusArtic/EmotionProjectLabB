@@ -24,13 +24,10 @@ public class ManagerGUI extends Application{
      */
     @Override
     public void start(Stage stage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenù.fxml"));
         FXMLLoader fxml_Loader = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Parent root1 = (Parent) fxml_Loader.load();
-
-
-
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
