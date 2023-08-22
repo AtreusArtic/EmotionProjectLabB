@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,11 +21,41 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+      <AnchorPane prefHeight="480.0" prefWidth="301.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1">
+         <children>
+            <Button depthTest="DISABLE" ellipsisString="%key.unspecified" layoutX="115.0" layoutY="104.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #000000;" text="Sign in" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Zapfino" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="NW_RESIZE" />
+               </cursor>
+            </Button>
+            <Button layoutX="115.0" layoutY="166.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Login" textAlignment="CENTER" textFill="#1f66a4" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Ayuthaya" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="115.0" layoutY="224.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Anonimous" textAlignment="CENTER" textFill="#1f66a4" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Ayuthaya" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="115.0" layoutY="285.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Exit" textAlignment="CENTER" textFill="#1f66a4" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Ayuthaya" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="480.0" prefWidth="354.0" style="-fx-background-color: #000000;">
          <children>
             <ImageView fitHeight="270.0" fitWidth="268.0" layoutX="26.0" layoutY="74.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/66643e3e7feea9b07d469b229c1b2722.jpg" />
+                  <Image url="@sources/HomeLog.jpg" />
                </image>
             </ImageView>
             <Text fill="#b5e48e" layoutX="20.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS" wrappingWidth="300.0">
@@ -32,19 +63,6 @@
                   <Font name="Verdana Bold Italic" size="27.0" />
                </font>
             </Text>
-            <Icon content="INFO" layoutX="30.0" layoutY="31.0" prefHeight="22.0" prefWidth="24.0" style="-fx-background-color: #F5F5F5;">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Icon>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="480.0" prefWidth="301.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1">
-         <children>
-            <Button layoutX="110.0" layoutY="103.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="100.0" text="Sign In" textFill="#7fb94c" />
-            <Button layoutX="111.0" layoutY="199.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="100.0" text="Login" textFill="#40ae34" />
-            <Button layoutX="96.0" layoutY="292.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="128.0" text="Anonymous Menù" textFill="#098d00" />
-            <Button layoutX="107.0" layoutY="384.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="109.0" text="Exit from the app" textFill="#0e7500" />
          </children>
       </AnchorPane>
    </children>
