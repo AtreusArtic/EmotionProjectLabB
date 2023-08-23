@@ -133,7 +133,8 @@ public class App
             System.out.println("3. Add song to playlist");
             System.out.println("4. Show all your playlist");
             System.out.println("5. Create new emotion");
-            System.out.println("6. Logout");
+            System.out.println("6. Read emotion evaluation");
+            System.out.println("7. Logout");
 
             switchcase = Integer.parseInt(sc.nextLine());
             switch(switchcase)
@@ -154,6 +155,9 @@ public class App
                     RegisterNewEmotion();
                     break;
                 case 6:
+                    ReadEmotionEvalutation();
+                    break;
+                case 7:
                     ClientService.Logout();
                     App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
                     break;
@@ -344,7 +348,7 @@ public class App
     }
 
     private static void RegisterNewEmotion() throws RemoteException {
-System.out.println("Insert the emotion name:");
+        System.out.println("Insert the emotion name:");
         System.out.println("Now whe are going to register a new emotion...");
         if(ClientService.RegisterNewEmotion())
         {
@@ -354,8 +358,20 @@ System.out.println("Insert the emotion name:");
         {
             System.out.println("Error: emotion creation failed");
         }
+    }
 
+    public static void ReadEmotionEvalutation() throws RemoteException {
+        String song_id = "TRAAABD128F429CF47";
 
+        List<Emotions> emotions = ClientService.GetEmotionsFromSong(song_id);
+        if (emotions != null) {
+            for (Emotions e : emotions) {
+                System.out.println(e);
+                System.out.println("\n");
+            }
+        } else {
+            System.out.println("Error: no emotions found for the song: " + song_id);
+        }
     }
 }
 

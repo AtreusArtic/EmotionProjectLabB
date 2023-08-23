@@ -21,7 +21,7 @@ public class ClientService {
     //  ------- SYSTEM MODULE FUNCTIONS --------:
 
     /**
-     * This function allow the client to start the client-application.
+     * This function allows the client to start the client-application.
      * @return true if the application is started, false otherwise.
      * @throws RemoteException if the connection with the server fails.
      */
@@ -32,7 +32,7 @@ public class ClientService {
     }
 
     /**
-     * This function allow the client if the server is online.
+     * This function allows the client if the server is online.
      * @return true if the server is online, false otherwise.
      */
     public static boolean CheckConnection()
@@ -50,9 +50,9 @@ public class ClientService {
     //  ------- USER MODULE FUNCTIONS --------:
 
     /**
-     * This function allow the user to register in the application.
+     * This function allows the user to register in the application.
      * and go online on the server as user registered in the application database.
-     * @param user the new user that want to register in the application.
+     * @param user the new user that wants to register in the application.
      * @return true if the registration is successful, false otherwise.
      */
     public static boolean RegisterNewUser(User user){
@@ -67,10 +67,10 @@ public class ClientService {
     }
 
     /**
-     * This function allow the user to login in the application.
+     * This function allows the user to login in the application.
      * and go online on the server as user registered in the application database.
-     * @param username the username of the user that want to log in.
-     * @param password the password of the user that want to log in.
+     * @param username the username of the user that wants to log in.
+     * @param password the password of the user that wants to log in.
      * @return true if the login is successful, false otherwise.
      * @throws SQLException if the query to the database fails.
      */
@@ -87,8 +87,8 @@ public class ClientService {
     }
 
     /**
-     * This function allow the user to logout from the application.
-     * and go offline from the server as user.
+     * This function allows the user to logout from the application.
+     * and go offline from the server as users.
      */
     public static void Logout(){
         try
@@ -101,7 +101,7 @@ public class ClientService {
     }
 
     /**
-     * This method return the user that is logged in the application
+     * This method returns the user that is logged in the application
      * @return the user that is logged in the application
      */
     public static void ShowUserProfile()
@@ -119,7 +119,7 @@ public class ClientService {
 
     /**
      * This method request to the server to search a song by title
-     * @param title a string that the user type in the search bar.
+     * @param title a string that the user types in the search bar.
      * @return a list of songs where the title compare with the string passed as parameter.
      * @throws SQLException if the query to the database fails.
      */
@@ -255,6 +255,12 @@ public class ClientService {
         }
     }
 
+    //  ------- EMOTION MODULE FUNCTIONS --------:
+
+    /**
+     * This method request to the server to register a new emotion
+     * @return true if the emotion has been registered, false otherwise
+     */
     public static boolean RegisterNewEmotion() throws RemoteException {
         Map<EMOTION, Integer> emotions = new HashMap<>();
 
@@ -266,6 +272,18 @@ public class ClientService {
         Emotions newEmotion = new Emotions("TRAAABD128F429CF47",user_connected.GetUsername(),"Bella canzone zi...", emotions);
         System.out.println("New emotion created: " + newEmotion);
         return Client.server.RegisterNewEmotion(newEmotion);
+    }
+
+
+    /**
+     * This method request to the server to get all the emotions of a song
+     * @param songID the id of the song
+     * @return a list of emotions
+     * this fynction is accessible either by the user and by the anonymous client that is not registered in the application.
+     */
+    public static List<Emotions> GetEmotionsFromSong(String songID) throws RemoteException
+    {
+        return Client.server.GetEmotionsFromSong(songID);
     }
 }
 

@@ -12,12 +12,11 @@ import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
+import ProgettoLaboratorioB.main.Enums;
 
 import java.io.FileNotFoundException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * I think that this class should be an abstract class, in order to make a singleton pattern.
@@ -59,8 +58,8 @@ public class QueryExecutor
                     try
                     {
                         Statement stm = con.createStatement();
-                        String query = String.format(queryModule.getQuery(
-                                QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG),
+                        String query = String.format(Objects.requireNonNull(queryModule.getQuery(
+                                        QueryModule.TABLE.SONGS, QueryModule.QUERY.ADD_SONG)),
                                 songAttrs[0], songAttrs[1], songAttrs[2], songAttrs[3].replace("'", "''"));
 
                         stm.executeUpdate(query);
@@ -82,8 +81,8 @@ public class QueryExecutor
         List<Song> songs = new ArrayList<>();
         try
         {
-            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
-                            QueryModule.QUERY.SEARCH_SONG_BY_TITLE));
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                    QueryModule.QUERY.SEARCH_SONG_BY_TITLE)));
 
             ps = con.prepareStatement(query);
 
@@ -113,8 +112,8 @@ public class QueryExecutor
         List<Song> songs = new ArrayList<>();
         try
         {
-            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
-                    QueryModule.QUERY.SEARCH_SONG_BY_YEARARTIST));
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                    QueryModule.QUERY.SEARCH_SONG_BY_YEARARTIST)));
 
 
             ps = con.prepareStatement(query);
@@ -147,8 +146,8 @@ public class QueryExecutor
         Song song = null;
         try
         {
-            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.SONGS,
-                    QueryModule.QUERY.GET_SONGS_BY_ID));
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.SONGS,
+                    QueryModule.QUERY.GET_SONGS_BY_ID)));
 
             ps = con.prepareStatement(query);
 
@@ -180,8 +179,8 @@ public class QueryExecutor
         ResultSet rs;
         try
         {
-            String query = queryModule.getQuery
-                    (QueryModule.TABLE.USERS, QueryModule.QUERY.LOGIN);
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery
+                    (QueryModule.TABLE.USERS, QueryModule.QUERY.LOGIN)));
 
             ps = con.prepareStatement(query);
             ps.setString(1,username);
@@ -221,8 +220,8 @@ public class QueryExecutor
             System.out.println("QUERY-EXECUTOR: Connection reference set: " + con);
             try
             {
-                query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.USERS,
-                        QueryModule.QUERY.REGISTER), username, password, email, name, surname, address, CF);
+                query = java.lang.String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.USERS,
+                        QueryModule.QUERY.REGISTER)), username, password, email, name, surname, address, CF);
             }
             catch (NullPointerException e)
             {
@@ -252,8 +251,8 @@ public class QueryExecutor
         try {
             try
             {
-                query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                        QueryModule.QUERY.CREATE_PLAYLIST), plt_name, username, ID);
+                query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.CREATE_PLAYLIST)), plt_name, username, ID);
             } catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
@@ -278,8 +277,8 @@ public class QueryExecutor
         List<Playlist> playlists = new ArrayList<>();
         try
         {
-            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                    QueryModule.QUERY.GET_USER_PLAYLISTS));
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                    QueryModule.QUERY.GET_USER_PLAYLISTS)));
 
             ps = con.prepareStatement(query);
 
@@ -311,8 +310,8 @@ public class QueryExecutor
         List<Song> songs = new ArrayList<>();
         try
         {
-            String query = java.lang.String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                    QueryModule.QUERY.GET_ALL_SONGS_FROM_PLAYLIST));
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                    QueryModule.QUERY.GET_ALL_SONGS_FROM_PLAYLIST)));
 
             ps = con.prepareStatement(query);
 
@@ -339,8 +338,8 @@ public class QueryExecutor
         try {
             try
             {
-                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                        QueryModule.QUERY.ADD_SONG_TO_PLAYLIST),playlist_id, song_id);
+                query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.ADD_SONG_TO_PLAYLIST)),playlist_id, song_id);
             } catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
@@ -364,8 +363,8 @@ public class QueryExecutor
         try {
             try
             {
-                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                        QueryModule.QUERY.DELETE_SONG_FROM_PLAYLIST),playlist_id, song_id);
+                query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.DELETE_SONG_FROM_PLAYLIST)),playlist_id, song_id);
             } catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
@@ -389,8 +388,8 @@ public class QueryExecutor
         try {
             try
             {
-                query = String.format(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                        QueryModule.QUERY.DELETE_PLAYLIST),playlist_id);
+                query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
+                        QueryModule.QUERY.DELETE_PLAYLIST)),playlist_id);
             } catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
@@ -421,8 +420,8 @@ public class QueryExecutor
         {
             try
             {
-                query = String.format(queryModule.getQuery(QueryModule.TABLE.EMOTIONS,
-                        QueryModule.QUERY.REGISTER_EMOTION), emotion.GetSong(), emotion.GetUser(),
+                query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.EMOTIONS,
+                                QueryModule.QUERY.REGISTER_EMOTION)), emotion.GetSong(), emotion.GetUser(),
                         emotion.GetEvaluateEmotion(), emotion.GetEmotionDescription());
             }
             catch (Exception e)
@@ -439,6 +438,38 @@ public class QueryExecutor
         {
             System.out.println("QUERY-EXECUTOR error: " + e);
             return false;
+        }
+    }
+
+    public List<Emotions> GetEmotionBySongID(String songid)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Emotions> emotions = new ArrayList<>();
+        try
+        {
+            String query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.EMOTIONS,
+                    QueryModule.QUERY.GET_EMOTIONS)));
+
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, songid);
+
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                emotions.add(new Emotions(rs.getString(1),  //songid
+                        rs.getString(2),          //userid
+                        rs.getString(3),          //emotion
+                        (Map<Enums.EMOTION, Integer>) rs.getObject(4)));        //description
+            }
+            return emotions;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return null;
         }
     }
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class implement a mapping system betweem tables and relative queries
+ * This class implements a mapping system between tables and relative queries
  * those are defined in the postgres database;
  */
 
@@ -18,7 +18,7 @@ import java.util.Map;
 public class QueryModule
 {
     /**
-     * ENUMS: This enums are used to map table_name(KEY) and the list of queries associated to it(VALUE).
+     * ENUMS: These enums are used to map table_name(KEY) and the list of queries associated to it(VALUE).
      * by using the Java Hashmap Class with <Table)><QueriesAssociated>
      * */
     public enum QUERY
@@ -52,7 +52,7 @@ public class QueryModule
          */
         REGISTER_EMOTION,
         DELETE_EMOTION,
-        GET_EMOTION,
+        GET_EMOTIONS,
     }
 
     /**
@@ -68,7 +68,7 @@ public class QueryModule
 
     /**
      * DATA:
-     *  File path to songs file (check in 'data' folder of the project)
+     *  File path-to-songs file (check in the 'data' folder of the project)
      *  Thanks to File Separator property we can set the path dynamically for every OS.
      *  And the file path directory is set to the current working directory of the project,
      *  thanks to the System.getProperty("user.dir") method.
@@ -201,11 +201,8 @@ public class QueryModule
         emotions_table_queries.put(QUERY.REGISTER_EMOTION,
                 "INSERT INTO emotions (songid, userid, emotion, description) VALUES ('%s', '%s', '%s', '%s');");
 
-        emotions_table_queries.put(QUERY.DELETE_EMOTION,
-                "DELETE FROM emotions WHERE songid = ? AND userid = ?");
-
-        emotions_table_queries.put(QUERY.GET_EMOTION,
-                "SELECT emotion FROM emotions WHERE song_id = ? AND user_id = ?");
+        emotions_table_queries.put(QUERY.GET_EMOTIONS,
+                "SELECT emotion FROM emotions WHERE songid = ?");
 
         tableMapping.put(TABLE.EMOTIONS, emotions_table_queries);
     }

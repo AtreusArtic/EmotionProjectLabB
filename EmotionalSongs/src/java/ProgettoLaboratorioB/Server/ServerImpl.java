@@ -43,7 +43,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      *  please check in the folder DatabaseConfig and change it,
      *  to your database configuration file.
      */
-    private static String filename = "EnricoDBConfigWin.properties";
+    private static String filename = "EnricoDBConfigOSX.properties";
 
     /**
      * This method load the database configuration from the filename.
@@ -272,6 +272,11 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     @Override
     public boolean RegisterNewEmotion(Emotions emotion) throws RemoteException {
         return qrExecute.RegisterNewEmotion(emotion);
+    }
+
+    @Override
+    public List<Emotions> GetEmotionsFromSong(String songID) throws RemoteException {
+        return qrExecute.GetEmotionBySongID(songID);
     }
 
     /**
