@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< Updated upstream
-=======
-      <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenù.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/target/classes/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
->>>>>>> Stashed changes
-=======
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/DatabaseConfig/EmotionalSongsDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/DatabaseConfig/_EmotionalSongsDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,42 +62,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-20.0.1/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/Users/marikascalise/Documents/GitHub/EmotionProjectLabB/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/sources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;PostgreSQL&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "PostgreSQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/sources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
-<<<<<<< Updated upstream
-  <component name="RunManager" selected="Application.ManagerGUI">
-=======
-  <component name="RunManager" selected="Application.App">
->>>>>>> Stashed changes
+  <component name="RunManager" selected="Application.ServerMain">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.main.App" />
       <module name="EmotionalSongs" />
@@ -225,8 +206,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.DatabaseService" />
         <item itemvalue="JUnit.AppTest.testApp" />
       </list>
@@ -279,7 +260,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="marika_branch" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
