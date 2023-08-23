@@ -7,12 +7,22 @@
     <list default="true" id="8f2a4208-c800-4be1-806d-07e5d1a51f8c" name="Changes" comment="Added pw for access the DB">
 <<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
 =======
       <change afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenù.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/ManagerGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmotionalSongs/target/classes/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" />
+>>>>>>> Stashed changes
+=======
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/DatabaseConfig/EmotionalSongsDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/DatabaseConfig/_EmotionalSongsDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Database/QueryModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/GUI/FirstMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmotionalSongs/src/java/ProgettoLaboratorioB/Server/ServerMain.java" afterDir="false" />
 >>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +111,11 @@
       <recent name="$PROJECT_DIR$/EmotionalSongs/src/GUI/javaFX/ProgettoLaboratorioB/GUI" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager" selected="Application.ManagerGUI">
+=======
+  <component name="RunManager" selected="Application.App">
+>>>>>>> Stashed changes
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ProgettoLaboratorioB.main.App" />
       <module name="EmotionalSongs" />
@@ -211,8 +225,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="Application.DatabaseService" />
         <item itemvalue="JUnit.AppTest.testApp" />
       </list>
