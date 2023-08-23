@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.main;
 
+import ProgettoLaboratorioB.main.Enums.SYSTEM_STATE;
 import java.rmi.RemoteException;
 import java.util.List;
 

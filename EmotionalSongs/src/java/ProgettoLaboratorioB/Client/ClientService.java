@@ -1,12 +1,16 @@
 package ProgettoLaboratorioB.Client;
 
+import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
+import ProgettoLaboratorioB.main.Enums.EMOTION;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ClientService {
 
@@ -251,5 +255,17 @@ public class ClientService {
         }
     }
 
+    public static boolean RegisterNewEmotion() throws RemoteException {
+        Map<EMOTION, Integer> emotions = new HashMap<>();
+
+        //Only for testing: in this class we must not initialize the emotions...
+        emotions.put(EMOTION.JOY, 4);
+        emotions.put(EMOTION.SADNESS, 2);
+        emotions.put(EMOTION.NOSTALGIA, 1);
+
+        Emotions newEmotion = new Emotions("TRAAABD128F429CF47",user_connected.GetUsername(),"Bella canzone zi...", emotions);
+        System.out.println("New emotion created: " + newEmotion);
+        return Client.server.RegisterNewEmotion(newEmotion);
+    }
 }
 

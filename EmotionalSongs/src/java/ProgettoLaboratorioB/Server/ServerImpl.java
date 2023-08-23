@@ -2,6 +2,7 @@ package ProgettoLaboratorioB.Server;
 
 import ProgettoLaboratorioB.Database.DatabaseService;
 import ProgettoLaboratorioB.Database.QueryExecutor;
+import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
@@ -42,7 +43,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
      *  please check in the folder DatabaseConfig and change it,
      *  to your database configuration file.
      */
-    private static String filename = "EnricoDBConfigOSX.properties";
+    private static String filename = "EnricoDBConfigWin.properties";
 
     /**
      * This method load the database configuration from the filename.
@@ -118,6 +119,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
         DatabaseService.CreateSongsTable(qrExecute.con,"songs");
         DatabaseService.CreatePlaylistTable(qrExecute.con,"playlists");
         DatabaseService.CreatePlaylistSavedTable(qrExecute.con,"playlist_saved");
+        DatabaseService.CreateEmotionsTable(qrExecute.con,"emotions");
         //qrExecuter.LoadSongData();
         // ATTENZIONE: se si vuole caricare le canzoni nel database, decommentare la riga sovraintesa;
         // Se invece, il database contiente già le canzoni, lasciare commentata la riga sovraintesa.
@@ -261,6 +263,15 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     @Override
     public synchronized boolean DeletePlaylist(String playlistID) throws RemoteException {
         return qrExecute.DeletePlaylist(playlistID);
+    }
+
+    /**
+     * This function is used by the user client to register an emotion about a song.
+     * @param emotion the new emotion to register.
+     */
+    @Override
+    public boolean RegisterNewEmotion(Emotions emotion) throws RemoteException {
+        return qrExecute.RegisterNewEmotion(emotion);
     }
 
     /**

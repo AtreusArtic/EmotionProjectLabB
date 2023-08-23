@@ -67,4 +67,21 @@ public class DatabaseService
             System.out.println("DB_SERVICE: " + e);
         }
     }
+
+    public static void CreateEmotionsTable(Connection connection, String table_name)
+    {
+        Statement stmt;
+
+        try
+        {
+            String query = "create table " + table_name + "(songID varchar(200), userID varchar(200), emotion varchar(200), description varchar(250), primary key(songID, userID)," +
+                    " foreign key(userID) references users(username), foreign key(songID) references songs(id));";
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("DB_SERVICE: Table " + table_name + " created successfully");
+        } catch (SQLException e)
+        {
+            System.out.println("DB_SERVICE: " + e);
+        }
+    }
 }

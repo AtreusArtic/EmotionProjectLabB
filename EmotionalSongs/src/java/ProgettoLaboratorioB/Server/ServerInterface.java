@@ -1,13 +1,16 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
+import ProgettoLaboratorioB.main.Enums;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Server interface define the methods that the server must implement,
@@ -52,6 +55,9 @@ public interface ServerInterface extends Remote
     /*
     *  Emotion actions:
     *  1. Create a method that allow the client to read an Emotion about a song;
+    */
+    boolean RegisterNewEmotion(Emotions emotion) throws RemoteException;
+    /*
     *  2. Create a method that allow the client to register a new Emotion about specific song;
     *  3. Create a method that allow the client to remove an Emotion about a song;
     */
@@ -62,6 +68,7 @@ public interface ServerInterface extends Remote
     * TODO: server take into account of how many clients are connected.
      */
     public boolean SendMessageToClient(String message) throws RemoteException;
+
 
 }
 

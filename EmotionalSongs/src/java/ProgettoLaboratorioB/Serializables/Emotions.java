@@ -1,28 +1,30 @@
 package ProgettoLaboratorioB.Serializables;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import ProgettoLaboratorioB.main.Enums.EMOTION;
 
 public class Emotions implements Serializable, Comparable<Emotions>
 {
-    private String emotion_name;
-
     private String emotion_description;
 
-    private String Song;
+    private String IDSong;
 
-    private String User;
+    private String IDUser;
 
-    public Emotions(String emotion_name, String emotion_description, String Song, String User)
+    private Map<EMOTION, Integer> EvaluateEmotion;
+
+    public Emotions(String IDSong,String IDUser, String emotion_description, Map<EMOTION, Integer> EvaluateEmotion)
     {
-        this.emotion_name = emotion_name;
+
+        this.IDSong = IDSong;
+        this.IDUser = IDUser;
         this.emotion_description = emotion_description;
-        this.Song = Song;
-        this.User = User;
-    }
-
-    public String GetEmotionName()
-    {
-        return this.emotion_name;
+        this.EvaluateEmotion = EvaluateEmotion;
     }
 
     public String GetEmotionDescription()
@@ -32,35 +34,38 @@ public class Emotions implements Serializable, Comparable<Emotions>
 
     public String GetSong()
     {
-        return this.Song;
+        return this.IDSong;
     }
 
     public String GetUser()
     {
-        return this.User;
+        return this.IDUser;
     }
 
-    public void GetEmotionName(String emotion_name)
+    public Map<EMOTION, Integer> GetEvaluateEmotion()
     {
-        this.emotion_name = emotion_name;
+        return this.EvaluateEmotion;
     }
 
-    public void GetEmotionDescription(String emotion_description)
+    public void SetEmotionDescription(String emotion_description)
     {
         this.emotion_description = emotion_description;
     }
 
-    public void GetSong(String Song)
+    public void SetSong(String Song)
     {
-        this.Song = Song;
+        this.IDSong = Song;
     }
 
-    public void GetUser(String User)
+    public void SetUser(String User)
     {
-        this.User = User;
+        this.IDUser = User;
     }
 
-
+    public void SetEvaluateEmotion(Map<EMOTION,Integer> EvaluateEmotion)
+    {
+        this.EvaluateEmotion = EvaluateEmotion;
+    }
 
     @Override
     public int compareTo(Emotions emotions) {return 0;}

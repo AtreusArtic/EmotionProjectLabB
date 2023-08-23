@@ -9,6 +9,12 @@ import java.util.Map;
  * those are defined in the postgres database;
  */
 
+ /*TODO Per BUGLIO:
+       1.Queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
+       ed eventualmente vanno modificate a seconda delle tue esigenze
+       2.Inoltre verificare che le tabelle definite nella classe DatabaseService,
+       siano congrue a quelle definite nei tuoi schemi ER.*/
+
 public class QueryModule
 {
     /**
@@ -44,7 +50,7 @@ public class QueryModule
         /**
          * Emotions table queries
          */
-        ADD_EMOTION,
+        REGISTER_EMOTION,
         DELETE_EMOTION,
         GET_EMOTION,
     }
@@ -121,11 +127,7 @@ public class QueryModule
     }
 
 
-    /*TODO Per BUGLIO:
-       1.Queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
-       ed eventualmente vanno modificate a seconda delle tue esigenze
-       2.Inoltre verificare che le tabelle definite nella classe DatabaseService,
-       siano congrue a quelle definite nei tuoi schemi ER.*/
+
 
     /**
      * This method set all the queries associated to the songs table.
@@ -137,7 +139,7 @@ public class QueryModule
 
         songs_table_queries.put
                 (QUERY.ADD_SONG,
-                        "insert into songs(year, id, artist, title) values('%s', '%s', '%s', '%s');");
+                        "INSERT INTO songs(year, id, artist, title) VALUES('%s', '%s', '%s', '%s');");
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_TITLE,
                         "SELECT * FROM songs WHERE title LIKE ?");
@@ -196,14 +198,14 @@ public class QueryModule
     {
         Map<QUERY, String> emotions_table_queries = new HashMap<>();
 
-        emotions_table_queries.put(QUERY.ADD_EMOTION,
-                "INSERT INTO emotions (song_id, username, emotion) VALUES (?, ?, ?)");
+        emotions_table_queries.put(QUERY.REGISTER_EMOTION,
+                "INSERT INTO emotions (songid, userid, emotion, description) VALUES ('%s', '%s', '%s', '%s');");
 
         emotions_table_queries.put(QUERY.DELETE_EMOTION,
-                "DELETE FROM emotions WHERE song_id = ? AND username = ?");
+                "DELETE FROM emotions WHERE songid = ? AND userid = ?");
 
         emotions_table_queries.put(QUERY.GET_EMOTION,
-                "SELECT emotion FROM emotions WHERE song_id = ? AND username = ?");
+                "SELECT emotion FROM emotions WHERE song_id = ? AND user_id = ?");
 
         tableMapping.put(TABLE.EMOTIONS, emotions_table_queries);
     }

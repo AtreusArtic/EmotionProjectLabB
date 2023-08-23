@@ -8,6 +8,7 @@ package ProgettoLaboratorioB.Database;
  * Database class will declare a QueryModule object and use it to interact with the database.
  */
 
+import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
@@ -401,6 +402,40 @@ public class QueryExecutor
             return true;
 
         } catch (SQLException e)
+        {
+            System.out.println("QUERY-EXECUTOR error: " + e);
+            return false;
+        }
+    }
+
+
+    /**
+     * EMOTION QUERIES METHOD:
+     */
+
+    public static boolean RegisterNewEmotion(Emotions emotion)
+    {
+        Statement stmt;
+        String query;
+        try
+        {
+            try
+            {
+                query = String.format(queryModule.getQuery(QueryModule.TABLE.EMOTIONS,
+                        QueryModule.QUERY.REGISTER_EMOTION), emotion.GetSong(), emotion.GetUser(),
+                        emotion.GetEvaluateEmotion(), emotion.GetEmotionDescription());
+            }
+            catch (Exception e)
+            {
+                System.out.println("QUERY-EXECUTOR error: query string loading failed... ");
+                return false;
+            }
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("QUERY-EXECUTOR: Emotion registered successfully");
+            return true;
+        }
+        catch (SQLException e)
         {
             System.out.println("QUERY-EXECUTOR error: " + e);
             return false;

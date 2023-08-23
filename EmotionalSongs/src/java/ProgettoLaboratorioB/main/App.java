@@ -2,14 +2,17 @@ package ProgettoLaboratorioB.main;
 
 import ProgettoLaboratorioB.Client.ClientService;
 import ProgettoLaboratorioB.GUI.ManagerGUI;
+import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
+import ProgettoLaboratorioB.main.Enums.SYSTEM_STATE;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+
 
 
 public class App
@@ -23,7 +26,6 @@ public class App
     {
         RunApplication();
         LaunchGUIModules(args);
-
     }
 
     /**
@@ -118,7 +120,9 @@ public class App
         }
     }
 
-    public static void UserModuleMenu() throws SQLException {
+
+
+    public static void UserModuleMenu() throws SQLException, RemoteException {
         int switchcase;
 
         while (App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.USER_MENU))
@@ -128,7 +132,8 @@ public class App
             System.out.println("2. Create new playlist");
             System.out.println("3. Add song to playlist");
             System.out.println("4. Show all your playlist");
-            System.out.println("5. Logout");
+            System.out.println("5. Create new emotion");
+            System.out.println("6. Logout");
 
             switchcase = Integer.parseInt(sc.nextLine());
             switch(switchcase)
@@ -146,6 +151,9 @@ public class App
                     GetAllUserPlaylist();
                     break;
                 case 5:
+                    RegisterNewEmotion();
+                    break;
+                case 6:
                     ClientService.Logout();
                     App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
                     break;
@@ -333,6 +341,21 @@ public class App
         } else {
             System.out.println("Error: no songs found in the playlist: " + playlist_id);
         }
+    }
+
+    private static void RegisterNewEmotion() throws RemoteException {
+System.out.println("Insert the emotion name:");
+        System.out.println("Now whe are going to register a new emotion...");
+        if(ClientService.RegisterNewEmotion())
+        {
+            System.out.println("Emotion created successfully");
+        }
+        else
+        {
+            System.out.println("Error: emotion creation failed");
+        }
+
+
     }
 }
 
