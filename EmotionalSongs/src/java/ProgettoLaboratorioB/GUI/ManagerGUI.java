@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.control.Label;
 
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -28,13 +29,11 @@ public class ManagerGUI extends Application{
         FXMLLoader fxml_Loader = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Parent root1 = (Parent) fxml_Loader.load();
-
-
-
-        String javaVersion = System.getProperty("java.version");
+        /*String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        Scene scene = new Scene(new StackPane(root), 640, 480);
+        AnchorPane test = new AnchorPane(l);*/
+        Scene scene = new Scene(new StackPane(root), 1450, 1000);
         stage.setTitle("Emotional Songs");
         stage.setScene(scene);
         stage.show();
