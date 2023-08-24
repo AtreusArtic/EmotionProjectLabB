@@ -1,8 +1,12 @@
 package ProgettoLaboratorioB.main;
 
 import ProgettoLaboratorioB.main.Enums.SYSTEM_STATE;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Properties;
 
 public class App_System{
 
@@ -88,6 +92,14 @@ public class App_System{
         }
     }
 
+
+    /**
+    * This function uses the binary search algorithm to search for an element in a list.
+     * @param <T> generic type of the list, so all Object that implements Comparable interface, can be used.
+     * @param element the element to search.
+     * @param list the list where to search the element.
+    **/
+
     public static <T extends Comparable<T>> T binarySearch(T element, List<T> list) {
         int low = 0;
         int high = list.size() - 1;
@@ -107,5 +119,94 @@ public class App_System{
 
         return null;
     }
+
+
+    // SERVER CONFIGURATION METHODS... //
+
+    /**
+     * This function writes the server ip in the ServerConfig.properties file,
+     * every time the Server starts, before to connect with the server.
+     * @param server_ip the server ip to write.
+     */
+    public static void WriteServerIP(String server_ip)
+    {
+        String filename = "ServerConfig.properties";
+        File server_config = null;
+
+        String file_path = SetFilePath(filename);
+
+        if(file_path != null)
+        {
+            server_config = new File(filename);
+        }
+
+        try(FileInputStream fileInputStream = new FileInputStream(server_config))
+        {
+            Properties properties = new Properties();
+            properties.load(fileInputStream);
+
+            properties.setProperty("server_ip", server_ip);
+
+            System.out.println("APP_SYSTEM, Server IP: " + server_ip);
+        }
+        catch (Exception e)
+        {
+            System.out.println("APP_SYSTEM Error: " + e);
+        }
+    }
+    /**
+     * This function loads the server ip from the ServerConfig.properties file,
+     * every time the client starts, before to connect with the server.
+     * @return the server ip.
+     */
+    public static String LoadServerIP()
+    {
+        String filename = "ServerConfig.properties";
+        File server_config = null;
+
+        String file_path = SetFilePath(filename);
+
+        if(file_path != null)
+        {
+            server_config = new File(filename);
+        }
+
+        try(FileInputStream fileInputStream = new FileInputStream(server_config))
+        {
+            Properties properties = new Properties();
+            properties.load(fileInputStream);
+
+            String server_ip = properties.getProperty("server_ip");
+
+            System.out.println("APP_SYSTEM: Server IP: " + server_ip);
+            return server_ip;
+        }
+        catch (Exception e)
+        {
+            System.out.println("APP_SYSTEM Error: " + e);
+            return null;
+        }
+    }
+
+    public static String SetFilePath(String filename)
+    {
+        if(System.getProperty("os.name").contains("Windows 10"))
+        {
+            filename = "data/" + filename;
+        }
+        else if(System.getProperty("os.name").contains("Mac OS X")) {
+            filename = "EmotionalSongs/data/" + filename;
+        }
+        else
+        {
+            filename = "data/" + filename;
+        }
+
+        String dir = System.getProperty("user.dir");
+        String file_path = dir + File.separator + filename;
+        return file_path;
+    }
+
+
 
 }

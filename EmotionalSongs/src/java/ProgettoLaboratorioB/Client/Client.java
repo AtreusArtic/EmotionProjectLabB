@@ -57,10 +57,6 @@ public class Client {
      */
     public static void GetConnection() throws RemoteException
     {
-
-        //Get Server IP:
-        GetServerIP();
-
         //Get connection with the server.
         try
         {
@@ -91,21 +87,7 @@ public class Client {
         }
     }
 
-    /**
-     * This method is used to get the server IP.
-     * @throws Exception if the Server_PORT is .
-     */
-    private static void GetServerIP()
-    {
-        try (final DatagramSocket datagramSocket = new DatagramSocket())
-        {
-            datagramSocket.connect(InetAddress.getByName("8.8.8.8"), SERVER_PORT);
-            server_address = datagramSocket.getLocalAddress().getHostAddress();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            server_address = "localhost";
-        }
-    }
+
 
 
 }

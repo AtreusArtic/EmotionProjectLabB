@@ -1,6 +1,10 @@
 package ProgettoLaboratorioB.Server;
 
+import ProgettoLaboratorioB.main.App_System;
+
 import java.io.FileNotFoundException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -24,6 +28,7 @@ public class ServerMain
 
         try
         {
+            LoadServerConfig();
             InitServerConnection();
         }catch (Exception e) {
             System.out.println("SERVER-MAIN: initialization error: " + e);
@@ -32,6 +37,12 @@ public class ServerMain
         //Only for test: wait for the user to press enter
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
+    }
+
+    private static void LoadServerConfig()
+    {
+        String server_address = GetServerIP();
+        App_System.WriteServerIP(server_address);
     }
 
     /**
@@ -52,6 +63,25 @@ public class ServerMain
         {
             System.out.println("SERVER-MAIN Error: failed to load songs file into database");
         }
+    }
+
+
+    /**
+     * This method is used to get the server IP.
+     * @throws Exception if the Server_PORT is .
+     */
+    private static String GetServerIP()
+    {
+        String server_address;
+        try (final DatagramSocket datagramSocket = new DatagramSocket())
+        {
+            datagramSocket.connect(InetAddress.getByName("8.8.8.8"), SERVER_PORT);
+            server_address = datagramSocket.getLocalAddress().getHostAddress();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            server_address = "localhost";
+        }
+        return server_address;
     }
 
 }
