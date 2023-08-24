@@ -1,6 +1,11 @@
 package ProgettoLaboratorioB.Serializables;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User implements Serializable, Comparable<User>
 {
@@ -88,6 +93,30 @@ public class User implements Serializable, Comparable<User>
 
     public void SetCF(String CF) {this.CF = CF;}
 
+
+    /**
+     * This function is used to check if the user's codice fiscale respect the format;
+     * @param codiceFiscale the user's codice fiscale;
+     * @return true if the codice fiscale respect the format, false otherwise;
+     */
+    public static boolean CodFiscalePattern(String codiceFiscale){
+
+        Pattern pattern = Pattern.compile("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$");
+
+        Matcher matcher = pattern.matcher(codiceFiscale);
+        return matcher.matches();
+    }
+
+    /**
+     * This function is used to check if the user's email respect the format;
+     * @param email the user's email;
+     * @return true if the email respect the format, false otherwise;
+     */
+    public static boolean EmailPattern(String email){
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
     @Override
     public String toString() {
         return "User:" +
@@ -100,7 +129,6 @@ public class User implements Serializable, Comparable<User>
                 ", CF='" + GetCF() + '\'' +
                 '.';
     }
-
     @Override
     public int compareTo(User user) {return 0;}
 }
