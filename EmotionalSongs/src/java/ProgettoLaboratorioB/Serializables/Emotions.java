@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 public class Emotions implements Serializable, Comparable<Emotions> {
+    //TODO: add average emotion field.
     private String emotion_description;
 
     private String IDSong;
