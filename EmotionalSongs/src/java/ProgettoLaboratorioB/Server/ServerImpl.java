@@ -52,7 +52,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     {
         File configfile;
         String filepath = SetDBConfigPath(filename);
-
+        System.out.println("SERVER-MAIN: file path: " + filepath);
         if(filepath != null)
         {
             configfile = new File(filepath);

@@ -4,6 +4,7 @@ import ProgettoLaboratorioB.main.Enums.SYSTEM_STATE;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Properties;
@@ -131,27 +132,33 @@ public class App_System{
     public static void WriteServerIP(String server_ip)
     {
         String filename = "ServerConfig.properties";
-        File server_config = null;
+        File server_config;
 
         String file_path = SetFilePath(filename);
-
+        System.out.println("APP_SYSTEM: file path: " + file_path);
         if(file_path != null)
         {
-            server_config = new File(filename);
+            server_config = new File(file_path);
+        }
+        else
+        {
+            System.out.println("APP_SYSTEM Error: file path is null");
+            return;
         }
 
-        try(FileInputStream fileInputStream = new FileInputStream(server_config))
+        try(FileOutputStream fileOutputStream = new FileOutputStream(server_config))
         {
             Properties properties = new Properties();
-            properties.load(fileInputStream);
 
             properties.setProperty("server_ip", server_ip);
+
+            properties.store(fileOutputStream, null);
 
             System.out.println("APP_SYSTEM, Server IP: " + server_ip);
         }
         catch (Exception e)
         {
-            System.out.println("APP_SYSTEM Error: " + e);
+            e.printStackTrace();
         }
     }
     /**
@@ -168,7 +175,11 @@ public class App_System{
 
         if(file_path != null)
         {
-            server_config = new File(filename);
+            server_config = new File(file_path);
+        }
+        else
+        {
+            System.out.println("APP_SYSTEM Error: file path is null");
         }
 
         try(FileInputStream fileInputStream = new FileInputStream(server_config))
@@ -178,12 +189,12 @@ public class App_System{
 
             String server_ip = properties.getProperty("server_ip");
 
-            System.out.println("APP_SYSTEM: Server IP: " + server_ip);
+            System.out.println("APP_SYSTEM, Server IP loaded succesfully: " + server_ip);
             return server_ip;
         }
         catch (Exception e)
         {
-            System.out.println("APP_SYSTEM Error: " + e);
+            System.out.println("APP_SYSTEM Error: failed to load server ip: " + e.getMessage());
             return null;
         }
     }
@@ -195,7 +206,7 @@ public class App_System{
             filename = "data/" + filename;
         }
         else if(System.getProperty("os.name").contains("Mac OS X")) {
-            filename = "EmotionalSongs/data/" + filename;
+            filename = "data/" + filename;
         }
         else
         {

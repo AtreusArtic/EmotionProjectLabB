@@ -1,9 +1,8 @@
 package ProgettoLaboratorioB.Client;
 
 import ProgettoLaboratorioB.Server.ServerInterface;
+import ProgettoLaboratorioB.main.App_System;
 
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.rmi.ConnectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -57,6 +56,15 @@ public class Client {
      */
     public static void GetConnection() throws RemoteException
     {
+        //Get the server address from the ServerConfig.properties file:
+        server_address = App_System.LoadServerIP();
+
+        if (server_address == null)
+        {
+            server_address = default_server_address; //Localhost
+        }
+
+        System.out.println("CLIENT: server address: " + server_address);
         //Get connection with the server.
         try
         {
