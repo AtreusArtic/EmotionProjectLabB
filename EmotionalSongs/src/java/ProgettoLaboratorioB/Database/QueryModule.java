@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class implements a mapping system between tables and relative queries
- * those are defined in the postgres database;
+ * This class implements a mapping system between tables and relative queries those are defined in the postgres database;
  */
 
  /*TODO Per BUGLIO:
@@ -115,18 +114,15 @@ public class QueryModule
 
         users_table_queries.put
                 (QUERY.LOGIN,
-                        "SELECT * FROM users WHERE username = ? AND password = ?");
+                        "SELECT * FROM utentiregistrati WHERE userid = ? AND password = ?");
 
         users_table_queries.put
                 (QUERY.REGISTER,
-                        "insert into users" +
-                                "(username, password, email, name, surname, address, CF ) " +
-                                "values('%s', '%s', '%s','%s', '%s', '%s','%s');");
+                        "insert into utentiregistrati (nome, cognome, codicefiscale, via, civico, citta, provincia, cap, userid, email, password ) " +
+                         "values('%s', '%s', '%s','%s', '%s', '%s','%s', '%s', '%s', '%s', '%s');");
 
         tableMapping.put(TABLE.USERS, users_table_queries);
     }
-
-
 
 
     /**
@@ -137,21 +133,25 @@ public class QueryModule
     {
         Map<QUERY, String> songs_table_queries = new HashMap<>();
 
+/** we don't need to insert songs into the db, right?? **/
+/*
         songs_table_queries.put
                 (QUERY.ADD_SONG,
                         "INSERT INTO songs(year, id, artist, title) VALUES('%s', '%s', '%s', '%s');");
+
+ */
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_TITLE,
-                        "SELECT * FROM songs WHERE title LIKE ?");
+                        "SELECT * FROM canzoni WHERE titolo LIKE ?");
 
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_YEARARTIST,
-                        "SELECT * FROM songs WHERE year = ? AND artist = ?");
+                        "SELECT * FROM canzoni WHERE anno = ? AND autore = ?");
 
         songs_table_queries.put
                 (QUERY.GET_SONGS_BY_ID,
-                        "SELECT * FROM songs WHERE id = ?");
-
+                        "SELECT * FROM songs WHERE id = ?");  /*we don't have an attribute like 'id' in the db,
+                                                                the pkey is composed by "titolo" and "autore"*/
         tableMapping.put(TABLE.SONGS, songs_table_queries);
     }
 
@@ -165,11 +165,10 @@ public class QueryModule
 
         playlists_table_queries.put
                 (QUERY.CREATE_PLAYLIST,
-                        "INSERT INTO playlists (name, username, ID) VALUES ('%s', '%s', '%s');");
-
+                       "INSERT INTO playlist (nome, idutente) VALUES ('%s', '%s');");
         playlists_table_queries.put(
-                QUERY.GET_USER_PLAYLISTS,
-                "SELECT * FROM playlists WHERE username = ?");
+                QUERY.GET_USER_PLAYLISTS,  //what we have to print here?
+                "SELECT * FROM playlist WHERE nome = ?");
 
         playlists_table_queries.put(
                 QUERY.GET_ALL_SONGS_FROM_PLAYLIST,
