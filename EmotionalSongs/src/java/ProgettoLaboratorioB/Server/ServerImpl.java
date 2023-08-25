@@ -46,13 +46,12 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     private static String filename = "EnricoDBConfigOSX.properties";
 
     /**
-     * This method load the database configuration from the filename.
+     * This method loads the database configuration from the filename.
      */
     public static void LoadDBConfig()
     {
         File configfile;
         String filepath = SetDBConfigPath(filename);
-        System.out.println("SERVER-MAIN: file path: " + filepath);
         if(filepath != null)
         {
             configfile = new File(filepath);

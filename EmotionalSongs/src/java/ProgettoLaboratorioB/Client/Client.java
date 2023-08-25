@@ -45,7 +45,7 @@ public class Client {
      */
     public Client() throws RemoteException
     {
-        GetConnection();
+        GetConnection(true);
     }
 
     /**
@@ -54,12 +54,12 @@ public class Client {
      * @throws NotBoundException if an attempt is made to lookup or unbind in the registry a name that has no associated binding.
      * @throws ConnectException Server is offline; signals that an error occurred while attempting to connect a socket to a remote address and port.
      */
-    public static void GetConnection() throws RemoteException
+    public static void GetConnection(Boolean useDefaultIP) throws RemoteException
     {
         //Get the server address from the ServerConfig.properties file:
         server_address = App_System.LoadServerIP();
 
-        if (server_address == null)
+        if (server_address == null || useDefaultIP)
         {
             server_address = default_server_address; //Localhost
         }

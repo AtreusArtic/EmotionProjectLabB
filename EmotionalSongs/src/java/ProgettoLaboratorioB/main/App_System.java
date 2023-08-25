@@ -11,7 +11,6 @@ import java.util.Properties;
 
 public class App_System{
 
-
     public static App_System appSystem;
 
     public static DATABASE_STATUS crntDatabaseStatus = DATABASE_STATUS.OFFLINE;
@@ -135,7 +134,6 @@ public class App_System{
         File server_config;
 
         String file_path = SetFilePath(filename);
-        System.out.println("APP_SYSTEM: file path: " + file_path);
         if(file_path != null)
         {
             server_config = new File(file_path);
@@ -154,7 +152,7 @@ public class App_System{
 
             properties.store(fileOutputStream, null);
 
-            System.out.println("APP_SYSTEM, Server IP: " + server_ip);
+            System.out.println("APP_SYSTEM write Server IP in the file: " + server_ip);
         }
         catch (Exception e)
         {

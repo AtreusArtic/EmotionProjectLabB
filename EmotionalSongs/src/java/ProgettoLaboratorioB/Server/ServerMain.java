@@ -46,8 +46,8 @@ public class ServerMain
     }
 
     /**
-     * This method initialize the connection with the server, using the RMI registry.
-     * and wait new client access.
+     * This method initializes the connection with the server, using the RMI registry.
+     * and wait for new client access.
      */
     public static void InitServerConnection(){
         try

@@ -53,10 +53,44 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         this.IDUser = User;
     }
 
-    public void SetEvaluateEmotion(Map<EMOTION, Integer> EvaluateEmotion) {
+    public void SetEvaluateEmotion(Map<EMOTION, Integer> EvaluateEmotion)
+    {
         this.EvaluateEmotion = EvaluateEmotion;
     }
 
+
+    /**
+     * This function is used to set the value of an emotion, in the range 0-5.
+     ** • If the value is not in the range, the system returns an error.
+     ** • If the value is in the range, the system sets the value of the emotion.
+     * And only if the operation is successful, the system saves this emotion into Database.
+     *
+     * @param emotion the emotion that the user wants to set.
+     * @param value the value of the emotion to be set from zero to 5.
+     * @param obj the object that contains all useful information about the emotion.
+     * @return the object that contains all useful information about the emotion.
+     */
+    public static Emotions SetEmotionValue(EMOTION emotion, int value, Emotions obj){
+        if(CheckEmotionValueRange(value))
+        {
+            obj.EvaluateEmotion.put(emotion, value);
+            return obj;
+        }
+        else
+        {
+            System.out.println("!!! EMOTION OBJ raise an Error: emotion value must be in the range 0-5");
+            return null;
+        }
+    }
+
+    public static boolean CheckEmotionValueRange(int i)
+    {
+        if(i < 0 || i > 5)
+        {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
@@ -67,7 +101,6 @@ public class Emotions implements Serializable, Comparable<Emotions> {
                 ", EvaluateEmotion=" + EvaluateEmotion +
                 '}';
     }
-
 
     /**
      * This method is used to print the summary of a song. If the song searched doesn't have any registration, the system return an error.
