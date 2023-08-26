@@ -28,6 +28,7 @@ public class LogIn {
         } else if (username.getText().isEmpty() && password.getText ().isEmpty()) {
             wrongLogIn.setText("Please enter your data. ");
         } else {
-        wrongLogIn.setText ("Wrong username or password!");}
+            wrongLogIn.setText ("Wrong username or password!");
+        }
     }
 }
