@@ -36,7 +36,7 @@ public class ManagerGUI extends Application{
         Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
         AnchorPane test = new AnchorPane(l);*/
         Scene scene = new Scene(new StackPane(root), 1050, 850);
-        stage.setTitle("Welcome to Emotional Songs!!");
+        stage.setTitle("Emotional Songs");
         stage.setScene(scene);
         stage.show();
     }
@@ -45,8 +45,6 @@ public class ManagerGUI extends Application{
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
-
-
     public static void main(String[] args) {
         launch(args);
     }

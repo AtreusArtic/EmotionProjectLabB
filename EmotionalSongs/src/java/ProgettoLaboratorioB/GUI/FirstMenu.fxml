@@ -73,7 +73,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="165.0" layoutY="625.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="234.0" text="Exit" textFill="#1a2c5e">
+            <Button fx:id="logout" layoutX="165.0" layoutY="625.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="71.0" prefWidth="234.0" text="Exit" textFill="#1a2c5e">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>

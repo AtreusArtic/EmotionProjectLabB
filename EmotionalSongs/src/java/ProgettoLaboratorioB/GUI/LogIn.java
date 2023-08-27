@@ -12,7 +12,9 @@ public class LogIn {
     private Button button;
     @FXML
     private Label wrongLogIn;
+    @FXML
     private TextField username;
+    @FXML
     private PasswordField password;
 
     //check if the user exist in the database
@@ -23,7 +25,7 @@ public class LogIn {
     }
     private void checkLogIn() throws IOException {
         ManagerGUI m = new ManagerGUI(); //ask leader if is correct
-        if (username.getText().toString().equals(" javacoding") && password.getText().toString().equals ("123")){
+        if (username.getText().toString().equals("javacoding") && password.getText().toString().equals ("123")){
             wrongLogIn.setText("Success!");
             m.changeScene("AfterLogin.fxml");
         } else if (username.getText().isEmpty() && password.getText ().isEmpty()) {
