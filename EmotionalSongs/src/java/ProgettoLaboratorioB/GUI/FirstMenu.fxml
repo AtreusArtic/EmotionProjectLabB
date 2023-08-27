@@ -40,7 +40,7 @@
             </Text>
             <ImageView fitHeight="452.0" fitWidth="457.0" layoutX="35.0" layoutY="177.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/LogoUfficiale.png" />
+                  <Image url="@sources/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>
