@@ -2,11 +2,9 @@ package ProgettoLaboratorioB.GUI;
 
 import ProgettoLaboratorioB.Database.QueryModule;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -27,7 +25,7 @@ public class ManagerGUI extends Application{
     public void start(Stage stage) throws Exception{
         stg = stage;
         stage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginMenu.fxml"));
         //FXMLLoader fxml_Loader = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         //Parent root1 = (Parent) fxml_Loader.load();
