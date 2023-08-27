@@ -25,7 +25,7 @@
          <children>
             <ImageView fitHeight="677.0" fitWidth="1062.0" layoutX="-4.0" layoutY="-3.0">
                <image>
-                  <Image url="@sources/SfondoAnchor0,1.png" />
+                  <Image url="@sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Text fill="#4e6ab9" layoutX="208.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Menu: Welcome!!">
