@@ -152,7 +152,8 @@ public class App
                     GetAllUserPlaylist();
                     break;
                 case 5:
-                    RegisterNewEmotion();
+                    Emotions emotions = null;
+                    RegisterNewEmotion(emotions);
                     break;
                 case 6:
                     ReadEmotionEvalutation();
@@ -347,10 +348,10 @@ public class App
         }
     }
 
-    private static void RegisterNewEmotion() throws RemoteException {
+    private static void RegisterNewEmotion(Emotions emotions) throws RemoteException {
         System.out.println("Insert the emotion name:");
         System.out.println("Now whe are going to register a new emotion...");
-        if(ClientService.RegisterNewEmotion())
+        if(ClientService.RegisterNewEmotion(emotions))
         {
             System.out.println("Emotion created successfully");
         }

@@ -4,7 +4,6 @@ import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import ProgettoLaboratorioB.Serializables.User;
-import ProgettoLaboratorioB.main.Enums.EMOTION;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -261,7 +260,6 @@ public class ClientService {
      */
     public static boolean RegisterNewEmotion(Emotions emotions) throws RemoteException
     {
-        Emotions newEmotion = new Emotions("TRAAABD128F429CF47",user_connected.GetUsername(),"Bella canzone zi...", emotions);
         return Client.server.RegisterNewEmotion(emotions);
     }
 

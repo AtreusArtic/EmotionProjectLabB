@@ -1,7 +1,6 @@
 package ProgettoLaboratorioB.GUI;
 
-import ProgettoLaboratorioB.main.App;
-import com.sun.tools.javac.Main;
+import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 
 import java.awt.*;
@@ -9,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class LogIn {
+    @FXML
     private Button button;
+    @FXML
     private Label wrongLogIn;
     private TextField username;
     private PasswordField password;
