@@ -25,7 +25,7 @@
          <children>
             <ImageView fitHeight="852.0" fitWidth="528.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/SfondoFirst.png" />
+                  <Image url="@sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Text fill="#b1aedd" layoutX="23.0" layoutY="699.0" stroke="BLACK" strokeLineCap="BUTT" strokeType="INSIDE" text="EMOTIONAL SONGS" wrappingWidth="498.5257797241211">
@@ -49,7 +49,7 @@
          <children>
             <ImageView fitHeight="855.0" fitWidth="553.0" layoutX="-6.0" layoutY="-3.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/SfondoFirst.png" />
+                  <Image url="@sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Button layoutX="165.0" layoutY="275.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="234.0" text="Sign In" textFill="#4e6ab9">

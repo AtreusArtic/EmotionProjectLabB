@@ -79,7 +79,7 @@
          <children>
             <ImageView fitHeight="187.0" fitWidth="1062.0" layoutX="-3.0" layoutY="-5.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/ProvaRiga.png" />
+                  <Image url="@sources/ProvaRiga.png" />
                </image>
             </ImageView>
             <Text fill="#b1aedd" layoutX="364.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS">
@@ -89,7 +89,7 @@
             </Text>
             <ImageView fitHeight="182.0" fitWidth="205.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/LogoUfficiale.png" />
+                  <Image url="@sources/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>
