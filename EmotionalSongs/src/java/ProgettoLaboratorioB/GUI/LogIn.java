@@ -12,10 +12,8 @@ import java.sql.SQLException;
 
 public class LogIn {
     private static ClientService clientService = new ClientService();
-
     @FXML
     private Button conbutton;
-
     @FXML
     private PasswordField password;
 
@@ -26,17 +24,8 @@ public class LogIn {
     void userLog(ActionEvent event) throws IOException, SQLException {
         checkLogIn();
     }
-
     private void checkLogIn() throws IOException, SQLException {
         ManagerGUI m = new ManagerGUI(); //ask leader if is correct
-        /*if (username.getText().toString().equals(" javacoding") && password.getText().toString().equals ("123")){
-            conbutton.setText("Success!");
-            m.changeScene("AfterLogin.fxml");
-        } else if (username.getText().isEmpty() && password.getText ().isEmpty()) {
-            conbutton.setText("Please enter your data. ");
-        } else {
-            conbutton.setText ("Wrong username or password!");
-        }*/
 
         String username = this.username.getText();
         String password = this.password.getText();
