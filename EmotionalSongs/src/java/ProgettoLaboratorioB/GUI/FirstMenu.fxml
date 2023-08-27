@@ -21,7 +21,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="853.0" prefWidth="522.0" style="-fx-background-color: #000000;">
+      <AnchorPane prefHeight="853.0" prefWidth="522.0">
          <children>
             <ImageView fitHeight="852.0" fitWidth="528.0">
                <image>
@@ -45,7 +45,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
             <ImageView fitHeight="855.0" fitWidth="553.0" layoutX="-6.0" layoutY="-3.0">
                <image>
