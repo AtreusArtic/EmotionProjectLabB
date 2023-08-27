@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="671.0" fitWidth="1052.0">
                <image>
-                  <Image url="@sources/SfondoAnchor0,1.png" />
+                  <Image url="@sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Button layoutX="194.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show your Profile">
