@@ -16,62 +16,72 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="393.35064697265625" minHeight="10.0" prefHeight="167.2725830078125" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="632.7274169921875" minHeight="10.0" prefHeight="632.7274169921875" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="393.35064697265625" minHeight="10.0" prefHeight="180.5" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="632.7274169921875" minHeight="10.0" prefHeight="620.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4B0082; -fx-background-color: #000000;" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Text fill="#288d1d" layoutX="200.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Anonymous Menu!">
+            <ImageView fitHeight="623.0" fitWidth="1001.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/SfondoAnchor0,1.png" />
+               </image>
+            </ImageView>
+            <Text fill="#3754a6" layoutX="210.0" layoutY="66.0" stroke="BLACK" strokeLineCap="BUTT" text="Welcome to Anonymous Menu!">
                <font>
                   <Font name="Arial Bold" size="43.0" />
                </font>
             </Text>
-            <Text fill="#789761" layoutX="258.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what you would like to do" wrappingWidth="463.83428955078125">
+            <Text fill="#a1a0a0" layoutX="268.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what you would like to do" wrappingWidth="463.83428955078125">
                <font>
-                  <Font size="33.0" />
+                  <Font size="31.0" />
                </font>
             </Text>
-            <Button layoutX="197.0" layoutY="191.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by title" wrapText="true">
+            <Button layoutX="207.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by title" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="620.0" layoutY="191.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by author or year" wrapText="true">
+            <Button layoutX="630.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by author or year" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="197.0" layoutY="346.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show recorded emotion" wrapText="true">
+            <Button layoutX="209.0" layoutY="337.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show recorded emotion" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="620.0" layoutY="346.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Register to App">
+            <Button layoutX="643.0" layoutY="337.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Register to App">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="400.0" layoutY="509.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Back to First Menu">
+            <Button layoutX="410.0" layoutY="519.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Back to First Menu">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="119.0" prefWidth="1050.0" style="-fx-background-color: #000000;">
+      <AnchorPane prefHeight="119.0" prefWidth="1050.0">
          <children>
-            <Text fill="#c2ffbc" layoutX="297.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS" wrappingWidth="539.988525390625">
+            <ImageView fitHeight="187.0" fitWidth="1002.0" layoutX="-3.0" layoutY="-5.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/ProvaRiga.png" />
+               </image>
+            </ImageView>
+            <Text fill="#b1aedd" layoutX="364.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS">
                <font>
                   <Font name="Arial Bold Italic" size="51.0" />
                </font>
             </Text>
-            <ImageView fitHeight="171.0" fitWidth="185.0" layoutX="39.0">
+            <ImageView fitHeight="182.0" fitWidth="205.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/LogoProvvisorio.jpg" />
+                  <Image url="@../../../../../../../../Downloads/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>

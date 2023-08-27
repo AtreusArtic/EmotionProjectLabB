@@ -21,14 +21,14 @@
     <RowConstraints maxHeight="674.5281829833984" minHeight="10.0" prefHeight="669.6354827880859" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="698.0" prefWidth="1050.0" style="-fx-background-color: #000000;" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="698.0" prefWidth="1050.0" GridPane.rowIndex="1">
          <children>
             <ImageView fitHeight="677.0" fitWidth="1062.0" layoutX="-4.0" layoutY="-3.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/Sfondo%20Anchor0,1.png" />
+                  <Image url="@../../../../../../../../Downloads/SfondoAnchor0,1.png" />
                </image>
             </ImageView>
-            <Text fill="#4c81d7" layoutX="208.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Menu: Welcome!!">
+            <Text fill="#4e6ab9" layoutX="208.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Menu: Welcome!!">
                <font>
                   <Font name="Arial Bold" size="45.0" />
                </font>
@@ -175,6 +175,16 @@
             <ImageView fitHeight="187.0" fitWidth="1062.0" layoutX="-3.0" layoutY="-5.0">
                <image>
                   <Image url="@../../../../../../../../Downloads/ProvaRiga.png" />
+               </image>
+            </ImageView>
+            <Text fill="#b1aedd" layoutX="364.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS">
+               <font>
+                  <Font name="Arial Bold Italic" size="51.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="182.0" fitWidth="205.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>
