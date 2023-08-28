@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class LogIn {
     private static ClientService clientService = new ClientService();
 
-    private ManagerGUI m = new ManagerGUI(); //ask leader if is correct
+    private ManagerGUI m = new ManagerGUI();
     @FXML
     private Button conbutton;
 
