@@ -10,73 +10,83 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.AfterLogin">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="799.1483764648438" minHeight="10.0" prefHeight="135.87115478515625" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="663.0749816894531" minHeight="10.0" prefHeight="663.0749816894531" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="799.1483764648438" minHeight="10.0" prefHeight="182.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="667.5" minHeight="10.0" prefHeight="667.5" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="171.0" prefWidth="1050.0" style="-fx-background-color: #000000;" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="171.0" prefWidth="1050.0" GridPane.rowIndex="1">
          <children>
-            <Button layoutX="184.0" layoutY="163.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show your Profile">
+            <ImageView fitHeight="671.0" fitWidth="1052.0">
+               <image>
+                  <Image url="@sources/SfondoFirst.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="194.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show your Profile">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Text fill="#7ee15e" layoutX="392.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!!">
+            <Text fill="#80a4f8" layoutX="402.0" layoutY="74.0" stroke="BLACK" strokeLineCap="BUTT" text="Welcome Back!!">
                <font>
-                  <Font size="39.0" />
+                  <Font name="Arial Bold" size="45.0" />
                </font>
             </Text>
-            <Text fill="#789761" layoutX="333.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what you would like to do">
+            <Text fill="#a1a0a0" layoutX="343.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose what you would like to do">
                <font>
                   <Font size="33.0" />
                </font>
             </Text>
-            <Button layoutX="184.0" layoutY="288.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search a song by title" wrapText="true">
+            <Button layoutX="194.0" layoutY="298.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search a song by title" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="184.0" layoutY="422.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by year or author" wrapText="true">
+            <Button layoutX="194.0" layoutY="432.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by year or author" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="676.0" layoutY="163.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show or create a new playlist" wrapText="true">
+            <Button layoutX="686.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show or create a new playlist" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="676.0" layoutY="289.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Register a new emotion" wrapText="true">
+            <Button layoutX="686.0" layoutY="299.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Register a new emotion" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="668.0" layoutY="424.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show recorded emotion" wrapText="true">
+            <Button layoutX="678.0" layoutY="434.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show recorded emotion" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="426.0" layoutY="553.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Exit from app">
+            <Button fx:id="logout" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="71.0" prefWidth="209.0" text="Exit from app">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane prefHeight="119.0" prefWidth="1050.0" style="-fx-background-color: #000000;">
+      <AnchorPane prefHeight="119.0" prefWidth="1050.0">
          <children>
-            <Text fill="#c2ffbc" layoutX="297.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS" wrappingWidth="755.3411254882812">
+            <ImageView fitHeight="187.0" fitWidth="1062.0" layoutX="-3.0" layoutY="-5.0">
+               <image>
+                  <Image url="@sources/ProvaRiga.png" />
+               </image>
+            </ImageView>
+            <Text fill="#b1aedd" layoutX="364.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS">
                <font>
                   <Font name="Arial Bold Italic" size="51.0" />
                </font>
             </Text>
-            <ImageView fitHeight="171.0" fitWidth="185.0" layoutX="39.0">
+            <ImageView fitHeight="182.0" fitWidth="205.0">
                <image>
-                  <Image url="@../../../../../../../../Downloads/LogoProvvisorio.jpg" />
+                  <Image url="@sources/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>

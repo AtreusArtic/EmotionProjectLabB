@@ -1,16 +1,20 @@
 package ProgettoLaboratorioB.GUI;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.scene.control.Button;
+
 import java.io.IOException;
 
 public class AfterLogin {
+
     @FXML
     private Button logout;
 
-    public void userLogOut(javafx.event.ActionEvent actionEvent) throws IOException {
+    @FXML
+    void userLogOut(ActionEvent event) throws IOException {
         ManagerGUI m = new ManagerGUI();
-        m.changeScene ( "FirstMenu.fxml");
+        m.changeScene("LoginMenu.fxml");
     }
+
 }

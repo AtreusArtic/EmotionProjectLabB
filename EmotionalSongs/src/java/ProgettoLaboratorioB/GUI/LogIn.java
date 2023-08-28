@@ -12,21 +12,31 @@ import java.sql.SQLException;
 
 public class LogIn {
     private static ClientService clientService = new ClientService();
+
+    private ManagerGUI m = new ManagerGUI(); //ask leader if is correct
     @FXML
     private Button conbutton;
+
+    @FXML
+    private Button backButton;
+
     @FXML
     private PasswordField password;
 
     @FXML
     private TextField username;
 
+
     @FXML
     void userLog(ActionEvent event) throws IOException, SQLException {
         checkLogIn();
     }
-    private void checkLogIn() throws IOException, SQLException {
-        ManagerGUI m = new ManagerGUI(); //ask leader if is correct
+    @FXML
+    void backFirst(ActionEvent event) throws IOException{
+        m.changeScene("FirstMenu.fxml");
+    }
 
+    private void checkLogIn() throws IOException, SQLException {
         String username = this.username.getText();
         String password = this.password.getText();
 
