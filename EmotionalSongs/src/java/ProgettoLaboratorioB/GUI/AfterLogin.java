@@ -16,8 +16,4 @@ public class AfterLogin {
         m.changeScene("FirstMenu.fxml");
     }
 
-    void confReg(){
-
-    }
-
 }
