@@ -9,6 +9,7 @@ import java.io.IOException;
 public class FirstMenu {
 
     ManagerGUI m = new ManagerGUI();
+
     @FXML
     private Button anonButton;
     @FXML

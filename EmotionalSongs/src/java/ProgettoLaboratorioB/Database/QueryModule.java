@@ -8,12 +8,6 @@ import java.util.Map;
  * This class implements a mapping system between tables and relative queries those are defined in the postgres database;
  */
 
- /*TODO Per BUGLIO:
-       1.Queste queries sono ancora provvisorie (con parametri non congrui ai tuoi diagrammi ER)
-       ed eventualmente vanno modificate a seconda delle tue esigenze
-       2.Inoltre verificare che le tabelle definite nella classe DatabaseService,
-       siano congrue a quelle definite nei tuoi schemi ER.*/
-
 public class QueryModule
 {
     /**
@@ -148,8 +142,7 @@ public class QueryModule
 
         songs_table_queries.put
                 (QUERY.GET_SONGS_BY_ID,
-                        "SELECT * FROM songs WHERE id = ?");  /*we don't have an attribute like 'id' in the db,
-                                                                the pkey is composed by "titolo" and "autore"*/
+                        "SELECT * FROM songs WHERE id = ?");
         tableMapping.put(TABLE.SONGS, songs_table_queries);
     }
 
@@ -165,7 +158,7 @@ public class QueryModule
                 (QUERY.CREATE_PLAYLIST,
                         "INSERT INTO playlists (name, username, ID) VALUES ('%s', '%s', '%s');");
         playlists_table_queries.put(
-                QUERY.GET_USER_PLAYLISTS,  //what we have to print here?
+                QUERY.GET_USER_PLAYLISTS,
                 "SELECT * FROM playlists WHERE username = ?");
 
         playlists_table_queries.put(

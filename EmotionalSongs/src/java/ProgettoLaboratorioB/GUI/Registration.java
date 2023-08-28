@@ -2,14 +2,16 @@ package ProgettoLaboratorioB.GUI;
 
 import ProgettoLaboratorioB.Client.ClientService;
 import ProgettoLaboratorioB.Serializables.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 
 public class Registration {
-    ManagerGUI m = new ManagerGUI();
+
+    private ManagerGUI m = new ManagerGUI();
 
     @FXML
     private TextField CF;
@@ -53,16 +55,12 @@ public class Registration {
     @FXML
     private TextField username;
 
-
-    void backtoFirst(ActionEvent actionEvent) throws IOException {
+    @FXML
+    void backToFirst(ActionEvent event) throws IOException {
         m.changeScene("FirstMenu.fxml");
     }
-
-    void confReg() throws IOException {
-        m.changeScene("LoginMenu.fxml");
-    }
-
-    private void checkRegUser() throws IOException {
+    @FXML
+    void confRegistration(ActionEvent event) throws IOException {
         Boolean isEmailCorrect = false;
 
         Boolean isCodFiscCorrect = false;
@@ -92,9 +90,5 @@ public class Registration {
             m.changeScene("AfterLogin.fxml");
         }
     }
-
-
-
-
-
 }
+
