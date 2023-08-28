@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.GUI;
 
 import ProgettoLaboratorioB.Database.QueryModule;
+import ProgettoLaboratorioB.Serializables.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,8 @@ import java.io.IOException;
  */
 public class ManagerGUI extends Application{
     private static Stage stg;
+
+    public static User user = null;
     /**
      * Create the GUI of the manager.
      */

@@ -22,6 +22,8 @@ public class App
      */
     static Scanner sc = new Scanner(System.in);
 
+    static ClientService clientService = new ClientService();
+
     public static void main( String[] args ) throws RemoteException, SQLException
     {
         RunApplication();
@@ -76,7 +78,7 @@ public class App
                     if(new_user != null)
                     {
                         System.out.println("Send registration request to server");
-                        if(ClientService.RegisterNewUser(new_user))
+                        if(clientService.RegisterNewUser(new_user))
                         {
                             System.out.println("Registration request completed successfully ");
                             App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
@@ -159,7 +161,7 @@ public class App
                     ReadEmotionEvalutation();
                     break;
                 case 7:
-                    ClientService.Logout();
+                    clientService.Logout();
                     App_System.appSystem.SetNewState(SYSTEM_STATE.MAIN_MENU);
                     break;
                 default:
@@ -211,14 +213,14 @@ public class App
         return user;
     }
 
-    public static boolean UserLoginUtility() throws SQLException, RemoteException {
+    public static boolean UserLoginUtility() throws SQLException{
         System.out.println("Insert the username:");
         String username = sc.nextLine();
 
         System.out.println("Insert the password:");
         String password = sc.nextLine();
 
-        if(ClientService.Login(username, password))
+        if(clientService.Login(username, password) != null)
         {
             System.out.println("Login successful");
             return true;

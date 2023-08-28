@@ -11,11 +11,15 @@ import java.util.List;
 
 public class ClientService {
 
-    //TODO: ClientService must garatee multiple clients connection. and take care about all the clients connected.
-
     static User user_connected = null;
 
     //  ------- SYSTEM MODULE FUNCTIONS --------:
+
+
+    public ClientService ()
+    {
+        this.user_connected = null;
+    }
 
     /**
      * This function allows the client to start the client-application.
@@ -37,6 +41,7 @@ public class ClientService {
         try
         {
             return Client.server.SendMessageToClient("CLIENT-SERVICE: Connection with server established");
+
         } catch (RemoteException | NullPointerException e) {
 
             System.out.println("CLIENT-SERVICE Error: Server is offline.");
@@ -45,17 +50,32 @@ public class ClientService {
     }
 
     //  ------- USER MODULE FUNCTIONS --------:
-
+    public void SetUserConnected(User user_con)
+    {
+        user_connected = user_con;
+    }
     /**
      * This function allows the user to register in the application.
      * and go online on the server as user registered in the application database.
      * @param user the new user that wants to register in the application.
      * @return true if the registration is successful, false otherwise.
      */
-    public static boolean RegisterNewUser(User user){
+
+
+    public boolean RegisterNewUser(User user){
         try {
             System.out.println("CLIENT-SERVICE request to server sent.");
-            return Client.server.RegisterNewUser(user);
+            if(Client.server.RegisterNewUser(user))
+            {
+                System.out.println("CLIENT-SERVICE request to server successful.");
+                this.user_connected = user;
+                return true;
+            }
+            else
+            {
+                System.out.println("CLIENT-SERVICE request to server failed.");
+                return false;
+            }
 
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline.");
@@ -71,15 +91,17 @@ public class ClientService {
      * @return true if the login is successful, false otherwise.
      * @throws SQLException if the query to the database fails.
      */
-    public static boolean Login(String username, String password) throws SQLException {
+    public User Login(String username, String password) throws SQLException {
         try
         {
-            user_connected =  Client.server.Login(username, password);
-            if(user_connected != null) return true;
-            else return false;
+            this.user_connected =  Client.server.Login(username, password);
+            if(user_connected != null)
+                return user_connected;
+            else
+                return null;
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline.");
-            return false;
+            return null;
         }
     }
 
@@ -87,10 +109,10 @@ public class ClientService {
      * This function allows the user to logout from the application.
      * and go offline from the server as users.
      */
-    public static void Logout(){
+    public void Logout(){
         try
         {
-            user_connected = null;
+            this.user_connected = null;
         } catch (NullPointerException e)
         {
             System.out.println("CLIENT-SERVICE Error: user already logged out.");

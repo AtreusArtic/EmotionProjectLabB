@@ -9,9 +9,9 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class Registration {
-
+public class Registration extends MenuManager{
     private ManagerGUI m = new ManagerGUI();
+    private ClientService clientService = new ClientService();
 
     @FXML
     private TextField CF;
@@ -62,22 +62,38 @@ public class Registration {
     @FXML
     void confRegistration(ActionEvent event) throws IOException {
         Boolean isEmailCorrect = false;
-
         Boolean isCodFiscCorrect = false;
+        int counter = 0;
 
         String name_str = name.getText();
 
         String surname_str = surname.getText();
 
         String CF_str = CF.getText();
-        while(!isCodFiscCorrect){
-            User.CodFiscalePattern(CF_str);
+        while(!isCodFiscCorrect && counter <= 3)
+        {
+            if(User.CodFiscalePattern(CF_str))
+                isCodFiscCorrect = true;
+            else
+            {
+                CF.setText("Codice Fiscale non valido!");
+                counter++;
+            }
         }
+        counter = 0;
 
         String email_str = email.getText();
-        while(!isEmailCorrect){
-            User.EmailPattern(email_str);
+        while(!isEmailCorrect && counter <= 3)
+        {
+            if(User.EmailPattern(email_str))
+                isEmailCorrect = true;
+            else
+            {
+                email.setText("Email non valida!");
+                counter++;
+            }
         }
+        counter = 0;
         String address_str = address.getText();
 
         String username_str = username.getText();
@@ -86,8 +102,14 @@ public class Registration {
 
         User u = new User(username_str, password_str,  email_str, name_str, surname_str, address_str,  CF_str);
 
-        if(ClientService.RegisterNewUser(u)){
+        if(clientService.RegisterNewUser(u)){
             m.changeScene("AfterLogin.fxml");
+            clientService.SetUserConnected(u);
+            MenuManager.setUser_connected(u);
+        }
+        else
+        {
+            confbutton.setText("Error!");
         }
     }
 }
