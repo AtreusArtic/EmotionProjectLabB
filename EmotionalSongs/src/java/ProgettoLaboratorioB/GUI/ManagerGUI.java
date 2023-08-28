@@ -25,7 +25,7 @@ public class ManagerGUI extends Application{
     public void start(Stage stage) throws Exception{
         stg = stage;
         stage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenu.fxml"));
         //FXMLLoader fxml_Loader = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         //Parent root1 = (Parent) fxml_Loader.load();

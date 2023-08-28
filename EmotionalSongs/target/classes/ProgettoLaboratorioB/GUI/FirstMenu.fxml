@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ManagerGUI">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.FirstMenu">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -52,7 +52,7 @@
                   <Image url="@sources/SfondoFirst.png" />
                </image>
             </ImageView>
-            <Button layoutX="165.0" layoutY="275.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="234.0" text="Sign In" textFill="#4e6ab9">
+            <Button fx:id="signInbutton" layoutX="165.0" layoutY="275.0" mnemonicParsing="false" onAction="#signIn" prefHeight="71.0" prefWidth="234.0" text="Sign In" textFill="#4e6ab9">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>
@@ -62,7 +62,7 @@
                <effect>
                   <Glow />
                </effect></Button>
-            <Button layoutX="165.0" layoutY="100.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="234.0" text="Login" textFill="#80a4f8">
+            <Button fx:id="logButton" layoutX="165.0" layoutY="100.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="71.0" prefWidth="234.0" text="Login" textFill="#80a4f8">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="102.0" layoutY="450.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="384.0" text="Anonymous Menu" textFill="#3654a8">
+            <Button fx:id="anonButton" layoutX="102.0" layoutY="450.0" mnemonicParsing="false" onAction="#logAnonim" prefHeight="71.0" prefWidth="384.0" text="Anonymous Menu" textFill="#3654a8">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>
