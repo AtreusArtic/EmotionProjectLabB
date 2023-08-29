@@ -25,7 +25,7 @@ public class AfterLogin extends MenuManager {
     @FXML
     void userLogOut(ActionEvent event) throws IOException {
         ManagerGUI m = new ManagerGUI();
-        m.changeScene("FirstMenu.fxml");
+        m.changeScene("Filexml/FirstMenu.fxml");
     }
 
 }

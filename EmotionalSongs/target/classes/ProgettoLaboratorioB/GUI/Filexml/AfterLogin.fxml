@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.AfterLogin">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.AfterLogin">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="671.0" fitWidth="1052.0">
                <image>
-                  <Image url="@sources/SfondoFirst.png" />
+                  <Image url="@../sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Button layoutX="194.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show your Profile">
@@ -76,7 +76,7 @@
          <children>
             <ImageView fitHeight="187.0" fitWidth="1062.0" layoutX="-3.0" layoutY="-5.0">
                <image>
-                  <Image url="@sources/ProvaRiga.png" />
+                  <Image url="@../sources/ProvaRiga.png" />
                </image>
             </ImageView>
             <Text fill="#b1aedd" layoutX="364.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMOTIONAL SONGS">
@@ -86,7 +86,7 @@
             </Text>
             <ImageView fitHeight="182.0" fitWidth="205.0">
                <image>
-                  <Image url="@sources/LogoUfficiale.png" />
+                  <Image url="@../sources/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>
