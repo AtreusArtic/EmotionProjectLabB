@@ -34,12 +34,12 @@ public class FirstMenu {
 
     @FXML
     void loginAction(ActionEvent event) throws IOException {
-        m.changeScene("LogInMenu.fxml");
+        m.changeScene("Filexml/LogInMenu.fxml");
     }
 
     @FXML
     void signIn(ActionEvent event) throws IOException {
-        m.changeScene("RegistrationMenu.fxml");
+        m.changeScene("Filexml/RegistrationMenu.fxml");
     }
 
 }

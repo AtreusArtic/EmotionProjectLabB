@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.FirstMenu">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.FirstMenu">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,7 +25,7 @@
          <children>
             <ImageView fitHeight="852.0" fitWidth="528.0">
                <image>
-                  <Image url="@sources/SfondoFirst.png" />
+                  <Image url="@../sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Text fill="#b1aedd" layoutX="23.0" layoutY="699.0" stroke="BLACK" strokeLineCap="BUTT" strokeType="INSIDE" text="EMOTIONAL SONGS" wrappingWidth="498.5257797241211">
@@ -40,7 +40,7 @@
             </Text>
             <ImageView fitHeight="452.0" fitWidth="457.0" layoutX="35.0" layoutY="177.0">
                <image>
-                  <Image url="@sources/LogoUfficiale.png" />
+                  <Image url="@../sources/LogoUfficiale.png" />
                </image>
             </ImageView>
          </children>
@@ -49,7 +49,7 @@
          <children>
             <ImageView fitHeight="855.0" fitWidth="553.0" layoutX="-6.0" layoutY="-3.0">
                <image>
-                  <Image url="@sources/SfondoFirst.png" />
+                  <Image url="@../sources/SfondoFirst.png" />
                </image>
             </ImageView>
             <Button fx:id="signInbutton" layoutX="165.0" layoutY="275.0" mnemonicParsing="false" onAction="#signIn" prefHeight="71.0" prefWidth="234.0" text="Sign In" textFill="#4e6ab9">
@@ -73,7 +73,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="165.0" layoutY="625.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="234.0" text="Exit" textFill="#1a2c5e">
+            <Button fx:id="exit" layoutX="165.0" layoutY="625.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="71.0" prefWidth="234.0" text="Exit" textFill="#1a2c5e">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>

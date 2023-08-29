@@ -35,7 +35,7 @@ public class LogIn extends MenuManager {
     }
     @FXML
     void backFirst(ActionEvent event) throws IOException{
-        m.changeScene("FirstMenu.fxml");
+        m.changeScene("Filexml/FirstMenu.fxml");
     }
 
     private void checkLogIn() throws IOException, SQLException {
@@ -46,7 +46,7 @@ public class LogIn extends MenuManager {
         {
             MenuManager.setUser_connected(user_logged);
             conbutton.setText("Success!");
-            m.changeScene("AfterLogin.fxml");
+            m.changeScene("Filexml/AfterLogin.fxml");
         }
         else
         {
