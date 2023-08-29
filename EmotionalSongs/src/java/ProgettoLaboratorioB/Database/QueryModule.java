@@ -167,19 +167,19 @@ public class QueryModule
 
         playlists_table_queries.put(
                 QUERY.GET_ALL_SONGS_FROM_PLAYLIST,
-                        "SELECT nome, titolo, autore FROM composta natural join playlist natural join canzone WHERE userid = ? and nomePlaylist = ?");
+                        "SELECT titolo, autore FROM composta natural join playlist natural join canzone WHERE userId = ? and nomePlaylist = ?");
 
         playlists_table_queries.put
                 (QUERY.ADD_SONG_TO_PLAYLIST,
-                        "INSERT INTO composta (id, nomePlaylist, titolo, autore) VALUES ('%s', '%s', '%s', '%s');");
+                        "INSERT INTO composta (nomePlaylist, userId, titolo, autore) VALUES ('%s', '%s', '%s', '%s');");
 
         playlists_table_queries.put
                 (QUERY.DELETE_SONG_FROM_PLAYLIST,
-                        "DELETE FROM composta WHERE id = ? AND nomePlaylist = ? and titolo = ? and autore = ?");
+                        "DELETE FROM composta WHERE nomePlaylist = ? AND userId = ? and titolo = ? and autore = ?");
 
         playlists_table_queries.put
                 (QUERY.DELETE_PLAYLIST,
-                        "DELETE FROM playlist WHERE nomePlaylist = ? and userid = ? ");
+                        "DELETE FROM playlist WHERE nomePlaylist = ? and userId = ? ");
 
         tableMapping.put(TABLE.PLAYLISTS, playlists_table_queries);
     }
