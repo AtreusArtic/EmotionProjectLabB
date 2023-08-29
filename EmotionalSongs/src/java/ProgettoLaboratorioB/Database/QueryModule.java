@@ -130,7 +130,7 @@ public class QueryModule
 
         songs_table_queries.put
                 (QUERY.ADD_SONG,
-                        "INSERT INTO songs(year, id, artist, title) VALUES('%s', '%s', '%s', '%s');");
+                        "INSERT INTO canzone(titolo, autore, anno) VALUES('%s', '%s', '%s');");
 
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_TITLE,
@@ -139,11 +139,13 @@ public class QueryModule
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_YEARARTIST,
                         "SELECT * FROM canzone WHERE anno = ? AND autore = ?");
-
+/*
         songs_table_queries.put
                 (QUERY.GET_SONGS_BY_ID,
-                        "SELECT * FROM songs WHERE id = ?");
+                        "SELECT * FROM canzone WHERE id = ?");
         tableMapping.put(TABLE.SONGS, songs_table_queries);
+        
+ */
 //<<<<<<< HEAD
 
 //=======
