@@ -1,4 +1,4 @@
-package ProgettoLaboratorioB.GUI;
+package ProgettoLaboratorioB.GUI.ControllerClass;
 
 
 import javafx.fxml.FXML;

@@ -1,5 +1,6 @@
-package ProgettoLaboratorioB.GUI;
+package ProgettoLaboratorioB.GUI.ControllerClass;
 
+import ProgettoLaboratorioB.GUI.ManagerGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

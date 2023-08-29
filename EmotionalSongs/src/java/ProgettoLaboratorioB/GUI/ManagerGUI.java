@@ -28,14 +28,8 @@ public class ManagerGUI extends Application{
     public void start(Stage stage) throws Exception{
         stg = stage;
         stage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstMenu.fxml"));
-        //FXMLLoader fxml_Loader = new FXMLLoader(getClass().getResource("AnonymousMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Filexml/FirstMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        //Parent root1 = (Parent) fxml_Loader.load();
-        /*String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        AnchorPane test = new AnchorPane(l);*/
         Scene scene = new Scene(new StackPane(root), 1050, 850);
         stage.setTitle("Welcome to Emotional Songs!!");
         stage.setScene(scene);

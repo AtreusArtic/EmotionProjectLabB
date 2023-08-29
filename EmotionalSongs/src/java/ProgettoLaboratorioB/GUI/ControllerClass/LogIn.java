@@ -1,6 +1,8 @@
-package ProgettoLaboratorioB.GUI;
+package ProgettoLaboratorioB.GUI.ControllerClass;
 
 import ProgettoLaboratorioB.Client.ClientService;
+import ProgettoLaboratorioB.GUI.ManagerGUI;
+import ProgettoLaboratorioB.GUI.MenuManager;
 import ProgettoLaboratorioB.Serializables.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +13,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LogIn extends MenuManager{
+public class LogIn extends MenuManager {
     private static ClientService clientService = new ClientService();
     private ManagerGUI m = new ManagerGUI();
     @FXML
