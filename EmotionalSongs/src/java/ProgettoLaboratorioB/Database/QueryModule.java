@@ -108,13 +108,13 @@ public class QueryModule
 
         users_table_queries.put
                 (QUERY.LOGIN,
-                        "SELECT * FROM users WHERE username = ? AND password = ?");
+                        "SELECT * FROM utenti WHERE userid = ? AND password = ?");
 
         users_table_queries.put
                 (QUERY.REGISTER,
                         "insert into users" +
-                                "(username, password, email, name, surname, address, CF ) " +
-                                "values('%s', '%s', '%s','%s', '%s', '%s','%s');");
+                                "(nome, cognome, codicefiscale, via, civico, citta, provincia, cap, userid, email, password ) " +
+                                "values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');");
 
         tableMapping.put(TABLE.USERS, users_table_queries);
     }
@@ -134,17 +134,20 @@ public class QueryModule
 
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_TITLE,
-                        "SELECT * FROM songs WHERE title LIKE ?");
+                        "SELECT * FROM canzone WHERE titolo LIKE ?");
 
         songs_table_queries.put
                 (QUERY.SEARCH_SONG_BY_YEARARTIST,
-                        "SELECT * FROM songs WHERE year = ? AND artist = ?");
+                        "SELECT * FROM canzone WHERE anno = ? AND autore = ?");
 
         songs_table_queries.put
                 (QUERY.GET_SONGS_BY_ID,
                         "SELECT * FROM songs WHERE id = ?");
         tableMapping.put(TABLE.SONGS, songs_table_queries);
+//<<<<<<< HEAD
 
+//=======
+//>>>>>>> parent of 79be411 (Query)
     }
 
     /**
@@ -157,26 +160,26 @@ public class QueryModule
 
         playlists_table_queries.put
                 (QUERY.CREATE_PLAYLIST,
-                        "INSERT INTO playlists (name, username, ID) VALUES ('%s', '%s', '%s');");
+                        "INSERT INTO playlist (nomePlaylist, userId) VALUES ('%s', '%s');");
         playlists_table_queries.put(
                 QUERY.GET_USER_PLAYLISTS,
-                "SELECT * FROM playlists WHERE username = ?");
+                        "SELECT nomePlaylist FROM playlist WHERE userId = ?");
 
         playlists_table_queries.put(
                 QUERY.GET_ALL_SONGS_FROM_PLAYLIST,
-                "SELECT * FROM playlist_saved WHERE playlistID = ?");
+                        "SELECT nome, titolo, autore FROM composta natural join playlist natural join canzone WHERE userid = ? and nomePlaylist = ?");
 
         playlists_table_queries.put
                 (QUERY.ADD_SONG_TO_PLAYLIST,
-                        "INSERT INTO playlist_saved (playlistID, songID) VALUES ('%s', '%s');");
+                        "INSERT INTO composta (id, nomePlaylist, titolo, autore) VALUES ('%s', '%s', '%s', '%s');");
 
         playlists_table_queries.put
                 (QUERY.DELETE_SONG_FROM_PLAYLIST,
-                        "DELETE FROM playlist_saved WHERE playlistID = ? AND songID = ?");
+                        "DELETE FROM composta WHERE id = ? AND nomePlaylist = ? and titolo = ? and autore = ?");
 
         playlists_table_queries.put
                 (QUERY.DELETE_PLAYLIST,
-                        "DELETE FROM playlists WHERE ID = ?");
+                        "DELETE FROM playlist WHERE nomePlaylist = ? and userid = ? ");
 
         tableMapping.put(TABLE.PLAYLISTS, playlists_table_queries);
     }
