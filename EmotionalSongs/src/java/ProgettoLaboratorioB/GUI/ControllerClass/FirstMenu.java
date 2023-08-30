@@ -1,15 +1,14 @@
 package ProgettoLaboratorioB.GUI.ControllerClass;
 
-import ProgettoLaboratorioB.GUI.ManagerGUI;
+import ProgettoLaboratorioB.GUI.MenuManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class FirstMenu {
+public class FirstMenu extends MenuManager{
 
-    ManagerGUI m = new ManagerGUI();
 
     @FXML
     private Button anonButton;

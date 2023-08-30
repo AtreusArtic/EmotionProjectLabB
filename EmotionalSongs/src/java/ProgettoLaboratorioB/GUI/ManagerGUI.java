@@ -28,7 +28,7 @@ public class ManagerGUI extends Application{
     public void start(Stage stage) throws Exception{
         stg = stage;
         stage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Filexml/SearchTitle.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Filexml/FirstMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Scene scene = new Scene(new StackPane(root), 1050, 850);
         stage.setTitle("Welcome to Emotional Songs!!");

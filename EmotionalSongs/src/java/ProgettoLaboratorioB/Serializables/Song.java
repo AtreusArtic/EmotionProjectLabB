@@ -2,7 +2,7 @@ package ProgettoLaboratorioB.Serializables;
 
 import java.io.Serializable;
 
-public class Song implements Serializable, Comparable<Song>{
+public class Song implements Serializable, Comparable<Song> {
 
     static final long serialVersionUID = 1L;
     private String title;
@@ -20,19 +20,19 @@ public class Song implements Serializable, Comparable<Song>{
 
     public Song() {}
 
-    public String GetTitle(){
+    public String getTitle(){
         return this.title;
     }
 
-    public String GetArtist(){
+    public String getArtist(){
         return this.artist;
     }
 
-    public int GetYear(){
+    public int getYear(){
         return this.year;
     }
 
-    public String GetID(){
+    public String getID(){
         return this.ID;
     }
 
@@ -52,13 +52,14 @@ public class Song implements Serializable, Comparable<Song>{
     @Override
     public String toString() {
         return "Song{" +
-                "title='" + GetTitle() + '\'' +
-                ", artist='" + GetArtist() + '\'' +
-                ", year=" + GetYear() +
-                ", ID='" + GetID() + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", artist='" + getArtist() + '\'' +
+                ", year=" + getYear() +
+                ", ID='" + getID() + '\'' +
                 '}';
     }
 
     @Override
     public int compareTo(Song song) { return 0;}
+
 }

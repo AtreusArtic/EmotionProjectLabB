@@ -300,16 +300,16 @@ public class App
         Song found = App_System.binarySearch(desired_song, songs);
 
         if (found != null) {
-            if(ClientService.AddSongToPlaylist("0001", found.GetID()))
+            if(ClientService.AddSongToPlaylist("0001", found.getID()))
             {
-                System.out.println("Song:" + found.GetTitle() + "added successfully");
+                System.out.println("Song:" + found.getTitle() + "added successfully");
             }
             else
             {
-                System.out.println("Error: song:" + found.GetTitle() + " not added");
+                System.out.println("Error: song:" + found.getTitle() + " not added");
             }
         } else {
-            System.out.println("Song:" + found.GetTitle() + "not found");
+            System.out.println("Song:" + found.getTitle() + "not found");
 
         }
 

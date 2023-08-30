@@ -65,7 +65,7 @@ public class Playlist implements Serializable, Comparable<Playlist>
         for (Song song : songs)
         {
             System.out.println("SONG SAVED:");
-            System.out.println(song.GetTitle());
+            System.out.println(song.getTitle());
         }
     }
 

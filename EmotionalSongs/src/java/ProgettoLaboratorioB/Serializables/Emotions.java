@@ -113,7 +113,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         float[] avgValues = new float [9];
 
         if(emotions_list == null){
-            System.out.println("@SYSTEM: '" + song.GetTitle() + "' has not any emotion registered.\n");
+            System.out.println("@SYSTEM: '" + song.getTitle() + "' has not any emotion registered.\n");
             return null;
         }
 
@@ -132,7 +132,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
             }
         }
 
-        System.out.println("\n > Total emotion registered about " + song.GetTitle() + " song is: " + (int)count);
+        System.out.println("\n > Total emotion registered about " + song.getTitle() + " song is: " + (int)count);
 
         //round the average values:
         String[] roundValues = new String[avgValues.length];

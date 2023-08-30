@@ -41,7 +41,7 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Button layoutX="194.0" layoutY="298.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search a song by title" wrapText="true">
+            <Button fx:id="searchbytitle_btn" layoutX="194.0" layoutY="298.0" mnemonicParsing="false" onAction="#openSearchView" prefHeight="71.0" prefWidth="209.0" text="Search a song by title" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
