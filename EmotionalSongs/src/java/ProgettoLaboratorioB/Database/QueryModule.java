@@ -195,10 +195,10 @@ public class QueryModule
         Map<QUERY, String> emotions_table_queries = new HashMap<>();
 
         emotions_table_queries.put(QUERY.REGISTER_EMOTION,
-                "INSERT INTO emotions (songid, userid, emotion, description) VALUES ('%s', '%s', '%s', '%s');");
+                "INSERT INTO associa (userId, nomeEmozione, titolo, autore, nota, spiegazione, punteggio) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s'");
 
         emotions_table_queries.put(QUERY.GET_EMOTIONS,
-                "SELECT emotion FROM emotions WHERE songid = ?");
+                "SELECT nomeEmozione, nota, spiegazione, punteggio FROM associa WHERE useId = ? and titolo = ? and autore = ?");
 
         tableMapping.put(TABLE.EMOTIONS, emotions_table_queries);
     }
