@@ -179,6 +179,11 @@ public class ClientService {
      * @return true if the playlist is created, false otherwise
      */
     public static boolean CreateNewPlaylist(String ply_name, String plt_id){
+        if(user_connected == null)
+        {
+            System.out.println("CLIENT-SERVICE Error: user not logged in.");
+            return false;
+        }
         try
         {
             return Client.server.CreateNewPlaylist(
@@ -196,6 +201,11 @@ public class ClientService {
      * @return a list of playlists by the username of the user connected.
      */
     public static List<Playlist> GetUserPlaylists(){
+        if(user_connected == null)
+        {
+            System.out.println("CLIENT-SERVICE Error: user not logged in.");
+            return null;
+        }
         try
         {
             try

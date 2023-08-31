@@ -69,6 +69,14 @@ public class Playlist implements Serializable, Comparable<Playlist>
         }
     }
 
+    public static int IDGenerator()
+    {
+        int min = 10000;
+        int max = 99999;
+        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+        return random_int;
+    }
+
     @Override
     public int compareTo(Playlist playlist) {
         return 0;

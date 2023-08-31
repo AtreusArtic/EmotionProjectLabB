@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -86,6 +87,21 @@ public class SearchTitle extends MenuManager implements Initializable {
     void turnBackToMenu() throws Exception {
         System.out.println("GUI ADVERTISE: Back to menu button clicked!");
         m.changeScene("Filexml/AfterLogin.fxml");
+    }
+
+    @FXML
+    void openSongsOption(MouseEvent event)
+    {
+        if (event.getClickCount() == 2)
+        {
+
+            Song song = new Song(table.getSelectionModel().getSelectedItem().getYear(),
+                    table.getSelectionModel().getSelectedItem().getID(),
+                    table.getSelectionModel().getSelectedItem().getArtist(),
+                    table.getSelectionModel().getSelectedItem().getTitle());
+
+            System.out.println("Song selected is: " + song);
+        }
     }
 }
 

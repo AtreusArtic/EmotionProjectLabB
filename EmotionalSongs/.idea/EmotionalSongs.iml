@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
       <sourceFolder url="file://$MODULE_DIR$/src/GUI/javaFX" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/client/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/database/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/server/ProgettoLaboratorioB" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/server/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/java/ProgettoLaboratorioB/GUI/sources" type="java-resource" />
     </content>
   </component>
 </module>
