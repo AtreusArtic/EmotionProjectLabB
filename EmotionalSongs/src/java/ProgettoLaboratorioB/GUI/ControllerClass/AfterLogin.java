@@ -1,6 +1,5 @@
 package ProgettoLaboratorioB.GUI.ControllerClass;
 
-import ProgettoLaboratorioB.GUI.ManagerGUI;
 import ProgettoLaboratorioB.GUI.MenuManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,8 +36,12 @@ public class AfterLogin extends MenuManager implements Initializable {
 
     @FXML
     void openSearchView(ActionEvent event) throws IOException {
-        ManagerGUI m = new ManagerGUI();
         m.changeScene("Filexml/SearchTitle.fxml");
+    }
+
+    @FXML
+    void openSearchYearAuthorView(ActionEvent event) throws IOException {
+        m.changeScene("Filexml/SearchYearAuthor.fxml");
     }
 
 

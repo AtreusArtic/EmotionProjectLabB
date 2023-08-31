@@ -2,16 +2,10 @@ package ProgettoLaboratorioB.GUI.ControllerClass;
 
 import ProgettoLaboratorioB.GUI.MenuManager;
 import ProgettoLaboratorioB.Serializables.Song;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -37,7 +31,6 @@ public class SearchTitle extends MenuManager implements Initializable {
     private Button search_btn;
     @FXML
     private Label wrongTitle_lbl;
-
     @FXML
     private TextField search_title_lbl;
 
@@ -72,15 +65,6 @@ public class SearchTitle extends MenuManager implements Initializable {
     // Declare a function that updates the table with the list of songs:
     private void UpdateTable(List<Song> songs) {
        table.setItems(GetList(songs));
-    }
-
-    private ObservableList<Song> GetList(List<Song> songs) {
-        ObservableList<Song> list = FXCollections.observableArrayList();
-        for(Song s : songs)
-        {
-            list.add(s);
-        }
-        return list;
     }
 
     /**

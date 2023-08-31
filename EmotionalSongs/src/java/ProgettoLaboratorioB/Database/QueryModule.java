@@ -11,7 +11,7 @@ import java.util.Map;
 public class QueryModule
 {
     /**
-     * ENUMS: These enums are used to map table_name(KEY) and the list of queries associated to it(VALUE).
+     * ENUMS: These enums are used to map table_name(KEY) and the list of queries associated to it (VALUE).
      * by using the Java Hashmap Class with <Table)><QueriesAssociated>
      * */
     public enum QUERY
@@ -99,7 +99,7 @@ public class QueryModule
     }
 
     /**
-     * This method set all the queries associated to the users table.
+     * This method set all the queries associated to the user's table.
      * The queries are mapped to the enum TABLE.USERS
      **/
     public void initUsersTable()
@@ -119,7 +119,7 @@ public class QueryModule
 
 
     /**
-     * This method set all the queries associated to the songs table.
+     * This method set all the queries associated to the song table.
      * The queries are mapped to the enum TABLE.SONGS
      **/
     public void initSongsTable()
@@ -146,7 +146,7 @@ public class QueryModule
     }
 
     /**
-     * This method set all the queries associated to the playlists table.
+     * This method set all the queries associated to the playlist table.
      * The queries are mapped to the enum TABLE.PLAYLISTS
      **/
     public void initPlaylistsTable()

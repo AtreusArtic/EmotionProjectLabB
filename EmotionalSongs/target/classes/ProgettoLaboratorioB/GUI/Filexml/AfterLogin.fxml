@@ -46,7 +46,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="194.0" layoutY="432.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Search song by year or author" wrapText="true">
+            <Button fx:id="searchbyauthor_btn" layoutX="194.0" layoutY="432.0" mnemonicParsing="false" onAction="#openSearchYearAuthorView" prefHeight="71.0" prefWidth="209.0" text="Search song by year or author" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
