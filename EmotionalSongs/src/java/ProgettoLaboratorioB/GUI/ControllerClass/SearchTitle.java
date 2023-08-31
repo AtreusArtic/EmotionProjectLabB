@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,6 +35,8 @@ public class SearchTitle extends MenuManager implements Initializable {
     //Search function GUI properties:
     @FXML
     private Button search_btn;
+    @FXML
+    private Label wrongTitle_lbl;
 
     @FXML
     private TextField search_title_lbl;
@@ -55,19 +58,15 @@ public class SearchTitle extends MenuManager implements Initializable {
 
         List<Song> songs =  clientService.SearchSongByTitle(title);
 
-        UpdateTable(songs);
-
         if(songs != null)
         {
-            //TODO: implementare la visualizzazione della lista
-
-
+            UpdateTable(songs);
         }
         else
         {
             System.out.println("No songs found!");
+            wrongTitle_lbl.setText("Song not found! Try again.");
         }
-
     }
 
     // Declare a function that updates the table with the list of songs:
