@@ -81,6 +81,12 @@ public class SearchTitle extends MenuManager implements Initializable {
         artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
         songID.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
     }
+
+    @FXML
+    void turnBackToMenu() throws Exception {
+        System.out.println("GUI ADVERTISE: Back to menu button clicked!");
+        m.changeScene("Filexml/AfterLogin.fxml");
+    }
 }
 
 

@@ -43,22 +43,22 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="search_title_lbl" layoutX="51.0" layoutY="20.0" prefHeight="31.0" prefWidth="106.0" promptText="Insert year">
+            <TextField fx:id="year_song_lbl" layoutX="51.0" layoutY="20.0" prefHeight="31.0" prefWidth="106.0" promptText="Insert year">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label fx:id="wrongTitle_lbl" layoutX="504.0" layoutY="17.0" prefHeight="33.0" prefWidth="192.0" textFill="#9e0101">
+            <Label fx:id="wrongTitle_lbl" layoutX="493.0" layoutY="18.0" prefHeight="33.0" prefWidth="192.0" textFill="#9e0101">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="backAfterMenu_btn" layoutX="841.0" layoutY="21.0" mnemonicParsing="false" text="Back To User Menu ">
+            <Button fx:id="backAfterMenu_btn" layoutX="841.0" layoutY="21.0" mnemonicParsing="false" onAction="#turnBackToMenu" text="Back To User Menu ">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="search_title_lbl1" layoutX="181.0" layoutY="20.0" prefHeight="31.0" prefWidth="157.0" promptText="Insert author">
+            <TextField fx:id="author_song_lbl" layoutX="181.0" layoutY="20.0" prefHeight="31.0" prefWidth="157.0" promptText="Insert author">
                <font>
                   <Font size="16.0" />
                </font>

@@ -15,7 +15,6 @@ public class AfterLogin extends MenuManager implements Initializable {
 
     @FXML
     private Button logout;
-
     @FXML
     private Text welcome_field;
 

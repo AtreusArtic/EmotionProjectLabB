@@ -16,7 +16,9 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     @FXML
     public Button search_Year_Author_btn;
     @FXML
-    public TextField search_title_lbl;
+    public TextField year_song_lbl;
+    @FXML
+    public TextField author_song_lbl;
     @FXML
     public Label wrongTitle_lbl;
     @FXML
@@ -35,10 +37,10 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        authorCol.setCellValueFactory(new PropertyValueFactory<Song, String>("author"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
         yearCol.setCellValueFactory(new PropertyValueFactory<Song, Integer>("year"));
         titleCol.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
-        idCol.setCellValueFactory(new PropertyValueFactory<Song, String>("id"));
+        idCol.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
     }
 
     @FXML
@@ -48,24 +50,35 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     }
 
     private void GoSearch() throws SQLException {
-        String year = search_title_lbl.getText();
-        String author = search_title_lbl.getText();
+        String year = year_song_lbl.getText();
+        String author = author_song_lbl.getText();
 
         List<Song> songs = clientService.SearchSongByYearTitle(year, author);
 
-        if(songs != null)
+        if(songs != null && !songs.isEmpty())
         {
             UpdateTable(songs);
 
         }
-        else
+        else if(songs != null && songs.isEmpty())
         {
             wrongTitle_lbl.setText("No song found!");
+        }
+        else
+        {
+            System.out.println("SYSTEM ERROR: songs list is null!");
+
         }
     }
 
     private void UpdateTable(List<Song> songs)
     {
         table.setItems(GetList(songs));
+    }
+
+    @FXML
+    void turnBackToMenu() throws Exception {
+        System.out.println("GUI ADVERTISE: Back to menu button clicked!");
+        m.changeScene("Filexml/AfterLogin.fxml");
     }
 }
