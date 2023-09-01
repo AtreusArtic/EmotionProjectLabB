@@ -5,6 +5,7 @@ import ProgettoLaboratorioB.Serializables.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogIn extends MenuManager {
+    public Label wrong_Log_lbl;
     @FXML
     private Button conbutton;
 
@@ -46,7 +48,7 @@ public class LogIn extends MenuManager {
         }
         else
         {
-            conbutton.setText("Wrong username or password!");
+            wrong_Log_lbl.setText("Wrong username or password!");
         }
     }
 
