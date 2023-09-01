@@ -16,16 +16,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchTitle">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchTitle">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="512.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="679.2189331054688" minHeight="0.0" prefHeight="664.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="512.0" minHeight="10.0" prefHeight="184.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="679.2189331054688" minHeight="0.0" prefHeight="666.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="685.0" prefWidth="1050.0" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="669.0" prefWidth="1050.0" GridPane.rowIndex="1">
          <children>
             <ImageView fitHeight="669.0" fitWidth="1050.0" pickOnBounds="true">
                <image>
@@ -92,7 +92,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="181.0" prefWidth="1050.0">
          <children>
-            <ImageView fitHeight="181.0" fitWidth="1050.0" layoutY="7.0" pickOnBounds="true">
+            <ImageView fitHeight="187.0" fitWidth="1050.0" layoutY="1.0" pickOnBounds="true">
                <image>
                   <Image url="@../sources/ProvaRiga.png" />
                </image>
