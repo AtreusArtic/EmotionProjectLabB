@@ -63,7 +63,6 @@ public interface ServerInterface extends Remote
 
     /*
     *  Service actions:
-    * TODO: server take into account of how many clients are connected.
      */
     public boolean SendMessageToClient(String message) throws RemoteException;
 

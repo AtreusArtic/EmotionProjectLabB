@@ -16,10 +16,7 @@ public class ClientService {
     //  ------- SYSTEM MODULE FUNCTIONS --------:
 
 
-    public ClientService ()
-    {
-        this.user_connected = null;
-    }
+    public ClientService () {}
 
     /**
      * This function allows the client to start the client-application.
@@ -54,21 +51,25 @@ public class ClientService {
     {
         user_connected = user_con;
     }
+
+
+    public void GetUserConnected()
+    {
+        System.out.println(user_connected);
+    }
     /**
      * This function allows the user to register in the application.
      * and go online on the server as user registered in the application database.
      * @param user the new user that wants to register in the application.
      * @return true if the registration is successful, false otherwise.
      */
-
-
     public boolean RegisterNewUser(User user){
         try {
             System.out.println("CLIENT-SERVICE request to server sent.");
             if(Client.server.RegisterNewUser(user))
             {
                 System.out.println("CLIENT-SERVICE request to server successful.");
-                this.user_connected = user;
+                user_connected = user;
                 return true;
             }
             else
@@ -92,17 +93,26 @@ public class ClientService {
      * @throws SQLException if the query to the database fails.
      */
     public User Login(String username, String password) throws SQLException {
+        User user_conn = null;
         try
         {
-            this.user_connected =  Client.server.Login(username, password);
-            if(user_connected != null)
-                return user_connected;
-            else
-                return null;
+            user_conn =  Client.server.Login(username, password);
         } catch (RemoteException e) {
             System.out.println("CLIENT-SERVICE Error: Server is offline.");
             return null;
         }
+        if(user_conn != null)
+        {
+            System.out.println("CLIENT-SERVICE: user logged in:" + user_conn.GetUsername());
+            user_connected = user_conn;
+            return user_connected;
+        }
+        else
+        {
+            System.out.println("CLIENT-SERVICE Error: user not found.");
+            return null;
+        }
+
     }
 
     /**
@@ -112,7 +122,7 @@ public class ClientService {
     public void Logout(){
         try
         {
-            this.user_connected = null;
+            user_connected = null;
         } catch (NullPointerException e)
         {
             System.out.println("CLIENT-SERVICE Error: user already logged out.");
@@ -123,7 +133,7 @@ public class ClientService {
      * This method returns the user that is logged in the application
      * @return the user that is logged in the application
      */
-    public static void ShowUserProfile()
+    public void ShowUserProfile()
     {
         try
         {
@@ -200,7 +210,7 @@ public class ClientService {
      * This method request to the server to get all the playlists of the user
      * @return a list of playlists by the username of the user connected.
      */
-    public static List<Playlist> GetUserPlaylists(){
+    public static List<Playlist> GetUserPlaylists(User user_connected){
         if(user_connected == null)
         {
             System.out.println("CLIENT-SERVICE Error: user not logged in.");

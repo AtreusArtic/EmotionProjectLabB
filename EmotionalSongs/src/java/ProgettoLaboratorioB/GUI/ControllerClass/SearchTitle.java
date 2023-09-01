@@ -1,6 +1,7 @@
 package ProgettoLaboratorioB.GUI.ControllerClass;
 
 import ProgettoLaboratorioB.GUI.MenuManager;
+import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,11 +12,13 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchTitle extends MenuManager implements Initializable {
-    //Table properties:
+
+    //Table song list properties:
     @FXML
     private TableView<Song> table = new TableView<Song>();
     @FXML
@@ -34,6 +37,30 @@ public class SearchTitle extends MenuManager implements Initializable {
     private Label wrongTitle_lbl;
     @FXML
     private TextField search_title_lbl;
+
+    //Playlist properties:
+    @FXML
+    private ListView<String> list_playlist = new ListView<String>();
+
+    private Song song_selected;
+
+    /**
+     * This function is called when the scene is loaded.
+     * It initializes the table with the columns and the relative values,
+     * in order to map between song properties and TableViewFX obj columns.
+     * @param url
+     * @param resourceBundle
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
+        yearColumn.setCellValueFactory(new PropertyValueFactory<Song, Integer>("year"));
+        artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
+        songID.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
+        song_selected = null;
+        list_playlist.setDisable(true);
+        SetPlaylist();
+    }
 
     /**
      * This function is callback for the event "search_btn" click.
@@ -63,24 +90,8 @@ public class SearchTitle extends MenuManager implements Initializable {
         }
     }
 
-    // Declare a function that updates the table with the list of songs:
     private void UpdateTable(List<Song> songs) {
        table.setItems(GetList(songs));
-    }
-
-    /**
-     * This function is called when the scene is loaded.
-     * It initializes the table with the columns and the relative values,
-     * in order to map between song properties and TableViewFX obj columns.
-     * @param url
-     * @param resourceBundle
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        titleColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<Song, Integer>("year"));
-        artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
-        songID.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
     }
 
     @FXML
@@ -90,19 +101,82 @@ public class SearchTitle extends MenuManager implements Initializable {
     }
 
     @FXML
-    void openSongsOption(MouseEvent event)
-    {
-        if (event.getClickCount() == 2)
-        {
+    void selectSong(MouseEvent event) {
+        if (event.getClickCount() == 1) {
 
-            Song song = new Song(table.getSelectionModel().getSelectedItem().getYear(),
+            song_selected = new Song(table.getSelectionModel().getSelectedItem().getYear(),
                     table.getSelectionModel().getSelectedItem().getID(),
                     table.getSelectionModel().getSelectedItem().getArtist(),
                     table.getSelectionModel().getSelectedItem().getTitle());
-
-            System.out.println("Song selected is: " + song);
+            if(song_selected != null )
+                UpdateListView();
+            System.out.println("Song selected is: " + song_selected);
         }
     }
+
+    List<Playlist> ply;
+    public void SetPlaylist() {
+        ply = clientService.GetUserPlaylists(MenuManager.getUser_connected());
+        if (ply == null) {
+            System.out.println("SYSTEM ERROR: ply is null!");
+            return;
+        }
+        List<String> ply_names = new ArrayList<>();
+        for (Playlist p : ply) {
+            ply_names.add(p.GetPlaylistName());
+        }
+
+        list_playlist.getItems().addAll(ply_names);
+    }
+
+    @FXML
+    void addSongPlaylist(MouseEvent event)
+    {
+        if(event.getClickCount() == 1)
+        {
+            String playlist_name = list_playlist.getSelectionModel().getSelectedItem();
+            Playlist playlist = null;
+            for(Playlist p : ply)
+            {
+                if(p.GetPlaylistName().equals(playlist_name))
+                {
+                    playlist = p;
+                    break;
+                }
+            }
+            if(playlist == null)
+            {
+                System.out.println("SYSTEM ERROR: playlist is null!");
+                return;
+            }
+            if(song_selected == null)
+            {
+                System.out.println("SYSTEM ERROR: song_selected is null!");
+                return;
+            }
+            if(clientService.AddSongToPlaylist(playlist.GetPlaylistID(), song_selected.getID()))
+            {
+                System.out.println("Song added to playlist!");
+            }
+            else
+            {
+                System.out.println("SYSTEM ERROR: song not added to playlist!");
+            }
+        }
+    }
+
+    public void UpdateListView()
+    {
+        if(list_playlist.isDisable())
+        {
+            list_playlist.setDisable(false);
+        }
+        else
+        {
+            list_playlist.setDisable(true);
+        }
+    }
+
 }
 
 

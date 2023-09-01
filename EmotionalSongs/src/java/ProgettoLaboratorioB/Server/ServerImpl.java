@@ -208,7 +208,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     /**
-     * This function is used by the client to get the playlist of a user.
+     * The client uses this function to get the playlist of a user.
      * @param username the username of the user.
      * @return the list of the playlist of the user.
      * @throws RemoteException if the client is not connected with the server.
@@ -219,7 +219,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     /**
-     * This function is used by the client to get all songs of a playlist.
+     * The client uses this function to get all songs of a playlist.
      * @param playlistID the id of the playlist.
      * @return the list of the songs of the playlist.
      * @throws RemoteException if the client is not connected with the server.
@@ -230,7 +230,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     /**
-     * This function is used by the client to add a song to a playlist.
+     * The client uses this function to add a song to a playlist.
      * @param playlistID the id of the playlist.
      * @param songID the id of the song to add.
      * @return true if the song is added to the playlist, false otherwise.
@@ -242,7 +242,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     /**
-     * This function is used by the client to remove a song from a playlist.
+     * The client uses this function to remove a song from a playlist.
      * @param playlistID the id of the playlist.
      * @param songID the id of the song to remove.
      * @return true if the song is removed from the playlist, false otherwise.
@@ -254,7 +254,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     }
 
     /**
-     * This function is used by the client to delete a playlist.
+     * The client uses this function to delete a playlist.
      * @param playlistID the id of the playlist to delete.
      * @return true if the playlist is deleted, false otherwise.
      * @throws RemoteException if the client is not connected with the server.
@@ -267,14 +267,22 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface {
     /**
      * This function is used by the user client to register an emotion about a song.
      * @param emotion the new emotion to register.
+     * @return true if the emotion is registered correctly, false otherwise.
+     * @throws RemoteException if the client is not connected with the server.
      */
     @Override
-    public boolean RegisterNewEmotion(Emotions emotion) throws RemoteException {
+    public synchronized boolean RegisterNewEmotion(Emotions emotion) throws RemoteException {
         return qrExecute.RegisterNewEmotion(emotion);
     }
 
+    /**
+     * This function is used by the user client to get all emotions about a song.
+     * @param songID the id of the song.
+     * @return the list of the emotions about the song.
+     * @throws RemoteException if the client is not connected with the server.
+     */
     @Override
-    public List<Emotions> GetEmotionsFromSong(String songID) throws RemoteException {
+    public synchronized List<Emotions> GetEmotionsFromSong(String songID) throws RemoteException {
         return qrExecute.GetEmotionBySongID(songID);
     }
 

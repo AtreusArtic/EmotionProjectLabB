@@ -142,7 +142,7 @@ public class App
             switch(switchcase)
             {
                 case 1:
-                    ClientService.ShowUserProfile();
+                    //ClientService.ShowUserProfile();
                     break;
                 case 2:
                     CreatePlaylistModule();
@@ -151,7 +151,7 @@ public class App
                     AddSongToPlaylistModule();
                     break;
                 case 4:
-                    GetAllUserPlaylist();
+                    GetAllUserPlaylist(new User());
                     break;
                 case 5:
                     Emotions emotions = null;
@@ -315,9 +315,9 @@ public class App
 
     }
 
-    public static void GetAllUserPlaylist()
+    public static void GetAllUserPlaylist(User user)
     {
-        List<Playlist> playlists = ClientService.GetUserPlaylists();
+        List<Playlist> playlists = ClientService.GetUserPlaylists(user);
         if (playlists != null) {
             for (Playlist p : playlists) {
                 System.out.println(p);

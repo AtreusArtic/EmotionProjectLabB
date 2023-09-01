@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.awt.*;
-
 public class PlaylistController {
     @FXML
     public Button create_Playlist_btn;
@@ -19,6 +17,7 @@ public class PlaylistController {
 
 
     public void delete_Playlist(ActionEvent actionEvent) {
+
         //The inserted playlist name does not exist!! - Label lbl_notesist message
     }
 
