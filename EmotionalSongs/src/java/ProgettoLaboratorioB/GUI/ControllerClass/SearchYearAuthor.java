@@ -89,7 +89,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
             UpdateTable(songs);
 
         } else if (songs != null && songs.isEmpty()) {
-            wrongTitle_lbl.setText("No song found!");
+            wrongTitle_lbl.setText("No song found! Try Again.");
         } else {
             System.out.println("SYSTEM ERROR: songs list is null!");
 

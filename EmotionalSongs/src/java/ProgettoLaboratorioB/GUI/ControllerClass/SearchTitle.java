@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class SearchTitle extends MenuManager implements Initializable {
 
+    public Button backAfterMenu_btn;
     //Table song list properties:
     @FXML
     private TableView<Song> table = new TableView<Song>();
