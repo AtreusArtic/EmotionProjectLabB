@@ -7,11 +7,13 @@ import ProgettoLaboratorioB.Serializables.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
 public class Registration extends MenuManager {
+    public Label reg_unsuc_lbl;
     private ManagerGUI m = new ManagerGUI();
     private ClientService clientService = new ClientService();
 
@@ -112,7 +114,7 @@ public class Registration extends MenuManager {
         }
         else
         {
-            confbutton.setText("Error!");
+            reg_unsuc_lbl.setText("Something go wrong. Try again!!");
         }
     }
 }
