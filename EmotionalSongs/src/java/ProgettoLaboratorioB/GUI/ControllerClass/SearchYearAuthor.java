@@ -3,6 +3,7 @@ package ProgettoLaboratorioB.GUI.ControllerClass;
 import ProgettoLaboratorioB.GUI.MenuManager;
 import ProgettoLaboratorioB.Serializables.Playlist;
 import ProgettoLaboratorioB.Serializables.Song;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -32,6 +33,8 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     public Button rec_Emotion_btn;
 
     @FXML
+    public Button add_song_btn;
+    @FXML
     public ListView<String> list_playlist;
 
 
@@ -47,6 +50,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     private TableColumn<Song, String> idCol;
 
     private Song song_selected;
+    private Playlist playlist_selected;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,6 +58,12 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
         yearCol.setCellValueFactory(new PropertyValueFactory<Song, Integer>("year"));
         titleCol.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
         idCol.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
+
+        song_selected = null;
+        playlist_selected = null;
+
+        list_playlist.setDisable(true);
+        add_song_btn.setDisable(true);
 
         SetPlaylist();
     }
@@ -108,50 +118,71 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
 
     @FXML
     void selectSong(MouseEvent event) {
-        if (event.getClickCount() == 2) {
+        if (event.getClickCount() == 1) {
 
              song_selected = new Song(table.getSelectionModel().getSelectedItem().getYear(),
                     table.getSelectionModel().getSelectedItem().getID(),
                     table.getSelectionModel().getSelectedItem().getArtist(),
                     table.getSelectionModel().getSelectedItem().getTitle());
-
+            UpdateListView();
             System.out.println("Song selected is: " + song_selected);
         }
     }
 
     @FXML
-    void addSongPlaylist(MouseEvent event)
+    void selectPlaylist(MouseEvent event)
     {
-        if(event.getClickCount() == 2)
+        if(event.getClickCount() == 1)
         {
             String playlist_name = list_playlist.getSelectionModel().getSelectedItem();
-            Playlist playlist = null;
+            playlist_selected = null;
             for(Playlist p : ply)
             {
                 if(p.GetPlaylistName().equals(playlist_name))
                 {
-                    playlist = p;
-                    break;
+                    playlist_selected = p;
+                    UpdateAddButtonView();
+                    return;
                 }
             }
-            if(playlist == null)
-            {
-                System.out.println("SYSTEM ERROR: playlist is null!");
-                return;
-            }
-            if(song_selected == null)
-            {
-                System.out.println("SYSTEM ERROR: song_selected is null!");
-                return;
-            }
-            if(clientService.AddSongToPlaylist(playlist.GetPlaylistID(), song_selected.getID()))
-            {
-                System.out.println("Song added to playlist!");
-            }
-            else
-            {
-                System.out.println("SYSTEM ERROR: song not added to playlist!");
-            }
+            UpdateAddButtonView();
         }
     }
+
+    @FXML
+    void addSongToPlaylist(ActionEvent event)
+    {
+        if(song_selected == null || playlist_selected == null)
+        {
+            System.out.println("SYSTEM ERROR: song_selected or playlist_selected is null!");
+            return;
+        }
+        clientService.AddSongToPlaylist(playlist_selected.GetPlaylistID(), song_selected.getID());
+    }
+
+
+    private void UpdateAddButtonView()
+    {
+        if(song_selected != null && playlist_selected != null)
+        {
+            add_song_btn.setDisable(false);
+        }
+        else
+        {
+            add_song_btn.setDisable(true);
+        }
+    }
+
+    private void UpdateListView()
+    {
+        if(list_playlist.isDisable())
+        {
+            list_playlist.setDisable(false);
+        }
+        else
+        {
+            list_playlist.setDisable(true);
+        }
+    }
+
 }

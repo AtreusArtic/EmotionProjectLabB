@@ -39,6 +39,9 @@ public class SearchTitle extends MenuManager implements Initializable {
     @FXML
     private TextField search_title_lbl;
 
+    @FXML
+    private Button add_song_btn;
+
     //Playlist properties:
     @FXML
     private ListView<String> list_playlist = new ListView<String>();
@@ -59,7 +62,9 @@ public class SearchTitle extends MenuManager implements Initializable {
         artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
         songID.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
         song_selected = null;
+        selected_playlist = null;
         list_playlist.setDisable(true);
+        add_song_btn.setDisable(true);
         SetPlaylist();
     }
 
@@ -109,8 +114,7 @@ public class SearchTitle extends MenuManager implements Initializable {
                     table.getSelectionModel().getSelectedItem().getID(),
                     table.getSelectionModel().getSelectedItem().getArtist(),
                     table.getSelectionModel().getSelectedItem().getTitle());
-            if(song_selected != null )
-                UpdateListView();
+            UpdateListView();
             System.out.println("Song selected is: " + song_selected);
         }
     }
@@ -130,40 +134,36 @@ public class SearchTitle extends MenuManager implements Initializable {
         list_playlist.getItems().addAll(ply_names);
     }
 
+    Playlist selected_playlist;
     @FXML
-    void addSongPlaylist(MouseEvent event)
+    void selectPlaylist(MouseEvent event)
     {
         if(event.getClickCount() == 1)
         {
             String playlist_name = list_playlist.getSelectionModel().getSelectedItem();
-            Playlist playlist = null;
+            selected_playlist = null;
             for(Playlist p : ply)
             {
                 if(p.GetPlaylistName().equals(playlist_name))
                 {
-                    playlist = p;
-                    break;
+                    selected_playlist = p;
+                    UpdateAddButtonView();
+                    return;
                 }
             }
-            if(playlist == null)
-            {
-                System.out.println("SYSTEM ERROR: playlist is null!");
-                return;
-            }
-            if(song_selected == null)
-            {
-                System.out.println("SYSTEM ERROR: song_selected is null!");
-                return;
-            }
-            if(clientService.AddSongToPlaylist(playlist.GetPlaylistID(), song_selected.getID()))
-            {
-                System.out.println("Song added to playlist!");
-            }
-            else
-            {
-                System.out.println("SYSTEM ERROR: song not added to playlist!");
-            }
+            UpdateAddButtonView();
         }
+    }
+
+    @FXML
+    void addSongtoPlaylist(ActionEvent event)
+    {
+        if(song_selected == null || selected_playlist == null)
+        {
+            System.out.println("SYSTEM ERROR: song_selected or selected_playlist is null!");
+            return;
+        }
+        clientService.AddSongToPlaylist(selected_playlist.GetPlaylistID(),song_selected.getID());
     }
 
     public void UpdateListView()
@@ -175,6 +175,18 @@ public class SearchTitle extends MenuManager implements Initializable {
         else
         {
             list_playlist.setDisable(true);
+        }
+    }
+
+    public void UpdateAddButtonView()
+    {
+        if(song_selected != null && selected_playlist != null)
+        {
+            add_song_btn.setDisable(false);
+        }
+        else
+        {
+            add_song_btn.setDisable(true);
         }
     }
 

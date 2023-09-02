@@ -16,18 +16,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchTitle">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchTitle">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="512.0" minHeight="10.0" prefHeight="184.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="679.2189331054688" minHeight="0.0" prefHeight="666.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="512.0" minHeight="10.0" prefHeight="209.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="762.0" minHeight="0.0" prefHeight="641.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="669.0" prefWidth="1050.0" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="676.0" prefWidth="1050.0" GridPane.rowIndex="1">
          <children>
-            <ImageView fitHeight="669.0" fitWidth="1050.0" pickOnBounds="true">
+            <ImageView fitHeight="656.0" fitWidth="1050.0" layoutY="13.0" pickOnBounds="true">
                <image>
                   <Image url="@../sources/SfondoFirst.png" />
                </image>
@@ -43,12 +43,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextField fx:id="search_title_lbl" layoutX="51.0" layoutY="20.0" prefHeight="31.0" prefWidth="291.0" promptText="Search song by title">
+            <TextField fx:id="search_title_lbl" layoutX="51.0" layoutY="36.0" prefHeight="31.0" prefWidth="291.0" promptText="Search song by title">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="search_btn" layoutX="378.0" layoutY="19.0" mnemonicParsing="false" onAction="#searchSong" prefHeight="31.0" prefWidth="68.0" text="Search">
+            <Button fx:id="search_btn" layoutX="378.0" layoutY="36.0" mnemonicParsing="false" onAction="#searchSong" prefHeight="31.0" prefWidth="68.0" text="Search">
                <font>
                   <Font size="15.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="backAfterMenu_btn" layoutX="841.0" layoutY="21.0" mnemonicParsing="false" onAction="#turnBackToMenu" text="Back To User Menu ">
+            <Button fx:id="backAfterMenu_btn" layoutX="852.0" layoutY="39.0" mnemonicParsing="false" onAction="#turnBackToMenu" text="Back To User Menu ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -82,12 +82,20 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <ListView fx:id="list_playlist" layoutX="51.0" layoutY="338.0" onMouseClicked="#addSongPlaylist" prefHeight="243.0" prefWidth="181.0" />
+            <ListView fx:id="list_playlist" layoutX="51.0" layoutY="338.0" onMouseClicked="#selectPlaylist" prefHeight="243.0" prefWidth="181.0" />
             <Text layoutX="77.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add to my playlist ">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
+            <Button fx:id="add_song_btn" layoutX="92.0" layoutY="590.0" mnemonicParsing="false" onAction="#addSongtoPlaylist" text="Add Song">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="181.0" prefWidth="1050.0">

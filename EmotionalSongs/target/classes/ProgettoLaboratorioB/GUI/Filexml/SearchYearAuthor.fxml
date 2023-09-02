@@ -16,18 +16,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchYearAuthor">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.SearchYearAuthor">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="419.6871032714844" minHeight="10.0" prefHeight="164.5" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="686.0" minHeight="10.0" prefHeight="686.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="419.6871032714844" minHeight="10.0" prefHeight="156.76260375976562" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="700.0062103271484" minHeight="10.0" prefHeight="663.7373962402344" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="669.0" prefWidth="1050.0" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="675.0" prefWidth="1052.0" GridPane.rowIndex="1">
          <children>
-            <ImageView fitHeight="689.0" fitWidth="1052.0">
+            <ImageView fitHeight="676.0" fitWidth="1054.0" layoutX="-2.0" layoutY="13.0">
                <image>
                   <Image url="@../sources/SfondoFirst.png" />
                </image>
@@ -40,12 +40,12 @@
                   <TableColumn fx:id="idCol" editable="false" prefWidth="237.55780029296875" sortable="false" text="Song's Id" />
               </columns>
             </TableView>
-            <Button fx:id="search_Year_Author_btn" layoutX="365.0" layoutY="23.0" mnemonicParsing="false" onAction="#searchSong" prefHeight="31.0" prefWidth="82.0" text="Search">
+            <Button fx:id="search_Year_Author_btn" layoutX="354.0" layoutY="32.0" mnemonicParsing="false" onAction="#searchSong" prefHeight="31.0" prefWidth="82.0" text="Search" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="year_song_lbl" layoutX="51.0" layoutY="23.0" prefHeight="31.0" prefWidth="106.0" promptText="Insert year">
+            <TextField fx:id="year_song_lbl" layoutX="51.0" layoutY="32.0" prefHeight="31.0" prefWidth="106.0" promptText="Insert year">
                <font>
                   <Font size="16.0" />
                </font>
@@ -55,12 +55,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="backAfterMenu_btn" layoutX="841.0" layoutY="21.0" mnemonicParsing="false" onAction="#turnBackToMenu" text="Back To User Menu ">
+            <Button fx:id="backAfterMenu_btn" layoutX="853.0" layoutY="32.0" mnemonicParsing="false" onAction="#turnBackToMenu" text="Back To User Menu ">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="author_song_lbl" layoutX="181.0" layoutY="23.0" prefHeight="31.0" prefWidth="157.0" promptText="Insert author">
+            <TextField fx:id="author_song_lbl" layoutX="181.0" layoutY="32.0" prefHeight="31.0" prefWidth="157.0" promptText="Insert author">
                <font>
                   <Font size="16.0" />
                </font>
@@ -78,17 +78,22 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <ListView fx:id="list_playlist" layoutX="61.0" layoutY="348.0" onMouseClicked="#addSongPlaylist" prefHeight="243.0" prefWidth="181.0" />
+            <ListView fx:id="list_playlist" layoutX="61.0" layoutY="348.0" onMouseClicked="#selectPlaylist" prefHeight="243.0" prefWidth="181.0" />
             <Text layoutX="87.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add to my playlist ">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
+            <Button fx:id="add_song_btn" layoutX="102.0" layoutY="598.0" mnemonicParsing="false" onAction="#addSongToPlaylist" text="Add Song">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="170.0" prefWidth="1050.0">
+      <AnchorPane prefHeight="151.0" prefWidth="1050.0">
          <children>
-            <ImageView fitHeight="164.0" fitWidth="1050.0" layoutY="1.0">
+            <ImageView fitHeight="156.0" fitWidth="1050.0" layoutY="1.0">
                <image>
                   <Image url="@../sources/ProvaRiga.png" />
                </image>
@@ -98,7 +103,7 @@
                   <Font name="Arial Bold Italic" size="51.0" />
                </font>
             </Text>
-            <ImageView fitHeight="164.0" fitWidth="181.0" layoutY="1.0">
+            <ImageView fitHeight="156.0" fitWidth="181.0" layoutY="1.0">
                <image>
                   <Image url="@../sources/LogoUfficiale.png" />
                </image>
