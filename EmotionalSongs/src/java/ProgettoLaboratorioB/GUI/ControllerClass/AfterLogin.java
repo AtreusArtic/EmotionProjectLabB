@@ -41,6 +41,12 @@ public class AfterLogin extends MenuManager implements Initializable {
     @FXML
     void openSearchYearAuthorView(ActionEvent event) throws IOException {
         m.changeScene("Filexml/SearchYearAuthor.fxml");
+
+    }
+
+    @FXML
+    void openPlaylisyMenu(ActionEvent event) throws IOException {
+        m.changeScene("Filexml/Playlist.fxml");
     }
 
 

@@ -51,7 +51,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="686.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show or create a new playlist" wrapText="true">
+            <Button layoutX="686.0" layoutY="173.0" mnemonicParsing="false" onAction="#openPlaylisyMenu" prefHeight="71.0" prefWidth="209.0" text="Show or create a new playlist" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

@@ -53,9 +53,9 @@ public class ClientService {
     }
 
 
-    public void GetUserConnected()
+    public User GetUserConnected()
     {
-        System.out.println(user_connected);
+        return user_connected;
     }
     /**
      * This function allows the user to register in the application.

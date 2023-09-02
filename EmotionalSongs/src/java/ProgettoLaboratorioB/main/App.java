@@ -130,9 +130,10 @@ public class App
         while (App_System.appSystem.GetCrntState().equals(SYSTEM_STATE.USER_MENU))
         {
             System.out.println("Choose the function to call:");
-            System.out.println("1. To show your credentials");
+            System.out.println("1. Delete playlist");
             System.out.println("2. Create new playlist");
             System.out.println("3. Add song to playlist");
+
             System.out.println("4. Show all your playlist");
             System.out.println("5. Create new emotion");
             System.out.println("6. Read emotion evaluation");
@@ -142,7 +143,7 @@ public class App
             switch(switchcase)
             {
                 case 1:
-                    //ClientService.ShowUserProfile();
+                    //DeletePlaylistModule();
                     break;
                 case 2:
                     CreatePlaylistModule();
@@ -172,6 +173,19 @@ public class App
 
     }
 
+    private static void DeletePlaylistModule() {
+        System.out.println("Insert the playlist id:");
+        String playlist_id = "62578";
+
+        if(ClientService.DeletePlaylist(playlist_id))
+        {
+            System.out.println("Playlist deleted successfully");
+        }
+        else
+        {
+            System.out.println("Error: playlist deletion failed");
+        }
+    }
 
 
     /**
