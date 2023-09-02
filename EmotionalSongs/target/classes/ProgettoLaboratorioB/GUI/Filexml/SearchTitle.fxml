@@ -69,7 +69,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="51.0" layoutY="118.0" mnemonicParsing="false" text="Record a new emotion">
+            <Button layoutX="51.0" layoutY="118.0" mnemonicParsing="false" onAction="#registerNewEmotion" text="Record a new emotion">
                <font>
                   <Font size="16.0" />
                </font>

@@ -6,9 +6,11 @@ import ProgettoLaboratorioB.Serializables.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -117,6 +119,20 @@ public class SearchTitle extends MenuManager implements Initializable {
         } catch (IOException e) {
             m.changeScene("Filexml/AnonymousMenu.fxml");
         }
+    }
+
+    @FXML
+    void registerNewEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null)
+            return;
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+
+        stage.setUserData(song_selected);
+
+        m.changeScene("Filexml/newEmotion.fxml");
     }
 
     @FXML

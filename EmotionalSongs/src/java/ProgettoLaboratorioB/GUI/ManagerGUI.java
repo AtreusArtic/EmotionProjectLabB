@@ -21,9 +21,7 @@ public class ManagerGUI extends Application{
     private static Stage stg;
 
     public static User user = null;
-    /**
-     * Create the GUI of the manager.
-     */
+
     @Override
     public void start(Stage stage) throws Exception{
         stg = stage;
@@ -31,7 +29,7 @@ public class ManagerGUI extends Application{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Filexml/FirstMenu.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Scene scene = new Scene(new StackPane(root), 1050, 850);
-        stage.setTitle("Welcome to Emotional Songs!!");
+        stage.setTitle("Welcome to Emotional Songs!");
         stage.setScene(scene);
         stage.show();
     }
