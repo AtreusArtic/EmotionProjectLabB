@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -68,6 +69,14 @@ public class SearchTitle extends MenuManager implements Initializable {
         SetPlaylist();
     }
 
+    public void checkIfUserIsLogged() throws IOException {
+        if(MenuManager.getUser_connected() == null)
+        {
+            list_playlist.setDisable(true);
+            add_song_btn.setDisable(true);
+        }
+    }
+
     /**
      * This function is callback for the event "search_btn" click.
      * @param event is the event of the click on search btn.
@@ -101,13 +110,21 @@ public class SearchTitle extends MenuManager implements Initializable {
     }
 
     @FXML
-    void turnBackToMenu() throws Exception {
+    void turnBackToMenu() throws IOException {
         System.out.println("GUI ADVERTISE: Back to menu button clicked!");
-        m.changeScene("Filexml/AfterLogin.fxml");
+        try {
+            m.changeScene("Filexml/AfterLogin.fxml");
+        } catch (IOException e) {
+            m.changeScene("Filexml/AnonymousMenu.fxml");
+        }
     }
 
     @FXML
     void selectSong(MouseEvent event) {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if (event.getClickCount() == 1) {
 
             song_selected = new Song(table.getSelectionModel().getSelectedItem().getYear(),
@@ -121,6 +138,10 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     List<Playlist> ply;
     public void SetPlaylist() {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         ply = clientService.GetUserPlaylists(MenuManager.getUser_connected());
         if (ply == null) {
             System.out.println("SYSTEM ERROR: ply is null!");
@@ -138,6 +159,10 @@ public class SearchTitle extends MenuManager implements Initializable {
     @FXML
     void selectPlaylist(MouseEvent event)
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if(event.getClickCount() == 1)
         {
             String playlist_name = list_playlist.getSelectionModel().getSelectedItem();
@@ -158,6 +183,10 @@ public class SearchTitle extends MenuManager implements Initializable {
     @FXML
     void addSongtoPlaylist(ActionEvent event)
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if(song_selected == null || selected_playlist == null)
         {
             System.out.println("SYSTEM ERROR: song_selected or selected_playlist is null!");
@@ -168,6 +197,11 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     public void UpdateListView()
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
+
         if(list_playlist.isDisable())
         {
             list_playlist.setDisable(false);
@@ -180,6 +214,10 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     public void UpdateAddButtonView()
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if(song_selected != null && selected_playlist != null)
         {
             add_song_btn.setDisable(false);

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -111,13 +112,21 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     }
 
     @FXML
-    void turnBackToMenu() throws Exception {
+    void turnBackToMenu() throws IOException {
         System.out.println("GUI ADVERTISE: Back to menu button clicked!");
-        m.changeScene("Filexml/AfterLogin.fxml");
+        try {
+            m.changeScene("Filexml/AfterLogin.fxml");
+        } catch (IOException e) {
+            m.changeScene("Filexml/AnonymousMenu.fxml");
+        }
     }
 
     @FXML
     void selectSong(MouseEvent event) {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if (event.getClickCount() == 1) {
 
              song_selected = new Song(table.getSelectionModel().getSelectedItem().getYear(),
@@ -132,6 +141,10 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     @FXML
     void selectPlaylist(MouseEvent event)
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if(event.getClickCount() == 1)
         {
             String playlist_name = list_playlist.getSelectionModel().getSelectedItem();
@@ -152,6 +165,10 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     @FXML
     void addSongToPlaylist(ActionEvent event)
     {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
         if(song_selected == null || playlist_selected == null)
         {
             System.out.println("SYSTEM ERROR: song_selected or playlist_selected is null!");
