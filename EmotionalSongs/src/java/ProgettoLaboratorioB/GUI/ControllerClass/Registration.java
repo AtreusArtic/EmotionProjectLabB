@@ -13,51 +13,32 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class Registration extends MenuManager {
-    public Label reg_unsuc_lbl;
+
     private ManagerGUI m = new ManagerGUI();
     private ClientService clientService = new ClientService();
 
     @FXML
     private TextField CF;
-
+    @FXML
+    public Label reg_unsuc_lbl;
+    @FXML
+    public TextField password;
+    @FXML
+    public TextField username;
     @FXML
     private TextField address;
-
     @FXML
     private Button backTofirst;
-
-    @FXML
-    private TextField cap;
-
-    @FXML
-    private TextField city;
-
     @FXML
     private Button confbutton;
-
-    @FXML
-    private TextField district;
-
     @FXML
     private TextField email;
-
     @FXML
     private TextField name;
-
-    @FXML
-    private TextField password;
-
-    @FXML
-    private TextField province;
-
-    @FXML
-    private TextField streetNumber;
-
     @FXML
     private TextField surname;
 
-    @FXML
-    private TextField username;
+
 
     @FXML
     void backToFirst(ActionEvent event) throws IOException {
