@@ -6,9 +6,11 @@ import ProgettoLaboratorioB.Serializables.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,9 +31,9 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     @FXML
     public Button backAfterMenu_btn;
     @FXML
-    public Button show_Emotion_btn;
+    public Button show_emotion_btn;
     @FXML
-    public Button rec_Emotion_btn;
+    public Button rec_emotion_btn;
 
     @FXML
     public Button add_song_btn;
@@ -65,6 +67,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
 
         list_playlist.setDisable(true);
         add_song_btn.setDisable(true);
+        rec_emotion_btn.setDisable(true);
 
         SetPlaylist();
     }
@@ -134,10 +137,32 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
                     table.getSelectionModel().getSelectedItem().getArtist(),
                     table.getSelectionModel().getSelectedItem().getTitle());
             UpdateListView();
+            UpdateAddButtonView();
             System.out.println("Song selected is: " + song_selected);
         }
     }
+    @FXML
+    void registerNewEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null || clientService.GetUserConnected() == null)
+            return;
 
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+
+        stage.setUserData(song_selected);
+
+        m.changeScene("Filexml/newEmotion.fxml");
+    }
+
+    @FXML
+    void showEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null || clientService.GetUserConnected() == null)
+            return;
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+    }
     @FXML
     void selectPlaylist(MouseEvent event)
     {
@@ -178,21 +203,34 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
     }
 
 
-    private void UpdateAddButtonView()
+    public void UpdateAddButtonView()
     {
-        if(song_selected != null && playlist_selected != null)
+        if(clientService.GetUserConnected() == null)
         {
-            add_song_btn.setDisable(false);
+            return;
+        }
+        if(song_selected != null)
+        {
+            rec_emotion_btn.setDisable(false);
+            if(playlist_selected != null)
+            {
+                add_song_btn.setDisable(false);
+            }
+            else
+            {
+                add_song_btn.setDisable(true);
+            }
         }
         else
         {
             add_song_btn.setDisable(true);
+            rec_emotion_btn.setDisable(true);
         }
     }
 
     private void UpdateListView()
     {
-        if(list_playlist.isDisable())
+        if(list_playlist.isDisable() || clientService.GetUserConnected() == null)
         {
             list_playlist.setDisable(false);
         }

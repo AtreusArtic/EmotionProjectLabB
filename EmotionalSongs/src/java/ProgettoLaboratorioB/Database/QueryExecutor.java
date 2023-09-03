@@ -430,7 +430,7 @@ public class QueryExecutor
             }
             catch (Exception e)
             {
-                System.out.println("QUERY-EXECUTOR error: query string loading failed... ");
+                System.out.println("QUERY-EXECUTOR error:  " + e);
                 return false;
             }
             stmt = con.createStatement();

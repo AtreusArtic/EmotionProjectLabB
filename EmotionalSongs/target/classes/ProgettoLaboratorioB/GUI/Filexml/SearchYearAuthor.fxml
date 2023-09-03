@@ -50,7 +50,7 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label fx:id="wrongTitle_lbl" layoutX="493.0" layoutY="18.0" prefHeight="33.0" prefWidth="192.0" textFill="#9e0101">
+            <Label fx:id="wrongTitle_lbl" layoutX="493.0" layoutY="31.0" prefHeight="33.0" prefWidth="192.0" textFill="#9e0101">
                <font>
                   <Font size="16.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="rec_Emotion_btn" layoutX="61.0" layoutY="128.0" mnemonicParsing="false" text="Record a new emotion">
+            <Button fx:id="rec_emotion_btn" layoutX="61.0" layoutY="128.0" mnemonicParsing="false" onAction="#registerNewEmotion" text="Record a new emotion">
                <font>
                   <Font size="16.0" />
                </font>
@@ -73,7 +73,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="show_Emotion_btn" layoutX="61.0" layoutY="221.0" mnemonicParsing="false" text="Show recorded emotion">
+            <Button fx:id="show_Emotion_btn" layoutX="61.0" layoutY="221.0" mnemonicParsing="false" onAction="#showEmotion" text="Show recorded emotion">
                <font>
                   <Font size="16.0" />
                </font>

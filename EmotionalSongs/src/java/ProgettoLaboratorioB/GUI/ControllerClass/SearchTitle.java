@@ -21,7 +21,15 @@ import java.util.ResourceBundle;
 
 public class SearchTitle extends MenuManager implements Initializable {
 
+    @FXML
     public Button backAfterMenu_btn;
+    @FXML
+    private Button search_btn;
+    @FXML
+    private Button add_song_btn;
+    @FXML
+    private Button rec_emotion_btn;
+
     //Table song list properties:
     @FXML
     private TableView<Song> table = new TableView<Song>();
@@ -36,14 +44,10 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     //Search function GUI properties:
     @FXML
-    private Button search_btn;
-    @FXML
     private Label wrongTitle_lbl;
     @FXML
     private TextField search_title_lbl;
 
-    @FXML
-    private Button add_song_btn;
 
     //Playlist properties:
     @FXML
@@ -64,18 +68,23 @@ public class SearchTitle extends MenuManager implements Initializable {
         yearColumn.setCellValueFactory(new PropertyValueFactory<Song, Integer>("year"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
         songID.setCellValueFactory(new PropertyValueFactory<Song, String>("ID"));
+
         song_selected = null;
         selected_playlist = null;
+
         list_playlist.setDisable(true);
         add_song_btn.setDisable(true);
+        rec_emotion_btn.setDisable(true);
+
         SetPlaylist();
     }
 
     public void checkIfUserIsLogged() throws IOException {
-        if(MenuManager.getUser_connected() == null)
+        if(clientService.GetUserConnected() == null)
         {
             list_playlist.setDisable(true);
             add_song_btn.setDisable(true);
+            rec_emotion_btn.setDisable(true);
         }
     }
 
@@ -123,7 +132,7 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     @FXML
     void registerNewEmotion(ActionEvent event) throws IOException {
-        if(song_selected == null)
+        if(song_selected == null || clientService.GetUserConnected() == null)
             return;
 
         Node node = (Node) event.getSource();
@@ -148,6 +157,7 @@ public class SearchTitle extends MenuManager implements Initializable {
                     table.getSelectionModel().getSelectedItem().getArtist(),
                     table.getSelectionModel().getSelectedItem().getTitle());
             UpdateListView();
+            UpdateAddButtonView();
             System.out.println("Song selected is: " + song_selected);
         }
     }
@@ -213,12 +223,8 @@ public class SearchTitle extends MenuManager implements Initializable {
 
     public void UpdateListView()
     {
-        if(clientService.GetUserConnected() == null)
-        {
-            return;
-        }
 
-        if(list_playlist.isDisable())
+        if(list_playlist.isDisable() || clientService.GetUserConnected() == null)
         {
             list_playlist.setDisable(false);
         }
@@ -234,13 +240,22 @@ public class SearchTitle extends MenuManager implements Initializable {
         {
             return;
         }
-        if(song_selected != null && selected_playlist != null)
+        if(song_selected != null)
         {
-            add_song_btn.setDisable(false);
+            rec_emotion_btn.setDisable(false);
+            if(selected_playlist != null)
+            {
+                add_song_btn.setDisable(false);
+            }
+            else
+            {
+                add_song_btn.setDisable(true);
+            }
         }
         else
         {
             add_song_btn.setDisable(true);
+            rec_emotion_btn.setDisable(true);
         }
     }
 

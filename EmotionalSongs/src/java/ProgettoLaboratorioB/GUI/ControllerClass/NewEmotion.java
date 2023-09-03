@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class NewEmotion extends MenuManager implements Initializable{
@@ -60,8 +61,8 @@ public class NewEmotion extends MenuManager implements Initializable{
         tend_score_box.getItems().addAll(1, 2, 3, 4, 5);
         tens_score_box.getItems().addAll(1, 2, 3, 4, 5);
 
+        conf_newEmo_btn.setDisable(true);
         emotion_registered = null;
-        System.out.println("HELLO");
     }
 
     @FXML
@@ -70,43 +71,49 @@ public class NewEmotion extends MenuManager implements Initializable{
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         song_selected =  (Song) stage.getUserData();
-        System.out.println("GUI NEW EMOTION: Song selected: " + song_selected);
+        if(song_selected != null)
+        {
+            name_song_lbl.setText(song_selected.getTitle());
+            conf_newEmo_btn.setDisable(false);
+        }
+        else
+        {
+            name_song_lbl.setText("NO SONG SELECTED!");
+            conf_newEmo_btn.setDisable(true);
+        }
     }
     @FXML
-    void registerEmotion()
+    void registerEmotion(ActionEvent event)
     {
         if(song_selected == null)
         {
+            check_lbl.setText("SELECT A SONG!");
             return;
+
         }
 
         Map<Enums.EMOTION,Integer> mapper = new HashMap<>();
-        //Get values from choice boxes:
-        int amaz_score = amaz_score_box.getValue();
-        int calm_score = calm_score_box.getValue();
-        int joy_score = joy_score_box.getValue();
-        int nost_score = nost_score_box.getValue();
-        int pow_score = pow_score_box.getValue();
-        int sad_score = sad_score_box.getValue();
-        int sole_score = sole_score_box.getValue();
-        int tend_score = tend_score_box.getValue();
-        int tens_score = tens_score_box.getValue();
 
-        //for EMOTION enum, put the value of the choice box in the mapper:
-        mapper.put(Enums.EMOTION.AMAZEMENT,amaz_score);
-        mapper.put(Enums.EMOTION.CALMNESS,calm_score);
-        mapper.put(Enums.EMOTION.JOY,joy_score);
-        mapper.put(Enums.EMOTION.NOSTALGIA,nost_score);
-        mapper.put(Enums.EMOTION.POWER,pow_score);
-        mapper.put(Enums.EMOTION.SADNESS,sad_score);
-        mapper.put(Enums.EMOTION.SOLEMNITY,sole_score);
-        mapper.put(Enums.EMOTION.TENDERNESS,tend_score);
-        mapper.put(Enums.EMOTION.TENSION,tens_score);
-
-        //Create a new emotion obj:
-        emotion_registered = new Emotions(song_selected.getID(),
-                clientService.GetUserConnected().GetUsername(),
-                "Bella canzone", mapper);
+        mapper.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.JOY, Optional.ofNullable(joy_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.NOSTALGIA, Optional.ofNullable(nost_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.POWER, Optional.ofNullable(pow_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.SADNESS, Optional.ofNullable(sad_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.SOLEMNITY, Optional.ofNullable(sole_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.TENDERNESS, Optional.ofNullable(tend_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.TENSION, Optional.ofNullable(tens_score_box.getValue()).orElse(0));
+        try {
+            emotion_registered = new Emotions(song_selected.getID(),
+                    clientService.GetUserConnected().GetUsername(),
+                    "", mapper);
+            if(clientService.RegisterNewEmotion(emotion_registered))
+                check_lbl.setText("EMOTION REGISTERED!");
+            else
+                check_lbl.setText("ERROR!");
+        } catch (Exception e) {
+            check_lbl.setText("ERROR!");
+        }
 
     }
 

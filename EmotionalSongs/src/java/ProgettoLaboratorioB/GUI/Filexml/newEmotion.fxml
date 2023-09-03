@@ -215,7 +215,7 @@
                   <ChoiceBox fx:id="sad_score_box" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
             </GridPane>
-            <Label fx:id="name_song_lbl" layoutX="289.0" layoutY="22.0" prefHeight="26.0" prefWidth="270.0">
+            <Label fx:id="name_song_lbl" layoutX="289.0" layoutY="22.0" prefHeight="26.0" prefWidth="161.0">
                <font>
                   <Font size="16.0" />
                </font></Label>
@@ -224,7 +224,7 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <Button fx:id="conf_newEmo_btn" layoutX="588.0" layoutY="21.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" text="Confirm">
+            <Button fx:id="conf_newEmo_btn" layoutX="588.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerEmotion" prefHeight="30.0" prefWidth="91.0" text="Confirm">
                <font>
                   <Font size="15.0" />
                </font>
@@ -234,7 +234,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="check_lbl" layoutX="679.0" layoutY="21.0" prefHeight="30.0" prefWidth="188.0">
+            <Label fx:id="check_lbl" layoutX="689.0" layoutY="21.0" prefHeight="30.0" prefWidth="178.0">
                <font>
                   <Font size="15.0" />
                </font>
