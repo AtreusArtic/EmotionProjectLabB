@@ -129,7 +129,7 @@
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="amaz_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -137,7 +137,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="sole_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -145,7 +145,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField fx:id="tend_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -153,7 +153,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="nost_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -161,7 +161,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <TextField fx:id="pow_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -169,7 +169,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <TextField fx:id="calm_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -177,7 +177,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <TextField fx:id="joy_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -185,7 +185,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                  <TextField fx:id="tens_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -193,7 +193,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                  <TextField fx:id="sad_desc_box" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
                      <font>
                         <Font size="15.0" />
                      </font>

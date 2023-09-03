@@ -1,17 +1,13 @@
 package ProgettoLaboratorioB.Serializables;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User implements Serializable, Comparable<User>
 {
-
     private final static long serialVersionUID = 1L;
-    String username; // primary key
+    String username;
     String password;
     String nome;
     String cognome;
@@ -38,8 +34,8 @@ public class User implements Serializable, Comparable<User>
 
     /// <summary>
     /// ATTENTION:
-    /// This following GETTER functions are used to get the values of the attributes of the class,
-    /// every time system needs to know the values of the attributes of the class; use this.
+    /// This following GETTER functions are used to get the value attributes of the class,
+    /// every time the system needs to know the value attributes of the class; use this.
     /// </summary>
     public String GetUsername()
     {

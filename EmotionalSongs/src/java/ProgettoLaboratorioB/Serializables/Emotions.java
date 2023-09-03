@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Emotions implements Serializable, Comparable<Emotions> {
-    private String emotion_description;
+    private Map<EMOTION, String> emotion_description;
 
     private String IDSong;
 
@@ -17,7 +17,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
 
     private Map<EMOTION, Integer> EvaluateEmotion;
 
-    public Emotions(String IDSong, String IDUser, String emotion_description, Map<EMOTION, Integer> EvaluateEmotion) {
+    public Emotions(String IDSong, String IDUser, Map<EMOTION, String> emotion_description, Map<EMOTION, Integer> EvaluateEmotion) {
 
         this.IDSong = IDSong;
         this.IDUser = IDUser;
@@ -25,7 +25,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         this.EvaluateEmotion = EvaluateEmotion;
     }
 
-    public String GetEmotionDescription() {
+    public Map<EMOTION, String> GetEmotionDescription() {
         return this.emotion_description;
     }
 
@@ -41,7 +41,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         return this.EvaluateEmotion;
     }
 
-    public void SetEmotionDescription(String emotion_description) {
+    public void SetEmotionDescription(Map<EMOTION, String> emotion_description) {
         this.emotion_description = emotion_description;
     }
 

@@ -465,8 +465,8 @@ public class QueryExecutor
             {
                 emotions.add(new Emotions(rs.getString(1),  //songid
                         rs.getString(2),          //userid
-                        rs.getString(3),          //emotion
-                        (Map<Enums.EMOTION, Integer>) rs.getObject(4)));        //description
+                        (Map<Enums.EMOTION, String>) rs.getObject(3),          //descriptions
+                        (Map<Enums.EMOTION, Integer>) rs.getObject(4)));        //emotions
             }
             return emotions;
         }

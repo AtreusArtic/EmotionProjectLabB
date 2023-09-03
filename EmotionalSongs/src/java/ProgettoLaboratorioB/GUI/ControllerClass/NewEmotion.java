@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -40,6 +41,27 @@ public class NewEmotion extends MenuManager implements Initializable{
     private ChoiceBox<Integer> tend_score_box;
     @FXML
     private ChoiceBox<Integer> tens_score_box;
+
+    @FXML
+    private TextField amaz_desc_box;
+    @FXML
+    private TextField calm_desc_box;
+    @FXML
+    private TextField joy_desc_box;
+    @FXML
+    private TextField nost_desc_box;
+    @FXML
+    private TextField pow_desc_box;
+    @FXML
+    private TextField sad_desc_box;
+    @FXML
+    private TextField sole_desc_box;
+    @FXML
+    private TextField tend_desc_box;
+    @FXML
+    private TextField tens_desc_box;
+
+
     @FXML
     private Label name_song_lbl;
     @FXML
@@ -47,7 +69,7 @@ public class NewEmotion extends MenuManager implements Initializable{
 
     private Emotions emotion_registered;
     private Song song_selected;
-    //List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,10 +111,10 @@ public class NewEmotion extends MenuManager implements Initializable{
         {
             check_lbl.setText("SELECT A SONG!");
             return;
-
         }
 
         Map<Enums.EMOTION,Integer> mapper = new HashMap<>();
+        Map<Enums.EMOTION,String> mapper2 = new HashMap<>();
 
         mapper.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_score_box.getValue()).orElse(0));
         mapper.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_score_box.getValue()).orElse(0));
@@ -103,10 +125,20 @@ public class NewEmotion extends MenuManager implements Initializable{
         mapper.put(Enums.EMOTION.SOLEMNITY, Optional.ofNullable(sole_score_box.getValue()).orElse(0));
         mapper.put(Enums.EMOTION.TENDERNESS, Optional.ofNullable(tend_score_box.getValue()).orElse(0));
         mapper.put(Enums.EMOTION.TENSION, Optional.ofNullable(tens_score_box.getValue()).orElse(0));
+
+        mapper2.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.JOY, Optional.ofNullable(joy_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.NOSTALGIA, Optional.ofNullable(nost_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.POWER, Optional.ofNullable(pow_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.SADNESS, Optional.ofNullable(sad_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.SOLEMNITY, Optional.ofNullable(sole_desc_box.getText()).orElse(""));
+        mapper2.put(Enums.EMOTION.TENDERNESS, Optional.ofNullable(tend_desc_box.getText()).orElse(""));
+
         try {
             emotion_registered = new Emotions(song_selected.getID(),
                     clientService.GetUserConnected().GetUsername(),
-                    "", mapper);
+                    mapper2, mapper);
             if(clientService.RegisterNewEmotion(emotion_registered))
                 check_lbl.setText("EMOTION REGISTERED!");
             else
@@ -114,7 +146,6 @@ public class NewEmotion extends MenuManager implements Initializable{
         } catch (Exception e) {
             check_lbl.setText("ERROR!");
         }
-
     }
 
 
@@ -122,7 +153,6 @@ public class NewEmotion extends MenuManager implements Initializable{
     void turnBackToMenu() throws Exception {
         System.out.println("GUI ADVERTISE: Back to menu button clicked!");
         m.changeScene("Filexml/AfterLogin.fxml");
-
     }
 
 }
