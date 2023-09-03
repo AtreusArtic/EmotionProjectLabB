@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.AfterLogin">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.AfterLogin">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -26,11 +26,6 @@
                   <Image url="@../sources/SfondoFirst.png" />
                </image>
             </ImageView>
-            <Button layoutX="194.0" layoutY="173.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show your Profile">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
             <Text fx:id="welcome_field" fill="#80a4f8" layoutX="402.0" layoutY="74.0" stroke="BLACK" strokeLineCap="BUTT" text="Welcome Back!!">
                <font>
                   <Font name="Arial Bold" size="45.0" />
@@ -41,32 +36,22 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Button fx:id="searchbytitle_btn" layoutX="194.0" layoutY="298.0" mnemonicParsing="false" onAction="#openSearchView" prefHeight="71.0" prefWidth="209.0" text="Search a song by title" wrapText="true">
+            <Button fx:id="searchbytitle_btn" layoutX="197.0" layoutY="218.0" mnemonicParsing="false" onAction="#openSearchView" prefHeight="70.0" prefWidth="228.0" text="Search a song by title" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="searchbyauthor_btn" layoutX="194.0" layoutY="432.0" mnemonicParsing="false" onAction="#openSearchYearAuthorView" prefHeight="71.0" prefWidth="209.0" text="Search song by year or author" wrapText="true">
+            <Button fx:id="searchbyauthor_btn" layoutX="686.0" layoutY="218.0" mnemonicParsing="false" onAction="#openSearchYearAuthorView" prefHeight="70.0" prefWidth="228.0" text="Search song by year or author" wrapText="true">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="686.0" layoutY="173.0" mnemonicParsing="false" onAction="#openPlaylisyMenu" prefHeight="71.0" prefWidth="209.0" text="Show or create a new playlist" wrapText="true">
+            <Button layoutX="197.0" layoutY="387.0" mnemonicParsing="false" onAction="#openPlaylisyMenu" prefHeight="70.0" prefWidth="228.0" text="Show or create a new playlist" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="686.0" layoutY="299.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Register a new emotion" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="678.0" layoutY="434.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="209.0" text="Show recorded emotion" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="logout" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="71.0" prefWidth="209.0" text="Exit from app">
+            <Button fx:id="logout" layoutX="686.0" layoutY="387.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="70.0" prefWidth="228.0" text="Exit from app">
                <font>
                   <Font size="20.0" />
                </font>

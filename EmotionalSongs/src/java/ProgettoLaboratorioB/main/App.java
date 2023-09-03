@@ -26,19 +26,9 @@ public class App
 
     public static void main( String[] args ) throws RemoteException, SQLException
     {
-        RunApplication();
         LaunchGUIModules(args);
     }
 
-    /**
-     * MODULES:
-     * 1. Init User Module
-     * 2. Main Module
-     * 3. User Home Module
-     * 4. Song Module
-     * 5. Playlist Module
-     * 6. Emotion Module
-     */
 
     public static void RunApplication() throws RemoteException, SQLException {
         if(!ClientService.StartClientApplication())
@@ -54,6 +44,7 @@ public class App
     }
 
     public static void LaunchGUIModules(String[] args) throws RemoteException, SQLException {
+        ClientService.StartClientApplication();
         ManagerGUI.main(args);
     }
 
