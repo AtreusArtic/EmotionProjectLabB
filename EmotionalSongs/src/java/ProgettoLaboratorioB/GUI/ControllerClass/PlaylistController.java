@@ -88,7 +88,7 @@ public class PlaylistController extends MenuManager implements Initializable {
         {
             clearPlaylistTable();
         }
-        playlists = clientService.GetUserPlaylists(clientService.GetUserConnected());
+        playlists = clientService.GetUserPlaylists();
         if(playlists == null)
         {
             System.out.println("SYSTEM ERROR: playlists is null!");

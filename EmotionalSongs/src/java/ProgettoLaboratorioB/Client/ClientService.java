@@ -210,7 +210,7 @@ public class ClientService {
      * This method request to the server to get all the playlists of the user
      * @return a list of playlists by the username of the user connected.
      */
-    public static List<Playlist> GetUserPlaylists(User user_connected){
+    public static List<Playlist> GetUserPlaylists(){
         if(user_connected == null)
         {
             System.out.println("CLIENT-SERVICE Error: user not logged in.");

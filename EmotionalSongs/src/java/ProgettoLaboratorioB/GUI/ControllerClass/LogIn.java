@@ -42,7 +42,7 @@ public class LogIn extends MenuManager {
         User user_logged = clientService.Login(username, password);
         if(user_logged != null)
         {
-            MenuManager.setUser_connected(user_logged);
+
             conbutton.setText("Success!");
             m.changeScene("Filexml/AfterLogin.fxml");
         }

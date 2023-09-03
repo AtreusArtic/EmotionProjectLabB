@@ -331,7 +331,7 @@ public class App
 
     public static void GetAllUserPlaylist(User user)
     {
-        List<Playlist> playlists = ClientService.GetUserPlaylists(user);
+        List<Playlist> playlists = ClientService.GetUserPlaylists();
         if (playlists != null) {
             for (Playlist p : playlists) {
                 System.out.println(p);

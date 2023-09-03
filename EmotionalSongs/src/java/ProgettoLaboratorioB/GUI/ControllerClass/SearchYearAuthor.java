@@ -74,7 +74,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
 
     List<Playlist> ply;
     public void SetPlaylist() {
-        ply = clientService.GetUserPlaylists(MenuManager.getUser_connected());
+        ply = clientService.GetUserPlaylists();
         if (ply == null) {
             System.out.println("SYSTEM ERROR: ply is null!");
             return;

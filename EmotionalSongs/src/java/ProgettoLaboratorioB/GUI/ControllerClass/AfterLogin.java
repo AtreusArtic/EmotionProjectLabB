@@ -25,11 +25,12 @@ public class AfterLogin extends MenuManager implements Initializable {
     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        welcome_field.setText("Welcome "+ MenuManager.getUser_connected().GetUsername());
+        welcome_field.setText("Welcome "+ clientService.GetUserConnected().GetUsername());
     }
     @FXML
     void userLogOut(ActionEvent event) throws IOException {
 
+        clientService.Logout();
         m.changeScene("Filexml/FirstMenu.fxml");
     }
 

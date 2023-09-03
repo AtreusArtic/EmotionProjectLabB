@@ -89,7 +89,6 @@ public class Registration extends MenuManager {
 
         if(clientService.RegisterNewUser(u)){
             clientService.SetUserConnected(u);
-            MenuManager.setUser_connected(u);
             m.changeScene("Filexml/AfterLogin.fxml");
 
         }

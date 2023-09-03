@@ -168,7 +168,7 @@ public class SearchTitle extends MenuManager implements Initializable {
         {
             return;
         }
-        ply = clientService.GetUserPlaylists(MenuManager.getUser_connected());
+        ply = clientService.GetUserPlaylists();
         if (ply == null) {
             System.out.println("SYSTEM ERROR: ply is null!");
             return;
