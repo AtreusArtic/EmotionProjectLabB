@@ -254,6 +254,7 @@ public class SearchTitle extends MenuManager implements Initializable {
     {
         if(clientService.GetUserConnected() == null)
         {
+            show_emotion_btn.setDisable(false);
             return;
         }
         if(song_selected != null)

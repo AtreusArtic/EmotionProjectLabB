@@ -150,8 +150,11 @@ public class RecordedEmotions extends MenuManager implements Initializable {
 
     private void initMainGridPanel(int index)
     {
+        if(emotionsList.isEmpty())
+            return;
+
         if(index < -1)
-            index = -1;
+            index = 0;
 
         Emotions emotion_selected = null;
         try
@@ -216,13 +219,7 @@ public class RecordedEmotions extends MenuManager implements Initializable {
         if(emotionsList == null)
             return;
 
-
-
     }
-
-
-
-
 
     @FXML
     void backToUserMenu(ActionEvent event) throws Exception

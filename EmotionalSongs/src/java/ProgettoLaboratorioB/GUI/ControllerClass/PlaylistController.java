@@ -6,10 +6,13 @@ import ProgettoLaboratorioB.Serializables.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +20,19 @@ import java.util.ResourceBundle;
 
 public class PlaylistController extends MenuManager implements Initializable {
 
+    @FXML
     public Label success_wrong_lbl;
     @FXML
     private Button create_Playlist_btn;
 
     @FXML
     private Button delete_Playlist_btn;
+
+    @FXML
+    private Button show_emot_btn;
+
+    @FXML
+    private Button rec_Emotion_btn;
 
     @FXML
     private Button delete_Song_btn;
@@ -51,6 +61,10 @@ public class PlaylistController extends MenuManager implements Initializable {
 
         create_Playlist_btn.setDisable(true);
         delete_Playlist_btn.setDisable(true);
+        delete_Song_btn.setDisable(true);
+
+        show_emot_btn.setDisable(true);
+        rec_Emotion_btn.setDisable(true);
 
         SetPlaylistTable();
     }
@@ -58,12 +72,14 @@ public class PlaylistController extends MenuManager implements Initializable {
     void add_Playlist(ActionEvent event)
     {
         String name = name_to_add_lbl.getText();
-        if(clientService.CreateNewPlaylist(name, Integer.toString(Playlist.IDGenerator()))){
+        if(clientService.CreateNewPlaylist(name, Integer.toString(Playlist.IDGenerator())))
+        {
             SetPlaylistTable();
             success_wrong_lbl.setStyle("-fx-background-color: #008000");
-            success_wrong_lbl.setText("Successfully added");
-        }else{
-            success_wrong_lbl.setText("Something go wrong. Try Again!");
+        }else
+        {
+            //make red fx background
+            success_wrong_lbl.setStyle("-fx-background-color: #FF0000");
         }
     }
 
@@ -99,16 +115,18 @@ public class PlaylistController extends MenuManager implements Initializable {
     {
         if(song_selected == null || selected_playlist == null)
         {
-            success_wrong_lbl.setStyle("-fx-background-color: #DC143C");
-            success_wrong_lbl.setText("Something go wrong. Try Again!");
             return;
-
         }
         if(clientService.RemoveSongFromPlaylist(selected_playlist.GetPlaylistID(), song_selected.getID()))
+        {
             initSongsTable(selected_playlist);
             success_wrong_lbl.setStyle("-fx-background-color: #008000");
             success_wrong_lbl.setText("Successfully deleted");
-
+        }
+        else
+        {
+            success_wrong_lbl.setText("Something go wrong. Try Again!");
+        }
     }
 
     private Song song_selected = null;
@@ -130,14 +148,45 @@ public class PlaylistController extends MenuManager implements Initializable {
         }
     }
 
+    @FXML
+    void registerNewEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null || clientService.GetUserConnected() == null)
+            return;
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        stage.setUserData(song_selected);
+
+        m.changeScene("Filexml/newEmotion.fxml");
+    }
+
+    @FXML
+    void goRecorderEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null || clientService.GetUserConnected() == null)
+            return;
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        stage.setUserData(song_selected);
+
+        m.changeScene("Filexml/RecordedEmotion.fxml");
+    }
+
     private void UpdateAddButtonView() {
         if(delete_Song_btn.isDisable())
         {
             delete_Song_btn.setDisable(false);
+            show_emot_btn.setDisable(false);
+            rec_Emotion_btn.setDisable(false);
+
         }
         else
         {
             delete_Song_btn.setDisable(true);
+            show_emot_btn.setDisable(true);
+            rec_Emotion_btn.setDisable(true);
         }
     }
 
@@ -195,6 +244,8 @@ public class PlaylistController extends MenuManager implements Initializable {
             return;
         }
         selected_playlist = playlist;
+        if(delete_Playlist_btn.isDisable())
+            delete_Playlist_btn.setDisable(false);
         initSongsTable(playlist);
     }
 
@@ -217,9 +268,6 @@ public class PlaylistController extends MenuManager implements Initializable {
             return;
         }
         table_songs.getItems().addAll(songs);
-        success_wrong_lbl.setStyle("-fx-background-color: #008000");
-        success_wrong_lbl.setText("Successfully added");
-
     }
 
     public void EnableLblText()

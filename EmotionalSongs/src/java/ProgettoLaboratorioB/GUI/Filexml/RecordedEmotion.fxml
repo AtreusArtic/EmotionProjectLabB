@@ -222,12 +222,12 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="back_btn" layoutX="842.0" layoutY="17.0" mnemonicParsing="false" text="Back">
+            <Button fx:id="back_btn" layoutX="842.0" layoutY="17.0" mnemonicParsing="false" onAction="#goPrevEmotion" text="Back">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="forward_btn" layoutX="924.0" layoutY="17.0" mnemonicParsing="false" text="Forward">
+            <Button fx:id="forward_btn" layoutX="924.0" layoutY="17.0" mnemonicParsing="false" onAction="#goNextEmotion" text="Forward">
                <font>
                   <Font size="15.0" />
                </font>
@@ -418,7 +418,7 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <Button fx:id="get_Song_btn" layoutX="317.0" layoutY="39.0" mnemonicParsing="false" text="Get song">
+            <Button fx:id="get_Song_btn" layoutX="317.0" layoutY="39.0" mnemonicParsing="false" onAction="#getSong" text="Get song">
                <font>
                   <Font size="14.0" />
                </font>
