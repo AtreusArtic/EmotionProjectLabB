@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class PlaylistController extends MenuManager implements Initializable {
 
+    public Label success_wrong_lbl;
     @FXML
     private Button create_Playlist_btn;
 
@@ -57,8 +58,13 @@ public class PlaylistController extends MenuManager implements Initializable {
     void add_Playlist(ActionEvent event)
     {
         String name = name_to_add_lbl.getText();
-        clientService.CreateNewPlaylist(name, Integer.toString(Playlist.IDGenerator()));
-        SetPlaylistTable();
+        if(clientService.CreateNewPlaylist(name, Integer.toString(Playlist.IDGenerator()))){
+            SetPlaylistTable();
+            success_wrong_lbl.setStyle("-fx-background-color: #008000");
+            success_wrong_lbl.setText("Successfully added");
+        }else{
+            success_wrong_lbl.setText("Something go wrong. Try Again!");
+        }
     }
 
     @FXML
@@ -68,6 +74,8 @@ public class PlaylistController extends MenuManager implements Initializable {
         {
             clientService.DeletePlaylist(selected_playlist.GetPlaylistID());
             SetPlaylistTable();
+            success_wrong_lbl.setStyle("-fx-background-color: #008000");
+            success_wrong_lbl.setText("Successfully deleted");
         }
     }
 
@@ -89,10 +97,15 @@ public class PlaylistController extends MenuManager implements Initializable {
     {
         if(song_selected == null || selected_playlist == null)
         {
+            success_wrong_lbl.setStyle("-fx-background-color: #DC143C");
+            success_wrong_lbl.setText("Something go wrong. Try Again!");
             return;
+
         }
         if(clientService.RemoveSongFromPlaylist(selected_playlist.GetPlaylistID(), song_selected.getID()))
             initSongsTable(selected_playlist);
+            success_wrong_lbl.setStyle("-fx-background-color: #008000");
+            success_wrong_lbl.setText("Successfully deleted");
 
     }
 
@@ -202,6 +215,9 @@ public class PlaylistController extends MenuManager implements Initializable {
             return;
         }
         table_songs.getItems().addAll(songs);
+        success_wrong_lbl.setStyle("-fx-background-color: #008000");
+        success_wrong_lbl.setText("Successfully added");
+
     }
 
     public void EnableLblText()
