@@ -150,6 +150,9 @@ public class RecordedEmotions extends MenuManager implements Initializable {
 
     private void initMainGridPanel(int index)
     {
+        if(index < -1)
+            index = -1;
+
         Emotions emotion_selected = null;
         try
         {

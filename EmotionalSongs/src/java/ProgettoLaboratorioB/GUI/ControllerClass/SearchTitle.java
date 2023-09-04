@@ -30,6 +30,9 @@ public class SearchTitle extends MenuManager implements Initializable {
     @FXML
     private Button rec_emotion_btn;
 
+    @FXML
+    private Button show_emotion_btn;
+
     //Table song list properties:
     @FXML
     private TableView<Song> table = new TableView<Song>();
@@ -75,6 +78,8 @@ public class SearchTitle extends MenuManager implements Initializable {
         list_playlist.setDisable(true);
         add_song_btn.setDisable(true);
         rec_emotion_btn.setDisable(true);
+        show_emotion_btn.setDisable(true);
+
 
         SetPlaylist();
     }
@@ -254,6 +259,7 @@ public class SearchTitle extends MenuManager implements Initializable {
         if(song_selected != null)
         {
             rec_emotion_btn.setDisable(false);
+            show_emotion_btn.setDisable(false);
             if(selected_playlist != null)
             {
                 add_song_btn.setDisable(false);

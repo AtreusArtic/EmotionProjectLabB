@@ -68,6 +68,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
         list_playlist.setDisable(true);
         add_song_btn.setDisable(true);
         rec_emotion_btn.setDisable(true);
+        show_emotion_btn.setDisable(true);
 
         SetPlaylist();
     }
@@ -225,6 +226,7 @@ public class SearchYearAuthor extends MenuManager implements Initializable {
         if(song_selected != null)
         {
             rec_emotion_btn.setDisable(false);
+            show_emotion_btn.setDisable(false);
             if(playlist_selected != null)
             {
                 add_song_btn.setDisable(false);
