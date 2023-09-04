@@ -125,47 +125,47 @@
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Label fx:id="sole_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="sole_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="amaz_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="amaz_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tend_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="tend_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nost_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="nost_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="calm_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Label fx:id="calm_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="pow_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Label fx:id="pow_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="joy_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label fx:id="joy_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tens_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Label fx:id="tens_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sad_Score_lbl" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Label fx:id="sad_Score_lbl" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -311,92 +311,92 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <Label fx:id="amaz_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="amaz_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sole_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="sole_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tend_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="tend_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nost_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="nost_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="calm_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Label fx:id="calm_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="pow_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Label fx:id="pow_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="joy_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label fx:id="joy_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ten_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Label fx:id="ten_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sad_Tot_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Label fx:id="sad_Tot_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="amaz_Users_lbl" prefHeight="20.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Label fx:id="amaz_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="78.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sole_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label fx:id="sole_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tend_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Label fx:id="tend_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nost_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <Label fx:id="nost_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="calm_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <Label fx:id="calm_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="pow_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <Label fx:id="pow_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="joy_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <Label fx:id="joy_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ten_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                  <Label fx:id="ten_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sad_Users_lbl" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                  <Label fx:id="sad_Users_lbl" alignment="CENTER" prefHeight="20.0" prefWidth="98.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -423,7 +423,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="username_lbl" layoutX="559.0" layoutY="19.0" prefHeight="22.0" prefWidth="258.0" text="text">
+            <Label fx:id="username_lbl" alignment="CENTER" layoutX="559.0" layoutY="19.0" prefHeight="22.0" prefWidth="258.0" text="text">
                <font>
                   <Font size="17.0" />
                </font>
