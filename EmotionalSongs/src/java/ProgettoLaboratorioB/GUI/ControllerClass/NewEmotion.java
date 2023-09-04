@@ -24,23 +24,23 @@ public class NewEmotion extends MenuManager implements Initializable{
     public Button back_Menu_btn;
     public Button conf_newEmo_btn;
     @FXML
-    private ChoiceBox<Integer> amaz_score_box;
+    private ChoiceBox<String> amaz_score_box;
     @FXML
-    private ChoiceBox<Integer> calm_score_box;
+    private ChoiceBox<String> calm_score_box;
     @FXML
-    private ChoiceBox<Integer> joy_score_box;
+    private ChoiceBox<String> joy_score_box;
     @FXML
-    private ChoiceBox<Integer> nost_score_box;
+    private ChoiceBox<String> nost_score_box;
     @FXML
-    private ChoiceBox<Integer> pow_score_box;
+    private ChoiceBox<String> pow_score_box;
     @FXML
-    private ChoiceBox<Integer> sad_score_box;
+    private ChoiceBox<String> sad_score_box;
     @FXML
-    private ChoiceBox<Integer> sole_score_box;
+    private ChoiceBox<String> sole_score_box;
     @FXML
-    private ChoiceBox<Integer> tend_score_box;
+    private ChoiceBox<String> tend_score_box;
     @FXML
-    private ChoiceBox<Integer> tens_score_box;
+    private ChoiceBox<String> tens_score_box;
 
     @FXML
     private TextField amaz_desc_box;
@@ -73,15 +73,15 @@ public class NewEmotion extends MenuManager implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        amaz_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        calm_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        joy_score_box.getItems().addAll(1, 2, 3, 4,5 );
-        nost_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        pow_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        sad_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        sole_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        tend_score_box.getItems().addAll(1, 2, 3, 4, 5);
-        tens_score_box.getItems().addAll(1, 2, 3, 4, 5);
+        amaz_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        calm_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        joy_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        nost_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        pow_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        sad_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        sole_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        tend_score_box.getItems().addAll("1", "2", "3", "4", "5");
+        tens_score_box.getItems().addAll("1", "2", "3", "4", "5");
 
         conf_newEmo_btn.setDisable(true);
         emotion_registered = null;
@@ -113,18 +113,18 @@ public class NewEmotion extends MenuManager implements Initializable{
             return;
         }
 
-        Map<Enums.EMOTION,Integer> mapper = new HashMap<>();
+        Map<Enums.EMOTION,String> mapper = new HashMap<>();
         Map<Enums.EMOTION,String> mapper2 = new HashMap<>();
 
-        mapper.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.JOY, Optional.ofNullable(joy_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.NOSTALGIA, Optional.ofNullable(nost_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.POWER, Optional.ofNullable(pow_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.SADNESS, Optional.ofNullable(sad_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.SOLEMNITY, Optional.ofNullable(sole_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.TENDERNESS, Optional.ofNullable(tend_score_box.getValue()).orElse(0));
-        mapper.put(Enums.EMOTION.TENSION, Optional.ofNullable(tens_score_box.getValue()).orElse(0));
+        mapper.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.JOY, Optional.ofNullable(joy_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.NOSTALGIA, Optional.ofNullable(nost_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.POWER, Optional.ofNullable(pow_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.SADNESS, Optional.ofNullable(sad_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.SOLEMNITY, Optional.ofNullable(sole_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.TENDERNESS, Optional.ofNullable(tend_score_box.getValue()).orElse(""));
+        mapper.put(Enums.EMOTION.TENSION, Optional.ofNullable(tens_score_box.getValue()).orElse(""));
 
         mapper2.put(Enums.EMOTION.AMAZEMENT, Optional.ofNullable(amaz_desc_box.getText()).orElse(""));
         mapper2.put(Enums.EMOTION.CALMNESS, Optional.ofNullable(calm_desc_box.getText()).orElse(""));
@@ -138,7 +138,7 @@ public class NewEmotion extends MenuManager implements Initializable{
         try {
             emotion_registered = new Emotions(song_selected.getID(),
                     clientService.GetUserConnected().GetUsername(),
-                    mapper2, mapper);
+                    mapper, mapper2);
             if(clientService.RegisterNewEmotion(emotion_registered))
                 check_lbl.setText("EMOTION REGISTERED!");
             else

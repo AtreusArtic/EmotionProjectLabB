@@ -138,12 +138,23 @@ public class SearchTitle extends MenuManager implements Initializable {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
 
-
         stage.setUserData(song_selected);
 
         m.changeScene("Filexml/newEmotion.fxml");
     }
 
+    @FXML
+    void goRecorderEmotion(ActionEvent event) throws IOException {
+        if(song_selected == null || clientService.GetUserConnected() == null)
+            return;
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        stage.setUserData(song_selected);
+
+        m.changeScene("Filexml/RecordedEmotion.fxml");
+    }
     @FXML
     void selectSong(MouseEvent event) {
         if(clientService.GetUserConnected() == null)

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.RecordedEmotions">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProgettoLaboratorioB.GUI.ControllerClass.RecordedEmotions">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -205,7 +205,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ten_Note_lbl" prefHeight="63.0" prefWidth="301.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                  <Label fx:id="tens_Note_lbl" prefHeight="63.0" prefWidth="301.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="8">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -217,17 +217,17 @@
                   </Label>
                </children>
             </GridPane>
-            <Button fx:id="back_Menu_btn" layoutX="22.0" layoutY="615.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" text="Back to Menu">
+            <Button fx:id="back_Menu_btn" layoutX="22.0" layoutY="615.0" mnemonicParsing="false" onAction="#backToUserMenu" prefHeight="40.0" prefWidth="128.0" text="Back to Menu">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="back_btn" layoutX="842.0" layoutY="17.0" mnemonicParsing="false" text="Back">
+            <Button fx:id="back_btn" layoutX="842.0" layoutY="17.0" mnemonicParsing="false" onAction="#goPrevEmotion" text="Back">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="forward_btn" layoutX="924.0" layoutY="17.0" mnemonicParsing="false" text="Forward">
+            <Button fx:id="forward_btn" layoutX="924.0" layoutY="17.0" mnemonicParsing="false" onAction="#goNextEmotion" text="Forward">
                <font>
                   <Font size="15.0" />
                </font>
@@ -418,7 +418,7 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <Button fx:id="get_Song_btn" layoutX="328.0" layoutY="30.0" mnemonicParsing="false" text="Get song">
+            <Button fx:id="get_Song_btn" layoutX="328.0" layoutY="30.0" mnemonicParsing="false" onAction="#getSong" text="Get song">
                <font>
                   <Font size="14.0" />
                </font>

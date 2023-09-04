@@ -15,14 +15,14 @@ public class Emotions implements Serializable, Comparable<Emotions> {
 
     private String IDUser;
 
-    private Map<EMOTION, Integer> EvaluateEmotion;
+    private Map<EMOTION, String> EvaluateEmotion;
 
-    public Emotions(String IDSong, String IDUser, Map<EMOTION, String> emotion_description, Map<EMOTION, Integer> EvaluateEmotion) {
+    public Emotions(String IDSong, String IDUser,Map<EMOTION, String> EvaluateEmotionMap,Map<EMOTION, String> emotion_description) {
 
         this.IDSong = IDSong;
         this.IDUser = IDUser;
         this.emotion_description = emotion_description;
-        this.EvaluateEmotion = EvaluateEmotion;
+        this.EvaluateEmotion = EvaluateEmotionMap;
     }
 
     public Map<EMOTION, String> GetEmotionDescription() {
@@ -37,7 +37,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         return this.IDUser;
     }
 
-    public Map<EMOTION, Integer> GetEvaluateEmotion() {
+    public Map<EMOTION, String> GetEvaluateEmotion() {
         return this.EvaluateEmotion;
     }
 
@@ -53,7 +53,7 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         this.IDUser = User;
     }
 
-    public void SetEvaluateEmotion(Map<EMOTION, Integer> EvaluateEmotion)
+    public void SetEvaluateEmotion(Map<EMOTION, String> EvaluateEmotion)
     {
         this.EvaluateEmotion = EvaluateEmotion;
     }
@@ -70,10 +70,10 @@ public class Emotions implements Serializable, Comparable<Emotions> {
      * @param obj the object that contains all useful information about the emotion.
      * @return the object that contains all useful information about the emotion.
      */
-    public static Emotions SetEmotionValue(EMOTION emotion, int value, Emotions obj){
-        if(CheckEmotionValueRange(value))
+    public static Emotions SetEmotionValue(EMOTION emotion, String value, Emotions obj){
+        if(CheckEmotionValueRange())
         {
-            obj.EvaluateEmotion.put(emotion, value);
+            //obj.EvaluateEmotion.put(emotion, value);
             return obj;
         }
         else
@@ -83,8 +83,9 @@ public class Emotions implements Serializable, Comparable<Emotions> {
         }
     }
 
-    public static boolean CheckEmotionValueRange(int i)
+    public static boolean CheckEmotionValueRange()
     {
+        int i = 0;
         if(i < 0 || i > 5)
         {
             return false;

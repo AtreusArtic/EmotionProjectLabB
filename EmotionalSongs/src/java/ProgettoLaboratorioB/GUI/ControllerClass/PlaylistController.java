@@ -51,7 +51,7 @@ public class PlaylistController extends MenuManager implements Initializable {
 
         create_Playlist_btn.setDisable(true);
         delete_Playlist_btn.setDisable(true);
-        
+
         SetPlaylistTable();
     }
     @FXML

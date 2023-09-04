@@ -190,7 +190,7 @@ public class QueryModule
         emotions_table_queries.put(QUERY.REGISTER_EMOTION,
                 "INSERT INTO emotions (songid, userid, emotion, description) VALUES ('%s', '%s', '%s', '%s');");
         emotions_table_queries.put(QUERY.GET_EMOTIONS,
-                "SELECT emotion FROM emotions WHERE songid = ?");
+                "SELECT * FROM emotions WHERE songid = ?");
 
         tableMapping.put(TABLE.EMOTIONS, emotions_table_queries);
     }

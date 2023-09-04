@@ -461,16 +461,17 @@ public class QueryExecutor
             ps = con.prepareStatement(query);
 
             ps.setString(1, songid);
-
             rs = ps.executeQuery();
 
             while(rs.next())
             {
-                emotions.add(new Emotions(rs.getString(1),  //songid
-                        rs.getString(2),          //userid
-                        (Map<Enums.EMOTION, String>) rs.getObject(3),          //descriptions
-                        (Map<Enums.EMOTION, Integer>) rs.getObject(4)));        //emotions
+                emotions.add(new Emotions(
+                        rs.getString(1),
+                        rs.getString(2),
+                        parseEmotionString(rs.getString(3)),
+                        parseEmotionString(rs.getString(4))));
             }
+            System.out.println("QUERY-EXECUTOR: list of emotions loading successfully");
             return emotions;
         }
         catch (SQLException e)
@@ -479,6 +480,24 @@ public class QueryExecutor
             return null;
         }
     }
+
+    private static Map<Enums.EMOTION, String> parseEmotionString(String input) {
+        input = input.substring(1, input.length() - 1);
+        String[] keyValuePairs = input.split(", ");
+        Map<Enums.EMOTION, String> emotionMap = new HashMap<>();
+
+        for (String pair : keyValuePairs) {
+            String[] parts = pair.split("=");
+            if (parts.length == 2) {
+                String emotion = parts[0];
+                String value = parts[1];
+                emotionMap.put(Enums.EMOTION.valueOf(emotion), value);
+            }
+        }
+
+        return emotionMap;
+    }
+
 }
 
 
