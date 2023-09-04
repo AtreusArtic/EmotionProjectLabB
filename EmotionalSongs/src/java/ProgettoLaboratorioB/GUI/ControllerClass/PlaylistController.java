@@ -72,10 +72,12 @@ public class PlaylistController extends MenuManager implements Initializable {
     {
         if(selected_playlist!= null)
         {
-            clientService.DeletePlaylist(selected_playlist.GetPlaylistID());
-            SetPlaylistTable();
-            success_wrong_lbl.setStyle("-fx-background-color: #008000");
-            success_wrong_lbl.setText("Successfully deleted");
+            if (clientService.DeletePlaylist(selected_playlist.GetPlaylistID())){
+                SetPlaylistTable();
+                success_wrong_lbl.setStyle("-fx-background-color: #008000");
+                success_wrong_lbl.setText("Successfully deleted");
+            }
+
         }
     }
 
