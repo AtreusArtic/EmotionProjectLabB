@@ -12,7 +12,7 @@ public class QueryModule
 {
     /**
      * ENUMS: These enums are used to map table_name(KEY) and the list of queries associated to it (VALUE).
-     * by using the Java Hashmap Class with <Table)><QueriesAssociated>
+     * by using the Java Hashmap Class with <Table><QueriesAssociated>
      * */
     public enum QUERY
     {

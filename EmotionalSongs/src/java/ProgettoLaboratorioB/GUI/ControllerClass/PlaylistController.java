@@ -24,6 +24,9 @@ public class PlaylistController extends MenuManager implements Initializable {
     private Button delete_Playlist_btn;
 
     @FXML
+    private Button delete_Song_btn;
+
+    @FXML
     private ListView<String> table;
 
     @FXML
@@ -46,7 +49,8 @@ public class PlaylistController extends MenuManager implements Initializable {
         artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artist"));
 
         create_Playlist_btn.setDisable(true);
-
+        delete_Playlist_btn.setDisable(true);
+        
         SetPlaylistTable();
     }
     @FXML
@@ -80,6 +84,47 @@ public class PlaylistController extends MenuManager implements Initializable {
         }
     }
 
+    @FXML
+    void deleteSong(ActionEvent event)
+    {
+        if(song_selected == null || selected_playlist == null)
+        {
+            return;
+        }
+        if(clientService.RemoveSongFromPlaylist(selected_playlist.GetPlaylistID(), song_selected.getID()))
+            initSongsTable(selected_playlist);
+
+    }
+
+    private Song song_selected = null;
+    @FXML
+    void selectSong(MouseEvent event)
+    {
+        if(clientService.GetUserConnected() == null)
+        {
+            return;
+        }
+        if (event.getClickCount() == 1) {
+
+            song_selected = new Song(table_songs.getSelectionModel().getSelectedItem().getYear(),
+                    table_songs.getSelectionModel().getSelectedItem().getID(),
+                    table_songs.getSelectionModel().getSelectedItem().getArtist(),
+                    table_songs.getSelectionModel().getSelectedItem().getTitle());
+            UpdateAddButtonView();
+            System.out.println("Song selected is: " + song_selected);
+        }
+    }
+
+    private void UpdateAddButtonView() {
+        if(delete_Song_btn.isDisable())
+        {
+            delete_Song_btn.setDisable(false);
+        }
+        else
+        {
+            delete_Song_btn.setDisable(true);
+        }
+    }
 
     List<Playlist> playlists;
     public void SetPlaylistTable()
@@ -149,6 +194,7 @@ public class PlaylistController extends MenuManager implements Initializable {
 
     void initSongsTable(Playlist playlist)
     {
+        clearSongsTable();
         List<Song> songs = clientService.GetPlaylistSongs(playlist.GetPlaylistID());
         if(songs == null)
         {

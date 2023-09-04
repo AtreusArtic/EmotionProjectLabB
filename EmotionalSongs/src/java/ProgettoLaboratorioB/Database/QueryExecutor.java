@@ -358,20 +358,23 @@ public class QueryExecutor
     }
 
     public static boolean RemoveSongFromPlaylist(String playlist_id, String song_id){
-        Statement stmt;
+        PreparedStatement ps;
         String query;
         try {
             try
             {
                 query = String.format(Objects.requireNonNull(queryModule.getQuery(QueryModule.TABLE.PLAYLISTS,
-                        QueryModule.QUERY.DELETE_SONG_FROM_PLAYLIST)), playlist_id, song_id);
+                        QueryModule.QUERY.DELETE_SONG_FROM_PLAYLIST)));
             } catch (NullPointerException e)
             {
                 System.out.println("QUERY-EXECUTOR error: query string is null ");
                 return false;
             }
-            stmt = con.createStatement();
-            stmt.executeUpdate(query);
+            ps = con.prepareStatement(query);
+            ps.setString(1, playlist_id);
+            ps.setString(2, song_id);
+            ps.executeUpdate();
+
             System.out.println("QUERY-EXECUTOR: Song " + song_id + " removed successfully from playlist selected.");
             return true;
 
