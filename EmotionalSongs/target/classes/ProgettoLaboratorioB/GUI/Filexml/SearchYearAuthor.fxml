@@ -73,7 +73,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="show_Emotion_btn" layoutX="61.0" layoutY="221.0" mnemonicParsing="false" onAction="#goRecorderEmotion" text="Show recorded emotion">
+            <Button fx:id="show_emotion_btn" layoutX="61.0" layoutY="221.0" mnemonicParsing="false" onAction="#goRecorderEmotion" text="Show recorded emotion">
                <font>
                   <Font size="16.0" />
                </font>

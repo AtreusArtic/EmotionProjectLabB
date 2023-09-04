@@ -40,7 +40,7 @@ public class FirstMenu extends MenuManager implements Initializable{
 
     @FXML
     void loginAction(ActionEvent event) throws IOException {
-        m.changeScene("Filexml/LogInMenu.fxml");
+        m.changeScene("Filexml/LoginMenu.fxml");
     }
 
     @FXML
