@@ -9,6 +9,11 @@ import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * This class is manager app of the system.
+ * It contains the main menu of the system and the main methods to manage the system.
+ * It also contains the methods to manage the server configuration.
+ */
 public class App_System{
 
     public static App_System appSystem;

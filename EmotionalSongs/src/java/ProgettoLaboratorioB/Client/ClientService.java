@@ -9,13 +9,18 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class is the client service that allows the client to communicate with the server,
+ * and to request the server to perform operations on the database.
+ *
+ * @author Enrico Artese
+ * @version 0.0.1
+ */
 public class ClientService {
 
     static User user_connected = null;
 
     //  ------- SYSTEM MODULE FUNCTIONS --------:
-
-
     public ClientService () {}
 
     /**
@@ -86,7 +91,7 @@ public class ClientService {
 
     /**
      * This function allows the user to login in the application.
-     * and go online on the server as user registered in the application database.
+     * And go online on the server as user registered in the application database.
      * @param username the username of the user that wants to log in.
      * @param password the password of the user that wants to log in.
      * @return true if the login is successful, false otherwise.
@@ -310,7 +315,8 @@ public class ClientService {
      * This method request to the server to get all the emotions of a song
      * @param songID the id of the song
      * @return a list of emotions
-     * this fynction is accessible either by the user and by the anonymous client that is not registered in the application.
+     * this function is accessible either by the user and by the anonymous client
+     * that is not registered in the application.
      */
     public static List<Emotions> GetEmotionsFromSong(String songID) throws RemoteException
     {

@@ -6,6 +6,9 @@ import java.util.Map;
 
 /**
  * This class implements a mapping system between tables and relative queries those are defined in the postgres database;
+ *
+ * @author Enrico Artese, Marco Buglioni.
+ * @version 0.0.1
  */
 
 public class QueryModule
@@ -16,23 +19,14 @@ public class QueryModule
      * */
     public enum QUERY
     {
-        /**
-        * Users table queries
-        * */
         LOGIN,
         REGISTER,
 
-        /**
-        * Song table queries
-        */
         ADD_SONG,
         SEARCH_SONG_BY_YEARARTIST,
         SEARCH_SONG_BY_TITLE,
         GET_SONGS_BY_ID,
 
-        /**
-        * Playlist table queries
-         */
         CREATE_PLAYLIST,
         GET_USER_PLAYLISTS,
         GET_ALL_SONGS_FROM_PLAYLIST,
@@ -40,9 +34,6 @@ public class QueryModule
         DELETE_SONG_FROM_PLAYLIST,
         DELETE_PLAYLIST,
 
-        /**
-         * Emotions table queries
-         */
         REGISTER_EMOTION,
         DELETE_EMOTION,
         GET_EMOTIONS,
@@ -199,6 +190,9 @@ public class QueryModule
      * Function that returns a String corresponding to the query,
      * specifying the table name and one of its related queries
      * defined in the enum QUERY
+     * @param table enum is the table name
+     * @param query enum is the query name
+     * @return String corresponding to the query, null if the query is not found.
      * */
     public static String getQuery(TABLE table, QUERY query)
     {

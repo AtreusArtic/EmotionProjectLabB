@@ -1,7 +1,5 @@
 package ProgettoLaboratorioB.GUI;
 
-import ProgettoLaboratorioB.Database.QueryModule;
-import ProgettoLaboratorioB.Serializables.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,15 +10,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * With this class define the methods to create the GUI of the manager.
- * IMPO: queste keyword sotto riportate, sono solo d'esempio illustrativo per Marika e Sam
- * @link https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html
- * @see QueryModule to see information about the database.
+ * This class is the main class of the GUI package,
+ * it is used to start the GUI using the JavaFX library, and Scene Builder as generator of the FXML files.
+ * It contains the method to change the scene of the GUI, every time an event is triggered.
+ *
+ * @Author Marika Scalise, Enrico Artese.
+ * @version 0.0.1
  */
 public class ManagerGUI extends Application{
     private static Stage stg;
 
-    public static User user = null;
 
     @Override
     public void start(Stage stage) throws Exception{

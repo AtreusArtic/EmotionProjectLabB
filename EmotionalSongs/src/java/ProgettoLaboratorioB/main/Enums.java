@@ -1,5 +1,6 @@
 package ProgettoLaboratorioB.main;
 
+
 public class Enums
 {
     public enum SYSTEM_STATE {

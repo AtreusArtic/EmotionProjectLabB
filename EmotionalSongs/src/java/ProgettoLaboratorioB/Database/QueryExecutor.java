@@ -1,12 +1,5 @@
 package ProgettoLaboratorioB.Database;
-/**
- * TODO: REFACTOR THE DOCUMENTATION OF THIS CLASS!
- * Query module is an abstract where all the queries defined in the database are stored.
- * The queries are used by the server to interact with the database.
- * For example, the server can use the query to insert a new user in the database.
- *
- * Database class will declare a QueryModule object and use it to interact with the database.
- */
+
 
 import ProgettoLaboratorioB.Serializables.Emotions;
 import ProgettoLaboratorioB.Serializables.Playlist;
@@ -17,15 +10,36 @@ import ProgettoLaboratorioB.main.Enums;
 import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.*;
-
 /**
- * I think that this class should be an abstract class, in order to make a singleton pattern.
- * So it could be not possible to create an instance of this class.
+ * QueryExecutor class will be used to execute queries to the database
+ * when the client sends a request to the server.
+ *
+ * Database class will declare a QueryModule object, and it is a class that implements
+ * a mapping system between tables and relative queries
+ * that are defined in the postgres database;
+ *
+ * QueryExecutor needs also a Connection object to connect to the database.
+ *
+ * @author Enrico Artese, Marco Buglioni.
+ * @version 0.0.1
  */
 public class QueryExecutor
 {
+    /**
+     * Connection object is used to connect to the database.
+     *
+     * */
     public static Connection con;
+
+    /**
+     * QueryModule object is used to map tables and queries.
+     * */
     public static QueryModule queryModule;
+
+    /**
+     * QueryExecutor constructor will be used initialize a connection to the Postgres database.
+     *
+     * */
     public QueryExecutor(String url, String user, String password)
     {
         queryModule = new QueryModule();
@@ -41,14 +55,23 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This method will be used to get a QueryExecutor object.
+     * @param url is the url of the database
+     * @param user is the username of the database
+     * @param password is the password of the database
+     *
+     * @return a QueryExecutor object
+     * */
     public static QueryExecutor GetQueryObject(String url, String user, String password){
         return new QueryExecutor(url, user, password);
     }
 
     /**
-     * SONG QUERIES METHODS:
+     * This method is used to load data from the song file to the database.
+     * If the song relation is empty, the method will load the data from the song file.
      */
-    public void LoadSongData() throws SQLException, FileNotFoundException {
+    public void LoadSongData() {
         try (Scanner in = new Scanner(queryModule.songfile)){
             while(in.hasNextLine()){
                 String objString = in.nextLine();
@@ -75,6 +98,12 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is used to get all songs in the database,
+     * that have input String in the title.
+     * @param title is the title of the song to be searched.
+     * @return a list of songs that have the input String in the title.
+     */
     public static List<Song> GetSongByTitle(String title){
         PreparedStatement ps;
         ResultSet rs;
@@ -106,6 +135,13 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is used to get all songs in the database,
+     * by specifying the year and the artist.
+     * @param artist is the artist of the song to be searched.
+     * @param year is the year when the song was published.
+     * @return a list of songs that have the input String in the artist.
+     */
     public static List<Song> GetSongYearTitle(String year, String artist){
         PreparedStatement ps;
         ResultSet rs;
@@ -139,6 +175,12 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is used to get a song in the database,
+     * by specifying the id.
+     * @param id is the id of the song to be searched.
+     * @return a song that has the input String in the id.
+     */
     public static Song GetSongsByID(String id)
     {
         PreparedStatement ps;
@@ -172,7 +214,10 @@ public class QueryExecutor
     }
 
     /**
-     * USER QUERIES METHODS:
+     * This function is called when a request to login in the system is received.
+     * @param username is the username of the user to be logged in.
+     * @param password is the password of the user to be logged in.
+     * @return a User object if the user exists in the database, null otherwise.
      */
     public static User UserLogin(String username, String password){
         PreparedStatement ps;
@@ -212,6 +257,17 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to register a new user in the system is received.
+     * @param username is the username of the user to be registered.
+     * @param password is the password of the user to be registered.
+     * @param email is the email of the user to be registered.
+     * @param name is the name of the user to be registered.
+     * @param surname is the surname of the user to be registered.
+     * @param address is the address of the user to be registered.
+     * @param CF is the CF of the user to be registered.
+     * @return true if the user is registered successfully, false otherwise.
+     */
     public static boolean RegisterNewUser(String username, String password, String email,String name, String surname, String address, String CF){
         Statement stmt;
         String query;
@@ -243,7 +299,12 @@ public class QueryExecutor
 
 
     /**
-     * PLAYLISTS QUERIES METHODS:
+     * This function is called when a request to create a new playlist in the system is received.
+     * @param plt_name is the name of the playlist to be created.
+     * @param username is the username of the user that creates the playlist.
+     * @param ID is the ID of the playlist to be created.
+     *
+     * @return true if the playlist is created successfully, false otherwise.
      */
     public static boolean CreatePlaylist(String plt_name, String username, String ID){
         Statement stmt;
@@ -270,6 +331,11 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to get all playlists of a user is received.
+     * @param username is the username of the user that wants to get all his playlists.
+     * @return a list of playlists of the user.
+     */
     public static List<Playlist> GetUserPlaylists(String username)
     {
         PreparedStatement ps;
@@ -303,6 +369,11 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to get all songs of a playlist is received.
+     * @param playlist_id is the ID of the playlist that wants to get all his songs.
+     * @return a list of songs of the playlist.
+     */
     public static List<Song> GetSongsFromPlaylist(String playlist_id)
     {
         PreparedStatement ps;
@@ -332,6 +403,13 @@ public class QueryExecutor
             return null;
         }
     }
+
+    /**
+     * This function is called when a request to add a song to a playlist is received.
+     * @param playlist_id is the ID of the playlist that wants to add a song.
+     * @param song_id is the ID of the song that wants to be added to the playlist.
+     * @return true if the song is added successfully, false otherwise.
+     */
     public static boolean AddSongToPlaylist(String playlist_id, String song_id){
         Statement stmt;
         String query;
@@ -357,6 +435,12 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to remove a song from a playlist is received.
+     * @param playlist_id is the ID of the playlist that wants to remove a song.
+     * @param song_id is the ID of the song that wants to be removed from the playlist.
+     * @return true if the song is removed successfully, false otherwise.
+     */
     public static boolean RemoveSongFromPlaylist(String playlist_id, String song_id){
         PreparedStatement ps;
         String query;
@@ -385,6 +469,11 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to delete a playlist is received.
+     * @param playlist_id is the ID of the playlist that wants to be deleted.
+     * @return true if the playlist is deleted successfully, false otherwise.
+     */
     public static boolean DeletePlaylist(String playlist_id){
         PreparedStatement ps;
         String query;
@@ -416,9 +505,10 @@ public class QueryExecutor
 
 
     /**
-     * EMOTION QUERIES METHOD:
+     * This function is called when a request to get all emotions of a song is received.
+     * @param emotion is the emotion recorder by a registered user
+     * @return true if the emotion is registered successfully, false otherwise.
      */
-
     public static boolean RegisterNewEmotion(Emotions emotion)
     {
         Statement stmt;
@@ -448,6 +538,11 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function is called when a request to get all emotions of a song is received.
+     * @param songid is the ID of the song that wants to get all his emotions.
+     * @return a list of emotions of the song.
+     */
     public List<Emotions> GetEmotionBySongID(String songid)
     {
         PreparedStatement ps;
@@ -481,6 +576,11 @@ public class QueryExecutor
         }
     }
 
+    /**
+     * This function takes a String obj from the database and parses it to a Map<Enums.EMOTION, String>
+     * @param input is the String obj to be parsed.
+     * @return a Map<Enums.EMOTION, String>
+     */
     private static Map<Enums.EMOTION, String> parseEmotionString(String input) {
         input = input.substring(1, input.length() - 1);
         String[] keyValuePairs = input.split(", ");

@@ -1,23 +1,28 @@
-# EmotionProjectLabB
 
-# NOTE:
-1. After you fetch the project, check if maven project it setted correcty, simply by start run the 'appTest.java', if the execution return 0, maven is ok.
-2. Check in Project Window, if in the "External Libraries", there is the postgresql-42.2.5.jar, if not, add it manually.
-3. pw for access the database: marco2000 (temporally)
+## Folder Structure
+The workspace contains four folders by default, where:
 
-# LINKS:
-1. DOWNLOAD POSTGREE : https://www.postgresql.org/download/
-2. DOWNLOAD INTELLIJ : https://www.jetbrains.com/idea/download/#section=windows
-3. DOWNLOAD MAVEN (Facoltativo) : https://maven.apache.org/download.cgi
+- `src`: the folder to maintain java classes
+- `data`: the folder to maintain data file resources: songs and server data.
+- `bin` : the folder to maintain java file.class, relative to scr folder content.
+- `doc`: the folder where user manual and technical manual are saved, and also the javadoc folder.
+- `DatabaseConfig`: the folder team configurations where saved, in order to connect with the database, and also there is the .sql file backup, to load the emotion database project. 
 
-# HOW TO CHECK IF MAVEN IS CORRECTLY INSTALLED:
-1. Open the project in IntelliJ;
-2. Open the file 'appTest.java';
-3. Run the file 'appTest.java';
-4. If the execution return 0, maven is correctly installed.
 
-# START SERVER AND CLIENT:
-1. Start the server, and only after that, start the client.
-2. If the Client is in the same machine of the server, you can start the client without any problem, but pay attention to use the correct IP address. Read the JavaDoc of the class 'ClientMain.java' for more information.
-3. If the Client is in a different machine of the server, you have to change the IP address of the server in the class 'ClientMain.java' with the IP address declared in the class. Read the JavaDoc of the class 'ClientMain.java' for more information.
 
+## Notes!!!
+-  To load the database, you need to import the .sql file in the DatabaseConfig folder, in your dbms, and change the configurations in the DatabaseConfig folder, in the file named "profdbconfig.properties", and change the reference to the property in the class ServerImpl.java
+
+
+## How start application:
+    #Server:
+    - Open shell/cmd: select the path where progect folder is located;
+    - Digit command: [ java -jar Server.jar ]
+    if a permission error occur, please digit this command: [ java --enable-preview -jar Server.jar ]
+
+    #Client:
+    - Open out/artifacts/Client_exe folder, and double click on Client.exe file.
+
+    - To test application there is also a registered account: 
+        • username: Artiiic98
+        • password: enrico98

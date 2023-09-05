@@ -15,9 +15,6 @@ public class User implements Serializable, Comparable<User>
     String CF;
     String email;
 
-    /**
-     * Only for test.
-     */
     public User() {this.username = "test"; this.password = "default"; this.nome = "default" ;this.cognome = "default";this.CF = "deafult";this.indirizzo = "default" ;this.email = "default";}
 
     public User(String username, String password, String email, String nome, String cognome, String indirizzo, String CF)
@@ -64,7 +61,7 @@ public class User implements Serializable, Comparable<User>
     /// <summary>
     /// ATTENTION:
     /// This following SETTER functions are used to set the values of the attributes of the class,
-    /// when the user subscribe for the first time in the application;
+    /// when the user subscribes for the first time in the application;
     /// </summary>
     public void SetUsername(String username)
     {
@@ -104,9 +101,9 @@ public class User implements Serializable, Comparable<User>
     }
 
     /**
-     * This function is used to check if the user's email respect the format;
+     * This function is used to check if the user's email respects the format;
      * @param email the user's email;
-     * @return true if the email respect the format, false otherwise;
+     * @return true if the email respects the format, false otherwise;
      */
     public static boolean EmailPattern(String email){
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");

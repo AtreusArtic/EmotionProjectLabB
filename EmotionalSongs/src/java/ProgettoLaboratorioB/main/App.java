@@ -13,13 +13,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-
+/**
+ * This class is used to start the client application.
+ * The class contains the main method, and the main module of the client application.
+ */
 
 public class App
 {
-    /**
-     * @param sc: scanner object used to read user input from the console.
-     */
     static Scanner sc = new Scanner(System.in);
 
     static ClientService clientService = new ClientService();
@@ -30,6 +30,12 @@ public class App
     }
 
 
+    /**
+     * This method is used to start the client terminal application, used only for testing.
+     * The method starts the client application, and then start the main module.
+     * @throws RemoteException if the remote object is not available.
+     * @throws SQLException if the database is not available.
+     */
     public static void RunApplication() throws RemoteException, SQLException {
         if(!ClientService.StartClientApplication())
         {
@@ -43,6 +49,13 @@ public class App
         }
     }
 
+    /**
+     * This method is used to start the GUI modules.
+     * The method starts the client application, and then starts the GUI module.
+     * @param args
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public static void LaunchGUIModules(String[] args) throws RemoteException, SQLException {
         ClientService.StartClientApplication();
         ManagerGUI.main(args);

@@ -4,6 +4,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * This class is used to create the tables in the database, if it is not already created.
+ * The tables are:
+ * • Users
+ * • Songs
+ * • Playlists
+ * • PlaylistSaved
+ * • Emotions
+ * The tables are created using SQL queries, ATTENTION:
+ * see the documentation for more details about constraints and relations.
+ *
+ * @author Enrico Artese
+ * @version 0.0.1
+ */
 public class DatabaseService
 {
     public static void CreateUserTable(Connection connection, String table_name)
@@ -21,7 +35,6 @@ public class DatabaseService
         }
     }
 
-    //TODO: change year column to NUMERIC or DECIMAL type.
     public static void CreateSongsTable(Connection connection, String table_name){
         Statement stmt;
         try
